@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Case Study | Solutions for Computational Probability and Statistics</title>
+  <title>Chapter 4 Studies | Solutions for Computational Probability and Statistics</title>
   <meta name="description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Case Study | Solutions for Computational Probability and Statistics" />
+  <meta property="og:title" content="Chapter 4 Studies | Solutions for Computational Probability and Statistics" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="figures/CoverSol2.png" />
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Case Study | Solutions for Computational Probability and Statistics" />
+  <meta name="twitter:title" content="Chapter 4 Studies | Solutions for Computational Probability and Statistics" />
   
   <meta name="twitter:description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
   <meta name="twitter:image" content="figures/CoverSol2.png" />
@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="DB.html"/>
+<link rel="prev" href="ODCP.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -195,136 +195,139 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="CS1" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Case Study</h1>
-<div id="objectives" class="section level2">
-<h2><span class="header-section-number">1.1</span> Objectives</h2>
+<div id="STUDY" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Studies</h1>
+<div id="objectives-3" class="section level2">
+<h2><span class="header-section-number">4.1</span> Objectives</h2>
 <ol style="list-style-type: decimal">
-<li>Use R for basic analysis and visualization.<br />
+<li>Define and use properly in context all new terminology.<br />
 </li>
-<li>Compile a report using <code>knitr</code>.</li>
+<li>Given a study description, be able to identify and explain the study using correct terms.<br />
+</li>
+<li>Given a scenario, describe flaws in reasoning and propose study and sampling designs.</li>
 </ol>
 </div>
-<div id="homework" class="section level2">
-<h2><span class="header-section-number">1.2</span> Homework</h2>
-<p>Load <code>tidyverse</code>,<code>mosaic</code>, and <code>knitr</code> packages.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="CS1.html#cb1-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="CS1.html#cb1-2"></a><span class="kw">library</span>(mosaic)</span>
-<span id="cb1-3"><a href="CS1.html#cb1-3"></a><span class="kw">library</span>(knitr)</span></code></pre></div>
-<div id="problem-1" class="section level3">
-<h3><span class="header-section-number">1.2.1</span> Problem 1</h3>
+<div id="homework-3" class="section level2">
+<h2><span class="header-section-number">4.2</span> Homework</h2>
+<div id="problem-1-3" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Problem 1</h3>
 <ol style="list-style-type: decimal">
-<li><strong>Stent study continued</strong>. Complete a similar analysis for the stent data but this time for the one year data. In particular</li>
+<li><strong>Propose a sampling strategy</strong>. A large college class has 160 students. All 160 students attend the lectures together, but the students are divided into 4 groups, each of 40 students, for lab sections administered by different teaching assistants. The professor wants to conduct a survey about how satisfied the students are with the course, and he believes that the lab section a student is in might affect the student’s overall satisfaction with the course.</li>
 </ol>
 <ol style="list-style-type: lower-alpha">
-<li>Read the data into your working directory.</li>
+<li>What type of study is this? Observational study.</li>
+<li>Suggest a sampling strategy for carrying out this study. Stratified sample, sample randomly within each section.</li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="CS1.html#cb2-1"></a>stent_study &lt;-<span class="kw">read_csv</span>(<span class="st">&#39;data/stent_study.csv&#39;</span>)</span></code></pre></div>
-<ol start="2" style="list-style-type: lower-alpha">
-<li>Complete similar steps as in the class notes.<br />
-i. Use <code>inspect</code> on the data.
-ii. Create a table of <code>outcome365</code> and <code>group</code>. Comment on the results.
-iii. Create a barchart of the data.</li>
-</ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="CS1.html#cb3-1"></a><span class="kw">inspect</span>(stent_study)</span></code></pre></div>
-<pre><code>## Warning: `data_frame()` is deprecated as of tibble 1.1.0.
-## Please use `tibble()` instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
-<pre><code>## 
-## categorical variables:  
-##         name     class levels   n missing
-## 1      group character      2 451       0
-## 2  outcome30 character      2 451       0
-## 3 outcome365 character      2 451       0
-##                                    distribution
-## 1 control (50.3%), trmt (49.7%)                
-## 2 no_event (89.8%), stroke (10.2%)             
-## 3 no_event (83.8%), stroke (16.2%)</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="CS1.html#cb6-1"></a><span class="kw">tally</span>(outcome365<span class="op">~</span>group,<span class="dt">data=</span>stent_study,<span class="dt">format=</span><span class="st">&quot;proportion&quot;</span>,<span class="dt">margins =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
-<pre><code>##           group
-## outcome365   control      trmt
-##   no_event 0.8766520 0.7991071
-##   stroke   0.1233480 0.2008929
-##   Total    1.0000000 1.0000000</code></pre>
-<p>Patients in the treatment group had a higher proportion of strokes than those in the control group after one year. The treatment does not appear to help the rate of strokes and in fact may hurt it.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="CS1.html#cb8-1"></a>stent_study <span class="op">%&gt;%</span></span>
-<span id="cb8-2"><a href="CS1.html#cb8-2"></a><span class="st">  </span><span class="kw">gf_props</span>(<span class="op">~</span>group,<span class="dt">fill=</span><span class="op">~</span>outcome365,<span class="dt">position=</span><span class="st">&#39;fill&#39;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb8-3"><a href="CS1.html#cb8-3"></a><span class="st">  </span><span class="kw">gf_labs</span>(<span class="dt">title=</span><span class="st">&quot;Impact of Stents of Stroke&quot;</span>,</span>
-<span id="cb8-4"><a href="CS1.html#cb8-4"></a>  <span class="dt">subtitle=</span><span class="st">&#39;Experiment with 451 Patients&#39;</span>,</span>
-<span id="cb8-5"><a href="CS1.html#cb8-5"></a>  <span class="dt">x=</span><span class="st">&quot;Experimental Group&quot;</span>,</span>
-<span id="cb8-6"><a href="CS1.html#cb8-6"></a>  <span class="dt">y=</span><span class="st">&quot;Number of Events&quot;</span>)</span></code></pre></div>
-<p><img src="01-Data-Case-Study-Solutions_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
-<div id="problem-2" class="section level3">
-<h3><span class="header-section-number">1.2.2</span> Problem 2</h3>
+<div id="problem-2-3" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> PRoblem 2</h3>
 <ol start="2" style="list-style-type: decimal">
-<li><strong>Migraine and acupuncture</strong>. A migraine is a particularly painful type of headache, which patients sometimes wish to treat with acupuncture. To determine whether acupuncture relieves migraine pain, researchers conducted a randomized controlled study where 89 females diagnosed with migraine headaches were randomly assigned to one of two groups: treatment or control. 43 patients in the treatment group received acupuncture that is specifically designed to treat migraines. 46 patients in the control group received placebo acupuncture (needle insertion at nonacupoint locations). 24 hours after patients received acupuncture, they were asked if they were pain free.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></li>
+<li><strong>Flawed reasoning</strong>. Identify the flaw in reasoning in the following scenarios. Explain what the individuals in the study should have done differently if they wanted to make such strong conclusions.</li>
 </ol>
-<p>The data is in the file <code>migraine_study.csv</code> in the folder <code>data</code>.</p>
-<p>Complete the following work:</p>
 <ol style="list-style-type: lower-alpha">
-<li>Read the data an object called <code>migraine_study</code>.</li>
+<li>Students at an elementary school are given a questionnaire that they are required to return after their parents have completed it. One of the questions asked is, <em>Do you find that your work schedule makes it difficult for you to spend time with your kids after school?</em> Of the parents who replied, 85% said <em>no</em>. Based on these results, the school officials conclude that a great majority of the parents have no difficulty spending time with their kids after school.</li>
 </ol>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="CS1.html#cb9-1"></a>migraine_study &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/migraine_study.csv&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="CS1.html#cb10-1"></a><span class="kw">head</span>(migraine_study)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 2
-##   group     pain_free
-##   &lt;chr&gt;     &lt;chr&gt;    
-## 1 treatment yes      
-## 2 treatment yes      
-## 3 treatment yes      
-## 4 treatment yes      
-## 5 treatment yes      
-## 6 treatment yes</code></pre>
+<blockquote>
+<p>Solution<br />
+Non-responders may have a different response to this question. The parents who returned the surveys are probably those who do not have difficulty spending time with their kids after school. Parents who work might not have returned the surveys since they probably have a busier schedule.</p>
+</blockquote>
 <ol start="2" style="list-style-type: lower-alpha">
-<li>Create a table of the data.</li>
+<li>A survey is conducted on a simple random sample of 1,000 women who recently gave birth, asking them about whether or not they smoked during pregnancy. A follow-up survey asking if the children have respiratory problems is conducted 3 years later, however, only 567 of these women are reached at the same address. The researcher reports that these 567 women are representative of all mothers.</li>
 </ol>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="CS1.html#cb12-1"></a><span class="kw">tally</span>(pain_free<span class="op">~</span>group,<span class="dt">data=</span>migraine_study,<span class="dt">format=</span><span class="st">&quot;proportion&quot;</span>,<span class="dt">margin=</span><span class="ot">TRUE</span>)</span></code></pre></div>
-<pre><code>##          group
-## pain_free    control  treatment
-##     no    0.95652174 0.76744186
-##     yes   0.04347826 0.23255814
-##     Total 1.00000000 1.00000000</code></pre>
-<ol start="3" style="list-style-type: lower-alpha">
-<li>Report the percent of patients in the treatment group who were pain free 24 hours after receiving acupuncture.</li>
-</ol>
-<p>There are 23.2% of the treatment group pain free.</p>
-<ol start="4" style="list-style-type: lower-alpha">
-<li>Repeat for the control group.</li>
-</ol>
-<p>There are only 4.3% of the control group pain free.</p>
-<ol start="5" style="list-style-type: lower-alpha">
-<li>At first glance, does acupuncture appear to be an effective treatment for migraines? Explain your reasoning.</li>
-</ol>
-<p>Yes, a substantial increase in the percentage of patients pain free after acupuncture versus those with no acupuncture, so it appears to be effective.</p>
-<ol start="6" style="list-style-type: lower-alpha">
-<li>Do the data provide convincing evidence that there is a real pain reduction for those patients in the treatment group? Or do you think that the observed difference might just be due to chance?</li>
-</ol>
-<p>Either of these is acceptable:
-i. We could get slightly different group estimates even if there is no real difference. Though the difference is big, I’m skeptical the results show a real difference and think this might be due to chance.<br />
-ii. The difference in these rates looks pretty big, and so I suspect acupuncture is having a positive impact on pain.</p>
+<blockquote>
+<p>Solution<br />
+It is unlikely that the women who were reached at the same address 3 years later are a random sample. These missing responders are probably renters (as opposed to homeowners) which means that they might be in a lower socio-economic status than the respondents.</p>
+</blockquote>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="problem-3-1" class="section level3">
+<h3><span class="header-section-number">4.2.3</span> Problem 3</h3>
 <ol start="3" style="list-style-type: decimal">
-<li>Compile, <code>knit</code>, this report into a pdf.</li>
+<li><strong>Sampling strategies</strong>. A Math 377 student who is curious about the relationship between the amount of time students spend on social networking sites and their performance at school decides to conduct a survey. Four research strategies for collecting data are described below. In each, name the sampling method proposed and any bias you might expect.</li>
 </ol>
-<p>Complete on your computer or server.</p>
+<ol style="list-style-type: lower-alpha">
+<li>He randomly samples 40 students from the study’s population, gives them the survey, asks them to fill it out and bring it back the next day.<br />
+</li>
+<li>He gives out the survey only to his friends, and makes sure each one of them fills out the survey.<br />
+</li>
+<li>He posts a link to an online survey on his Facebook wall and asks his friends to fill out the survey.<br />
+</li>
+<li>He stands outside the QRC and asks every third person that walks out the door to fill out the survey.</li>
+</ol>
+<blockquote>
+<p>Solution<br />
+a. Simple random sample. Non-response bias, if only those people who have strong opinions about the survey responds his sample may not be representative of the population.<br />
+b. Convenience sample. Under coverage bias, his sample may not be representative of the population since it consists only of his friends. It is also possible that the study will have non-response bias if some choose to not bring back the survey.<br />
+c. Convenience sample. This will have a similar issues to handing out surveys to friends.<br />
+d. Convenience sample. Same.</p>
+</blockquote>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="problem-4" class="section level3">
+<h3><span class="header-section-number">4.2.4</span> Problem 4</h3>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Vitamin supplements</strong>. In order to assess the effectiveness of taking large doses of vitamin C in reducing the duration of the common cold, researchers recruited 400 healthy volunteers from staff and students at a university. A quarter of the patients were assigned a placebo, and the rest were evenly divided between 1g Vitamin C, 3g Vitamin C, or 3g Vitamin C plus additives to be taken at onset of a cold for the following two days. All tablets had identical appearance and packaging. The nurses who handed the prescribed pills to the patients knew which patient received which treatment, but the researchers assessing the patients when they were sick did not. No significant differences were observed in any measure of cold duration or severity between the four medication groups, and the placebo group had the shortest duration of symptoms.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Was this an experiment or an observational study? Why?<br />
+</li>
+<li>What are the explanatory and response variables in this study?<br />
+</li>
+<li>Were the patients blinded to their treatment?<br />
+</li>
+<li>Was this study double-blind?<br />
+</li>
+<li>Participants are ultimately able to choose whether or not to use the pills prescribed to them. We might expect that not all of them will adhere and take their pills. Does this introduce a confounding variable to the study? Explain your reasoning.</li>
+</ol>
+<blockquote>
+<p>Solution<br />
+a. Experiment, since the researchers randomly assigned different treatments to the participants.<br />
+b. Response variable: Duration of the cold.<br />
+Explanatory variable: Treatment, with 4 levels; placebo, 1g, 3g, 3g with additives.<br />
+c. The patients were blinded as they did not know which treatment they received.<br />
+d. The study was double-blind with respect to the researchers evaluating the patients, but the nurses who briely interacted with patients during the distribution of the medication were not blinded. (It was partially double-blind.)<br />
+e. Since the patients were randomly assigned to the treatment groups and they are blinded we would expect about an equal number of patients in each group to not adhere to the treatment. While this means that final results of the study will be based on fewer number of participants, non-adherence does not introduce a confounding variable to
+the study.</p>
+</blockquote>
+</div>
+<div id="problem-5" class="section level3">
+<h3><span class="header-section-number">4.2.5</span> Problem 5</h3>
+<ol start="5" style="list-style-type: decimal">
+<li><strong>Exercise and mental health</strong>. A researcher is interested in the effects of exercise on mental health and she proposes the following study: Use stratified random sampling to ensure representative proportions of 18-30, 31-40 and 41-55 year olds from the population. Next, randomly assign half the subjects from each age group to exercise twice a week, and instruct the rest not to exercise. Conduct a mental health exam at the beginning and at the end of the study, and compare the results.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>What type of study is this?<br />
+</li>
+<li>What are the treatment and control groups in this study?<br />
+</li>
+<li>Does this study make use of blocking? If so, what is the blocking variable?<br />
+</li>
+<li>Does this study make use of blinding?<br />
+</li>
+<li>Comment on whether or not the results of the study can be used to establish a causal relationship between exercise and mental health, and indicate whether or not the conclusions can be generalized to the population at large.<br />
+</li>
+<li>Suppose you are given the task of determining if this proposed study should get funding. Would you have any reservations about the study proposal?</li>
+</ol>
+<blockquote>
+<p>Solution<br />
+a. This is an experiment since we assigned subjects to the exercise program.<br />
+b. The treatment is exercise twice a week and control is no exercise.<br />
+c, Yes, the blocking variable is age.<br />
+d. No, the study is not blinded since the patients will know whether or not they are exercising.<br />
+e. Since this is an experiment, we can make a causal statement. Since the sample is random, the causal statement can be generalized to the population at large. However, we should be cautious about making a causal statement because of a possible placebo effect.<br />
+f. It would be very difficult, if not impossible, to successfully conduct this study since randomly sampled people cannot be required to participate in a clinical trial.</p>
+</blockquote>
 
 </div>
 </div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="1">
-<li id="fn1"><p>G. Allais et al. <a href="http://www.ncbi.nlm.nih.gov/pubmed/21533739">“Ear acupuncture in the treatment of migraine attacks: a randomized trial on the efficacy of appropriate versus inappropriate acupoints”.</a> In: Neurological Sci. 32.1 (2011), pp. 173–175.<a href="CS1.html#fnref1" class="footnote-back">↩︎</a></p></li>
-</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="DB.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ODCP.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
