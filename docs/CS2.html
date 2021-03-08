@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Solutions for Computational Probability and Statistics</title>
+  <title>Chapter 7 Case Study | Solutions for Computational Probability and Statistics</title>
   <meta name="description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Solutions for Computational Probability and Statistics" />
+  <meta property="og:title" content="Chapter 7 Case Study | Solutions for Computational Probability and Statistics" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="figures/CoverSol2.png" />
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Solutions for Computational Probability and Statistics" />
+  <meta name="twitter:title" content="Chapter 7 Case Study | Solutions for Computational Probability and Statistics" />
   
   <meta name="twitter:description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
   <meta name="twitter:image" content="figures/CoverSol2.png" />
@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="CS1.html"/>
+<link rel="prev" href="CATDATA.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -219,89 +219,95 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Solutions for Computational Probability and Statistics</h1>
-<p class="author"><em>Ken Horton</em></p>
-<p class="author"><em>Kris Pruitt</em></p>
-<p class="author"><em>Bradley Warner</em></p>
-<p class="date"><em>2021-03-08</em></p>
-</div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p><img src="figures/CoverSol2.png" width="705" /></p>
-<p>Contained in this volume are the solutions to homework problems in the Computational Probability and Statistics book.</p>
-<div id="book-structure-and-how-to-use-it" class="section level2">
-<h2><span class="header-section-number">0.1</span> Book Structure and How to Use It</h2>
-<p>This solution manual is setup to match the structure of the accompanying book.</p>
-<p>The learning outcomes for this course are to use computational and mathematical statistical/probabilistic concepts for:</p>
-<ol style="list-style-type: lower-alpha">
-<li>Developing probabilistic models</li>
-<li>Developing statistical models for inference and description</li>
-<li>Advancing practical and theoretical analytic experience and skills</li>
+<div id="CS2" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Case Study</h1>
+<div id="objectives-6" class="section level2">
+<h2><span class="header-section-number">7.1</span> Objectives</h2>
+<ol style="list-style-type: decimal">
+<li>Use R to simulate a probabilistic model.<br />
+</li>
+<li>Use basic counting methods.</li>
 </ol>
 </div>
-<div id="packages" class="section level2">
-<h2><span class="header-section-number">0.2</span> Packages</h2>
-<p>These notes make use of the following packages in R <strong>knitr</strong> <span class="citation">(Xie <a href="#ref-R-knitr" role="doc-biblioref">2020</a>)</span>, <strong>rmarkdown</strong> <span class="citation">(Allaire et al. <a href="#ref-R-rmarkdown" role="doc-biblioref">2020</a>)</span>, <strong>mosaic</strong> <span class="citation">(Pruim, Kaplan, and Horton <a href="#ref-R-mosaic" role="doc-biblioref">2020</a>)</span>, <strong>mosaicCalc</strong> <span class="citation">(Kaplan, Pruim, and Horton <a href="#ref-R-mosaicCalc" role="doc-biblioref">2020</a>)</span>, <strong>tidyverse</strong> <span class="citation">(Wickham <a href="#ref-R-tidyverse" role="doc-biblioref">2019</a>)</span>, <strong>ISLR</strong> <span class="citation">(James et al. <a href="#ref-R-ISLR" role="doc-biblioref">2017</a>)</span>, <strong>vcd</strong> <span class="citation">(Meyer, Zeileis, and Hornik <a href="#ref-R-vcd" role="doc-biblioref">2020</a>)</span>, <strong>ggplot2</strong> <span class="citation">(Wickham et al. <a href="#ref-R-ggplot2" role="doc-biblioref">2020</a>)</span>, <strong>MASS</strong> <span class="citation">(Ripley <a href="#ref-R-MASS" role="doc-biblioref">2019</a>)</span>, <strong>openintro</strong> <span class="citation">(Çetinkaya-Rundel et al. <a href="#ref-R-openintro" role="doc-biblioref">2020</a>)</span>, <strong>broom</strong> <span class="citation">(Robinson, Hayes, and Couch <a href="#ref-R-broom" role="doc-biblioref">2020</a>)</span>, <strong>infer</strong> <span class="citation">(Bray et al. <a href="#ref-R-infer" role="doc-biblioref">2020</a>)</span>, <strong>ISLR</strong> <span class="citation">(James et al. <a href="#ref-R-ISLR" role="doc-biblioref">2017</a>)</span>, <strong>kableExtra</strong> <span class="citation">(Zhu <a href="#ref-R-kableExtra" role="doc-biblioref">2020</a>)</span>, <strong>DT</strong> <span class="citation">(Xie, Cheng, and Tan <a href="#ref-R-DT" role="doc-biblioref">2020</a>)</span>.</p>
-<p><img src="figures/by-nc-sa.png" width="44" /></p>
-<p>This book is licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+<div id="homework-6" class="section level2">
+<h2><span class="header-section-number">7.2</span> Homework</h2>
+<div id="problem-1-6" class="section level3">
+<h3><span class="header-section-number">7.2.1</span> Problem 1</h3>
+<ol style="list-style-type: decimal">
+<li><strong>Exactly 2 people with the same birthday - Simulation</strong>. Complete a similar analysis for case where exactly 2 people in a room of 23 people have the same birthday. In this exercise you will use a computational simulation.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>Create a new R Markdown file and create a report. Yes, we know you could use this file but we want you to practice generating your own report.</p></li>
+<li><p>Simulate having 23 people in the class with each day of the year equally likely. Find the cases where exactly 2 people have the same birthday, you will have to alter the code from the Notes more than changing 18 to 23.</p></li>
+<li><p>Plot the frequency of occurrences as a bar chart.</p></li>
+<li><p>Estimate the probability of exactly two people having the same birthday.</p></li>
+</ol>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="CS2.html#cb51-1"></a>(<span class="kw">do</span>(<span class="dv">10000</span>)<span class="op">*</span><span class="kw">length</span>(<span class="kw">unique</span>(<span class="kw">sample</span>(days,<span class="dt">size=</span><span class="dv">23</span>,<span class="dt">replace =</span> <span class="ot">TRUE</span>)))) <span class="op">%&gt;%</span></span>
+<span id="cb51-2"><a href="CS2.html#cb51-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">match=</span><span class="kw">if_else</span>(length<span class="op">==</span><span class="dv">22</span>,<span class="dv">1</span>,<span class="dv">0</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb51-3"><a href="CS2.html#cb51-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">prob=</span><span class="kw">mean</span>(match))</span></code></pre></div>
+<pre><code>##     prob
+## 1 0.3665</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="CS2.html#cb53-1"></a>(<span class="kw">do</span>(<span class="dv">1000</span>)<span class="op">*</span><span class="kw">length</span>(<span class="kw">unique</span>(<span class="kw">sample</span>(days,<span class="dt">size=</span><span class="dv">23</span>,<span class="dt">replace =</span> <span class="ot">TRUE</span>)))) <span class="op">%&gt;%</span></span>
+<span id="cb53-2"><a href="CS2.html#cb53-2"></a><span class="st">  </span><span class="kw">gf_bar</span>(<span class="op">~</span>length)</span></code></pre></div>
+<p><img src="07-Probability-Case-Study-Solution_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
-<div id="file-creation-information" class="section level2">
-<h2><span class="header-section-number">0.3</span> File Creation Information</h2>
-<ul>
-<li>File creation date: 2021-03-08</li>
-<li>Windows version: Windows 10 x64 (build 18362)</li>
-<li>R version 3.6.3 (2020-02-29)</li>
-</ul>
+<div id="problem-2-6" class="section level3">
+<h3><span class="header-section-number">7.2.2</span> Problem 2</h3>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Exactly 2 people with the same birthday - Mathematical</strong>. Repeat problem 1 but do it mathematically. As a big hint, you will need to use the <code>choose()</code> function. The idea is that with 23 people we need to choose 2 of them to match. We thus need to multiply, the multiplication rule again, by <code>choose(23,2)</code>. If you are having trouble, work with a total of 3 people in the room first.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>Find a formula to determine the exact probability of exactly 2 people in a room of 23 having the same birthday.</p></li>
+<li><p>Generalize your solution to any number <code>n</code> people in the room and create a function.</p></li>
+<li><p>Vectorize the function.</p></li>
+<li><p>Plot the probability of exactly 2 people having the same birthday versus number of people in the room.</p></li>
+<li><p>Comment on the shape of the curve and explain it.</p></li>
+<li><p><code>knit</code> and compile your report.</p></li>
+</ol>
+<p>For two people we have</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="CS2.html#cb54-1"></a><span class="kw">choose</span>(<span class="dv">23</span>,<span class="dv">2</span>)<span class="op">*</span><span class="kw">prod</span>(<span class="dv">365</span><span class="op">:</span><span class="dv">344</span>)<span class="op">/</span><span class="dv">365</span><span class="op">^</span><span class="dv">23</span></span></code></pre></div>
+<pre><code>## [1] 0.3634222</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="CS2.html#cb56-1"></a>exactly_two &lt;-<span class="st"> </span><span class="cf">function</span>(n){</span>
+<span id="cb56-2"><a href="CS2.html#cb56-2"></a>  <span class="kw">choose</span>(n,<span class="dv">2</span>)<span class="op">*</span><span class="kw">prod</span>(<span class="dv">365</span><span class="op">:</span>(<span class="dv">365</span><span class="op">-</span>(n<span class="dv">-2</span>)))<span class="op">/</span><span class="dv">365</span><span class="op">^</span>n</span>
+<span id="cb56-3"><a href="CS2.html#cb56-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="CS2.html#cb57-1"></a><span class="kw">exactly_two</span>(<span class="dv">23</span>)</span></code></pre></div>
+<pre><code>## [1] 0.3634222</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="CS2.html#cb59-1"></a>exactly_two &lt;-<span class="st"> </span><span class="kw">Vectorize</span>(exactly_two)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="CS2.html#cb60-1"></a><span class="kw">gf_line</span>(<span class="kw">exactly_two</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>)<span class="op">~</span><span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">100</span>),</span>
+<span id="cb60-2"><a href="CS2.html#cb60-2"></a>        <span class="dt">xlab=</span><span class="st">&quot;Number of People&quot;</span>,</span>
+<span id="cb60-3"><a href="CS2.html#cb60-3"></a>        <span class="dt">ylab=</span><span class="st">&quot;Probability of Match&quot;</span>,</span>
+<span id="cb60-4"><a href="CS2.html#cb60-4"></a>        <span class="dt">title=</span><span class="st">&quot;Probability of exactly least 2 people with matching birthdays&quot;</span>)</span></code></pre></div>
+<p><img src="07-Probability-Case-Study-Solution_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>By the way, exactly three matches in simulation is hard. We have to table the data</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="CS2.html#cb61-1"></a><span class="kw">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb61-2"><a href="CS2.html#cb61-2"></a>temp &lt;-<span class="st"> </span><span class="kw">table</span>(<span class="kw">sample</span>(days,<span class="dt">size=</span><span class="dv">23</span>,<span class="dt">replace =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb61-3"><a href="CS2.html#cb61-3"></a>temp</span></code></pre></div>
+<pre><code>## 
+##  13  24  50  72  92 110 137 143 154 155 211 231 263 271 285 330 338 342 344 351 
+##   1   1   1   1   1   1   1   1   1   1   1   1   1   1   2   2   1   1   1   1 
+## 365 
+##   1</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="CS2.html#cb63-1"></a>(<span class="kw">sum</span>(temp<span class="op">==</span><span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">2</span>)<span class="op">+</span><span class="dv">0</span></span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="CS2.html#cb65-1"></a>(<span class="kw">do</span>(<span class="dv">10000</span>)<span class="op">*</span>((<span class="kw">sum</span>(<span class="kw">table</span>(<span class="kw">sample</span>(days,<span class="dt">size=</span><span class="dv">23</span>,<span class="dt">replace =</span> <span class="ot">TRUE</span>)) <span class="op">==</span><span class="st"> </span><span class="dv">3</span>)<span class="op">==</span><span class="dv">1</span>)<span class="op">+</span><span class="dv">0</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb65-2"><a href="CS2.html#cb65-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">prob=</span><span class="kw">mean</span>(result))</span></code></pre></div>
+<pre><code>##     prob
+## 1 0.0117</code></pre>
+<p>Two sets that have same but different birthday</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="CS2.html#cb67-1"></a>(<span class="kw">do</span>(<span class="dv">10000</span>)<span class="op">*</span>((<span class="kw">sum</span>(<span class="kw">table</span>(<span class="kw">sample</span>(days,<span class="dt">size=</span><span class="dv">23</span>,<span class="dt">replace =</span> <span class="ot">TRUE</span>)) <span class="op">==</span><span class="st"> </span><span class="dv">2</span>)<span class="op">==</span><span class="dv">2</span>)<span class="op">+</span><span class="dv">0</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb67-2"><a href="CS2.html#cb67-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">prob=</span><span class="kw">mean</span>(result))</span></code></pre></div>
+<pre><code>##     prob
+## 1 0.1139</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="CS2.html#cb69-1"></a>(<span class="kw">do</span>(<span class="dv">10000</span>)<span class="op">*</span><span class="kw">length</span>(<span class="kw">unique</span>(<span class="kw">sample</span>(days,<span class="dt">size=</span><span class="dv">23</span>,<span class="dt">replace =</span> <span class="ot">TRUE</span>)))) <span class="op">%&gt;%</span></span>
+<span id="cb69-2"><a href="CS2.html#cb69-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">match=</span><span class="kw">if_else</span>(length<span class="op">==</span><span class="dv">21</span>,<span class="dv">1</span>,<span class="dv">0</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb69-3"><a href="CS2.html#cb69-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">prob=</span><span class="kw">mean</span>(match))</span></code></pre></div>
+<pre><code>##     prob
+## 1 0.1187</code></pre>
+<p>Mathematically exactly 3 is easy. Simulation seems to be off a little or the math formula is off.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="CS2.html#cb71-1"></a><span class="kw">choose</span>(<span class="dv">23</span>,<span class="dv">3</span>)<span class="op">*</span><span class="kw">prod</span>(<span class="dv">365</span><span class="op">:</span><span class="dv">345</span>)<span class="op">/</span><span class="dv">365</span><span class="op">^</span><span class="dv">23</span></span></code></pre></div>
+<pre><code>## [1] 0.007395218</code></pre>
 
 </div>
-</div>
-
-
-
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-R-rmarkdown">
-<p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang, and Richard Iannone. 2020. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
-</div>
-<div id="ref-R-infer">
-<p>Bray, Andrew, Chester Ismay, Evgeni Chasnovski, Ben Baumer, and Mine Cetinkaya-Rundel. 2020. <em>Infer: Tidy Statistical Inference</em>. <a href="https://CRAN.R-project.org/package=infer">https://CRAN.R-project.org/package=infer</a>.</p>
-</div>
-<div id="ref-R-openintro">
-<p>Çetinkaya-Rundel, Mine, David Diez, Andrew Bray, Albert Kim, Ben Baumer, Chester Ismay, and Christopher Barr. 2020. <em>Openintro: Data Sets and Supplemental Functions from ’Openintro’ Textbooks and Labs</em>. <a href="https://CRAN.R-project.org/package=openintro">https://CRAN.R-project.org/package=openintro</a>.</p>
-</div>
-<div id="ref-R-ISLR">
-<p>James, Gareth, Daniela Witten, Trevor Hastie, and Rob Tibshirani. 2017. <em>ISLR: Data for an Introduction to Statistical Learning with Applications in R</em>. <a href="https://CRAN.R-project.org/package=ISLR">https://CRAN.R-project.org/package=ISLR</a>.</p>
-</div>
-<div id="ref-R-mosaicCalc">
-<p>Kaplan, Daniel T., Randall Pruim, and Nicholas J. Horton. 2020. <em>MosaicCalc: Function-Based Numerical and Symbolic Differentiation and Antidifferentiation</em>. <a href="https://CRAN.R-project.org/package=mosaicCalc">https://CRAN.R-project.org/package=mosaicCalc</a>.</p>
-</div>
-<div id="ref-R-vcd">
-<p>Meyer, David, Achim Zeileis, and Kurt Hornik. 2020. <em>Vcd: Visualizing Categorical Data</em>. <a href="https://CRAN.R-project.org/package=vcd">https://CRAN.R-project.org/package=vcd</a>.</p>
-</div>
-<div id="ref-R-mosaic">
-<p>Pruim, Randall, Daniel T. Kaplan, and Nicholas J. Horton. 2020. <em>Mosaic: Project Mosaic Statistics and Mathematics Teaching Utilities</em>. <a href="https://CRAN.R-project.org/package=mosaic">https://CRAN.R-project.org/package=mosaic</a>.</p>
-</div>
-<div id="ref-R-MASS">
-<p>Ripley, Brian. 2019. <em>MASS: Support Functions and Datasets for Venables and Ripley’s Mass</em>. <a href="https://CRAN.R-project.org/package=MASS">https://CRAN.R-project.org/package=MASS</a>.</p>
-</div>
-<div id="ref-R-broom">
-<p>Robinson, David, Alex Hayes, and Simon Couch. 2020. <em>Broom: Convert Statistical Objects into Tidy Tibbles</em>. <a href="https://CRAN.R-project.org/package=broom">https://CRAN.R-project.org/package=broom</a>.</p>
-</div>
-<div id="ref-R-tidyverse">
-<p>Wickham, Hadley. 2019. <em>Tidyverse: Easily Install and Load the ’Tidyverse’</em>. <a href="https://CRAN.R-project.org/package=tidyverse">https://CRAN.R-project.org/package=tidyverse</a>.</p>
-</div>
-<div id="ref-R-ggplot2">
-<p>Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, and Dewey Dunnington. 2020. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://CRAN.R-project.org/package=ggplot2">https://CRAN.R-project.org/package=ggplot2</a>.</p>
-</div>
-<div id="ref-R-knitr">
-<p>Xie, Yihui. 2020. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://CRAN.R-project.org/package=knitr">https://CRAN.R-project.org/package=knitr</a>.</p>
-</div>
-<div id="ref-R-DT">
-<p>Xie, Yihui, Joe Cheng, and Xianying Tan. 2020. <em>DT: A Wrapper of the Javascript Library ’Datatables’</em>. <a href="https://CRAN.R-project.org/package=DT">https://CRAN.R-project.org/package=DT</a>.</p>
-</div>
-<div id="ref-R-kableExtra">
-<p>Zhu, Hao. 2020. <em>KableExtra: Construct Complex Table with ’Kable’ and Pipe Syntax</em>. <a href="https://CRAN.R-project.org/package=kableExtra">https://CRAN.R-project.org/package=kableExtra</a>.</p>
 </div>
 </div>
             </section>
@@ -309,8 +315,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-
-<a href="CS1.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="CATDATA.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

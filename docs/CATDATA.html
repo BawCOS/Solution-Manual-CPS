@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Solutions for Computational Probability and Statistics</title>
+  <title>Chapter 6 Categorical Data | Solutions for Computational Probability and Statistics</title>
   <meta name="description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Solutions for Computational Probability and Statistics" />
+  <meta property="og:title" content="Chapter 6 Categorical Data | Solutions for Computational Probability and Statistics" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="figures/CoverSol2.png" />
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Solutions for Computational Probability and Statistics" />
+  <meta name="twitter:title" content="Chapter 6 Categorical Data | Solutions for Computational Probability and Statistics" />
   
   <meta name="twitter:description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
   <meta name="twitter:image" content="figures/CoverSol2.png" />
@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="CS1.html"/>
+<link rel="prev" href="NUMDATA.html"/>
+<link rel="next" href="CS2.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -219,98 +219,155 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Solutions for Computational Probability and Statistics</h1>
-<p class="author"><em>Ken Horton</em></p>
-<p class="author"><em>Kris Pruitt</em></p>
-<p class="author"><em>Bradley Warner</em></p>
-<p class="date"><em>2021-03-08</em></p>
-</div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p><img src="figures/CoverSol2.png" width="705" /></p>
-<p>Contained in this volume are the solutions to homework problems in the Computational Probability and Statistics book.</p>
-<div id="book-structure-and-how-to-use-it" class="section level2">
-<h2><span class="header-section-number">0.1</span> Book Structure and How to Use It</h2>
-<p>This solution manual is setup to match the structure of the accompanying book.</p>
-<p>The learning outcomes for this course are to use computational and mathematical statistical/probabilistic concepts for:</p>
-<ol style="list-style-type: lower-alpha">
-<li>Developing probabilistic models</li>
-<li>Developing statistical models for inference and description</li>
-<li>Advancing practical and theoretical analytic experience and skills</li>
+<div id="CATDATA" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Categorical Data</h1>
+<div id="objectives-5" class="section level2">
+<h2><span class="header-section-number">6.1</span> Objectives</h2>
+<ol style="list-style-type: decimal">
+<li>Define and use properly in context all new terminology.</li>
+<li>Generate in <code>R</code> tables for categorical variable(s).<br />
+</li>
+<li>Generate in <code>R</code> appropriate graphical summaries of categorical and numerical variables.<br />
+</li>
+<li>Be able to interpret and explain output both graphically and numerically.</li>
 </ol>
 </div>
-<div id="packages" class="section level2">
-<h2><span class="header-section-number">0.2</span> Packages</h2>
-<p>These notes make use of the following packages in R <strong>knitr</strong> <span class="citation">(Xie <a href="#ref-R-knitr" role="doc-biblioref">2020</a>)</span>, <strong>rmarkdown</strong> <span class="citation">(Allaire et al. <a href="#ref-R-rmarkdown" role="doc-biblioref">2020</a>)</span>, <strong>mosaic</strong> <span class="citation">(Pruim, Kaplan, and Horton <a href="#ref-R-mosaic" role="doc-biblioref">2020</a>)</span>, <strong>mosaicCalc</strong> <span class="citation">(Kaplan, Pruim, and Horton <a href="#ref-R-mosaicCalc" role="doc-biblioref">2020</a>)</span>, <strong>tidyverse</strong> <span class="citation">(Wickham <a href="#ref-R-tidyverse" role="doc-biblioref">2019</a>)</span>, <strong>ISLR</strong> <span class="citation">(James et al. <a href="#ref-R-ISLR" role="doc-biblioref">2017</a>)</span>, <strong>vcd</strong> <span class="citation">(Meyer, Zeileis, and Hornik <a href="#ref-R-vcd" role="doc-biblioref">2020</a>)</span>, <strong>ggplot2</strong> <span class="citation">(Wickham et al. <a href="#ref-R-ggplot2" role="doc-biblioref">2020</a>)</span>, <strong>MASS</strong> <span class="citation">(Ripley <a href="#ref-R-MASS" role="doc-biblioref">2019</a>)</span>, <strong>openintro</strong> <span class="citation">(Çetinkaya-Rundel et al. <a href="#ref-R-openintro" role="doc-biblioref">2020</a>)</span>, <strong>broom</strong> <span class="citation">(Robinson, Hayes, and Couch <a href="#ref-R-broom" role="doc-biblioref">2020</a>)</span>, <strong>infer</strong> <span class="citation">(Bray et al. <a href="#ref-R-infer" role="doc-biblioref">2020</a>)</span>, <strong>ISLR</strong> <span class="citation">(James et al. <a href="#ref-R-ISLR" role="doc-biblioref">2017</a>)</span>, <strong>kableExtra</strong> <span class="citation">(Zhu <a href="#ref-R-kableExtra" role="doc-biblioref">2020</a>)</span>, <strong>DT</strong> <span class="citation">(Xie, Cheng, and Tan <a href="#ref-R-DT" role="doc-biblioref">2020</a>)</span>.</p>
-<p><img src="figures/by-nc-sa.png" width="44" /></p>
-<p>This book is licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+<div id="homework-5" class="section level2">
+<h2><span class="header-section-number">6.2</span> Homework</h2>
+<p>Make sure your plots have a title and the axes are labeled.</p>
+<div id="problem-1-5" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> Problem 1</h3>
+<ol style="list-style-type: decimal">
+<li><strong>Views on immigration</strong></li>
+</ol>
+<p>910 randomly sampled registered voters from Tampa, FL were asked if they thought workers who have illegally entered the US should be (i) allowed to keep their jobs and apply for US citizenship, (ii) allowed to keep their jobs as temporary guest workers but not allowed to apply for US citizenship, or (iii) lose their jobs and have to leave the country.</p>
+<p>The data is in the <code>openintro</code> package in the <code>immigration</code> data object.</p>
+<ol style="list-style-type: lower-alpha">
+<li>How many levels of <em>political</em> are there?</li>
+</ol>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="CATDATA.html#cb39-1"></a><span class="kw">levels</span>(immigration<span class="op">$</span>political)</span></code></pre></div>
+<pre><code>## [1] &quot;conservative&quot; &quot;liberal&quot;      &quot;moderate&quot;</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="CATDATA.html#cb41-1"></a><span class="kw">inspect</span>(immigration)</span></code></pre></div>
+<pre><code>## 
+## categorical variables:  
+##        name  class levels   n missing
+## 1  response factor      4 910       0
+## 2 political factor      3 910       0
+##                                    distribution
+## 1 Leave the country (38.5%) ...                
+## 2 conservative (40.9%), moderate (39.9%) ...</code></pre>
+<p>There are three levels for <code>political</code> and they are conservative, liberal, and moderate.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Create a table using <code>tally</code>.</li>
+</ol>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="CATDATA.html#cb43-1"></a><span class="kw">round</span>(<span class="kw">tally</span>(<span class="op">~</span>response<span class="op">+</span>political,<span class="dt">data=</span>immigration,<span class="dt">format=</span><span class="st">&quot;percent&quot;</span>,<span class="dt">margins =</span> <span class="ot">TRUE</span>),<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##                        political
+## response                conservative liberal moderate  Total
+##   Apply for citizenship         6.26   11.10    13.19  30.55
+##   Guest worker                 13.30    3.08    12.42  28.79
+##   Leave the country            19.67    4.95    13.85  38.46
+##   Not sure                      1.65    0.11     0.44   2.20
+##   Total                        40.88   19.23    39.89 100.00</code></pre>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>What percent of these Tampa, FL voters identify themselves as conservatives?</li>
+</ol>
+<p>From the table, 40.88% of voters identified themselves as conservatives.</p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>What percent of these Tampa, FL voters are in favor of the citizenship option?</li>
+</ol>
+<p>Again, from the table 30.55% of the voters favor the citizenship option.</p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>What percent of these Tampa, FL voters identify themselves as conservatives and are in favor of the citizenship option?</li>
+</ol>
+<p>From the table, 6.26% of the voters are conservative and favor the citizenship option.</p>
+<ol start="6" style="list-style-type: lower-alpha">
+<li>What percent of these Tampa, FL voters who identify themselves as conservatives are also in favor of the citizenship option? What percent of moderates and liberal share this view?</li>
+</ol>
+<p>We need a different table for this question.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="CATDATA.html#cb45-1"></a><span class="kw">round</span>(<span class="kw">tally</span>(response<span class="op">~</span>political,<span class="dt">data=</span>immigration,<span class="dt">format=</span><span class="st">&quot;percent&quot;</span>,<span class="dt">margins =</span> <span class="ot">TRUE</span>),<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##                        political
+## response                conservative liberal moderate
+##   Apply for citizenship        15.32   57.71    33.06
+##   Guest worker                 32.53   16.00    31.13
+##   Leave the country            48.12   25.71    34.71
+##   Not sure                      4.03    0.57     1.10
+##   Total                       100.00  100.00   100.00</code></pre>
+<p>Of the conservative voters, 15.32% are in favor of the citizenship option. The numbers are 57.71% for liberals and 33.06% for moderates.</p>
+<ol start="7" style="list-style-type: lower-alpha">
+<li>Create a stacked bar chart.</li>
+</ol>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="CATDATA.html#cb47-1"></a>immigration <span class="op">%&gt;%</span></span>
+<span id="cb47-2"><a href="CATDATA.html#cb47-2"></a><span class="st">  </span><span class="kw">gf_props</span>(<span class="op">~</span>political,<span class="dt">fill=</span><span class="op">~</span>response,<span class="dt">position=</span><span class="st">&quot;fill&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb47-3"><a href="CATDATA.html#cb47-3"></a><span class="st">  </span><span class="kw">gf_labs</span>(<span class="dt">title=</span><span class="st">&quot;Tampa Florida Voter Views on Illegal Immigrant Workers&quot;</span>,</span>
+<span id="cb47-4"><a href="CATDATA.html#cb47-4"></a>          <span class="dt">subtitle=</span><span class="st">&quot;Broken down by political views&quot;</span>,<span class="dt">x=</span><span class="st">&quot;Political View&quot;</span>,<span class="dt">y=</span><span class="st">&quot;Proportion&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb47-5"><a href="CATDATA.html#cb47-5"></a><span class="st">  </span><span class="kw">gf_theme</span>(<span class="kw">theme_bw</span>())</span></code></pre></div>
+<p><img src="06-Categorical-Data-Solutions_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<ol start="8" style="list-style-type: lower-alpha">
+<li>Using your plot, do political ideology and views on immigration appear to be independent? Explain your reasoning.</li>
+</ol>
+<p>The percentages of Tampa, FL conservatives, moderates, and liberals who are in favor of illegal immigrants working in the US staying and applying for citizenship are quite different from one another. Therefore, the two variables appear to be dependent.</p>
+<div style="page-break-after: always;"></div>
 </div>
-<div id="file-creation-information" class="section level2">
-<h2><span class="header-section-number">0.3</span> File Creation Information</h2>
-<ul>
-<li>File creation date: 2021-03-08</li>
-<li>Windows version: Windows 10 x64 (build 18362)</li>
-<li>R version 3.6.3 (2020-02-29)</li>
-</ul>
+<div id="problem-2-5" class="section level3">
+<h3><span class="header-section-number">6.2.2</span> Problem 2</h3>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Views on the DREAM Act</strong> The same survey from Exercise 1 also asked respondents if they support the DREAM Act, a proposed law which would provide a path to citizenship for people brought illegally to the US as children.</li>
+</ol>
+<p>The data is in the <code>openintro</code> package in the <code>dream</code> data object.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Create a <strong>mosaic</strong> plot.</li>
+</ol>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="CATDATA.html#cb48-1"></a><span class="kw">mosaic</span>(stance<span class="op">~</span>ideology,<span class="dt">data=</span>dream,<span class="dt">sub=</span><span class="st">&quot;Voter views on illegal worker status&quot;</span>)</span></code></pre></div>
+<p><img src="06-Categorical-Data-Solutions_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Based on the mosaic plot, are views on the DREAM Act and political ideology independent?</li>
+</ol>
+<p>The vertical locations at which the ideological groups break into the Yes, No, and Not Sure categories differ, which indicates the variables are dependent.</p>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="problem-3-3" class="section level3">
+<h3><span class="header-section-number">6.2.3</span> Problem 3</h3>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Heart transplants</strong></li>
+</ol>
+<p>The Stanford University Heart Transplant Study was conducted to determine whether an experimental heart transplant program increased lifespan. Each patient entering the program was designated an official heart transplant candidate, meaning that he was gravely ill and would most likely benefit from a new heart. Some patients got a transplant and some did not. The variable <em>transplant</em> indicates which group the patients were in; patients in the treatment group got a transplant and those in the control group did not. Another variable called <em>survived</em> was used to indicate whether or not the patient was alive at the end of the study.</p>
+<p>The data is in the <code>openintro</code> package and is called <code>heart_transplant</code>.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Create a <strong>mosaic</strong> plot.</li>
+</ol>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="CATDATA.html#cb49-1"></a><span class="kw">mosaic</span>(survived<span class="op">~</span>transplant,<span class="dt">data=</span>heart_transplant)</span></code></pre></div>
+<p><img src="06-Categorical-Data-Solutions_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Based on the mosaic plot, is survival independent of whether or not the patient got a transplant? Explain your reasoning.</li>
+</ol>
+<p>Proportion of patients who are alive at the end of the study is higher in the treatment group than in the control group. These data suggest that survival is not independent of whether or not the patient got a transplant.</p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Using <em>survtime</em> create side-by-side boxplots for the control and treatment groups.</li>
+</ol>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="CATDATA.html#cb50-1"></a>heart_transplant <span class="op">%&gt;%</span></span>
+<span id="cb50-2"><a href="CATDATA.html#cb50-2"></a><span class="st">  </span><span class="kw">gf_boxplot</span>(survtime<span class="op">~</span>transplant) <span class="op">%&gt;%</span></span>
+<span id="cb50-3"><a href="CATDATA.html#cb50-3"></a><span class="st">  </span><span class="kw">gf_labs</span>(<span class="dt">title=</span><span class="st">&quot;Survival times for tranplant experiment&quot;</span>,</span>
+<span id="cb50-4"><a href="CATDATA.html#cb50-4"></a>          <span class="dt">sub=</span><span class="st">&quot;Treatment group had the transplant&quot;</span>,<span class="dt">x=</span><span class="st">&quot;Tranplant&quot;</span>,<span class="dt">y=</span><span class="st">&quot;Survival time in days&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb50-5"><a href="CATDATA.html#cb50-5"></a><span class="st">  </span><span class="kw">gf_theme</span>(<span class="kw">theme_classic</span>())</span></code></pre></div>
+<p><img src="06-Categorical-Data-Solutions_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>What do the box plots suggest about the efficacy (effectiveness) of transplants?</li>
+</ol>
+<p>The shape of the distribution of survival times in both groups is right skewed with one very clear outlier for the control group and other possible outliers in both groups on the high end. The median survival time for the control group is much lower than the median survival time for the treatment group; patients who got a transplant typically lived longer. Tying this together with the much lower variability in the control group, evident by a much smaller IQR than the treatment group (about 50 days versus 500 days), and we can see that patients who did not get a heart transplant tended to consistently die quite early relative to those who did have a transplant. Overall, very few patients without transplants made it beyond a year while nearly half of the transplant patients survived at least one year. It should also be noted that while the first and third quartiles of the treatment group is higher than those for the control group, the IQR for the treatment group is much bigger, indicating that there is more variability in survival times in the treatment group.</p>
 
 </div>
 </div>
+</div>
 
 
 
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-R-rmarkdown">
-<p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang, and Richard Iannone. 2020. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
-</div>
-<div id="ref-R-infer">
-<p>Bray, Andrew, Chester Ismay, Evgeni Chasnovski, Ben Baumer, and Mine Cetinkaya-Rundel. 2020. <em>Infer: Tidy Statistical Inference</em>. <a href="https://CRAN.R-project.org/package=infer">https://CRAN.R-project.org/package=infer</a>.</p>
-</div>
-<div id="ref-R-openintro">
-<p>Çetinkaya-Rundel, Mine, David Diez, Andrew Bray, Albert Kim, Ben Baumer, Chester Ismay, and Christopher Barr. 2020. <em>Openintro: Data Sets and Supplemental Functions from ’Openintro’ Textbooks and Labs</em>. <a href="https://CRAN.R-project.org/package=openintro">https://CRAN.R-project.org/package=openintro</a>.</p>
-</div>
-<div id="ref-R-ISLR">
-<p>James, Gareth, Daniela Witten, Trevor Hastie, and Rob Tibshirani. 2017. <em>ISLR: Data for an Introduction to Statistical Learning with Applications in R</em>. <a href="https://CRAN.R-project.org/package=ISLR">https://CRAN.R-project.org/package=ISLR</a>.</p>
-</div>
-<div id="ref-R-mosaicCalc">
-<p>Kaplan, Daniel T., Randall Pruim, and Nicholas J. Horton. 2020. <em>MosaicCalc: Function-Based Numerical and Symbolic Differentiation and Antidifferentiation</em>. <a href="https://CRAN.R-project.org/package=mosaicCalc">https://CRAN.R-project.org/package=mosaicCalc</a>.</p>
-</div>
-<div id="ref-R-vcd">
-<p>Meyer, David, Achim Zeileis, and Kurt Hornik. 2020. <em>Vcd: Visualizing Categorical Data</em>. <a href="https://CRAN.R-project.org/package=vcd">https://CRAN.R-project.org/package=vcd</a>.</p>
-</div>
-<div id="ref-R-mosaic">
-<p>Pruim, Randall, Daniel T. Kaplan, and Nicholas J. Horton. 2020. <em>Mosaic: Project Mosaic Statistics and Mathematics Teaching Utilities</em>. <a href="https://CRAN.R-project.org/package=mosaic">https://CRAN.R-project.org/package=mosaic</a>.</p>
-</div>
-<div id="ref-R-MASS">
-<p>Ripley, Brian. 2019. <em>MASS: Support Functions and Datasets for Venables and Ripley’s Mass</em>. <a href="https://CRAN.R-project.org/package=MASS">https://CRAN.R-project.org/package=MASS</a>.</p>
-</div>
-<div id="ref-R-broom">
-<p>Robinson, David, Alex Hayes, and Simon Couch. 2020. <em>Broom: Convert Statistical Objects into Tidy Tibbles</em>. <a href="https://CRAN.R-project.org/package=broom">https://CRAN.R-project.org/package=broom</a>.</p>
-</div>
-<div id="ref-R-tidyverse">
-<p>Wickham, Hadley. 2019. <em>Tidyverse: Easily Install and Load the ’Tidyverse’</em>. <a href="https://CRAN.R-project.org/package=tidyverse">https://CRAN.R-project.org/package=tidyverse</a>.</p>
-</div>
-<div id="ref-R-ggplot2">
-<p>Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, and Dewey Dunnington. 2020. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://CRAN.R-project.org/package=ggplot2">https://CRAN.R-project.org/package=ggplot2</a>.</p>
-</div>
-<div id="ref-R-knitr">
-<p>Xie, Yihui. 2020. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://CRAN.R-project.org/package=knitr">https://CRAN.R-project.org/package=knitr</a>.</p>
-</div>
-<div id="ref-R-DT">
-<p>Xie, Yihui, Joe Cheng, and Xianying Tan. 2020. <em>DT: A Wrapper of the Javascript Library ’Datatables’</em>. <a href="https://CRAN.R-project.org/package=DT">https://CRAN.R-project.org/package=DT</a>.</p>
-</div>
-<div id="ref-R-kableExtra">
-<p>Zhu, Hao. 2020. <em>KableExtra: Construct Complex Table with ’Kable’ and Pipe Syntax</em>. <a href="https://CRAN.R-project.org/package=kableExtra">https://CRAN.R-project.org/package=kableExtra</a>.</p>
-</div>
-</div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="CS1.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="NUMDATA.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="CS2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

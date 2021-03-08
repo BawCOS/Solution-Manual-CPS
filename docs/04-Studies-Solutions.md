@@ -15,7 +15,7 @@
 a. What type of study is this?  Observational study.
 b. Suggest a sampling strategy for carrying out this study. Stratified sample, sample randomly within each section.
 
-### PRoblem 2  
+### Problem 2  
 
 2. **Flawed reasoning**.  Identify the flaw in reasoning in the following scenarios. Explain what the individuals in the study should have done differently if they wanted to make such strong conclusions.
 
