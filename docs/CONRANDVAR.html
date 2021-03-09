@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Data Basics | Solutions for Computational Probability and Statistics</title>
+  <title>Chapter 11 Continuous Random Variables | Solutions for Computational Probability and Statistics</title>
   <meta name="description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Data Basics | Solutions for Computational Probability and Statistics" />
+  <meta property="og:title" content="Chapter 11 Continuous Random Variables | Solutions for Computational Probability and Statistics" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="figures/CoverSol2.png" />
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Data Basics | Solutions for Computational Probability and Statistics" />
+  <meta name="twitter:title" content="Chapter 11 Continuous Random Variables | Solutions for Computational Probability and Statistics" />
   
   <meta name="twitter:description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
   <meta name="twitter:image" content="figures/CoverSol2.png" />
@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="CS1.html"/>
-<link rel="next" href="ODCP.html"/>
+<link rel="prev" href="RANDVAR.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -259,67 +259,167 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="DB" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> Data Basics</h1>
-<div id="objectives-1" class="section level2">
-<h2><span class="header-section-number">2.1</span> Objectives</h2>
+<div id="CONRANDVAR" class="section level1">
+<h1><span class="header-section-number">Chapter 11</span> Continuous Random Variables</h1>
+
+<div id="objectives-10" class="section level2">
+<h2><span class="header-section-number">11.1</span> Objectives</h2>
 <ol style="list-style-type: decimal">
-<li>Define and use properly in context all new terminology to include but not limited to case, observational unit, variables, data frame, associated variables, independent, and discrete and continuous variables.<br />
+<li>Define and properly use the new terms to include probability density function (pdf) and cumulative distribution function (cdf) for continuous random variables.<br />
 </li>
-<li>Identify and define the different types of variables.<br />
+<li>Given a continuous random variable, find probabilities using the pdf and/or the cdf.<br />
 </li>
-<li>From reading a study, explain the research question.<br />
-</li>
-<li>Create a scatterplot in <code>R</code> and determine the association of two numerical variables from the plot.</li>
+<li>Find the mean and variance of a continuous random variable.</li>
 </ol>
 </div>
-<div id="homework-1" class="section level2">
-<h2><span class="header-section-number">2.2</span> Homework</h2>
-<p><strong>Identify study components</strong></p>
-<p>Identify (i) the cases, (ii) the variables and their types, and (iii) the main research question in the studies described below.</p>
-<div id="problem-1-1" class="section level3">
-<h3><span class="header-section-number">2.2.1</span> Problem 1</h3>
-<ol style="list-style-type: decimal">
-<li>Researchers collected data to examine the relationship between pollutants and preterm births in Southern California. During the study air pollution levels were measured by air quality monitoring stations. Specifically, levels of carbon monoxide were recorded in parts per million, nitrogen dioxide and ozone in parts per hundred million, and coarse particulate matter (PM<span class="math inline">\(_{10}\)</span>) in <span class="math inline">\(\mu g/m^3\)</span>. Length of gestation data were collected on 143,196 births between the years 1989 and 1993, and air pollution exposure during gestation was calculated for each birth. The analysis suggested that increased ambient PM<span class="math inline">\(_{10}\)</span> and, to a lesser degree, CO concentrations may be associated with the occurrence of preterm births.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></li>
+<div id="homework-10" class="section level2">
+<h2><span class="header-section-number">11.2</span> Homework</h2>
+<div id="problem-1-10" class="section level3">
+<h3><span class="header-section-number">11.2.1</span> Problem 1</h3>
+<p>1. Let <span class="math inline">\(X\)</span> be a continuous random variable on the domain <span class="math inline">\(-k \leq X \leq k\)</span>. Also, let <span class="math inline">\(f(x)=\frac{x^2}{18}\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Assume that <span class="math inline">\(f(x)\)</span> is a valid pdf. Find the value of <span class="math inline">\(k\)</span>.</li>
 </ol>
+<p>Because <span class="math inline">\(f\)</span> is a valid pdf, we know that <span class="math inline">\(\int_{-k}^k \frac{x^2}{18}\mathop{}\!\mathrm{d}x = 1\)</span>. So,
+<span class="math display">\[
+\int_{-k}^k \frac{x^2}{18}\mathop{}\!\mathrm{d}x = \frac{x^3}{54}\bigg|_{-k}^k = \frac{k^3}{54}-\frac{-k^3}{54}=\frac{k^3}{27}=1
+\]</span></p>
+<p>Thus, <span class="math inline">\(k=3\)</span>.</p>
+<p>Using <code>R</code>, see if you can follow the code.</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="CONRANDVAR.html#cb163-1"></a>my_pdf &lt;-<span class="st"> </span><span class="cf">function</span>(x)<span class="kw">integrate</span>(<span class="cf">function</span>(y)y<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">18</span>,<span class="op">-</span>x,x)<span class="op">$</span>value</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="CONRANDVAR.html#cb164-1"></a>my_pdf&lt;-<span class="kw">Vectorize</span>(my_pdf)</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="CONRANDVAR.html#cb165-1"></a>domain &lt;-<span class="st"> </span><span class="kw">seq</span>(.<span class="dv">01</span>,<span class="dv">5</span>,.<span class="dv">1</span>)</span>
+<span id="cb165-2"><a href="CONRANDVAR.html#cb165-2"></a><span class="kw">gf_line</span>(<span class="kw">my_pdf</span>(domain)<span class="op">~</span>domain) <span class="op">%&gt;%</span></span>
+<span id="cb165-3"><a href="CONRANDVAR.html#cb165-3"></a><span class="st">  </span><span class="kw">gf_theme</span>(<span class="kw">theme_classic</span>()) <span class="op">%&gt;%</span></span>
+<span id="cb165-4"><a href="CONRANDVAR.html#cb165-4"></a><span class="st">  </span><span class="kw">gf_labs</span>(<span class="dt">title=</span><span class="st">&quot;Cumulative probability for different values of k&quot;</span>,<span class="dt">x=</span><span class="st">&quot;k&quot;</span>,<span class="dt">y=</span><span class="st">&quot;Cummulative Probability&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb165-5"><a href="CONRANDVAR.html#cb165-5"></a><span class="st">  </span><span class="kw">gf_hline</span>(<span class="dt">yintercept =</span> <span class="dv">1</span>,<span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="11-Continuous-Random-Variable-Solutions_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Looks like <span class="math inline">\(k \approx 3\)</span> from the plot.</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="CONRANDVAR.html#cb166-1"></a><span class="kw">uniroot</span>(<span class="cf">function</span>(x)<span class="kw">my_pdf</span>(x)<span class="op">-</span><span class="dv">1</span>,<span class="kw">c</span>(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>))<span class="op">$</span>root</span></code></pre></div>
+<pre><code>## [1] 2.999997</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Plot the pdf of <span class="math inline">\(X\)</span>.</li>
+</ol>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="CONRANDVAR.html#cb168-1"></a>x&lt;-<span class="kw">seq</span>(<span class="op">-</span><span class="dv">3</span>,<span class="dv">3</span>,<span class="fl">0.001</span>)</span>
+<span id="cb168-2"><a href="CONRANDVAR.html#cb168-2"></a>fx&lt;-x<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">18</span></span>
+<span id="cb168-3"><a href="CONRANDVAR.html#cb168-3"></a><span class="kw">gf_line</span>(fx<span class="op">~</span>x,<span class="dt">ylab=</span><span class="st">&quot;f(x)&quot;</span>,<span class="dt">title=</span><span class="st">&quot;pdf of X&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb168-4"><a href="CONRANDVAR.html#cb168-4"></a><span class="st">  </span><span class="kw">gf_theme</span>(<span class="kw">theme_classic</span>())</span></code></pre></div>
+<p><img src="11-Continuous-Random-Variable-Solutions_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="CONRANDVAR.html#cb169-1"></a><span class="kw">ggplot</span>(<span class="kw">data.frame</span>(<span class="dt">x=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>)), <span class="kw">aes</span>(x)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb169-2"><a href="CONRANDVAR.html#cb169-2"></a><span class="st"> </span><span class="kw">stat_function</span>(<span class="dt">fun=</span><span class="cf">function</span>(x) x<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">18</span>) <span class="op">+</span></span>
+<span id="cb169-3"><a href="CONRANDVAR.html#cb169-3"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
+<span id="cb169-4"><a href="CONRANDVAR.html#cb169-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y=</span><span class="st">&quot;f(x)&quot;</span>,<span class="dt">title=</span><span class="st">&quot;pdf of X&quot;</span>)</span></code></pre></div>
+<p><img src="11-Continuous-Random-Variable-Solutions_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="CONRANDVAR.html#cb170-1"></a><span class="kw">curve</span>(x<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">18</span>,<span class="dt">from=</span><span class="op">-</span><span class="dv">3</span>,<span class="dt">to=</span><span class="dv">3</span>,<span class="dt">ylab=</span><span class="st">&quot;f(x)&quot;</span>,<span class="dt">main=</span><span class="st">&quot;pdf of X&quot;</span>)</span></code></pre></div>
+<p><img src="11-Continuous-Random-Variable-Solutions_files/figure-html/hw9a-1.png" width="672" /></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Find and plot the cdf of <span class="math inline">\(X\)</span>.
+<span class="math display">\[
+F_X(x)=\mbox{P}(X\leq x)=\int_{-3}^x \frac{t^2}{18}\mathop{}\!\mathrm{d}t = \frac{t^3}{54}\bigg|_{-3}^x = \frac{x^3}{54}+\frac{1}{2}
+\]</span></li>
+</ol>
+<p><span class="math display">\[
+F_X(x)=\left\{\begin{array}{ll} 0, &amp; x&lt;-3 \\ \frac{x^3}{54}+\frac{1}{2}, &amp; -3\leq x \leq 3 \\ 1, &amp; x&gt;3 \end{array}\right.
+\]</span></p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="CONRANDVAR.html#cb171-1"></a>x&lt;-<span class="kw">seq</span>(<span class="op">-</span><span class="fl">3.5</span>,<span class="fl">3.5</span>,<span class="fl">0.001</span>)</span>
+<span id="cb171-2"><a href="CONRANDVAR.html#cb171-2"></a>fx&lt;-<span class="kw">pmin</span>(<span class="dv">1</span>,(<span class="dv">1</span><span class="op">*</span>(x<span class="op">&gt;=-</span><span class="dv">3</span>)<span class="op">*</span>(x<span class="op">^</span><span class="dv">3</span><span class="op">/</span><span class="dv">54</span><span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>)))</span>
+<span id="cb171-3"><a href="CONRANDVAR.html#cb171-3"></a><span class="kw">gf_line</span>(fx<span class="op">~</span>x,<span class="dt">ylab=</span><span class="st">&quot;F(x)&quot;</span>,<span class="dt">title=</span><span class="st">&quot;cdf of X&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb171-4"><a href="CONRANDVAR.html#cb171-4"></a><span class="st">  </span><span class="kw">gf_theme</span>(<span class="kw">theme_classic</span>())</span></code></pre></div>
+<p><img src="11-Continuous-Random-Variable-Solutions_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Find <span class="math inline">\(\mbox{P}(X&lt;1)\)</span>.
+<span class="math display">\[
+\mbox{P}(X&lt;1)=F(1)=\frac{1}{54}+\frac{1}{2}=0.519
+\]</span></li>
+</ol>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="CONRANDVAR.html#cb172-1"></a><span class="kw">integrate</span>(<span class="cf">function</span>(x)x<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">18</span>,<span class="op">-</span><span class="dv">3</span>,<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## 0.5185185 with absolute error &lt; 5.8e-15</code></pre>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>Find <span class="math inline">\(\mbox{P}(1.5&lt;X\leq 2.5)\)</span>.
+<span class="math display">\[
+\mbox{P}(1.5&lt; X \leq 2.5)=F(2.5)-F(1.5)=\frac{2.5^3}{54}+\frac{1}{2}-\frac{1.5^3}{54}-\frac{1}{2}=0.227
+\]</span></li>
+</ol>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="CONRANDVAR.html#cb174-1"></a><span class="kw">integrate</span>(<span class="cf">function</span>(x)x<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">18</span>,<span class="fl">1.5</span>,<span class="fl">2.5</span>)</span></code></pre></div>
+<pre><code>## 0.2268519 with absolute error &lt; 2.5e-15</code></pre>
+<ol start="6" style="list-style-type: lower-alpha">
+<li>Find the 80th percentile of <span class="math inline">\(X\)</span> (the value <span class="math inline">\(x\)</span> for which 80% of the distribution is to the left of that value).</li>
+</ol>
+<p>Need <span class="math inline">\(x\)</span> such that <span class="math inline">\(F(x)=0.8\)</span>. Solving <span class="math inline">\(\frac{x^3}{54}+\frac{1}{2}=0.8\)</span> for <span class="math inline">\(x\)</span> yields <span class="math inline">\(x=2.530\)</span>.</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="CONRANDVAR.html#cb176-1"></a><span class="kw">uniroot</span>(<span class="cf">function</span>(x)x<span class="op">^</span><span class="dv">3</span><span class="op">/</span><span class="dv">54</span><span class="fl">+.5-.8</span>,<span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>,<span class="dv">3</span>))</span></code></pre></div>
+<pre><code>## $root
+## [1] 2.530293
+## 
+## $f.root
+## [1] -1.854422e-06
+## 
+## $iter
+## [1] 6
+## 
+## $init.it
+## [1] NA
+## 
+## $estim.prec
+## [1] 6.103516e-05</code></pre>
+<ol start="7" style="list-style-type: lower-alpha">
+<li>Find the value <span class="math inline">\(x\)</span> such that <span class="math inline">\(\mbox{P}(-x \leq X \leq x)=0.4\)</span>.</li>
+</ol>
+<p>Because this distribution is symmetric, finding <span class="math inline">\(x\)</span> is equivalent to finding <span class="math inline">\(x\)</span> such that <span class="math inline">\(\mbox{P}(X&gt;x)=0.3\)</span>. (It helps to draw a picture). Thus, we need <span class="math inline">\(x\)</span> such that <span class="math inline">\(F(x)=0.7\)</span>. Solving <span class="math inline">\(\frac{x^3}{54}+\frac{1}{2}=0.7\)</span> for <span class="math inline">\(x\)</span> yields <span class="math inline">\(x=2.210\)</span>.</p>
+<p><img src="11-Continuous-Random-Variable-Solutions_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<ol start="8" style="list-style-type: lower-alpha">
+<li>Find the mean and variance of <span class="math inline">\(X\)</span>.
+<span class="math display">\[
+\mbox{E}(X)=\int_{-3}^3 x\cdot\frac{x^2}{18}\mathop{}\!\mathrm{d}x = \frac{x^4}{72}\bigg|_{-3}^3=\frac{81}{72}-\frac{81}{72} = 0
+\]</span></li>
+</ol>
+<p><span class="math display">\[
+\mbox{E}(X^2)=\int_{-3}^3 x^2\cdot\frac{x^2}{18}\mathop{}\!\mathrm{d}x = \frac{x^5}{90}\bigg|_{-3}^3=\frac{243}{90}-\frac{-243}{90} = 5.4
+\]</span></p>
+<p><span class="math display">\[
+\mbox{Var}(X)=\mbox{E}(X^2)-\mbox{E}(X)^2=5.4-0^2=5.4
+\]</span></p>
 <ol style="list-style-type: lower-roman">
-<li><p>The cases are 143,196 eligible study subjects who were born in Southern California
-between 1989 and 1993.</p></li>
-<li><p>The variables are measurements of carbon monoxide (CO), nitrogen dioxide, ozone, and particulate matter less than 10<span class="math inline">\(\mu m\)</span> (PM10) collected at air-quality-monitoring stations as well as length of gestation. All of these variables are continuous numerical variables.</p></li>
-<li><p>The research question was <strong>Is there an association between air pollution exposure and preterm births?</strong></p></li>
+<li>Simulate 10000 values from this distribution and plot the density.</li>
 </ol>
+<p>This is tricky since we need a cube root function. Just raising to the one-third power won’t work. Let’s write our own function.</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="CONRANDVAR.html#cb178-1"></a>cuberoot &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb178-2"><a href="CONRANDVAR.html#cb178-2"></a>  <span class="kw">sign</span>(x) <span class="op">*</span><span class="st"> </span><span class="kw">abs</span>(x)<span class="op">^</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)}</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="CONRANDVAR.html#cb179-1"></a><span class="kw">set.seed</span>(<span class="dv">4</span>)</span>
+<span id="cb179-2"><a href="CONRANDVAR.html#cb179-2"></a>results &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">10000</span>)<span class="op">*</span><span class="kw">cuberoot</span>((<span class="kw">runif</span>(<span class="dv">1</span>)<span class="op">-</span>.<span class="dv">5</span>)<span class="op">*</span><span class="dv">54</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="CONRANDVAR.html#cb180-1"></a>results <span class="op">%&gt;%</span></span>
+<span id="cb180-2"><a href="CONRANDVAR.html#cb180-2"></a><span class="st">  </span><span class="kw">gf_dens</span>(<span class="op">~</span>cuberoot) <span class="op">%&gt;%</span></span>
+<span id="cb180-3"><a href="CONRANDVAR.html#cb180-3"></a><span class="st">  </span><span class="kw">gf_theme</span>(<span class="kw">theme_classic</span>()) <span class="op">%&gt;%</span></span>
+<span id="cb180-4"><a href="CONRANDVAR.html#cb180-4"></a><span class="st">  </span><span class="kw">gf_labs</span>(<span class="dt">title=</span><span class="st">&quot;pdf from simulation&quot;</span>,<span class="dt">x=</span><span class="st">&quot;x&quot;</span>,<span class="dt">y=</span><span class="st">&quot;f(x)&quot;</span>) </span></code></pre></div>
+<p><img src="11-Continuous-Random-Variable-Solutions_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>Notice that the smoothing operation goes past the support of <span class="math inline">\(X\)</span> and thus shows a concave down curve. We could clean up by limiting the x-axis to the interval [-3,3].</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="CONRANDVAR.html#cb181-1"></a><span class="kw">inspect</span>(results)</span></code></pre></div>
+<pre><code>## 
+## quantitative variables:  
+##          name   class       min        Q1     median       Q3      max
+## ...1 cuberoot numeric -2.999981 -2.382864 -0.1574198 2.376346 2.999347
+##              mean       sd     n missing
+## ...1 -0.002416475 2.322639 10000       0</code></pre>
+<div style="page-break-after: always;"></div>
 </div>
-<div id="problem-2-1" class="section level3">
-<h3><span class="header-section-number">2.2.2</span> Problem 2</h3>
-<ol start="2" style="list-style-type: decimal">
-<li>The Buteyko method is a shallow breathing technique developed by Konstantin Buteyko, a Russian doctor, in 1952. Anecdotal evidence suggests that the Buteyko method can reduce asthma symptoms and improve quality of life. In a scientific study to determine the effectiveness of this method, researchers recruited 600 asthma patients aged 18-69 who relied on medication for asthma treatment. These patients were split into two research groups: one practiced the Buteyko method and the other did not. Patients were scored on quality of life, activity, asthma symptoms, and medication reduction on a scale from 0 to 10. On average, the participants in the Buteyko group experienced a significant reduction in asthma symptoms and an improvement in quality of life.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></li>
-</ol>
-<ol style="list-style-type: lower-roman">
-<li>The cases are 600 adult patients aged 18-69 years diagnosed and currently treated for asthma.<br />
-</li>
-<li>The variables were whether or not the patient practiced the Buteyko method (categorical) and measures of quality of life, activity, asthma symptoms and medication reduction of the patients (categorical, ordinal). It may also be reasonable to treat the ratings on a scale of 1 to 10 as discrete numerical variables.<br />
-</li>
-<li>The research question was <strong>Do asthmatic patients who practice the Buteyko method experience improvement in their condition?</strong></li>
-</ol>
+<div id="problem-2-10" class="section level3">
+<h3><span class="header-section-number">11.2.2</span> Problem 2</h3>
+<p>2. Let <span class="math inline">\(X\)</span> be a continuous random variable. Prove that the cdf of <span class="math inline">\(X\)</span>, <span class="math inline">\(F_X(x)\)</span> is a non-decreasing function. (Hint: show that for any <span class="math inline">\(a &lt; b\)</span>, <span class="math inline">\(F_X(a) \leq F_X(b)\)</span>.)</p>
+<p>Let <span class="math inline">\(a&lt;b\)</span>, where <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are both in the domain of <span class="math inline">\(X\)</span>. Note that <span class="math inline">\(F_X(a)=\mbox{P}(X\leq a)\)</span> and <span class="math inline">\(F_X(b)=\mbox{P}(X\leq b)\)</span>. Since <span class="math inline">\(a&lt;b\)</span>, we can partition <span class="math inline">\(\mbox{P}(X\leq b)\)</span> as <span class="math inline">\(\mbox{P}(X\leq a)+\mbox{P}(a &lt; X \leq b)\)</span>. One of the axioms of probability is that a probability must be non-negative, so I know that <span class="math inline">\(\mbox{P}(a &lt; X \leq b)\geq 0\)</span>. Thus,
+<span class="math display">\[
+\mbox{P}(X\leq b)=\mbox{P}(X\leq a)+\mbox{P}(a &lt; X \leq b) \geq \mbox{P}(X\leq a)
+\]</span></p>
+<p>So, we have shown that <span class="math inline">\(F_X(a)\leq F_X(b)\)</span>. Thus, <span class="math inline">\(F_X(x)\)</span> is a non-decreasing function.</p>
 
 </div>
 </div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="2">
-<li id="fn2"><p>B. Ritz et al. <a href="http://journals.lww.com/epidem/Abstract/2000/09000/Effect_of_Air_Pollution_on_Preterm_Birth_Among.4.aspx">“Effect of air pollution on preterm birth among children born in Southern California
-between 1989 and 1993”</a>. In: Epidemiology 11.5 (2000), pp. 502–511.<a href="DB.html#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p>J. McGowan. “Health Education: Does the Buteyko Institute Method make a difference?” In: Thorax 58 (2003).<a href="DB.html#fnref3" class="footnote-back">↩︎</a></p></li>
-</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="CS1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ODCP.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="RANDVAR.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

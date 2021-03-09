@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Overview of Data Collection Principles | Solutions for Computational Probability and Statistics</title>
+  <title>Chapter 9 Conditional Probability | Solutions for Computational Probability and Statistics</title>
   <meta name="description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Overview of Data Collection Principles | Solutions for Computational Probability and Statistics" />
+  <meta property="og:title" content="Chapter 9 Conditional Probability | Solutions for Computational Probability and Statistics" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="figures/CoverSol2.png" />
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Overview of Data Collection Principles | Solutions for Computational Probability and Statistics" />
+  <meta name="twitter:title" content="Chapter 9 Conditional Probability | Solutions for Computational Probability and Statistics" />
   
   <meta name="twitter:description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
   <meta name="twitter:image" content="figures/CoverSol2.png" />
@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="DB.html"/>
-<link rel="next" href="STUDY.html"/>
+<link rel="prev" href="PROBRULES.html"/>
+<link rel="next" href="RANDVAR.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -259,100 +259,215 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ODCP" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> Overview of Data Collection Principles</h1>
-<div id="objectives-2" class="section level2">
-<h2><span class="header-section-number">3.1</span> Objectives</h2>
+<div id="CONDPROB" class="section level1">
+<h1><span class="header-section-number">Chapter 9</span> Conditional Probability</h1>
+
+<div id="objectives-8" class="section level2">
+<h2><span class="header-section-number">9.1</span> Objectives</h2>
 <ol style="list-style-type: decimal">
-<li>Define and use properly in context all new terminology.<br />
+<li>Define conditional probability and distinguish it from joint probability.<br />
 </li>
-<li>From a description of a research project, at a minimum be able to describe the population of interest, the generalizability of the study, the response and predictor variables, differentiate whether it is observational or experimental, and determine the type of sample.</li>
+<li>Find a conditional probability using its definition.<br />
+</li>
+<li>Using conditional probability, determine whether two events are independent.<br />
+</li>
+<li>Apply Bayes’ Rule mathematically and via simulation.</li>
 </ol>
 </div>
-<div id="homework-2" class="section level2">
-<h2><span class="header-section-number">3.2</span> Homework</h2>
-<div id="problem-1-2" class="section level3">
-<h3><span class="header-section-number">3.2.1</span> Problem 1</h3>
-<ol style="list-style-type: decimal">
-<li><strong>Generalizability and causality</strong>. Identify the population of interest and the sample in the studies described below, these are the same studies from the prevous lesson. Also comment on whether or not the results of the study can be generalized to the population and if the findings of the study can be used to establish causal relationships.</li>
-</ol>
+<div id="homework-8" class="section level2">
+<h2><span class="header-section-number">9.2</span> Homework</h2>
+<div id="problem-1-8" class="section level3">
+<h3><span class="header-section-number">9.2.1</span> Problem 1</h3>
+<p>1. Consider Exercise 1 from Lesson 2. Recall: <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span> are events such that <span class="math inline">\(\mbox{P}(A)=0.5\)</span>, <span class="math inline">\(\mbox{P}(B)=0.3\)</span>, <span class="math inline">\(\mbox{P}(C)=0.4\)</span>, <span class="math inline">\(\mbox{P}(A \cap B)=0.2\)</span>, <span class="math inline">\(\mbox{P}(B \cap C)=0.12\)</span>, <span class="math inline">\(\mbox{P}(A \cap C)=0.1\)</span>, and <span class="math inline">\(\mbox{P}(A \cap B \cap C)=0.05\)</span>.</p>
 <ol style="list-style-type: lower-alpha">
-<li>Researchers collected data to examine the relationship between pollutants and preterm births in Southern California. During the study air pollution levels were measured by air quality monitoring stations. Specifically, levels of carbon monoxide were recorded in parts per million, nitrogen dioxide and ozone in parts per hundred million, and coarse particulate matter (PM<span class="math inline">\(_{10}\)</span>) in <span class="math inline">\(\mu g/m^3\)</span>. Length of gestation data were collected on 143,196 births between the years 1989 and 1993, and air pollution exposure during gestation was calculated for each birth. The analysis suggested that increased ambient PM<span class="math inline">\(_{10}\)</span> and, to a lesser degree, CO concentrations may be associated with the occurrence of preterm births.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></li>
+<li>Are <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> independent?</li>
 </ol>
-<blockquote>
-<p>The population of interest is all births. The sample consists of the 143,196 births between 1989 and 1993 in Southern California. If births in this time span at the geography can be considered to be representative of all births, then the results are generalizable to the population of Southern California. However, since the study is observational the findings cannot be used to establish causal relationships.</p>
-</blockquote>
+<p>No. <span class="math inline">\(\mbox{P}(A)\mbox{P}(B)=0.15\neq \mbox{P}(A\cap B)\)</span>.</p>
 <ol start="2" style="list-style-type: lower-alpha">
-<li>The Buteyko method is a shallow breathing technique developed by Konstantin Buteyko, a Russian doctor, in 1952. Anecdotal evidence suggests that the Buteyko method can reduce asthma symptoms and improve quality of life. In a scientific study to determine the effectiveness of this method, researchers recruited 600 asthma patients aged 18-69 who relied on medication for asthma treatment. These patients were split into two research groups: one practiced the Buteyko method and the other did not. Patients were scored on quality of life, activity, asthma symptoms, and medication reduction on a scale from 0 to 10. On average, the participants in the Buteyko group experienced a significant reduction in asthma symptoms and an improvement in quality of life.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></li>
+<li>Are <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span> independent?</li>
 </ol>
-<blockquote>
-<p>The population is all 18-69 year olds diagnosed and currently treated for asthma. The sample is the 600 adult patients aged 18-69 years diagnosed and currently treated for asthma. Since the sample is not random (voluntary) the results cannot be generalized to the population at large. However, since the study is an experiment, the findings can
-be used to establish causal relationships.</p>
-</blockquote>
-<div style="page-break-after: always;"></div>
+<p>Yes. <span class="math inline">\(\mbox{P}(B)\mbox{P}(C)=0.12 = \mbox{P}(B\cap C)\)</span>. Also,
+<span class="math display">\[
+\mbox{P}(B|C)=\frac{\mbox{P}(B\cap C)}{\mbox{P}(C)}= 0.12/0.4 = 0.3 =\mbox{P}(B)
+\]</span></p>
 </div>
-<div id="problem-2-2" class="section level3">
-<h3><span class="header-section-number">3.2.2</span> Problem 2</h3>
-<ol start="2" style="list-style-type: decimal">
-<li><strong>GPA and study time</strong>. A survey was conducted on 55 undergraduates from Duke University who took an introductory statistics course in Spring 2012. Among many other questions, this survey asked them about their GPA and the number of hours they spent studying per week. The scatterplot below displays the relationship between these two variables.</li>
-</ol>
-<p><img src="03-Overview-of-Data-Collection-Principles-Solutions_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<div id="problem-2-8" class="section level3">
+<h3><span class="header-section-number">9.2.2</span> Problem 2</h3>
+<p>2. Suppose I have a biased coin (the probability I flip a heads is 0.6). I flip that coin twice. Assume that the coin is memoryless (flips are independent of one another).</p>
 <ol style="list-style-type: lower-alpha">
-<li>What is the explanatory variable and what is the response variable?</li>
-<li>Describe the relationship between the two variables. Make sure to discuss unusual observations, if any.</li>
-<li>Is this an experiment or an observational study?</li>
-<li>Can we conclude that studying longer hours leads to higher GPAs?</li>
+<li>What is the probability that the second flip results in heads?</li>
 </ol>
-<blockquote>
-<p>Solutions</p>
-</blockquote>
-<ol style="list-style-type: lower-alpha">
-<li>The explanatory variable is the number of study hours per week, and the response variable is GPA.</li>
-<li>There is a somewhat weak positive relationship between the two variables, though the data become more sparse as the number of study hours increases. One responded reported a GPA above 4.0, which is clearly a data error. Also, there are a few respondents who reported unusually high study hours (60 and 70 hours/week). It should also be
-noted that the variability in GPA is much higher for students who study less than those who study more, also might be due to the fact that there aren’t many respondents who reported studying higher hours.</li>
-<li>This is an observational study.</li>
-<li>Since this is an observational study, we cannot conclude that there is a causal relationship between the two variables even though there appears to be an association.</li>
+<p>0.6</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>What is the probability that the second flip results in heads, given the first also resulted in heads?</li>
 </ol>
-<div style="page-break-after: always;"></div>
+<p>The coin is memoryless. So,
+<span class="math display">\[
+\mbox{P}(\mbox{2nd flip heads}|\mbox{1st flip heads}) = 0.6
+\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>What is the probability both flips result in heads?</li>
+</ol>
+<p>Since the flips are independent,
+<span class="math display">\[
+\mbox{P}(\mbox{both heads})=\mbox{P}(\mbox{1st flip heads})\mbox{P}(\mbox{2nd flip heads}) = 0.6*0.6=0.36
+\]</span></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>What is the probability exactly one coin flip results in heads?</li>
+</ol>
+<p>This could happen in two ways. The first could be heads OR the second could be heads.
+<span class="math display">\[
+\mbox{P}(\mbox{exactly one heads})=\mbox{P}(\mbox{1st flip heads})\mbox{P}(\mbox{2nd flip tails}) + \mbox{P}(\mbox{1st flip tails})\mbox{P}(\mbox{2nd flip heads})
+\]</span>
+<span class="math display">\[
+0.6*0.4+0.4*0.6 = 0.48
+\]</span></p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>Now assume I flip the coin five times. What is the probability the result is 5 heads?
+<span class="math display">\[
+\mbox{P}(\mbox{5 heads})= 0.6^5 = 0.0778
+\]</span></li>
+</ol>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="CONDPROB.html#cb106-1"></a><span class="fl">0.6</span><span class="op">^</span><span class="dv">5</span></span></code></pre></div>
+<pre><code>## [1] 0.07776</code></pre>
+<ol start="6" style="list-style-type: lower-alpha">
+<li>What is the probability the result is exactly 2 heads (out of 5 flips)?</li>
+</ol>
+<p>There are <span class="math inline">\(\binom{5}{2} = 10\)</span> ways for this to happen ({HHTTT},{HTHTT},…). So,
+<span class="math display">\[
+\mbox{P}(\mbox{2 heads out of 5 flips})=\binom{5}{2} 0.6^2(1-0.6)^3 = 0.2304
+\]</span></p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="CONDPROB.html#cb108-1"></a><span class="kw">choose</span>(<span class="dv">5</span>,<span class="dv">2</span>)<span class="op">*</span><span class="fl">0.6</span><span class="op">^</span><span class="dv">2</span><span class="op">*</span><span class="fl">0.4</span><span class="op">^</span><span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 0.2304</code></pre>
 </div>
-<div id="problem-3" class="section level3">
-<h3><span class="header-section-number">3.2.3</span> Problem 3</h3>
-<ol start="3" style="list-style-type: decimal">
-<li><strong>Income and education</strong> The scatterplot below shows the relationship between per capita income (in thousands of dollars) and percent of population with a bachelor’s degree in 3,143 counties in the US in 2010.</li>
-</ol>
-<p><img src="03-Overview-of-Data-Collection-Principles-Solutions_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div id="problem-3-5" class="section level3">
+<h3><span class="header-section-number">9.2.3</span> Problem 3</h3>
+<p>3. (Adapted from IPSUR, <span class="citation">(Kerns <a href="#ref-ipsur" role="doc-biblioref">2010</a>)</span>). Suppose there are three assistants working at a company: Moe, Larry and Curly. All three assist with a filing process. Only one filing assistant is needed at a time. Moe assists 60% of the time, Larry assists 30% of the time and Curly assists the remaining 10% of the time. Occasionally, they make errors (misfiles); Moe has a misfile rate of 0.01, Larry has a misfile rate of 0.025, and Curly has a rate of 0.05. Suppose a misfile was discovered, but it is unknown who was on schedule when it occurred. Who is most likely to have committed the misfile? Calculate the probabilities for each of the three assistants.</p>
+<p>Let <span class="math inline">\(E\)</span> be the event a misfile was committed. Also, let <span class="math inline">\(M\)</span>, <span class="math inline">\(L\)</span>, and <span class="math inline">\(C\)</span> denote the events that Moe, Larry and Curly was the assistant at the time, respectively.</p>
+<p><span class="math display">\[
+\mbox{P}(E)=\mbox{P}(E \cap M)+\mbox{P}(E \cap L)+\mbox{P}(E\cap C) 
+\]</span>
+<span class="math display">\[
+= \mbox{P}(E|M)\mbox{P}(M)+\mbox{P}(E|L)\mbox{P}(L)+\mbox{P}(E|C)\mbox{P}(C) = 0.01*0.6+0.025*0.3+0.05*0.1 = 0.0185
+\]</span></p>
+<p>Thus,
+<span class="math display">\[
+\mbox{P}(M|E)=\frac{\mbox{P}(E \cap M)}{\mbox{P}(E)}= \frac{0.01*0.6}{0.0185}=0.3243
+\]</span></p>
+<p>Similarly, <span class="math inline">\(\mbox{P}(L|E)=0.4054\)</span> and <span class="math inline">\(\mbox{P}(C|E)=0.2702\)</span>.</p>
+<p>Larry is the assistant most likely to have committed the error.</p>
+</div>
+<div id="problem-4-2" class="section level3">
+<h3><span class="header-section-number">9.2.4</span> Problem 4</h3>
+<p>4. You are playing a game where there are two coins. One coin is fair and the other comes up <em>heads</em> 80% of the time. One coin is flipped 3 times and the result is three <em>heads</em>, what is the probability that the coin flipped is the fair coin? You will need to make an assumption about the probability of either coin being selected.</p>
 <ol style="list-style-type: lower-alpha">
-<li>What are the explanatory and response variables?</li>
-<li>Describe the relationship between the two variables. Make sure to discuss unusual observations, if any.</li>
-<li>Can we conclude that having a bachelor’s degree increases one’s income?</li>
+<li>Use Bayes formula to solve this problem.</li>
 </ol>
-<blockquote>
-<p>Solutions</p>
-</blockquote>
-<ol style="list-style-type: lower-alpha">
-<li>The explanatory variable is percent of population with a bachelor’s degree and the response variable is per capita income (in thousands).</li>
-<li>There is a strong positive linear relationship between the two variables. As the percentage of population with a bachelor’s degree increases the per capita income increases as well. There are very few counties where more than 60% of the population have a bachelor’s degree and very few countries that have a more than $50,000 in per capita income.</li>
-<li>This is an observational study so we cannot make a causal statement based on the results. However, we can say that having a higher percentage of population with bachelor’s degree is associated with a higher per capita income.</li>
+<p>I will assume either coin is selected with a 50% probability.</p>
+<p><span class="math display">\[
+\mbox{P}(Fair) = \mbox{P}(Biased) = .5
+\]</span>
+<span class="math display">\[
+\mbox{P}(3 Heads|Fair)=\frac{1}{2}^3=\frac{1}{8}
+\]</span>
+<span class="math display">\[
+\mbox{P}(3 Heads|Biased)=.8^3=0.512
+\]</span></p>
+<p>Now</p>
+<p><span class="math display">\[
+\mbox{P}(Fair | 3 Heads) = \frac{\mbox{P}(3 Heads | Fair)\mbox{P}(Fair)}{\mbox{P}(3 Heads | Fair)\mbox{P}(Fair)+\mbox{P}(3 Heads| Biased)\mbox{P}(Biased)}
+\]</span></p>
+<p>Which is</p>
+<p><span class="math display">\[
+\mbox{P}(Fair | 3 Heads) =  \frac{\frac{1}{8}\frac{1}{2}}{\frac{1}{8}\frac{1}{2}+.8^{3}\frac{1}{2}} = 0.196
+\]</span></p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="CONDPROB.html#cb110-1"></a><span class="fl">.125</span><span class="op">*</span>.<span class="dv">5</span><span class="op">/</span>(.<span class="dv">125</span><span class="op">*</span>.<span class="dv">5</span><span class="fl">+.8</span><span class="op">^</span><span class="dv">3</span><span class="op">*</span>.<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## [1] 0.1962323</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Use simulation to solve this problem.</li>
 </ol>
+<p>Let’s use the same assumptions. We could do this problem in two ways. We could flip each coin a fixed number of times and combine the information or use a random process to pick a flipped coin and then flip it three times. Let’s do the first.</p>
+<p>Let’s flip a fair coin 50,000 times and count how many heads we get.</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="CONDPROB.html#cb112-1"></a><span class="kw">set.seed</span>(<span class="dv">1154</span>)</span>
+<span id="cb112-2"><a href="CONDPROB.html#cb112-2"></a><span class="kw">data.frame</span>(<span class="kw">do</span>(<span class="dv">50000</span>)<span class="op">*</span><span class="kw">rflip</span>(<span class="dv">3</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb112-3"><a href="CONDPROB.html#cb112-3"></a><span class="st">  </span><span class="kw">filter</span>(heads<span class="op">==</span><span class="dv">3</span>) <span class="op">%&gt;%</span></span>
+<span id="cb112-4"><a href="CONDPROB.html#cb112-4"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">count=</span><span class="kw">n</span>()) <span class="op">%&gt;%</span></span>
+<span id="cb112-5"><a href="CONDPROB.html#cb112-5"></a><span class="st">  </span><span class="kw">pull</span>()</span></code></pre></div>
+<pre><code>## [1] 6157</code></pre>
+<p>Now flip the biased coin.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="CONDPROB.html#cb114-1"></a><span class="kw">data.frame</span>(<span class="kw">do</span>(<span class="dv">50000</span>)<span class="op">*</span><span class="kw">rflip</span>(<span class="dv">3</span>,<span class="dt">prob=</span><span class="fl">0.8</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb114-2"><a href="CONDPROB.html#cb114-2"></a><span class="st">  </span><span class="kw">filter</span>(heads<span class="op">==</span><span class="dv">3</span>) <span class="op">%&gt;%</span></span>
+<span id="cb114-3"><a href="CONDPROB.html#cb114-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">count=</span><span class="kw">n</span>()) <span class="op">%&gt;%</span></span>
+<span id="cb114-4"><a href="CONDPROB.html#cb114-4"></a><span class="st">  </span><span class="kw">pull</span>()</span></code></pre></div>
+<pre><code>## [1] 25743</code></pre>
+<p>So we have a total 6157 + 25743 heads of which 6157 came from the fair coin.</p>
+<p>Thus the probability of the coin being fair given 3 heads on the flips is:</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="CONDPROB.html#cb116-1"></a><span class="dv">6157</span><span class="op">/</span>(<span class="dv">6157</span> <span class="op">+</span><span class="st"> </span><span class="dv">25743</span>)</span></code></pre></div>
+<pre><code>## [1] 0.1930094</code></pre>
+<p>Or 19.3%.</p>
+<p>Next pick a one of the coins with equal probability 100,000 times.</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="CONDPROB.html#cb118-1"></a><span class="kw">set.seed</span>(<span class="dv">501</span>)</span>
+<span id="cb118-2"><a href="CONDPROB.html#cb118-2"></a>results &lt;-<span class="st"> </span><span class="kw">rflip</span>(<span class="dv">100000</span>,<span class="dt">summarize =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb118-3"><a href="CONDPROB.html#cb118-3"></a>results</span></code></pre></div>
+<pre><code>##       n heads tails prob
+## 1 1e+05 50226 49774  0.5</code></pre>
+<p>Now the fair coin was flipped 50226 times.</p>
+<p>Let’s see how many times we get 3 heads when we flip that coin 3 times.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="CONDPROB.html#cb120-1"></a><span class="kw">data.frame</span>(<span class="kw">do</span>(<span class="dv">50226</span>)<span class="op">*</span><span class="kw">rflip</span>(<span class="dv">3</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb120-2"><a href="CONDPROB.html#cb120-2"></a><span class="st">  </span><span class="kw">filter</span>(heads<span class="op">==</span><span class="dv">3</span>) <span class="op">%&gt;%</span></span>
+<span id="cb120-3"><a href="CONDPROB.html#cb120-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">count=</span><span class="kw">n</span>()) <span class="op">%&gt;%</span></span>
+<span id="cb120-4"><a href="CONDPROB.html#cb120-4"></a><span class="st">  </span><span class="kw">pull</span>()</span></code></pre></div>
+<pre><code>## [1] 6270</code></pre>
+<p>We have 6270 cases with 3 heads. Now for the biased coin.</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="CONDPROB.html#cb122-1"></a><span class="kw">data.frame</span>(<span class="kw">do</span>(<span class="dv">49774</span>)<span class="op">*</span><span class="kw">rflip</span>(<span class="dv">3</span>,<span class="dt">prob=</span><span class="fl">0.8</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb122-2"><a href="CONDPROB.html#cb122-2"></a><span class="st">  </span><span class="kw">filter</span>(heads<span class="op">==</span><span class="dv">3</span>) <span class="op">%&gt;%</span></span>
+<span id="cb122-3"><a href="CONDPROB.html#cb122-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">count=</span><span class="kw">n</span>()) <span class="op">%&gt;%</span></span>
+<span id="cb122-4"><a href="CONDPROB.html#cb122-4"></a><span class="st">  </span><span class="kw">pull</span>()</span></code></pre></div>
+<pre><code>## [1] 25512</code></pre>
+<p>Now we can determine the probability of a fair coin given 3 heads.</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="CONDPROB.html#cb124-1"></a><span class="dv">6270</span><span class="op">/</span>(<span class="dv">6270</span><span class="op">+</span><span class="dv">25512</span>)</span></code></pre></div>
+<pre><code>## [1] 0.1972815</code></pre>
+<p>This code we could easily adapt if we don’t think each coin is being selected with the same frequency. Suppose we think the fair coin has a 75% chance of being selected. The analysis would look like this:</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="CONDPROB.html#cb126-1"></a><span class="kw">set.seed</span>(<span class="dv">9021</span>)</span>
+<span id="cb126-2"><a href="CONDPROB.html#cb126-2"></a>results &lt;-<span class="st"> </span><span class="kw">rflip</span>(<span class="dv">100000</span>,<span class="dt">prob=</span>.<span class="dv">75</span>,<span class="dt">summarize =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb126-3"><a href="CONDPROB.html#cb126-3"></a>results</span></code></pre></div>
+<pre><code>##       n heads tails prob
+## 1 1e+05 75023 24977 0.75</code></pre>
+<p>Now the fair coin was flipped 75023 times.</p>
+<p>Let’s see how many times we get 3 heads when we flip that coin 3 times.</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="CONDPROB.html#cb128-1"></a><span class="kw">data.frame</span>(<span class="kw">do</span>(<span class="dv">75023</span>)<span class="op">*</span><span class="kw">rflip</span>(<span class="dv">3</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb128-2"><a href="CONDPROB.html#cb128-2"></a><span class="st">  </span><span class="kw">filter</span>(heads<span class="op">==</span><span class="dv">3</span>) <span class="op">%&gt;%</span></span>
+<span id="cb128-3"><a href="CONDPROB.html#cb128-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">count=</span><span class="kw">n</span>()) <span class="op">%&gt;%</span></span>
+<span id="cb128-4"><a href="CONDPROB.html#cb128-4"></a><span class="st">  </span><span class="kw">pull</span>()</span></code></pre></div>
+<pre><code>## [1] 9579</code></pre>
+<p>We have 9579 cases with 3 heads. Now for the biased coin.</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="CONDPROB.html#cb130-1"></a><span class="kw">data.frame</span>(<span class="kw">do</span>(<span class="dv">24977</span>)<span class="op">*</span><span class="kw">rflip</span>(<span class="dv">3</span>,<span class="dt">prob=</span><span class="fl">0.8</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb130-2"><a href="CONDPROB.html#cb130-2"></a><span class="st">  </span><span class="kw">filter</span>(heads<span class="op">==</span><span class="dv">3</span>) <span class="op">%&gt;%</span></span>
+<span id="cb130-3"><a href="CONDPROB.html#cb130-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">count=</span><span class="kw">n</span>()) <span class="op">%&gt;%</span></span>
+<span id="cb130-4"><a href="CONDPROB.html#cb130-4"></a><span class="st">  </span><span class="kw">pull</span>()</span></code></pre></div>
+<pre><code>## [1] 12789</code></pre>
+<p>Now we can determine the probability of a fair coin given 3 heads.</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="CONDPROB.html#cb132-1"></a><span class="dv">9579</span><span class="op">/</span>(<span class="dv">9579</span><span class="op">+</span><span class="dv">12789</span>)</span></code></pre></div>
+<pre><code>## [1] 0.4282457</code></pre>
+<p>A much different answer. That is because prior to getting the data we believed the fair coin would be selected with a 75% probability. The data indicates that we need to update and lower this probability. We only flipped 3 times but the evidence is so in favor of the biased coin, that our probability dropped substantially. This is why Bayes is such a powerful tool.</p>
+<p>Think about what we just did with this problem. We started with a subjective believe that either coin would be selected with equal probability. This is called the prior probability. We then collected data on three flips of the coin. We used this empirical data to update our belief into a posterior probability. This is the basis for Bayesian statistical analysis. Bayesian statistics is an entire discipline unto itself.</p>
 
 </div>
 </div>
 </div>
-<div class="footnotes">
-<hr />
-<ol start="4">
-<li id="fn4"><p>B. Ritz et al. <a href="http://journals.lww.com/epidem/Abstract/2000/09000/Effect_of_Air_Pollution_on_Preterm_Birth_Among.4.aspx">“Effect of air pollution on preterm birth among children born in Southern California
-between 1989 and 1993”</a>. In: Epidemiology 11.5 (2000), pp. 502–511.<a href="ODCP.html#fnref4" class="footnote-back">↩︎</a></p></li>
-<li id="fn5"><p>J. McGowan. “Health Education: Does the Buteyko Institute Method make a difference?” In: Thorax 58 (2003).<a href="ODCP.html#fnref5" class="footnote-back">↩︎</a></p></li>
-</ol>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-ipsur">
+<p>Kerns, Jay. 2010. <em>Introductory to Probability and Statistics with R</em>. 1st ed. <a href="http://ipsur.r-forge.r-project.org/book/download/IPSUR.pdf">http://ipsur.r-forge.r-project.org/book/download/IPSUR.pdf</a>.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="DB.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="STUDY.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="PROBRULES.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="RANDVAR.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
