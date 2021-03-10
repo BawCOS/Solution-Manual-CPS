@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 Probability Rules | Solutions for Computational Probability and Statistics</title>
+  <title>Chapter 15 Multivariate Expectation | Solutions for Computational Probability and Statistics</title>
   <meta name="description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 Probability Rules | Solutions for Computational Probability and Statistics" />
+  <meta property="og:title" content="Chapter 15 Multivariate Expectation | Solutions for Computational Probability and Statistics" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="figures/CoverSol2.png" />
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Probability Rules | Solutions for Computational Probability and Statistics" />
+  <meta name="twitter:title" content="Chapter 15 Multivariate Expectation | Solutions for Computational Probability and Statistics" />
   
   <meta name="twitter:description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
   <meta name="twitter:image" content="figures/CoverSol2.png" />
@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="CS2.html"/>
-<link rel="next" href="CONDPROB.html"/>
+<link rel="prev" href="MULTIDISTS.html"/>
+<link rel="next" href="TRANS.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -334,249 +334,262 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="PROBRULES" class="section level1">
-<h1><span class="header-section-number">Chapter 8</span> Probability Rules</h1>
+<div id="MULTIEXP" class="section level1">
+<h1><span class="header-section-number">Chapter 15</span> Multivariate Expectation</h1>
 
-<div id="objectives-7" class="section level2">
-<h2><span class="header-section-number">8.1</span> Objectives</h2>
+<div id="objectives-14" class="section level2">
+<h2><span class="header-section-number">15.1</span> Objectives</h2>
 <ol style="list-style-type: decimal">
-<li>Define and use properly in context all new terminology related to probability to include but not limited to: outcome, event, sample space, probability.<br />
+<li>Given a joint pmf/pdf, obtain means and variances of random variables and functions of random variables.<br />
 </li>
-<li>Apply basic probability and counting rules to find probabilities.<br />
+<li>Define the terms covariance and correlation, and given a joint pmf/pdf, obtain the covariance and correlation between two random variables.<br />
 </li>
-<li>Describe the basic axioms of probability.<br />
+<li>Given a joint pmf/pdf, determine whether random variables are independent of one another.<br />
 </li>
-<li>Use <code>R</code> to calculate and simulate probabilities of events.</li>
+<li>Find conditional expectations.</li>
 </ol>
 </div>
-<div id="homework-7" class="section level2">
-<h2><span class="header-section-number">8.2</span> Homework</h2>
-<div id="problem-1-7" class="section level3">
-<h3><span class="header-section-number">8.2.1</span> Problem 1</h3>
-<p>1. Let <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span> be events such that <span class="math inline">\(\mbox{P}(A)=0.5\)</span>, <span class="math inline">\(\mbox{P}(B)=0.3\)</span>, and <span class="math inline">\(\mbox{P}(C)=0.4\)</span>. Also, we know that <span class="math inline">\(\mbox{P}(A \cap B)=0.2\)</span>, <span class="math inline">\(\mbox{P}(B \cap C)=0.12\)</span>, <span class="math inline">\(\mbox{P}(A \cap C)=0.1\)</span>, and <span class="math inline">\(\mbox{P}(A \cap B \cap C)=0.05\)</span>. Find the following:</p>
-<ol style="list-style-type: lower-alpha">
-<li><p><span class="math inline">\(\mbox{P}(A\cup B)\)</span>
+<div id="homework-14" class="section level2">
+<h2><span class="header-section-number">15.2</span> Homework</h2>
+<div id="problem-1-14" class="section level3">
+<h3><span class="header-section-number">15.2.1</span> Problem 1</h3>
+<p>1. Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be continuous random variables with joint pdf:
 <span class="math display">\[
-\mbox{P}(A\cup B) = \mbox{P}(A)+\mbox{P}(B)-\mbox{P}(A\cap B)= 0.5+0.3-0.2 = 0.6
-\]</span></p></li>
-<li><p><span class="math inline">\(\mbox{P}(A\cup B \cup C)\)</span>
-<span class="math display">\[
-\mbox{P}(A\cup B \cup C) = \mbox{P}(A)+\mbox{P}(B)+\mbox{P}(C)-\mbox{P}(A\cap B)-\mbox{P}(A\cap C)-\mbox{P}(B\cap C)+\mbox{P}(A\cap B \cap C)
-\]</span>
-<span class="math display">\[
-= 0.5+0.3+0.4-0.2-0.12-0.1+0.05 = 0.83
-\]</span></p></li>
-<li><p><span class="math inline">\(\mbox{P}(B&#39;\cap C&#39;)\)</span>
-<span class="math display">\[
-\mbox{P}(B&#39;\cap C&#39;)=\mbox{P}((B\cup C)&#39;) = 1-\mbox{P}(B\cup C) = 1-[\mbox{P}(B)+\mbox{P}(C)-\mbox{P}(B\cap C)]
-\]</span>
-<span class="math display">\[
-= 1-(0.3+0.4-0.12) = 0.42
-\]</span></p></li>
-<li><p><span class="math inline">\(\mbox{P}(A\cup (B\cap C))\)</span>
-<span class="math display">\[
-\mbox{P}(A\cup (B\cap C)) = \mbox{P}(A)+\mbox{P}(B\cap C) -\mbox{P}(A\cap B \cap C) = 0.5+0.12-0.05 = 0.57
-\]</span></p></li>
-<li><p><span class="math inline">\(\mbox{P}((A\cup B \cup C)\cap (A\cap B \cap C)&#39;)\)</span>
-<span class="math display">\[
-\mbox{P}((A\cup B \cup C)\cap (A\cap B \cap C)&#39;)=\mbox{P}(A\cup B \cup C)-\mbox{P}(A\cap B \cap C) = 0.83-0.05 = 0.78
-\]</span></p></li>
-</ol>
-</div>
-<div id="problem-2-7" class="section level3">
-<h3><span class="header-section-number">8.2.2</span> Problem 2</h3>
-<p>2. Consider the example of the family in the reading. What is the probability that the family has at least one boy?<br />
-<span class="math display">\[
-\mbox{P}(\mbox{at least one boy})=1-\mbox{P}(\mbox{no boys})=1-\mbox{P}(\mbox{GGG})=1-\frac{1}{8} = 0.875
+f_{X,Y}(x,y)=x + y
 \]</span></p>
-</div>
-<div id="problem-3-4" class="section level3">
-<h3><span class="header-section-number">8.2.3</span> Problem 3</h3>
-<p>3. The Birthday Problem Revisited.</p>
+<p>where <span class="math inline">\(0 \leq x \leq 1\)</span> and <span class="math inline">\(0 \leq y \leq 1\)</span>.</p>
 <ol style="list-style-type: lower-alpha">
-<li>Suppose there are <span class="math inline">\(n=20\)</span> students in a classroom. My birthday, the instructor, is April 3rd. What is the probability that at least one student shares my birthday? Assume only 365 days in a year and assume that all birthdays are equally likely.</li>
+<li>Find <span class="math inline">\(\mbox{E}(X)\)</span> and <span class="math inline">\(\mbox{E}(Y)\)</span>. We will use the marginal pdfs found in the Application 14 solution.</li>
 </ol>
 <p><span class="math display">\[
-\mbox{P}(\mbox{at least one other person shares my bday})=1-\mbox{P}(\mbox{no one else has my bday}) = 
-\]</span></p>
+\mbox{E}(X)=\int_0^1 x\left(x+\frac{1}{2}\right)\,\mathrm{d}x=\frac{x^3}{3}+\frac{x^2}{4}\bigg|_0^1=\frac{1}{3}+\frac{1}{4}=\frac{7}{12}=0.583
+\]</span>
+Or numerically:</p>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="MULTIEXP.html#cb286-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>(x) { x[<span class="dv">1</span>]<span class="op">*</span>(x[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>x[<span class="dv">2</span>]) } <span class="co"># &quot;x&quot; is vector</span></span>
+<span id="cb286-2"><a href="MULTIEXP.html#cb286-2"></a><span class="kw">adaptIntegrate</span>(f, <span class="dt">lowerLimit =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">upperLimit =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
+<pre><code>## $integral
+## [1] 0.5833333
+## 
+## $error
+## [1] 1.110223e-16
+## 
+## $functionEvaluations
+## [1] 17
+## 
+## $returnCode
+## [1] 0</code></pre>
 <p><span class="math display">\[
-1-\left( \frac{364}{365}\right)^{20} = 0.0534
+\mbox{E}(Y)=\int_0^1 y\left(y+\frac{1}{2}\right)\,\mathrm{d}y = 0.583
 \]</span></p>
 <ol start="2" style="list-style-type: lower-alpha">
-<li>In <code>R</code>, find the probability that at least one other person shares my birthday for each value of <span class="math inline">\(n\)</span> from 1 to 80. Plot these probabilities with <span class="math inline">\(n\)</span> on the <span class="math inline">\(x\)</span>-axis and probability on the <span class="math inline">\(y\)</span>-axis. At what value of <span class="math inline">\(n\)</span> would the probability be at least 50%?</li>
+<li>Find <span class="math inline">\(\mbox{Var}(X)\)</span> and <span class="math inline">\(\mbox{Var}(Y)\)</span>.</li>
 </ol>
-<p>Generalizing,
+<p><span class="math display">\[
+\mbox{Var}(X)=\mbox{E}(X^2)-\mbox{E}(X)^2
+\]</span>
 <span class="math display">\[
-\mbox{P}(\mbox{at least one other person shares my bday})=1-\mbox{P}(\mbox{no one else has my bday}) = 1-\left( \frac{364}{365}\right)^{n}
-\]</span></p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="PROBRULES.html#cb73-1"></a>n&lt;-<span class="dv">1</span><span class="op">:</span><span class="dv">300</span></span>
-<span id="cb73-2"><a href="PROBRULES.html#cb73-2"></a>mybday&lt;-<span class="cf">function</span>(x) <span class="dv">1</span><span class="op">-</span>(<span class="dv">364</span><span class="op">/</span><span class="dv">365</span>)<span class="op">^</span>x</span>
-<span id="cb73-3"><a href="PROBRULES.html#cb73-3"></a>mybday &lt;-<span class="st"> </span><span class="kw">Vectorize</span>(mybday)</span></code></pre></div>
-<p>Check our function.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="PROBRULES.html#cb74-1"></a><span class="kw">mybday</span>(<span class="dv">20</span>)</span></code></pre></div>
-<pre><code>## [1] 0.05339153</code></pre>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="PROBRULES.html#cb76-1"></a><span class="kw">gf_line</span>(<span class="kw">mybday</span>(n)<span class="op">~</span><span class="st"> </span>n,</span>
-<span id="cb76-2"><a href="PROBRULES.html#cb76-2"></a>        <span class="dt">xlab=</span><span class="st">&quot;Number of People&quot;</span>,</span>
-<span id="cb76-3"><a href="PROBRULES.html#cb76-3"></a>        <span class="dt">ylab=</span><span class="st">&quot;Probability of Match&quot;</span>,</span>
-<span id="cb76-4"><a href="PROBRULES.html#cb76-4"></a>        <span class="dt">title=</span><span class="st">&quot;Probability of at least 1 person matching my birthday&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb76-5"><a href="PROBRULES.html#cb76-5"></a><span class="st">  </span><span class="kw">gf_theme</span>(theme_bw)</span></code></pre></div>
-<p><img src="08-Probability-Rules-Solutions_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="PROBRULES.html#cb77-1"></a>prob &lt;-<span class="st"> </span><span class="kw">mybday</span>(n)</span>
-<span id="cb77-2"><a href="PROBRULES.html#cb77-2"></a><span class="kw">which</span>(prob<span class="op">&gt;=</span><span class="st"> </span><span class="fl">.5</span>)</span></code></pre></div>
-<pre><code>##  [1] 253 254 255 256 257 258 259 260 261 262 263 264 265 266 267 268 269 270 271
-## [20] 272 273 274 275 276 277 278 279 280 281 282 283 284 285 286 287 288 289 290
-## [39] 291 292 293 294 295 296 297 298 299 300</code></pre>
-<p>So 253 people.</p>
-</div>
-<div id="problem-4-1" class="section level3">
-<h3><span class="header-section-number">8.2.4</span> Problem 4</h3>
-<ol start="4" style="list-style-type: decimal">
-<li>Thinking of the cards again. Answer the following questions:</li>
-</ol>
-<ol style="list-style-type: lower-alpha">
-<li>Define two events that are mutually exclusive.</li>
-</ol>
-<p>The first card drawn is red.<br />
-The first card drawn is black.</p>
-<ol start="2" style="list-style-type: lower-alpha">
-<li>Define two events that are independent.</li>
-</ol>
-<p>The first card drawn is black.<br />
-The first card drawn is a face card.</p>
+\mbox{E}(X^2)=\int_0^1 x^2\left(x+\frac{1}{2}\right)\,\mathrm{d}x = \frac{x^4}{4}+\frac{x^3}{6}\bigg|_0^1=\frac{1}{ 4}+\frac{1}{6}=\frac{5}{12}=0.417
+\]</span>
+As a check:</p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="MULTIEXP.html#cb288-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>(x) { x[<span class="dv">1</span>]<span class="op">^</span><span class="dv">2</span><span class="op">*</span>(x[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>x[<span class="dv">2</span>]) } <span class="co"># &quot;x&quot; is vector</span></span>
+<span id="cb288-2"><a href="MULTIEXP.html#cb288-2"></a><span class="kw">round</span>(<span class="kw">adaptIntegrate</span>(f, <span class="dt">lowerLimit =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">upperLimit =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))<span class="op">$</span>integral,<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 0.417</code></pre>
+<p>So, <span class="math inline">\(\mbox{Var}(X)=0.417-0.583^2=0.076\)</span>.</p>
+<p>Similarly, <span class="math inline">\(\mbox{Var}(Y)=0.076\)</span>.</p>
 <ol start="3" style="list-style-type: lower-alpha">
-<li>Define an event and its complement.</li>
-</ol>
-<p>The first card drawn is less than 5.<br />
-The first card drawn is equal to or more than 5.</p>
-</div>
-<div id="problem-5-1" class="section level3">
-<h3><span class="header-section-number">8.2.5</span> Problem 5</h3>
-<ol start="5" style="list-style-type: decimal">
-<li>Consider the license plate example from the reading.</li>
-</ol>
-<ol style="list-style-type: lower-alpha">
-<li>What is the probability that a license plate contains <strong>exactly</strong> one “B”?</li>
-</ol>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="PROBRULES.html#cb79-1"></a><span class="co">#fourth spot</span></span>
-<span id="cb79-2"><a href="PROBRULES.html#cb79-2"></a>num4&lt;-<span class="dv">10</span><span class="op">*</span><span class="dv">10</span><span class="op">*</span><span class="dv">10</span><span class="op">*</span><span class="dv">1</span><span class="op">*</span><span class="dv">25</span><span class="op">*</span><span class="dv">25</span></span>
-<span id="cb79-3"><a href="PROBRULES.html#cb79-3"></a></span>
-<span id="cb79-4"><a href="PROBRULES.html#cb79-4"></a><span class="co">#fifth spot</span></span>
-<span id="cb79-5"><a href="PROBRULES.html#cb79-5"></a>num5&lt;-<span class="dv">10</span><span class="op">*</span><span class="dv">10</span><span class="op">*</span><span class="dv">10</span><span class="op">*</span><span class="dv">25</span><span class="op">*</span><span class="dv">1</span><span class="op">*</span><span class="dv">25</span></span>
-<span id="cb79-6"><a href="PROBRULES.html#cb79-6"></a></span>
-<span id="cb79-7"><a href="PROBRULES.html#cb79-7"></a><span class="co">#sixth spot</span></span>
-<span id="cb79-8"><a href="PROBRULES.html#cb79-8"></a>num6&lt;-<span class="dv">10</span><span class="op">*</span><span class="dv">10</span><span class="op">*</span><span class="dv">10</span><span class="op">*</span><span class="dv">25</span><span class="op">*</span><span class="dv">25</span><span class="op">*</span><span class="dv">1</span></span>
-<span id="cb79-9"><a href="PROBRULES.html#cb79-9"></a></span>
-<span id="cb79-10"><a href="PROBRULES.html#cb79-10"></a>denom&lt;-<span class="dv">10</span><span class="op">*</span><span class="dv">10</span><span class="op">*</span><span class="dv">10</span><span class="op">*</span><span class="dv">26</span><span class="op">*</span><span class="dv">26</span><span class="op">*</span><span class="dv">26</span></span>
-<span id="cb79-11"><a href="PROBRULES.html#cb79-11"></a></span>
-<span id="cb79-12"><a href="PROBRULES.html#cb79-12"></a>(num4<span class="op">+</span>num5<span class="op">+</span>num6)<span class="op">/</span>denom</span></code></pre></div>
-<pre><code>## [1] 0.1066796</code></pre>
-<ol start="2" style="list-style-type: lower-alpha">
-<li>What is the probability that a license plate contains <strong>at least one</strong> “B”?</li>
-</ol>
-<p><span class="math display">\[
-1-\mbox{P}(\mbox{no B&#39;s})
-\]</span></p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="PROBRULES.html#cb81-1"></a>num0&lt;-<span class="dv">10</span><span class="op">*</span><span class="dv">10</span><span class="op">*</span><span class="dv">10</span><span class="op">*</span><span class="dv">25</span><span class="op">*</span><span class="dv">25</span><span class="op">*</span><span class="dv">25</span></span>
-<span id="cb81-2"><a href="PROBRULES.html#cb81-2"></a><span class="dv">1</span><span class="op">-</span>num0<span class="op">/</span>denom</span></code></pre></div>
-<pre><code>## [1] 0.1110036</code></pre>
-</div>
-<div id="problem-6" class="section level3">
-<h3><span class="header-section-number">8.2.6</span> Problem 6</h3>
-<ol start="6" style="list-style-type: decimal">
-<li>Consider the party example in the reading.</li>
-</ol>
-<ol style="list-style-type: lower-alpha">
-<li>Suppose 8 people showed up to the party dressed as zombies. What is the probability that all three awards are won by people dressed as zombies?
+<li>Find <span class="math inline">\(\mbox{Cov}(X,Y)\)</span> and <span class="math inline">\(\rho\)</span>. Are <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> independent?
 <span class="math display">\[
-\frac{8\cdot 7 \cdot 6}{25\cdot 24 \cdot 23}
-\]</span></li>
-</ol>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="PROBRULES.html#cb83-1"></a>(<span class="dv">8</span><span class="op">*</span><span class="dv">7</span><span class="op">*</span><span class="dv">6</span>)<span class="op">/</span>(<span class="dv">25</span><span class="op">*</span><span class="dv">24</span><span class="op">*</span><span class="dv">23</span>)</span></code></pre></div>
-<pre><code>## [1] 0.02434783</code></pre>
-<ol start="2" style="list-style-type: lower-alpha">
-<li>What is the probability that zombies win “most creative” and “funniest” but not “scariest”?
-<span class="math display">\[
-\frac{8 \cdot 17 \cdot 7}{25 \cdot 24 \cdot 23}
-\]</span></li>
-</ol>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="PROBRULES.html#cb85-1"></a>(<span class="dv">8</span><span class="op">*</span><span class="dv">17</span><span class="op">*</span><span class="dv">7</span>)<span class="op">/</span>(<span class="dv">25</span><span class="op">*</span><span class="dv">24</span><span class="op">*</span><span class="dv">23</span>)</span></code></pre></div>
-<pre><code>## [1] 0.06898551</code></pre>
-</div>
-<div id="problem-7" class="section level3">
-<h3><span class="header-section-number">8.2.7</span> Problem 7</h3>
-<ol start="7" style="list-style-type: decimal">
-<li>Consider the cards example from the reading.</li>
-</ol>
-<ol style="list-style-type: lower-alpha">
-<li>How many ways can we obtain a “two pairs” (2 of one number, 2 of another, and the final different)?</li>
-</ol>
-<p>We have to pick the rank of the two pairs.</p>
-<p><span class="math display">\[\binom{13}{2}\]</span>
-Notice here the order does matter because a pair of Kings and 4s is the same as a pair of 4s and Kings. This is different from the full house example. Make sure you understand this point.</p>
-<p>Now we have to pick two of the fours cards for each rank</p>
-<p><span class="math display">\[\binom{4}{2}\binom{4}{2}\]</span></p>
-<p>And finally we need the last card to come from the 44 remaining cards so that we don’t get a full house.</p>
-<p><span class="math inline">\(\binom{44}{1}\)</span></p>
-<p>Putting it all together:</p>
-<p><span class="math inline">\(\binom{13}{2}\binom{4}{2}\binom{4}{2}\binom{44}{1}\)</span></p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="PROBRULES.html#cb87-1"></a><span class="kw">choose</span>(<span class="dv">13</span>,<span class="dv">2</span>)<span class="op">*</span><span class="kw">choose</span>(<span class="dv">4</span>,<span class="dv">2</span>)<span class="op">*</span><span class="kw">choose</span>(<span class="dv">4</span>,<span class="dv">2</span>)<span class="op">*</span><span class="kw">choose</span>(<span class="dv">44</span>,<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] 123552</code></pre>
-<ol start="2" style="list-style-type: lower-alpha">
-<li>What is the probability of drawing a “four of a kind” (four cards of the same value)?</li>
-</ol>
-<p><span class="math display">\[
-\mbox{P}(\mbox{4 of a kind})=\frac{\binom{13}{1}\binom{4}{4}\binom{48}{1}}{\binom{52}{5}}
-\]</span></p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="PROBRULES.html#cb89-1"></a>(<span class="dv">13</span><span class="op">*</span><span class="dv">1</span><span class="op">*</span><span class="dv">48</span>)<span class="op">/</span><span class="kw">choose</span>(<span class="dv">52</span>,<span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## [1] 0.000240096</code></pre>
-</div>
-<div id="problem-8" class="section level3">
-<h3><span class="header-section-number">8.2.8</span> Problem 8</h3>
-<ol start="8" style="list-style-type: decimal">
-<li>Advanced Question: Consider rolling 5 dice. What is the <strong>probability</strong> of a pour resulting in a full house?</li>
-</ol>
-<p>First pick the value for the three of a kind, there are 6. Then pick the value from the remaining 5 for the two of a kind. This is actually a permutation. There are 30 distinct “flavors” of full house (three 1’s &amp; two 2’s, three 1’s &amp; two 3’s, etc.). In the reading we did this as
-<span class="math display">\[
-\binom{6}{1} \times \binom{5}{1}
-\]</span>
-We now have the 5 dice. We have to select three to have the same value and the order doesn’t matter since they are the same value. Thus we multiple by <span class="math inline">\(\binom{5}{3}\)</span>. Divide this by the total distinct ways the dice could have landed (assuming order matters).
-<span class="math display">\[
-\mbox{P}(\mbox{full house}) = \frac{30 \times \frac{5!}{3!2!}}{6^5}
+\mbox{Cov}(X,Y)=\mbox{E}(XY)-\mbox{E}(X)\mbox{E}(Y)
 \]</span>
 <span class="math display">\[
-\mbox{P}(\mbox{full house}) = \frac{\binom{6}{1} \times \binom{5}{1} \times \binom{5}{3}}{6^5}
+\mbox{E}(XY)=\int_0^1\int_0^1 xy(x+y)\,\mathrm{d}y \,\mathrm{d}x = \int_0^1 \frac{x^2y^2}{2}+\frac{xy^3}{3}\bigg|_0^1 \,\mathrm{d}x = \int_0^1 \frac{x^2}{2}+\frac{x}{3}\,\mathrm{d}x
+\]</span>
+<span class="math display">\[
+=\frac{x^3}{6}+\frac{x^2}{6}\bigg|_0^1=\frac{1}{ 3}=0.333
+\]</span></li>
+</ol>
+<p>As a check:</p>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="MULTIEXP.html#cb290-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>(x) { x[<span class="dv">1</span>]<span class="op">*</span>x[<span class="dv">2</span>]<span class="op">*</span>(x[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>x[<span class="dv">2</span>]) } <span class="co"># &quot;x&quot; is vector</span></span>
+<span id="cb290-2"><a href="MULTIEXP.html#cb290-2"></a><span class="kw">round</span>(<span class="kw">adaptIntegrate</span>(f, <span class="dt">lowerLimit =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">upperLimit =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))<span class="op">$</span>integral,<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 0.333</code></pre>
+<p>So,
+<span class="math display">\[
+\mbox{Cov}(X,Y)=\frac{1}{3}-\left(\frac{7}{12}\right)^2=-0.007
 \]</span></p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="PROBRULES.html#cb91-1"></a><span class="dv">30</span><span class="op">*</span><span class="dv">10</span><span class="op">/</span>(<span class="dv">6</span><span class="op">^</span><span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## [1] 0.03858025</code></pre>
-<p>Simulating is tough so let’s write some code that may help.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="PROBRULES.html#cb93-1"></a><span class="kw">set.seed</span>(<span class="dv">23</span>)</span>
-<span id="cb93-2"><a href="PROBRULES.html#cb93-2"></a>temp&lt;-<span class="kw">table</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>,<span class="dt">size=</span><span class="dv">5</span>,<span class="dt">replace=</span><span class="ot">TRUE</span>))</span>
-<span id="cb93-3"><a href="PROBRULES.html#cb93-3"></a>temp</span></code></pre></div>
-<pre><code>## 
-## 1 3 4 5 
-## 1 2 1 1</code></pre>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="PROBRULES.html#cb95-1"></a><span class="kw">sum</span>(temp<span class="op">==</span><span class="dv">2</span>) <span class="op">&amp;</span><span class="st"> </span><span class="kw">sum</span>(temp<span class="op">==</span><span class="dv">3</span>)</span></code></pre></div>
-<pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="PROBRULES.html#cb97-1"></a>temp&lt;-<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span>
-<span id="cb97-2"><a href="PROBRULES.html#cb97-2"></a>temp&lt;-<span class="kw">table</span>(temp)</span>
-<span id="cb97-3"><a href="PROBRULES.html#cb97-3"></a>temp</span></code></pre></div>
-<pre><code>## temp
-## 1 2 
-## 3 2</code></pre>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="PROBRULES.html#cb99-1"></a><span class="kw">sum</span>(temp<span class="op">==</span><span class="dv">2</span>) <span class="op">&amp;</span><span class="st"> </span><span class="kw">sum</span>(temp<span class="op">==</span><span class="dv">3</span>)</span></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-<p>Let’s write a function.</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="PROBRULES.html#cb101-1"></a>full_house &lt;-<span class="cf">function</span>(x){</span>
-<span id="cb101-2"><a href="PROBRULES.html#cb101-2"></a>  temp&lt;-<span class="kw">table</span>(x)</span>
-<span id="cb101-3"><a href="PROBRULES.html#cb101-3"></a>  <span class="kw">sum</span>(temp<span class="op">==</span><span class="dv">2</span>) <span class="op">&amp;</span><span class="st"> </span><span class="kw">sum</span>(temp<span class="op">==</span><span class="dv">3</span>)</span>
-<span id="cb101-4"><a href="PROBRULES.html#cb101-4"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="PROBRULES.html#cb102-1"></a>temp&lt;-<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span>
-<span id="cb102-2"><a href="PROBRULES.html#cb102-2"></a><span class="kw">full_house</span>(temp)</span></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="PROBRULES.html#cb104-1"></a><span class="kw">set.seed</span>(<span class="dv">751</span>)</span>
-<span id="cb104-2"><a href="PROBRULES.html#cb104-2"></a>results&lt;-<span class="kw">do</span>(<span class="dv">10000</span>)<span class="op">*</span><span class="kw">full_house</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>,<span class="dt">size=</span><span class="dv">5</span>,<span class="dt">replace=</span><span class="ot">TRUE</span>))</span>
-<span id="cb104-3"><a href="PROBRULES.html#cb104-3"></a><span class="kw">mean</span>(<span class="op">~</span>full_house,<span class="dt">data=</span>results)</span></code></pre></div>
-<pre><code>## [1] 0.039</code></pre>
+<p><span class="math display">\[
+\rho=\frac{\mbox{Cov}(X,Y)}{\sqrt{\mbox{Var}(X)\mbox{Var}(Y)}}=\frac{-0.007}{\sqrt{0.076\times0.076}}=-0.0909
+\]</span></p>
+<p>As a check:</p>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="MULTIEXP.html#cb292-1"></a><span class="fl">-0.007</span><span class="op">/</span><span class="kw">sqrt</span>(.<span class="dv">076</span><span class="op">^</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] -0.09210526</code></pre>
+<p>Using exact values:</p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="MULTIEXP.html#cb294-1"></a>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span><span class="op">-</span>(<span class="dv">7</span><span class="op">/</span><span class="dv">12</span>)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="kw">sqrt</span>((<span class="dv">5</span><span class="op">/</span><span class="dv">12</span><span class="op">-</span>(<span class="dv">7</span><span class="op">/</span><span class="dv">12</span>)<span class="op">^</span><span class="dv">2</span>)<span class="op">^</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] -0.09090909</code></pre>
+<p>With a non-zero covariance, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are not independent.</p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Find <span class="math inline">\(\mbox{Var}(3X+2Y)\)</span>.
+<span class="math display">\[
+\mbox{Var}(3X+2Y)=\mbox{Var}(3X)+\mbox{Var}(2Y)+2\mbox{Cov}(3X,2Y)=
+\]</span>
+<span class="math display">\[
+9\mbox{Var}(X)+4\mbox{Var}(Y)+12\mbox{Cov}(X,Y) =
+\]</span>
+<span class="math display">\[
+9*0.076+4*0.076+12*-0.007 = 0.910
+\]</span></li>
+</ol>
+</div>
+<div id="problem-2-14" class="section level3">
+<h3><span class="header-section-number">15.2.2</span> Problem 2</h3>
+<p>2. Optional - not difficult but does have small Calc III idea. Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be continuous random variables with joint pmf:
+<span class="math display">\[
+f_{X,Y}(x,y)=1
+\]</span></p>
+<p>where <span class="math inline">\(0 \leq x \leq 1\)</span> and <span class="math inline">\(0 \leq y \leq 2x\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Find <span class="math inline">\(\mbox{E}(X)\)</span> and <span class="math inline">\(\mbox{E}(Y)\)</span>.
+<span class="math display">\[
+\mbox{E}(X)=\int_0^1 x\cdot 2x\,\mathrm{d}x = \frac{2x^3}{3}\bigg|_0^1=0.667
+\]</span></li>
+</ol>
+<p><span class="math display">\[
+\mbox{E}(Y)=\int_0^2 y\left(1-\frac{y}{2}\right)\,\mathrm{d}y = \frac{y^2}{2}-\frac{y^3}{6}\bigg|_0^2=2-\frac{8}{ 6}=0.667
+\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Find <span class="math inline">\(\mbox{Var}(X)\)</span> and <span class="math inline">\(\mbox{Var}(Y)\)</span>.
+<span class="math display">\[
+\mbox{E}(X^2)=\int_0^1 x^2\cdot 2x\,\mathrm{d}x = \frac{x^4}{2}\bigg|_0^1=0.5
+\]</span></li>
+</ol>
+<p>So, <span class="math inline">\(\mbox{Var}(X)=0.5-\left(\frac{2}{3}\right)^2=\frac{1}{ 18}=0.056\)</span></p>
+<p><span class="math display">\[
+\mbox{E}(Y^2)=\int_0^2 y^2\left(1-\frac{y}{2}\right)\,\mathrm{d}y = \frac{y^3}{3}-\frac{y^4}{8}\bigg|_0^2=\frac{8}{ 3}-2=0.667
+\]</span></p>
+<p>So, <span class="math inline">\(\mbox{Var}(Y)=\frac{2}{ 3}-\left(\frac{2}{3}\right)^2=\frac{2}{9}=0.222\)</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Find <span class="math inline">\(\mbox{Cov}(X,Y)\)</span> and <span class="math inline">\(\rho\)</span>. Are <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> independent?</li>
+</ol>
+<p><span class="math display">\[
+\mbox{E}(XY)=\int_0^1\int_0^{2x} xy\,\mathrm{d}y \,\mathrm{d}x = \int_0^1 \frac{xy^2}{2}\bigg|_0^{2x}\,\mathrm{d}x = \int_0^1 2x^3\,\mathrm{d}x = \frac{x^4}{2}\bigg|_0^1=\frac{1}{2}
+\]</span></p>
+<p>So,
+<span class="math display">\[
+\mbox{Cov}(X,Y)=\frac{1}{2}-\frac{2}{3}\frac{2}{3}=\frac{1}{18}=0.056
+\]</span></p>
+<p><span class="math display">\[
+\rho=\frac{\mbox{Cov}(X,Y)}{ \sqrt{\mbox{Var}(X)\mbox{Var}(Y)}}=\frac{\frac{1}{ 18}}{\sqrt{\frac{1}{18}\frac{2}{9}}}=0.5
+\]</span></p>
+<p><span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> appear to be positively correlated (thus not independent).</p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Find <span class="math inline">\(\mbox{Var}\left(\frac{X}{2}+2Y\right)\)</span>.
+<span class="math display">\[
+\mbox{Var}\left(\frac{X}{2}+2Y\right) = \frac{1}{ 4}\mbox{Var}(X)+4\mbox{Var}(Y)+2\mbox{Cov}(X,Y)=\frac{1}{72}+\frac{8}{ 9}+\frac{1}{9}=1.014
+\]</span></li>
+</ol>
+</div>
+<div id="problem-3-10" class="section level3">
+<h3><span class="header-section-number">15.2.3</span> Problem 3</h3>
+<p>3. Suppose <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are <em>independent</em> random variables. Show that <span class="math inline">\(\mbox{E}(XY)=\mbox{E}(X)\mbox{E}(Y)\)</span>.</p>
+<p>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then <span class="math inline">\(\mbox{Cov}(X,Y)=0\)</span>. So,
+<span class="math display">\[
+\mbox{Cov}(X,Y)=\mbox{E}(XY)-\mbox{E}(X)\mbox{E}(Y)=0
+\]</span></p>
+<p>Thus,
+<span class="math display">\[
+\mbox{E}(XY)=\mbox{E}(X)\mbox{E}(Y)
+\]</span></p>
+</div>
+<div id="problem-4-6" class="section level3">
+<h3><span class="header-section-number">15.2.4</span> Problem 4</h3>
+<p>4. You are playing a game with a friend. Each of you roll a fair sided die and record the result.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Write the joint probability mass function.</li>
+</ol>
+<p>Let <span class="math inline">\(X\)</span> be the number on your die and <span class="math inline">\(Y\)</span> be the number on your friend’s die.</p>
+<p><span class="math display">\[
+\begin{array}{cc|ccc} &amp; &amp; &amp;\textbf{X} &amp; \\ 
+&amp; &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\
+&amp;\hline  1 &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} \\
+ &amp; 2 &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} \\
+\textbf{Y}&amp; 3 &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} \\
+&amp; 4 &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} \\
+&amp; 5 &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} \\
+&amp; 6 &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36} &amp; \frac{1}{36}  \\
+\end{array} 
+\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Find the expected value of the product of your score and your friend’s score.</li>
+</ol>
+<p>To find <span class="math inline">\(E[XY]\)</span>, we determine all 36 values of the product of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> and multiply by the associated probabilities. Since the probabilities are all equal, we will take the <span class="math inline">\(\frac{1}{36}\)</span> out of the summation. Now</p>
+<p><span class="math display">\[E[XY]=\frac{1}{36}(1+2+3+4+5+6+2+4+\]</span>
+<span class="math display">\[6+8+10+12+3+6+9+12+15+18+4+8+12+16+20+24+\]</span>
+<span class="math display">\[5+10+15+20+25+30+6+12+18+24+30+36)\]</span>
+<span class="math display">\[=12.25\]</span></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Verify the previous part using simulation.</li>
+</ol>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="MULTIEXP.html#cb296-1"></a><span class="kw">set.seed</span>(<span class="dv">1012</span>)</span>
+<span id="cb296-2"><a href="MULTIEXP.html#cb296-2"></a>(<span class="kw">do</span>(<span class="dv">100000</span>)<span class="op">*</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>,<span class="dt">size=</span><span class="dv">2</span>,<span class="dt">replace=</span><span class="ot">TRUE</span>))) <span class="op">%&gt;%</span></span>
+<span id="cb296-3"><a href="MULTIEXP.html#cb296-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prod=</span>V1<span class="op">*</span>V2) <span class="op">%&gt;%</span></span>
+<span id="cb296-4"><a href="MULTIEXP.html#cb296-4"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">Expec=</span><span class="kw">mean</span>(prod))</span></code></pre></div>
+<pre><code>##      Expec
+## 1 12.25016</code></pre>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Using simulation, find the expected value of the maximum number on the two roles.</li>
+</ol>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="MULTIEXP.html#cb298-1"></a>(<span class="kw">do</span>(<span class="dv">100000</span>)<span class="op">*</span><span class="kw">max</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>,<span class="dt">size=</span><span class="dv">2</span>,<span class="dt">replace=</span><span class="ot">TRUE</span>))) <span class="op">%&gt;%</span></span>
+<span id="cb298-2"><a href="MULTIEXP.html#cb298-2"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">Expec=</span><span class="kw">mean</span>(max))</span></code></pre></div>
+<pre><code>##    Expec
+## 1 4.4737</code></pre>
+</div>
+<div id="problem-5-4" class="section level3">
+<h3><span class="header-section-number">15.2.5</span> Problem 5</h3>
+<p>5. A miner is trapped in a mine containing three doors. The first door leads to a tunnel that takes him to safety after two hours of travel. The second door leads to a tunnel that returns him to the mine after three hours of travel. The third door leads to a tunnel that returns him to his mine after five hours. Assuming that the miner is at all times equally likely to choose any one of the doors, yes a bad assumption but it makes for a nice problem, what is the expected length of time until the miner reaches safety?</p>
+<p>Simulating this is a little more challenging because we need a conditional but we try it first before going to the mathematical solution.</p>
+<p>Let’s write a function that takes a vector and returns the sum of the values up to the first time the number 2 appears, we are using the time values as our sample space. Anytime you are repeating something more than 5 times, it might make sense to write a function.</p>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="MULTIEXP.html#cb300-1"></a>miner_time &lt;-<span class="st"> </span><span class="cf">function</span>(x){</span>
+<span id="cb300-2"><a href="MULTIEXP.html#cb300-2"></a>  index &lt;-<span class="st"> </span><span class="kw">which</span>(x<span class="op">==</span><span class="dv">2</span>)[<span class="dv">1</span>]</span>
+<span id="cb300-3"><a href="MULTIEXP.html#cb300-3"></a>  total&lt;-<span class="kw">cumsum</span>(x)</span>
+<span id="cb300-4"><a href="MULTIEXP.html#cb300-4"></a>  <span class="kw">return</span>(total[index])</span>
+<span id="cb300-5"><a href="MULTIEXP.html#cb300-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="MULTIEXP.html#cb301-1"></a><span class="kw">set.seed</span>(<span class="dv">113</span>)</span>
+<span id="cb301-2"><a href="MULTIEXP.html#cb301-2"></a>(<span class="kw">do</span>(<span class="dv">10000</span>)<span class="op">*</span><span class="kw">miner_time</span>(<span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>),<span class="dt">size=</span><span class="dv">20</span>,<span class="dt">replace=</span><span class="ot">TRUE</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb301-3"><a href="MULTIEXP.html#cb301-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Exp=</span><span class="kw">mean</span>(miner_time))</span></code></pre></div>
+<pre><code>##       Exp
+## 1 10.0092</code></pre>
+<p>Now let’s find it mathematically.</p>
+<p>Let <span class="math inline">\(X\)</span> be the time it takes and <span class="math inline">\(Y\)</span> the door. Then we have</p>
+<p><span class="math display">\[E[X] = E[E[X|Y]] \]</span>
+<span class="math display">\[ = \frac{1}{3}E[X|Y=1]+\frac{1}{3}E[X|Y=2]+\frac{1}{3}E[X|Y=3]\]</span>
+Now if door 2 is selected
+<span class="math display">\[E[X|Y=2]=E[X]+3\]</span>
+since the miner will travel for 3 hours and then be back at the starting point.</p>
+<p>Likewise if door 3 is select
+<span class="math display">\[E[X|Y=2]=E[X]+5\]</span>
+So
+<span class="math display">\[ E[x]= \frac{1}{3}2+\frac{1}{3}\left( E[X]+3 \right)+\frac{1}{3}\left( E[X]+5 \right)\]</span></p>
+<p><span class="math display">\[E[x] -  \frac{2}{3}E[X] = \frac{2}{3}+\frac{3}{3}+\frac{5}{3}\]</span>
+<span class="math display">\[\frac{1}{3}E[X]=\frac{10}{3}\]</span></p>
+<p><span class="math display">\[E[X]=10\]</span></p>
+</div>
+<div id="problem-6-3" class="section level3">
+<h3><span class="header-section-number">15.2.6</span> Problem 6</h3>
+<p>6. ADVANCED: Let <span class="math inline">\(X_1,X_2,...,X_n\)</span> be independent, identically distributed random variables. (This is often abbreviated as “iid”). Each <span class="math inline">\(X_i\)</span> has mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span> (i.e., for all <span class="math inline">\(i\)</span>, <span class="math inline">\(\mbox{E}(X_i)=\mu\)</span> and <span class="math inline">\(\mbox{Var}(X_i)=\sigma^2\)</span>).</p>
+<p>Let <span class="math inline">\(S=X_1+X_2+...+X_n=\sum_{i=1}^n X_i\)</span>. And let <span class="math inline">\(\bar{X}={\sum_{i=1}^n \frac{X_i}{n}}\)</span>.</p>
+<p>Find <span class="math inline">\(\mbox{E}(S)\)</span>, <span class="math inline">\(\mbox{Var}(S)\)</span>, <span class="math inline">\(\mbox{E}(\bar{X})\)</span> and <span class="math inline">\(\mbox{Var}(\bar{X})\)</span>.
+<span class="math display">\[
+\mbox{E}(S)=\mbox{E}(X_1+X_2+...+X_n)=\mbox{E}(X_1)+\mbox{E}(X_2)+...+\mbox{E}(X_n)=\mu+\mu+...+\mu=n\mu
+\]</span></p>
+<p>Since the <span class="math inline">\(X_i\)</span>s are all independent:
+<span class="math display">\[
+\mbox{Var}(S)=\mbox{Var}(X_1+X_2+...+X_n)=\mbox{Var}(X_1)+\mbox{Var}(X_2)+...+\mbox{Var}(X_n)=n\sigma^2
+\]</span></p>
+<p><span class="math display">\[
+\mbox{E}(\bar{X})=\frac{1}{n}\mbox{E}(X_1+X_2+...+X_n)=\frac{1}{n}n\mu=\mu
+\]</span>
+<span class="math display">\[
+\mbox{Var}(\bar{X})=\frac{1}{n^2}\mbox{Var}(X_1+X_2+...+X_n)=\frac{1}{n^2}n\sigma^2=\frac{\sigma^2}{n}
+\]</span></p>
 
 </div>
 </div>
@@ -586,8 +599,8 @@ We now have the 5 dice. We have to select three to have the same value and the o
           </div>
         </div>
       </div>
-<a href="CS2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="CONDPROB.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="MULTIDISTS.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="TRANS.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
