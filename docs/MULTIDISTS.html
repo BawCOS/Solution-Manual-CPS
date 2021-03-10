@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Studies | Solutions for Computational Probability and Statistics</title>
+  <title>Chapter 14 Multivariate Distributions | Solutions for Computational Probability and Statistics</title>
   <meta name="description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Studies | Solutions for Computational Probability and Statistics" />
+  <meta property="og:title" content="Chapter 14 Multivariate Distributions | Solutions for Computational Probability and Statistics" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="figures/CoverSol2.png" />
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Studies | Solutions for Computational Probability and Statistics" />
+  <meta name="twitter:title" content="Chapter 14 Multivariate Distributions | Solutions for Computational Probability and Statistics" />
   
   <meta name="twitter:description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
   <meta name="twitter:image" content="figures/CoverSol2.png" />
@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="ODCP.html"/>
-<link rel="next" href="NUMDATA.html"/>
+<link rel="prev" href="CONTNNAMED.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -288,128 +288,275 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="STUDY" class="section level1">
-<h1><span class="header-section-number">Chapter 4</span> Studies</h1>
-<div id="objectives-3" class="section level2">
-<h2><span class="header-section-number">4.1</span> Objectives</h2>
+<div id="MULTIDISTS" class="section level1">
+<h1><span class="header-section-number">Chapter 14</span> Multivariate Distributions</h1>
+
+<div id="objectives-13" class="section level2">
+<h2><span class="header-section-number">14.1</span> Objectives</h2>
 <ol style="list-style-type: decimal">
-<li>Define and use properly in context all new terminology.<br />
+<li>Define (and distinguish between) the terms joint probability mass/density function, marginal pmf/pdf, and conditional pmf/pdf.<br />
 </li>
-<li>Given a study description, be able to identify and explain the study using correct terms.<br />
+<li>Given a joint pmf/pdf, obtain the marginal and conditional pmfs/pdfs.<br />
 </li>
-<li>Given a scenario, describe flaws in reasoning and propose study and sampling designs.</li>
+<li>Use joint, marginal and conditional pmfs/pdfs to obtain probabilities.</li>
 </ol>
 </div>
-<div id="homework-3" class="section level2">
-<h2><span class="header-section-number">4.2</span> Homework</h2>
-<div id="problem-1-3" class="section level3">
-<h3><span class="header-section-number">4.2.1</span> Problem 1</h3>
-<ol style="list-style-type: decimal">
-<li><strong>Propose a sampling strategy</strong>. A large college class has 160 students. All 160 students attend the lectures together, but the students are divided into 4 groups, each of 40 students, for lab sections administered by different teaching assistants. The professor wants to conduct a survey about how satisfied the students are with the course, and he believes that the lab section a student is in might affect the student’s overall satisfaction with the course.</li>
-</ol>
+<div id="homework-13" class="section level2">
+<h2><span class="header-section-number">14.2</span> Homework</h2>
+<div id="problem-1-13" class="section level3">
+<h3><span class="header-section-number">14.2.1</span> Problem 1</h3>
+<p>1. Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be continuous random variables with joint pmf:
+<span class="math display">\[
+f_{X,Y}(x,y)=x + y
+\]</span></p>
+<p>where <span class="math inline">\(0 \leq x \leq 1\)</span> and <span class="math inline">\(0 \leq y \leq 1\)</span>.</p>
 <ol style="list-style-type: lower-alpha">
-<li>What type of study is this? Observational study.</li>
-<li>Suggest a sampling strategy for carrying out this study. Stratified sample, sample randomly within each section.</li>
+<li>Verify that <span class="math inline">\(f\)</span> is a valid pdf.
+<span class="math display">\[
+\int_0^1\int_0^1 x+y\,\mathrm{d}y \,\mathrm{d}x = \int_0^1 xy + \frac{y^2}{2}\bigg|_0^1 \,\mathrm{d}x = \int_0^1 x+\frac{1}{2}\,\mathrm{d}x = \frac{x^2}{2}+\frac{x}{2}\bigg|_0^1=1
+\]</span></li>
 </ol>
-</div>
-<div id="problem-2-3" class="section level3">
-<h3><span class="header-section-number">4.2.2</span> Problem 2</h3>
-<ol start="2" style="list-style-type: decimal">
-<li><strong>Flawed reasoning</strong>. Identify the flaw in reasoning in the following scenarios. Explain what the individuals in the study should have done differently if they wanted to make such strong conclusions.</li>
-</ol>
-<ol style="list-style-type: lower-alpha">
-<li>Students at an elementary school are given a questionnaire that they are required to return after their parents have completed it. One of the questions asked is, <em>Do you find that your work schedule makes it difficult for you to spend time with your kids after school?</em> Of the parents who replied, 85% said <em>no</em>. Based on these results, the school officials conclude that a great majority of the parents have no difficulty spending time with their kids after school.</li>
-</ol>
-<blockquote>
-<p>Solution<br />
-Non-responders may have a different response to this question. The parents who returned the surveys are probably those who do not have difficulty spending time with their kids after school. Parents who work might not have returned the surveys since they probably have a busier schedule.</p>
-</blockquote>
+<p>Or</p>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="MULTIDISTS.html#cb274-1"></a><span class="kw">library</span>(cubature) <span class="co"># load the package &quot;cubature&quot;</span></span>
+<span id="cb274-2"><a href="MULTIDISTS.html#cb274-2"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>(x) { (x[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>x[<span class="dv">2</span>]) } <span class="co"># &quot;x&quot; is vector</span></span>
+<span id="cb274-3"><a href="MULTIDISTS.html#cb274-3"></a><span class="kw">adaptIntegrate</span>(f, <span class="dt">lowerLimit =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">upperLimit =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
+<pre><code>## $integral
+## [1] 1
+## 
+## $error
+## [1] 0
+## 
+## $functionEvaluations
+## [1] 17
+## 
+## $returnCode
+## [1] 0</code></pre>
 <ol start="2" style="list-style-type: lower-alpha">
-<li>A survey is conducted on a simple random sample of 1,000 women who recently gave birth, asking them about whether or not they smoked during pregnancy. A follow-up survey asking if the children have respiratory problems is conducted 3 years later, however, only 567 of these women are reached at the same address. The researcher reports that these 567 women are representative of all mothers.</li>
+<li>Find the marginal pdfs of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.
+<span class="math display">\[
+f_X(x)=\int_0^1 x+y\,\mathrm{d}y = xy + \frac{y^2}{2}\bigg|_0^1 =  x+\frac{1}{2}
+\]</span>
+where <span class="math inline">\(0\leq x \leq 1\)</span>.</li>
 </ol>
-<blockquote>
-<p>Solution<br />
-It is unlikely that the women who were reached at the same address 3 years later are a random sample. These missing responders are probably renters (as opposed to homeowners) which means that they might be in a lower socio-economic status than the respondents.</p>
-</blockquote>
-<div style="page-break-after: always;"></div>
+<p>Similarly, <span class="math inline">\(f_Y(y)=y+\frac{1}{2}\)</span> for <span class="math inline">\(0 \leq y \leq 1\)</span>.</p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Find the conditional pdfs of <span class="math inline">\(X|Y=y\)</span> and <span class="math inline">\(Y|X=x\)</span>.
+<span class="math display">\[
+f_{X|Y=y}(x)=\frac{x+y}{y+\frac{1}{2}}
+\]</span>
+where <span class="math inline">\(0\leq x \leq 1\)</span>.</li>
+</ol>
+<p>Similarly, <span class="math inline">\(f_{Y|X=x}(y)=\frac{x+y}{x+\frac{1}{2}}\)</span> for <span class="math inline">\(0\leq y \leq 1\)</span>.</p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Find the following probabilities: <span class="math inline">\(\mbox{P}(X&lt;0.5)\)</span>; <span class="math inline">\(\mbox{P}(Y&gt;0.8)\)</span>; <span class="math inline">\(\mbox{P}(X&lt;0.2,Y\geq 0.75)\)</span>; <span class="math inline">\(\mbox{P}(X&lt;0.2|Y\geq 0.75)\)</span>; <span class="math inline">\(\mbox{P}(X&lt;0.2|Y= 0.25)\)</span>; Optional - <span class="math inline">\(\mbox{P}(X\leq Y)\)</span>.</li>
+</ol>
+<p><span class="math display">\[
+\mbox{P}(X&lt;0.5)=\int_0^{0.5} x+\frac{1}{2}\,\mathrm{d}x = \frac{x^2}{2}+\frac{x}{2}\bigg|_0^{0.5}=0.375
+\]</span></p>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="MULTIDISTS.html#cb276-1"></a><span class="kw">integrate</span>(<span class="cf">function</span>(x)(x<span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>),<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## 0.375 with absolute error &lt; 4.2e-15</code></pre>
+<p>Or using multivariate integration, integrate out <span class="math inline">\(y\)</span>.</p>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="MULTIDISTS.html#cb278-1"></a><span class="kw">adaptIntegrate</span>(f, <span class="dt">lowerLimit =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">upperLimit =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>))</span></code></pre></div>
+<pre><code>## $integral
+## [1] 0.375
+## 
+## $error
+## [1] 5.551115e-17
+## 
+## $functionEvaluations
+## [1] 17
+## 
+## $returnCode
+## [1] 0</code></pre>
+<p><span class="math display">\[
+\mbox{P}(Y&lt;0.8)=\int_{0.8}^1 y+\frac{1}{2}\,\mathrm{d}y = \frac{y^2}{2}+\frac{y}{2}\bigg|_{0.8}^1=1-0.72=0.28
+\]</span></p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="MULTIDISTS.html#cb280-1"></a><span class="kw">adaptIntegrate</span>(f, <span class="dt">lowerLimit =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">0.8</span>), <span class="dt">upperLimit =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
+<pre><code>## $integral
+## [1] 0.28
+## 
+## $error
+## [1] 5.551115e-17
+## 
+## $functionEvaluations
+## [1] 17
+## 
+## $returnCode
+## [1] 0</code></pre>
+<p><span class="math display">\[
+\mbox{P}(X&lt;0.2,Y\geq 0.75)=\int_0^{0.2}\int_{0.75}^1 x+y\,\mathrm{d}y \,\mathrm{d}x= \int_0^{0.2} xy+\frac{y^2}{2}\bigg|_{0.75}^1\,\mathrm{d}x 
+\]</span>
+<span class="math display">\[
+=\int_0^{0.2} x+\frac{1}{2}-\frac{3x}{4}-\frac{9}{32}\,\mathrm{d}x = \int_0^{0.2} \frac{x}{4}+\frac{7}{32}\,\mathrm{d}x = \frac{x^2}{8}+\frac{7x}{32}\bigg|_0^{0.2}=0.04875
+\]</span></p>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="MULTIDISTS.html#cb282-1"></a><span class="kw">adaptIntegrate</span>(f, <span class="dt">lowerLimit =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">0.75</span>), <span class="dt">upperLimit =</span> <span class="kw">c</span>(<span class="fl">0.2</span>, <span class="dv">1</span>))</span></code></pre></div>
+<pre><code>## $integral
+## [1] 0.04875
+## 
+## $error
+## [1] 0
+## 
+## $functionEvaluations
+## [1] 17
+## 
+## $returnCode
+## [1] 0</code></pre>
+<p><span class="math display">\[
+\mbox{P}(X&lt;0.2|Y\geq 0.75)=\frac{\mbox{P}(X&lt;0.2,Y\geq 0.75)}{\mbox{P}(Y\geq 0.75)}=\frac{0.04875}{\int_{0.75}^1 y+\frac{1}{2}\,\mathrm{d}y}=\frac{0.04875}{0.34375} \approx 0.142
+\]</span></p>
+<p>For
+<span class="math display">\[
+\mbox{P}(X&lt;0.2|Y= 0.25) 
+\]</span>
+we need</p>
+<p><span class="math display">\[
+f_{X|Y=.25}(x)=\frac{x+y}{y+\frac{1}{2}}\bigg|_{y=0.25}=\frac{x+.25}{.25+\frac{1}{2}}=\frac{x+.25}{.75}=\frac{4x+1}{3}
+\]</span></p>
+<p><span class="math display">\[
+\mbox{P}(X&lt;0.2|Y= 0.25) =  \int_{0}^{0.2} \frac{4x+1}{3} \,\mathrm{d}x
+\]</span>
+<span class="math display">\[
+=\frac{1}{3}\left( 2x^2 +x \right) \bigg|_0^{0.2} = \frac{1}{3}\left( 2\cdot0.2^2 +0.2 \right) \approx 0.0933
+\]</span></p>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="MULTIDISTS.html#cb284-1"></a>f2 &lt;-<span class="st"> </span><span class="cf">function</span>(x) { (<span class="dv">4</span><span class="op">*</span>x[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)<span class="op">/</span><span class="dv">3</span> } <span class="co"># &quot;x&quot; is vector</span></span>
+<span id="cb284-2"><a href="MULTIDISTS.html#cb284-2"></a><span class="kw">adaptIntegrate</span>(f2, <span class="dt">lowerLimit =</span> <span class="kw">c</span>(<span class="dv">0</span>), <span class="dt">upperLimit =</span> <span class="kw">c</span>(<span class="fl">0.2</span>))</span></code></pre></div>
+<pre><code>## $integral
+## [1] 0.09333333
+## 
+## $error
+## [1] 1.036208e-15
+## 
+## $functionEvaluations
+## [1] 15
+## 
+## $returnCode
+## [1] 0</code></pre>
+<p>Optional</p>
+<p><span class="math display">\[
+\mbox{P}(X\leq Y)=\int_0^1\int_0^y x+y \,\mathrm{d}x \,\mathrm{d}y = \int_0^1 xy+\frac{x^2}{2}\bigg|_0^y \,\mathrm{d}x = \int_0^1 \frac{3y^2}{2}\,\mathrm{d}y = \frac{y^3}{2}\bigg|_0^1 = \frac{1}{2}
+\]</span></p>
 </div>
-<div id="problem-3-1" class="section level3">
-<h3><span class="header-section-number">4.2.3</span> Problem 3</h3>
-<ol start="3" style="list-style-type: decimal">
-<li><strong>Sampling strategies</strong>. A Math 377 student who is curious about the relationship between the amount of time students spend on social networking sites and their performance at school decides to conduct a survey. Four research strategies for collecting data are described below. In each, name the sampling method proposed and any bias you might expect.</li>
-</ol>
-<ol style="list-style-type: lower-alpha">
-<li>He randomly samples 40 students from the study’s population, gives them the survey, asks them to fill it out and bring it back the next day.<br />
-</li>
-<li>He gives out the survey only to his friends, and makes sure each one of them fills out the survey.<br />
-</li>
-<li>He posts a link to an online survey on his Facebook wall and asks his friends to fill out the survey.<br />
-</li>
-<li>He stands outside the QRC and asks every third person that walks out the door to fill out the survey.</li>
-</ol>
-<blockquote>
-<p>Solution<br />
-a. Simple random sample. Non-response bias, if only those people who have strong opinions about the survey responds his sample may not be representative of the population.<br />
-b. Convenience sample. Under coverage bias, his sample may not be representative of the population since it consists only of his friends. It is also possible that the study will have non-response bias if some choose to not bring back the survey.<br />
-c. Convenience sample. This will have a similar issues to handing out surveys to friends.<br />
-d. Convenience sample. Same.</p>
-</blockquote>
-<div style="page-break-after: always;"></div>
+<div id="problem-2-13" class="section level3">
+<h3><span class="header-section-number">14.2.2</span> Problem 2</h3>
+<p>2. In the Notes, we saw an example where <span class="math inline">\(f_X(x)=f_{X|Y=y}(x)\)</span> and <span class="math inline">\(f_Y(y)=f_{Y|X=x}(y)\)</span>. This is not common and is important. What does this imply about <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>?</p>
+<p>Since the conditional density function is always equal to the marginal, it means that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent of one another. Also, if the conditioning variable does not appear in the conditional density function and the domain of the joint density is rectangular, the bounds of the two variables are constants, the random variables are independent. The variables in the previous problem are dependent, look at the conditional density functions to see that the conditional density depends on the conditioned variable.</p>
 </div>
-<div id="problem-4" class="section level3">
-<h3><span class="header-section-number">4.2.4</span> Problem 4</h3>
-<ol start="4" style="list-style-type: decimal">
-<li><strong>Vitamin supplements</strong>. In order to assess the effectiveness of taking large doses of vitamin C in reducing the duration of the common cold, researchers recruited 400 healthy volunteers from staff and students at a university. A quarter of the patients were assigned a placebo, and the rest were evenly divided between 1g Vitamin C, 3g Vitamin C, or 3g Vitamin C plus additives to be taken at onset of a cold for the following two days. All tablets had identical appearance and packaging. The nurses who handed the prescribed pills to the patients knew which patient received which treatment, but the researchers assessing the patients when they were sick did not. No significant differences were observed in any measure of cold duration or severity between the four medication groups, and the placebo group had the shortest duration of symptoms.</li>
-</ol>
+<div id="problem-3-9" class="section level3">
+<h3><span class="header-section-number">14.2.3</span> Problem 3</h3>
+<p>3. ADVANCED: Recall on an earlier assignment, we came up with random variables to describe timeliness at an airport. Suppose over the course of 210 days, on each day we recorded the number of customer complaints regarding timeliness. Also on each day, we recorded the weather (our airport is located somewhere without snow and without substantial wind). The data are displayed below.</p>
+<p><span class="math display">\[
+\begin{array}{cc|ccc} &amp; &amp; &amp;\textbf{Weather Status} &amp;
+\\ &amp; &amp; \mbox{Clear} &amp; \mbox{Light Rain} &amp; \mbox{Rain}  \\
+&amp;\hline 0 &amp; 28 &amp; 11 &amp; 4  \\
+\textbf{num complaints} &amp; 1 &amp; 18 &amp; 15 &amp; 8 \\
+&amp; 2 &amp; 17 &amp; 25 &amp; 12  \\
+&amp; 3 &amp; 13 &amp; 15 &amp; 16  \\
+&amp; 4 &amp; 8 &amp; 8 &amp; 10 \\
+&amp; 5 &amp; 0 &amp; 1 &amp; 1 \\
+\end{array} 
+\]</span></p>
+<p>First, define two random variables for this scenario. One of them (# of complaints) is essentially already a random variable. For the other (weather status) you will need to assign a number to each status.</p>
 <ol style="list-style-type: lower-alpha">
-<li>Was this an experiment or an observational study? Why?<br />
-</li>
-<li>What are the explanatory and response variables in this study?<br />
-</li>
-<li>Were the patients blinded to their treatment?<br />
-</li>
-<li>Was this study double-blind?<br />
-</li>
-<li>Participants are ultimately able to choose whether or not to use the pills prescribed to them. We might expect that not all of them will adhere and take their pills. Does this introduce a confounding variable to the study? Explain your reasoning.</li>
+<li>Use the table above to build an empirical joint pmf of the two random variables.</li>
 </ol>
-<blockquote>
-<p>Solution<br />
-a. Experiment, since the researchers randomly assigned different treatments to the participants.<br />
-b. Response variable: Duration of the cold.<br />
-Explanatory variable: Treatment, with 4 levels; placebo, 1g, 3g, 3g with additives.<br />
-c. The patients were blinded as they did not know which treatment they received.<br />
-d. The study was double-blind with respect to the researchers evaluating the patients, but the nurses who briely interacted with patients during the distribution of the medication were not blinded. (It was partially double-blind.)<br />
-e. Since the patients were randomly assigned to the treatment groups and they are blinded we would expect about an equal number of patients in each group to not adhere to the treatment. While this means that final results of the study will be based on fewer number of participants, non-adherence does not introduce a confounding variable to
-the study.</p>
-</blockquote>
+<p>We will simply label the weather random variable as 0, 1, 2. We convert to probabilities by dividing by 210.</p>
+<p><span class="math display">\[
+\begin{array}{cc|ccc} &amp; &amp; &amp;\textbf{Weather Status} &amp;
+\\ &amp; &amp; \mbox{Clear} &amp; \mbox{Light Rain} &amp; \mbox{Rain}  \\
+&amp;\hline 0 &amp; 0.133 &amp; 0.052 &amp; 0.019  \\
+\textbf{num complaints} &amp; 1 &amp; 0.086 &amp; 0.071 &amp; 0.038  \\
+&amp; 2 &amp; 0.081 &amp; 0.119 &amp; 0.057  \\
+&amp; 3 &amp; 0.062 &amp; 0.071 &amp; 0.076  \\
+&amp; 4 &amp; 0.038 &amp; 0.038 &amp; 0.048 \\
+&amp; 5 &amp; 0 &amp; 0.005 &amp; 0.005 \\
+\end{array} 
+\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Find the marginal pmfs of each random variable.
+<span class="math display">\[
+f_X(x)=\left\{\begin{array}{ll} 0.400, &amp; x=0 \\
+0.357, &amp; x=1 \\
+0.243, &amp; x=2 \\
+0, &amp; \mbox{otherwise} 
+\end{array}\right.
+\]</span>
+<span class="math display">\[
+f_Y(y)=\left\{\begin{array}{ll} 0.205, &amp; y=0 \\
+0.195, &amp; y=1 \\
+0.257, &amp; y=2 \\
+0.210, &amp; y=3 \\
+0.124, &amp; y=4 \\
+0.010, &amp; y=5 \\
+0, &amp; \mbox{otherwise} 
+\end{array}\right.
+\]</span></p></li>
+<li><p>Find the probability of fewer than 3 complaints.</p></li>
+</ol>
+<p><span class="math display">\[
+\mbox{P}(Y&lt;3)=0.205+0.195+0.257=0.657
+\]</span></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Find the probability of fewer than 3 complaints given there is no rain.
+<span class="math display">\[
+\mbox{P}(Y&lt;3|X=0)=\frac{0.133+0.086+0.081}{0.4}=0.75
+\]</span></li>
+</ol>
 </div>
-<div id="problem-5" class="section level3">
-<h3><span class="header-section-number">4.2.5</span> Problem 5</h3>
-<ol start="5" style="list-style-type: decimal">
-<li><strong>Exercise and mental health</strong>. A researcher is interested in the effects of exercise on mental health and she proposes the following study: Use stratified random sampling to ensure representative proportions of 18-30, 31-40 and 41-55 year olds from the population. Next, randomly assign half the subjects from each age group to exercise twice a week, and instruct the rest not to exercise. Conduct a mental health exam at the beginning and at the end of the study, and compare the results.</li>
-</ol>
+<div id="problem-4-5" class="section level3">
+<h3><span class="header-section-number">14.2.4</span> Problem 4</h3>
+<p><strong>Optional for those of you that like Calc III and want a challenge.</strong></p>
+<p>4. Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be continuous random variables with joint pmf:
+<span class="math display">\[
+f_{X,Y}(x,y)=1
+\]</span></p>
+<p>where <span class="math inline">\(0 \leq x \leq 1\)</span> and <span class="math inline">\(0 \leq y \leq 2x\)</span>.</p>
 <ol style="list-style-type: lower-alpha">
-<li>What type of study is this?<br />
-</li>
-<li>What are the treatment and control groups in this study?<br />
-</li>
-<li>Does this study make use of blocking? If so, what is the blocking variable?<br />
-</li>
-<li>Does this study make use of blinding?<br />
-</li>
-<li>Comment on whether or not the results of the study can be used to establish a causal relationship between exercise and mental health, and indicate whether or not the conclusions can be generalized to the population at large.<br />
-</li>
-<li>Suppose you are given the task of determining if this proposed study should get funding. Would you have any reservations about the study proposal?</li>
+<li><p>Verify that <span class="math inline">\(f\)</span> is a valid pdf.
+<span class="math display">\[
+\int_0^1 \int_0^{2x} 1 \,\mathrm{d}y \,\mathrm{d}x = \int_0^1 y\bigg|_0^{2x}\,\mathrm{d}x = \int_0^1 2x\,\mathrm{d}x = x^2\bigg|_0^1 = 1
+\]</span></p></li>
+<li><p>Find the marginal pdfs of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.
+<span class="math display">\[
+f_X(x)=\int_0^{2x} 1 \,\mathrm{d}y = y\bigg|_0^{2x}=2x
+\]</span>
+where <span class="math inline">\(0\leq x \leq 1\)</span>.</p></li>
 </ol>
-<blockquote>
-<p>Solution<br />
-a. This is an experiment since we assigned subjects to the exercise program.<br />
-b. The treatment is exercise twice a week and control is no exercise.<br />
-c, Yes, the blocking variable is age.<br />
-d. No, the study is not blinded since the patients will know whether or not they are exercising.<br />
-e. Since this is an experiment, we can make a causal statement. Since the sample is random, the causal statement can be generalized to the population at large. However, we should be cautious about making a causal statement because of a possible placebo effect.<br />
-f. It would be very difficult, if not impossible, to successfully conduct this study since randomly sampled people cannot be required to participate in a clinical trial.</p>
-</blockquote>
+<p><span class="math display">\[
+f_Y(y)=\int_{y/2}^1 1 \,\mathrm{d}x = x\bigg|_{y/2}^1 = 1-\frac{y}{2}
+\]</span>
+where <span class="math inline">\(0 \leq y \leq 2\)</span>.</p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Find the conditional pdfs of <span class="math inline">\(X|Y=y\)</span> and <span class="math inline">\(Y|X=x\)</span>.
+<span class="math display">\[
+f_{X|Y=y}(x)=\frac{1}{1-\frac{y}{2}}=\frac{2}{2-y} 
+\]</span>
+where <span class="math inline">\(y/2 \leq x \leq 1\)</span>.</li>
+</ol>
+<p><span class="math display">\[
+f_{Y|X=x}(y)=\frac{1}{2x}
+\]</span>
+where <span class="math inline">\(0\leq y \leq 2x\)</span>.</p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Find the following probabilities: <span class="math inline">\(\mbox{P}(X&lt;0.5)\)</span>; <span class="math inline">\(\mbox{P}(Y&gt;1)\)</span>; <span class="math inline">\(\mbox{P}(X&lt;0.5,Y\leq 0.8)\)</span>; <span class="math inline">\(\mbox{P}(X&lt;0.5|Y= 0.8)\)</span>; Optional <span class="math inline">\(\mbox{P}(Y\leq 1-X)\)</span>. (It would probably help to draw some pictures.)
+<span class="math display">\[
+\mbox{P}(X&lt;0.5)=\int_0^{0.5} 2x \,\mathrm{d}x = x^2\bigg|_0^{0.5}=0.25
+\]</span>
+<span class="math display">\[
+\mbox{P}(Y&gt;1)=\int_1^2 1-\frac{y}{2}\,\mathrm{d}y = y-\frac{y^2}{4}\bigg|_1^2 = 1-\frac{3}{4}=0.25
+\]</span>
+<span class="math display">\[
+\mbox{P}(X&lt;0.5,Y\leq 0.8)=\int_0^{0.4}\int_0^{2x} 1 \,\mathrm{d}y \,\mathrm{d}x + \int_{0.4}^{0.5}\int_0^{0.8} 1 \,\mathrm{d}y \,\mathrm{d}x = 0.16+0.08=0.24
+\]</span>
+<span class="math display">\[
+\mbox{P}(X&lt;0.5|Y= 0.8)=\int_{0.4}^{0.5} \frac{2}{2-0.8}\,\mathrm{d}x = \frac{5x}{3}\bigg|_{0.4}^{0.5}=0.1667
+\]</span>
+<span class="math display">\[
+\mbox{P}(Y\leq 1-X)=\int_0^{1/3}\int_0^{2x} 1 \,\mathrm{d}y \,\mathrm{d}x + \int_{1/3}^1\int_0^{1-x}1 \,\mathrm{d}y \,\mathrm{d}x = \int_0^{1/3}2x\,\mathrm{d}x + \int_{1/3}^1 1-x\,\mathrm{d}x
+\]</span>
+<span class="math display">\[
+=\frac{1}{9}+\left(x-\frac{x^2}{2}\right)_{1/3}^1=\frac{1}{9}+\frac{1}{2}-\frac{1}{3}+\frac{1}{18} = \frac{1}{3}
+\]</span></li>
+</ol>
 
 </div>
 </div>
@@ -419,8 +566,8 @@ f. It would be very difficult, if not impossible, to successfully conduct this 
           </div>
         </div>
       </div>
-<a href="ODCP.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="NUMDATA.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="CONTNNAMED.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
