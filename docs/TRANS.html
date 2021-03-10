@@ -313,6 +313,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.2.2" data-path="HYPOTEST.html"><a href="HYPOTEST.html#problem-2-18"><i class="fa fa-check"></i><b>19.2.2</b> Problem 2</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="20" data-path="PVALUES.html"><a href="PVALUES.html"><i class="fa fa-check"></i><b>20</b> Empirical p-values</a><ul>
+<li class="chapter" data-level="20.1" data-path="PVALUES.html"><a href="PVALUES.html#objective"><i class="fa fa-check"></i><b>20.1</b> Objective</a></li>
+<li class="chapter" data-level="20.2" data-path="PVALUES.html"><a href="PVALUES.html#homework-19"><i class="fa fa-check"></i><b>20.2</b> Homework</a><ul>
+<li class="chapter" data-level="20.2.1" data-path="PVALUES.html"><a href="PVALUES.html#problem-1-19"><i class="fa fa-check"></i><b>20.2.1</b> Problem 1</a></li>
+<li class="chapter" data-level="20.2.2" data-path="PVALUES.html"><a href="PVALUES.html#problem-2-19"><i class="fa fa-check"></i><b>20.2.2</b> Problem 2</a></li>
+<li class="chapter" data-level="20.2.3" data-path="PVALUES.html"><a href="PVALUES.html#problem-3-13"><i class="fa fa-check"></i><b>20.2.3</b> Problem 3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="CLT.html"><a href="CLT.html"><i class="fa fa-check"></i><b>21</b> Central Limit Theorem</a><ul>
+<li class="chapter" data-level="21.1" data-path="CLT.html"><a href="CLT.html#objectives-19"><i class="fa fa-check"></i><b>21.1</b> Objectives</a></li>
+<li class="chapter" data-level="21.2" data-path="CLT.html"><a href="CLT.html#homework-20"><i class="fa fa-check"></i><b>21.2</b> Homework</a><ul>
+<li class="chapter" data-level="21.2.1" data-path="CLT.html"><a href="CLT.html#problem-1-20"><i class="fa fa-check"></i><b>21.2.1</b> Problem 1</a></li>
+<li class="chapter" data-level="21.2.2" data-path="CLT.html"><a href="CLT.html#problem-2-20"><i class="fa fa-check"></i><b>21.2.2</b> Problem 2</a></li>
+<li class="chapter" data-level="21.2.3" data-path="CLT.html"><a href="CLT.html#problem-3-14"><i class="fa fa-check"></i><b>21.2.3</b> Problem 3</a></li>
+<li class="chapter" data-level="21.2.4" data-path="CLT.html"><a href="CLT.html#problem-4-9"><i class="fa fa-check"></i><b>21.2.4</b> Problem 4</a></li>
+<li class="chapter" data-level="21.2.5" data-path="CLT.html"><a href="CLT.html#problem-5-7"><i class="fa fa-check"></i><b>21.2.5</b> Problem 5</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -356,7 +374,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let <span class="math inline">\(Y=X^2\)</span>.</p>
 <div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="TRANS.html#cb303-1"></a>sims&lt;-<span class="kw">rexp</span>(<span class="dv">10000</span>,<span class="fl">0.5</span>)</span>
 <span id="cb303-2"><a href="TRANS.html#cb303-2"></a><span class="kw">mean</span>(sims<span class="op">^</span><span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] 8.031624</code></pre>
+<pre><code>## [1] 8.0913</code></pre>
 <p>So, <span class="math inline">\(g(\mbox{E}(X))=4\)</span> and <span class="math inline">\(\mbox{E}(g(X))\approx 7.84\)</span>.</p>
 </div>
 <div id="problem-2-15" class="section level3">
@@ -453,7 +471,7 @@ Figure 16.1: pdf of <span class="math inline">\(T\)</span>
 <li>We are ready. Let’s create a data frame with 10000 simulation for our time and another 10000 for our teammates. Remember to set a seed. At this point it may be hard to remember what we have done. The function we created takes as input a vector of random number from a uniform distribution and then applies the inverse cdf to generate a random sample from our given pdf.</li>
 </ol>
 <div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="TRANS.html#cb320-1"></a><span class="kw">T</span>(<span class="kw">runif</span>(<span class="dv">3</span>))</span></code></pre></div>
-<pre><code>## [1] 11.93220 22.36525 10.08998</code></pre>
+<pre><code>## [1] 12.02278 10.79456 18.20471</code></pre>
 <div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="TRANS.html#cb322-1"></a><span class="kw">set.seed</span>(<span class="dv">1144</span>)</span>
 <span id="cb322-2"><a href="TRANS.html#cb322-2"></a>sim_exercise &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">T1=</span><span class="kw">T</span>(<span class="kw">runif</span>(<span class="dv">10000</span>)),<span class="dt">T2=</span><span class="kw">T</span>(<span class="kw">runif</span>(<span class="dv">10000</span>)))</span></code></pre></div>
 <ol start="7" style="list-style-type: lower-alpha">

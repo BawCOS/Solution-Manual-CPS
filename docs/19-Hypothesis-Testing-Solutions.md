@@ -278,7 +278,7 @@ Since p-value, 0.54, is high, larger than 0.05, we fail to reject the null hypot
 
 f. The traditional belief is that yawning is contagious -- one yawn can lead to another yawn, which might lead to another, and so on. In this exercise, there was the option of selecting a one-sided or two-sided test. Which would you recommend (or which did you choose)? Justify your answer in 1-3 sentences.
 
-I chose an one-sided test since as a researcher, I thought having someone in the group yawn would lead to more people in that group yawning.
+I chose a one-sided test since as a researcher, I thought having someone in the group yawn would lead to more people in that group yawning.
 
 
 
