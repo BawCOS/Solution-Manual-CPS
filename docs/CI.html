@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Numerical Data | Solutions for Computational Probability and Statistics</title>
+  <title>Chapter 22 Confidence Intervals | Solutions for Computational Probability and Statistics</title>
   <meta name="description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Numerical Data | Solutions for Computational Probability and Statistics" />
+  <meta property="og:title" content="Chapter 22 Confidence Intervals | Solutions for Computational Probability and Statistics" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="figures/CoverSol2.png" />
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Numerical Data | Solutions for Computational Probability and Statistics" />
+  <meta name="twitter:title" content="Chapter 22 Confidence Intervals | Solutions for Computational Probability and Statistics" />
   
   <meta name="twitter:description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
   <meta name="twitter:image" content="figures/CoverSol2.png" />
@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="STUDY.html"/>
-<link rel="next" href="CATDATA.html"/>
+<link rel="prev" href="CLT.html"/>
+<link rel="next" href="BOOT.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -387,221 +387,368 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="NUMDATA" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Numerical Data</h1>
-<div id="objectives-4" class="section level2">
-<h2><span class="header-section-number">5.1</span> Objectives</h2>
+<div id="CI" class="section level1">
+<h1><span class="header-section-number">Chapter 22</span> Confidence Intervals</h1>
+<div id="objectives-20" class="section level2">
+<h2><span class="header-section-number">22.1</span> Objectives</h2>
 <ol style="list-style-type: decimal">
-<li>Define and use properly in context all new terminology.<br />
+<li>Using asymptotic methods based on the normal distribution, construct and interpret a confidence interval for an unknown parameter.<br />
 </li>
-<li>Generate in <code>R</code> summary statistics for a numeric variable including breaking down by cases.<br />
+<li>Describe the relationships between confidence intervals, confidence level, and sample size.<br />
 </li>
-<li>Generate in <code>R</code> appropriate graphical summaries of numerical variables.<br />
-</li>
-<li>Be able to interpret and explain output both graphically and numerically.</li>
+<li>For proportions, be able to calculate the three different approaches for confidence intervals using <code>R</code>.</li>
 </ol>
 </div>
-<div id="homework-4" class="section level2">
-<h2><span class="header-section-number">5.2</span> Homework</h2>
-<div id="problem-1-4" class="section level3">
-<h3><span class="header-section-number">5.2.1</span> Problem 1</h3>
-<ol style="list-style-type: decimal">
-<li><strong>Mammals exploratory</strong></li>
-</ol>
-<p>Data were collected on 39 species of mammals distributed over 13 orders. The data is in the <code>openintro</code> package as <code>mammals</code></p>
+<div id="homework-21" class="section level2">
+<h2><span class="header-section-number">22.2</span> Homework</h2>
+<div id="problem-1-21" class="section level3">
+<h3><span class="header-section-number">22.2.1</span> Problem 1</h3>
+<p>1. Chronic illness</p>
+<p>In 2013, the Pew Research Foundation reported that “45% of U.S. adults report that they live with one or more chronic conditions.”<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a> However, this value was based on a sample, so it may not be a perfect estimate for the population parameter of interest on its own. The study reported a standard error of about 1.2%, and a normal model may reasonably be used in this setting.</p>
 <ol style="list-style-type: lower-alpha">
-<li>Using help, report the units for the variable <code>BrainWt</code>.</li>
+<li>Create a 95% confidence interval for the proportion of U.S. adults who live with one or more chronic conditions. Also interpret the confidence interval in the context of the study.</li>
 </ol>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="NUMDATA.html#cb14-1"></a>?mammals</span></code></pre></div>
+<p><span class="math inline">\(0.45 \pm 1.96 \times 0.012 = (0.426, 0.474)\)</span>
+We are 95% confident that 42.6% to 47.4% of U.S. adults live with one or more chronic conditions.</p>
 <ol start="2" style="list-style-type: lower-alpha">
-<li>Using <code>inspect</code> how many variables are numeric?</li>
+<li>Create a 99% confidence interval for the proportion of U.S. adults who live with one or more chronic conditions. Also interpret the confidence interval in the context of the study.</li>
 </ol>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="NUMDATA.html#cb15-1"></a><span class="kw">inspect</span>(mammals)</span></code></pre></div>
-<pre><code>## 
-## categorical variables:  
-##      name  class levels  n missing
-## 1 species factor     62 62       0
-##                                    distribution
-## 1 Africanelephant (1.6%) ...                   
-## 
-## quantitative variables:  
-##               name   class    min     Q1  median       Q3    max       mean
-## ...1       body_wt numeric  0.005  0.600  3.3425  48.2025 6654.0 198.789984
-## ...2      brain_wt numeric  0.140  4.250 17.2500 166.0000 5712.0 283.134194
-## ...3  non_dreaming numeric  2.100  6.250  8.3500  11.0000   17.9   8.672917
-## ...4      dreaming numeric  0.000  0.900  1.8000   2.5500    6.6   1.972000
-## ...5   total_sleep numeric  2.600  8.050 10.4500  13.2000   19.9  10.532759
-## ...6     life_span numeric  2.000  6.625 15.1000  27.7500  100.0  19.877586
-## ...7     gestation numeric 12.000 35.750 79.0000 207.5000  645.0 142.353448
-## ...8     predation integer  1.000  2.000  3.0000   4.0000    5.0   2.870968
-## ...9      exposure integer  1.000  1.000  2.0000   4.0000    5.0   2.419355
-## ...10       danger integer  1.000  1.000  2.0000   4.0000    5.0   2.612903
-##               sd  n missing
-## ...1  899.158011 62       0
-## ...2  930.278942 62       0
-## ...3    3.666452 48      14
-## ...4    1.442651 50      12
-## ...5    4.606760 58       4
-## ...6   18.206255 58       4
-## ...7  146.805039 58       4
-## ...8    1.476414 62       0
-## ...9    1.604792 62       0
-## ...10   1.441252 62       0</code></pre>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="CI.html#cb456-1"></a><span class="kw">qnorm</span>(.<span class="dv">995</span>)</span></code></pre></div>
+<pre><code>## [1] 2.575829</code></pre>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="CI.html#cb458-1"></a><span class="fl">0.45</span> <span class="op">+</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="op">*</span><span class="kw">qnorm</span>(.<span class="dv">995</span>)<span class="op">*</span><span class="fl">0.012</span></span></code></pre></div>
+<pre><code>## [1] 0.41909 0.48091</code></pre>
+<p>We are 99% confident that 41.9% to 48.1% of U.S. adults live with one or more chronic conditions.</p>
 <ol start="3" style="list-style-type: lower-alpha">
-<li>What type of variable is <code>danger</code>?</li>
+<li>Identify each of the following statements as true or false. Provide an explanation to justify each of your answers.</li>
 </ol>
-<p>Categorical</p>
+<ul>
+<li>We can say with certainty that the confidence interval from part a contains the true percentage of U.S. adults who suffer from a chronic illness.</li>
+</ul>
+<p>False, we’re only 95% confident.</p>
+<ul>
+<li>If we repeated this study 1,000 times and constructed a 95% confidence interval for each study, then approximately 950 of those confidence intervals would contain the true fraction of U.S. adults who suffer from chronic illnesses.</li>
+</ul>
+<p>True, this is the definition of the confidence level.</p>
+<ul>
+<li>The poll provides statistically significant evidence (at the <span class="math inline">\(\alpha = 0.05\)</span> level) that the percentage of U.S. adults who suffer from chronic illnesses is not 50%.</li>
+</ul>
+<p>True, the equivalent significance level of a two-sided hypothesis test for a 95% confidence interval is indeed 5%, and since the interval lies below 50% this statement is correct.</p>
+<ul>
+<li>Since the standard error is 1.2%, only 1.2% of people in the study communicated uncertainty about their answer.</li>
+</ul>
+<p>False, the 1.2% measures the uncertainty associated with the sample proportion (the point estimate) not the uncertainty of individual observations, uncertainty in the sense of not being sure of one’s answer to a survey question.</p>
+<ul>
+<li>Suppose the researchers had formed a one-sided hypothesis, they believed that the true proportion is less than 50%. We could find an equivalent one-sided 95% confidence interval by taking the upper bound of our two-sided 95% confidence interval.</li>
+</ul>
+<p>False. In constructing a one-sided confidence interval we need <span class="math inline">\(\alpha\)</span> to be in one tail. Only taking the upper value of a two-sided 95% confidence interval leads to a 97.5% one-sided confidence interval, a more conservative value.</p>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="CI.html#cb460-1"></a><span class="kw">qnorm</span>(.<span class="dv">95</span>)</span></code></pre></div>
+<pre><code>## [1] 1.644854</code></pre>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="CI.html#cb462-1"></a><span class="fl">0.45</span> <span class="op">+</span><span class="kw">qnorm</span>(.<span class="dv">95</span>)<span class="op">*</span><span class="fl">0.012</span></span></code></pre></div>
+<pre><code>## [1] 0.4697382</code></pre>
+<p>Notice that 46.9 is smaller than 47.4.</p>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="problem-2-21" class="section level3">
+<h3><span class="header-section-number">22.2.2</span> Problem 2</h3>
+<p>2. Vegetarian college students</p>
+<p>Suppose that 8% of college students are vegetarians. Determine if the following statements are true or false, and explain your reasoning.</p>
+<ol style="list-style-type: lower-alpha">
+<li>The distribution of the sample proportions of vegetarians in random samples of size 60 is approximately normal since <span class="math inline">\(n \ge 30\)</span>.</li>
+</ol>
+<p>FALSE. For the distribution of <span class="math inline">\(\hat{p}\)</span> to be approximately normal, we need to have at least
+10 successes and 10 failures in our sample.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>The distribution of the sample proportions of vegetarian college students in random samples of size 50 is right skewed.</li>
+</ol>
+<p>TRUE. The success-failure condition is not satisfied
+<span class="math display">\[np = 50 \times 0.08 = 4\]</span> and
+<span class="math display">\[n(1 - p) = 50 \times 0.92 = 46\]</span>
+therefore we know that the distribution of <span class="math inline">\(\hat{p}\)</span> is not approximately normal. In most samples we would expect <span class="math inline">\(\hat{p}\)</span> to be close to 0.08, the true population proportion. While <span class="math inline">\(\hat{p}\)</span> can be as high as 1 (though we would expect this to effectively never happen), it can only go as low as 0. Therefore the distribution would probably take on a right-skewed shape. Plotting the sampling distribution would confirm this suspicion.</p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>A random sample of 125 college students where 12% are vegetarians would be considered unusual.</li>
+</ol>
+<p>FALSE.
+<span class="math display">\[ SE_{\hat{p}}
+    \approx \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}\]</span>
+<span class="math display">\[=\sqrt{\frac{.08(.92)}{125}} = 0.0243\]</span></p>
+<p>A <span class="math inline">\(\hat{p}\)</span> of 0.12 is only <span class="math inline">\(\frac{0.12 - 0.08}{0.0243} = 1.65\)</span> standard errors away from the mean, which would not be considered unusual.</p>
+<p>The p-value is:</p>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="CI.html#cb464-1"></a><span class="dv">2</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span><span class="kw">pnorm</span>(<span class="fl">1.65</span>))</span></code></pre></div>
+<pre><code>## [1] 0.09894294</code></pre>
 <ol start="4" style="list-style-type: lower-alpha">
-<li>Create a histogram of <code>total_sleep</code> and describe the distribution.</li>
+<li>A random sample of 250 college students where 12% are vegetarians would be considered unusual.</li>
 </ol>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="NUMDATA.html#cb17-1"></a><span class="kw">gf_histogram</span>(<span class="op">~</span>total_sleep,<span class="dt">data=</span>mammals,<span class="dt">binwidth =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="NUMDATA.html#cb18-1"></a><span class="kw">gf_dens</span>(<span class="op">~</span>total_sleep,<span class="dt">data=</span>mammals)</span></code></pre></div>
-<p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<p>The distribution is unimodal and skewed to the right. It appears it is centered around the value of 11.</p>
+<p>TRUE.</p>
+<p><span class="math display">\[ SE_{\hat{p}}
+    \approx \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}\]</span>
+<span class="math display">\[=\sqrt{\frac{.08(.92)}{250}} = 0.0172\]</span></p>
+<p>Notice that doubling the sample size only reduced the standard error by <span class="math inline">\(\sqrt{2}\)</span>.</p>
+<p>A <span class="math inline">\(\hat{p}\)</span> of 0.12 is <span class="math inline">\(\frac{0.12 - 0.08}{0.0172} = 2.32\)</span> standard errors away from the mean, which might be considered unusual.</p>
+<p>The p-value is:</p>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="CI.html#cb466-1"></a><span class="dv">2</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span><span class="kw">pnorm</span>(<span class="fl">2.32</span>))</span></code></pre></div>
+<pre><code>## [1] 0.02034088</code></pre>
 <ol start="5" style="list-style-type: lower-alpha">
-<li>Create a boxplot of <code>life_span</code> and describe the distribution.</li>
+<li>The standard error would be reduced by one-half if we increased the sample size from 125 to 250.</li>
 </ol>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="NUMDATA.html#cb19-1"></a><span class="kw">gf_boxplot</span>(<span class="op">~</span>life_span,<span class="dt">data=</span>mammals)</span></code></pre></div>
-<p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>FALSE. Since n appears under the square root sign in the formula for the standard error, increasing the sample size from 125 to 250 would decrease the standard error of the sample proportion only by a factor of <span class="math inline">\(\sqrt{2}\)</span>.</p>
 <ol start="6" style="list-style-type: lower-alpha">
-<li>Report the mean and median life span of a mammal.</li>
+<li>A 99% confidence will be wider than a 95% because to have a higher confidence level requires a wider interval.</li>
 </ol>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="NUMDATA.html#cb20-1"></a><span class="kw">mean</span>(<span class="op">~</span>life_span,<span class="dt">data=</span>mammals,<span class="dt">na.rm=</span><span class="ot">TRUE</span>)</span></code></pre></div>
-<pre><code>## [1] 19.87759</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="NUMDATA.html#cb22-1"></a><span class="kw">median</span>(<span class="op">~</span>life_span,<span class="dt">data=</span>mammals,<span class="dt">na.rm=</span><span class="ot">TRUE</span>)</span></code></pre></div>
-<pre><code>## [1] 15.1</code></pre>
-<ol start="7" style="list-style-type: lower-alpha">
-<li>Calculate the summary statistics for <code>LifeSpan</code> broken down by <code>Danger</code>.</li>
-</ol>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="NUMDATA.html#cb24-1"></a><span class="kw">favstats</span>(life_span<span class="op">~</span>danger,<span class="dt">data=</span>mammals)</span></code></pre></div>
-<pre><code>##   danger  min     Q1 median     Q3   max     mean       sd  n missing
-## 1      1  3.0  7.700  17.60 32.500 100.0 24.20556 23.53829 18       1
-## 2      2  2.3  4.500  10.40 13.000  50.0 12.92308 13.15948 13       1
-## 3      3  2.0  4.175   5.35  7.875  38.6  9.43750 11.99559  8       2
-## 4      4  2.6  9.775  22.10 27.000  69.0 23.11000 18.75482 10       0
-## 5      5 17.0 20.000  23.60 30.000  46.0 26.95556 10.18910  9       0</code></pre>
+<p>TRUE. The width is a function of the margin of error. Keeping all else the same, the critical values for 95% and 99% are</p>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="CI.html#cb468-1"></a>temp&lt;-<span class="kw">qnorm</span>(<span class="kw">c</span>(.<span class="dv">985</span>,.<span class="dv">995</span>))</span>
+<span id="cb468-2"><a href="CI.html#cb468-2"></a><span class="kw">names</span>(temp)&lt;-<span class="kw">c</span>(<span class="st">&quot;95%&quot;</span>,<span class="st">&quot;99%&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="CI.html#cb469-1"></a>temp</span></code></pre></div>
+<pre><code>##      95%      99% 
+## 2.170090 2.575829</code></pre>
 </div>
-<div id="problem-2-4" class="section level3">
-<h3><span class="header-section-number">5.2.2</span> Problem 2</h3>
-<ol start="2" style="list-style-type: decimal">
-<li><strong>Mammals life spans</strong></li>
-</ol>
-<p>Continue using the <code>mammals</code> data set.</p>
+<div id="problem-3-15" class="section level3">
+<h3><span class="header-section-number">22.2.3</span> Problem 3</h3>
+<p>3. Orange tabbies</p>
+<p>Suppose that 90% of orange tabby cats are male. Determine if the following statements are true or false, and explain your reasoning.</p>
 <ol style="list-style-type: lower-alpha">
-<li>Create side-by-side boxplots for <code>life_span</code> broken down by <code>exposure</code>. Note: you will have to change <code>exposure</code> to a <code>factor()</code>. Report on any findings.</li>
+<li>The distribution of sample proportions of random samples of size 30 is left skewed.</li>
 </ol>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="NUMDATA.html#cb26-1"></a>mammals <span class="op">%&gt;%</span></span>
-<span id="cb26-2"><a href="NUMDATA.html#cb26-2"></a><span class="kw">gf_boxplot</span>(life_span<span class="op">~</span><span class="kw">factor</span>(exposure))</span></code></pre></div>
-<p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>TRUE. The success-failure condition is not satisfied</p>
+<p><span class="math display">\[n\hat{p} = 30 \times 0.90 = 27\]</span> and</p>
+<p><span class="math display">\[n(1-\hat{p}) = 30 \times 0.10 = 3;\]</span></p>
+<p>therefore we know that the distribution of <span class="math inline">\(\hat{p}\)</span> is not nearly normal. In most samples we would expect <span class="math inline">\(\hat{p}\)</span> to be close to 0.90, the true population proportion. While <span class="math inline">\(\hat{p}\)</span> can be as low as 0 (though we would expect this to happen very rarely), it can only go as high as 1. Therefore the distribution would probably take on a left-skewed shape. Plotting the sampling distribution would confirm this suspicion.</p>
 <ol start="2" style="list-style-type: lower-alpha">
-<li>What happened to the median and third quartile in exposure group 4?</li>
+<li>Using a sample size that is 4 times as large will reduce the standard error of the sample proportion by one-half.</li>
 </ol>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="NUMDATA.html#cb27-1"></a><span class="kw">favstats</span>(life_span<span class="op">~</span><span class="kw">factor</span>(exposure),<span class="dt">data=</span>mammals)</span></code></pre></div>
-<pre><code>##   factor(exposure)  min    Q1 median     Q3   max     mean       sd  n missing
-## 1                1  2.0  4.35   7.25 14.550 100.0 14.55000 20.98594 24       3
-## 2                2  2.3  6.00  11.20 17.275  50.0 15.39167 14.55819 12       1
-## 3                3  7.6 19.90  26.50 32.000  41.0 25.40000 13.84582  4       0
-## 4                4  7.0 20.20  27.00 27.000  39.3 24.10000 11.78431  5       0
-## 5                5 16.3 20.00  28.00 38.600  69.0 30.53077 14.98084 13       0</code></pre>
+<p>TRUE. Since <span class="math inline">\(n\)</span> appears in a square root for <span class="math inline">\(SE\)</span>, using a sample size that is 4 times as large will reduce the <span class="math inline">\(SE\)</span> by half.</p>
 <ol start="3" style="list-style-type: lower-alpha">
-<li>Create faceted histograms. What are the shortcomings of this plot?</li>
+<li>The distribution of sample proportions of random samples of size 140 is approximately normal.</li>
 </ol>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="NUMDATA.html#cb29-1"></a><span class="kw">gf_histogram</span>(<span class="op">~</span>life_span,<span class="dt">color=</span><span class="op">~</span><span class="kw">factor</span>(exposure),<span class="dt">data=</span>mammals)</span></code></pre></div>
-<p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<p>This is awful.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="NUMDATA.html#cb30-1"></a><span class="kw">gf_histogram</span>(<span class="op">~</span>life_span<span class="op">|</span><span class="kw">factor</span>(exposure),<span class="dt">data=</span>mammals)</span></code></pre></div>
-<p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
-<p>Not enough data for each histogram; some of the histograms provide little to no information. Let’s do denisty plots.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="NUMDATA.html#cb31-1"></a><span class="kw">gf_dens</span>(<span class="op">~</span>life_span,<span class="dt">color=</span><span class="op">~</span><span class="kw">factor</span>(exposure),<span class="dt">data=</span>mammals)</span></code></pre></div>
-<p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="NUMDATA.html#cb32-1"></a><span class="kw">gf_dens</span>(<span class="op">~</span>life_span<span class="op">|</span><span class="kw">factor</span>(exposure),<span class="dt">data=</span>mammals)</span></code></pre></div>
-<p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
-<p>Which do you think is the best graph?</p>
+<p>TRUE. The success-failure condition is satisfied</p>
+<p><span class="math display">\[n\hat{p} = 140 \times 0.90 = 126\]</span> and</p>
+<p><span class="math display">\[n(1-\hat{p}) = 140 \times 0.10 = 14;\]</span></p>
+<p>therefore the distribution of <span class="math inline">\(\hat{p}\)</span> is nearly normal.</p>
+</div>
+<div id="problem-4-10" class="section level3">
+<h3><span class="header-section-number">22.2.4</span> Problem 4</h3>
+<p>4. Working backwards</p>
+<p>A 90% confidence interval for a population mean is (65,77). The population distribution is approximately normal and the population standard deviation is unknown. This confidence interval is based on a simple random sample of 25 observations. Calculate the sample mean, the margin of error, and the sample standard deviation.</p>
+<p>The sample mean is the midpoint of the confidence interval:</p>
+<p><span class="math display">\[\bar{x} = \frac{65+77}{2} = 71\]</span>
+The margin of error is half the width of the confidence interval:</p>
+<p><span class="math display">\[ME = \frac{ \left(77 - 65 \right)}{2} = 6 \]</span></p>
+<p>Using df = 25 - 1 = 24 and the confidence level of 90% we can find the critical value from the t-table distribution.</p>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="CI.html#cb471-1"></a><span class="kw">qt</span>(.<span class="dv">95</span>,<span class="dv">24</span>)</span></code></pre></div>
+<pre><code>## [1] 1.710882</code></pre>
+<p>Lastly, using the margin of error and the critical value we can solve for <span class="math inline">\(s\)</span>:
+<span class="math display">\[ ME = t_{24}\times \frac{s}{\sqrt{n}}\]</span>
+<span class="math display">\[6 = 1.71\times \frac{s}{\sqrt{25}}\]</span>
+<span class="math display">\[s = 17.54\]</span></p>
+</div>
+<div id="problem-5-8" class="section level3">
+<h3><span class="header-section-number">22.2.5</span> Problem 5</h3>
+<p>5. Find the p-value</p>
+<p>An independent random sample is selected from an approximately normal population with an unknown standard deviation. Find the p-value for the given set of hypotheses and <span class="math inline">\(T\)</span> test statistic. Also determine if the null hypothesis would be rejected at <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(H_{A}: \mu &gt; \mu_{0}\)</span>, <span class="math inline">\(n = 11\)</span>, <span class="math inline">\(T = 1.91\)</span></li>
+</ol>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="CI.html#cb473-1"></a><span class="dv">1</span><span class="op">-</span><span class="kw">pt</span>(<span class="fl">1.91</span>,<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] 0.04260244</code></pre>
+<p>The p-value is less than 0.05, reject the null hypothesis.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><span class="math inline">\(H_{A}: \mu &lt; \mu_{0}\)</span>, <span class="math inline">\(n = 17\)</span>, <span class="math inline">\(T = - 3.45\)</span></li>
+</ol>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="CI.html#cb475-1"></a><span class="kw">pt</span>(<span class="op">-</span><span class="fl">3.45</span>,<span class="dv">16</span>)</span></code></pre></div>
+<pre><code>## [1] 0.001646786</code></pre>
+<p>The p-value is less than 0.05, reject the null hypothesis.</p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><span class="math inline">\(H_{A}: \mu \ne \mu_{0}\)</span>, <span class="math inline">\(n = 7\)</span>, <span class="math inline">\(T = 0.83\)</span></li>
+</ol>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="CI.html#cb477-1"></a><span class="dv">2</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span><span class="kw">pt</span>(<span class="fl">0.83</span>,<span class="dv">6</span>))</span></code></pre></div>
+<pre><code>## [1] 0.4383084</code></pre>
+<p>The p-value is greater than 0.05, fail to reject the null hypothesis.</p>
 <ol start="4" style="list-style-type: lower-alpha">
-<li>Create a new variable <code>exposed</code> that is a factor with level <code>Low</code> if exposure is <code>1</code> or <code>2</code> and <code>High</code> otherwise.</li>
+<li><span class="math inline">\(H_{A}: \mu &gt; \mu_{0}\)</span>, <span class="math inline">\(n = 28\)</span>, <span class="math inline">\(T = 2.13\)</span></li>
 </ol>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="NUMDATA.html#cb33-1"></a>mammals &lt;-<span class="st"> </span>mammals <span class="op">%&gt;%</span></span>
-<span id="cb33-2"><a href="NUMDATA.html#cb33-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">exposed=</span><span class="kw">factor</span>(<span class="kw">ifelse</span>((exposure<span class="op">==</span><span class="dv">1</span>)<span class="op">|</span>(exposure<span class="op">==</span><span class="dv">2</span>),<span class="st">&quot;Low&quot;</span>,<span class="st">&quot;High&quot;</span>)))</span></code></pre></div>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="NUMDATA.html#cb34-1"></a><span class="kw">inspect</span>(mammals)</span></code></pre></div>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="CI.html#cb479-1"></a><span class="dv">1</span><span class="op">-</span><span class="kw">pt</span>(<span class="fl">2.13</span>,<span class="dv">27</span>)</span></code></pre></div>
+<pre><code>## [1] 0.02121769</code></pre>
+<p>The p-value is less than 0.05, reject the null hypothesis.</p>
+</div>
+<div id="problem-6-4" class="section level3">
+<h3><span class="header-section-number">22.2.6</span> Problem 6</h3>
+<p>6. Sleep habits of New Yorkers</p>
+<p>New York is known as “the city that never sleeps”. A random sample of 25 New Yorkers were asked how much sleep they get per night. Statistical summaries of these data are shown below. Do these data provide strong evidence that New Yorkers sleep less than 8 hours a night on average?</p>
+<p><span class="math display">\[
+\begin{array}{cccccc} &amp; &amp; &amp; &amp;  &amp;
+\\&amp; n &amp; \bar{x} &amp; s     &amp; min   &amp; max \\
+&amp;\hline 25  &amp; 7.73      &amp; 0.77  &amp; 6.17  &amp; 9.78 \\ 
+&amp;   &amp;               &amp;       &amp;           &amp; 
+\end{array} 
+\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Write the hypotheses in symbols and in words.</li>
+</ol>
+<p><span class="math inline">\(H_0: \mu = 8\)</span> New Yorkers sleep 8 hrs per night on average.<br />
+<span class="math inline">\(H_A: \mu &lt; 8\)</span> New Yorkers sleep less than 8 hrs per night on average.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Check conditions, then calculate the test statistic, <span class="math inline">\(T\)</span>, and the associated degrees of freedom.</li>
+</ol>
+<ol style="list-style-type: decimal">
+<li>Independence: The sample is random and 25 is less than 10% of all New Yorkers, so it seems reasonable that the observations are independent.<br />
+</li>
+<li>Sample size: Sample size is less than 30, therefore we use a t-test which implies the population must be normal.<br />
+</li>
+<li>Skew: We don’t have the data to look at a qq plot so we will make some guesses. All observations are within three standard deviations of the mean. For now we will proceed while acknowledging that we are assuming the skew is perhaps moderate or less (moderate skew would be acceptable for this sample size).</li>
+</ol>
+<p>The test statistic and degrees of freedom can be calculated as follows:
+<span class="math display">\[T = \frac{\bar{x} - \mu_0}{\frac{s}{\sqrt{n}}}  = \]</span>
+<span class="math display">\[\frac{7.73 - 8}{\frac{0.77}{\sqrt{25}}} = - 1.75\]</span>
+<span class="math inline">\(df = 25 - 1 = 24\)</span>.</p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Find and interpret the p-value in this context.</li>
+</ol>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="CI.html#cb481-1"></a><span class="kw">pt</span>(<span class="op">-</span><span class="fl">1.75</span>,<span class="dv">24</span>)</span></code></pre></div>
+<pre><code>## [1] 0.04644754</code></pre>
+<p>If in fact the true population mean of the amount New Yorkers sleep per night was 8 hours, the probability of getting a random sample of 25 New Yorkers where the average amount of sleep is 7.73 hrs per night or less is 0.046. This p-value is close to 0.05.</p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>What is the conclusion of the hypothesis test?</li>
+</ol>
+<p>Since the p-value is less than 0.05, we reject the null hypothesis that New Yorkers sleep an average of 8 hours per night in favor of the alternative that they sleep less than 8 hours per night on average. However, the p-value is close to the significance level and we may want to run the study again and/or look at sample sizes to determine how big of a difference from 8 hours is important from a practical standpoint.</p>
+<p>Let’s look at the power of this test. Remember that power is the probability of rejecting the null when the alternative is true. Since the alternative specifies a range of values for the parameter, we must specify a value. This is done by subject matter experts. How much of a difference in average sleep is needed from a practical standpoint to say it is different? Let’s say that a half an hour is important to detect. We will use the function <code>power.t.test()</code> to determine the power of our test.</p>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="CI.html#cb483-1"></a><span class="kw">power.t.test</span>(<span class="dt">n=</span><span class="dv">25</span>,<span class="dt">delta=</span>.<span class="dv">5</span>,<span class="dt">sd=</span>.<span class="dv">77</span>,<span class="dt">alternative =</span> <span class="st">&quot;one.sided&quot;</span>,<span class="dt">type=</span><span class="st">&quot;one.sample&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## categorical variables:  
-##      name  class levels  n missing
-## 1 species factor     62 62       0
-## 2 exposed factor      2 62       0
-##                                    distribution
-## 1 Africanelephant (1.6%) ...                   
-## 2 Low (64.5%), High (35.5%)                    
+##      One-sample t test power calculation 
 ## 
-## quantitative variables:  
-##               name   class    min     Q1  median       Q3    max       mean
-## ...1       body_wt numeric  0.005  0.600  3.3425  48.2025 6654.0 198.789984
-## ...2      brain_wt numeric  0.140  4.250 17.2500 166.0000 5712.0 283.134194
-## ...3  non_dreaming numeric  2.100  6.250  8.3500  11.0000   17.9   8.672917
-## ...4      dreaming numeric  0.000  0.900  1.8000   2.5500    6.6   1.972000
-## ...5   total_sleep numeric  2.600  8.050 10.4500  13.2000   19.9  10.532759
-## ...6     life_span numeric  2.000  6.625 15.1000  27.7500  100.0  19.877586
-## ...7     gestation numeric 12.000 35.750 79.0000 207.5000  645.0 142.353448
-## ...8     predation integer  1.000  2.000  3.0000   4.0000    5.0   2.870968
-## ...9      exposure integer  1.000  1.000  2.0000   4.0000    5.0   2.419355
-## ...10       danger integer  1.000  1.000  2.0000   4.0000    5.0   2.612903
-##               sd  n missing
-## ...1  899.158011 62       0
-## ...2  930.278942 62       0
-## ...3    3.666452 48      14
-## ...4    1.442651 50      12
-## ...5    4.606760 58       4
-## ...6   18.206255 58       4
-## ...7  146.805039 58       4
-## ...8    1.476414 62       0
-## ...9    1.604792 62       0
-## ...10   1.441252 62       0</code></pre>
+##               n = 25
+##           delta = 0.5
+##              sd = 0.77
+##       sig.level = 0.05
+##           power = 0.9342637
+##     alternative = one.sided</code></pre>
+<p>This is a high level of power, the typical value used by researchers is 80%.</p>
+<p>Let’s see what the power is for a 15 minute difference.</p>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="CI.html#cb485-1"></a><span class="kw">power.t.test</span>(<span class="dt">n=</span><span class="dv">25</span>,<span class="dt">delta=</span>.<span class="dv">25</span>,<span class="dt">sd=</span>.<span class="dv">77</span>,<span class="dt">alternative =</span> <span class="st">&quot;one.sided&quot;</span>,<span class="dt">type=</span><span class="st">&quot;one.sample&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##      One-sample t test power calculation 
+## 
+##               n = 25
+##           delta = 0.25
+##              sd = 0.77
+##       sig.level = 0.05
+##           power = 0.4731184
+##     alternative = one.sided</code></pre>
+<p>This is a much lower power and thus not an effective test with that sample size for finding that small of a difference. We can turn the problem around and ask what sample size we need for 80% power?</p>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="CI.html#cb487-1"></a><span class="kw">power.t.test</span>(<span class="dt">power=</span>.<span class="dv">8</span>,<span class="dt">delta=</span>.<span class="dv">25</span>,<span class="dt">sd=</span>.<span class="dv">77</span>,<span class="dt">alternative =</span> <span class="st">&quot;one.sided&quot;</span>,<span class="dt">type=</span><span class="st">&quot;one.sample&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##      One-sample t test power calculation 
+## 
+##               n = 60.02642
+##           delta = 0.25
+##              sd = 0.77
+##       sig.level = 0.05
+##           power = 0.8
+##     alternative = one.sided</code></pre>
+<p>We need 60 subjects in the study.</p>
 <ol start="5" style="list-style-type: lower-alpha">
-<li>Repeat part c with the new variable.</li>
+<li>Construct a 95% confidence interval that corresponded to this hypothesis test, would you expect 8 hours to be in the interval?</li>
 </ol>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="NUMDATA.html#cb36-1"></a><span class="kw">gf_dens</span>(<span class="op">~</span>life_span,<span class="dt">color=</span><span class="op">~</span>exposed,<span class="dt">data=</span>mammals)</span></code></pre></div>
-<p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>We need an 95% upper bound on the confidence interval.</p>
+<p><span class="math display">\[\bar{x} + t_{24,0.95}{\frac{s}{\sqrt{n}}}  = \]</span></p>
+<p>The critical value is</p>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="CI.html#cb489-1"></a><span class="kw">qt</span>(.<span class="dv">95</span>,<span class="dv">24</span>)</span></code></pre></div>
+<pre><code>## [1] 1.710882</code></pre>
+<p>So the upper confidence bound is</p>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="CI.html#cb491-1"></a><span class="fl">7.73</span><span class="op">+</span><span class="kw">qt</span>(.<span class="dv">95</span>,<span class="dv">24</span>)<span class="op">*</span><span class="fl">0.77</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">25</span>)</span></code></pre></div>
+<pre><code>## [1] 7.993476</code></pre>
+<p>The value of 8 is not included in the interval, but it is close. We need more data or another study to be confident in our results.</p>
 </div>
-<div id="problem-3-2" class="section level3">
-<h3><span class="header-section-number">5.2.3</span> Problem 3</h3>
-<ol start="3" style="list-style-type: decimal">
-<li><strong>Mammals life spans continued</strong></li>
-</ol>
+<div id="problem-7-2" class="section level3">
+<h3><span class="header-section-number">22.2.7</span> Problem 7</h3>
+<p>7. Vegetarian college students II</p>
+<p>From problem 2 part c, suppose that it has been reported that 8% of college students are vegetarians. We think USAFA is not typical because of their fitness and health awareness, we think there are more vegetarians. We collect a random sample of 125 cadets and find 12% claimed they are vegetarians. Is there enough evidence to claim that USAFA cadets are different?</p>
 <ol style="list-style-type: lower-alpha">
-<li>Create a scatterplot of life span versus length of gestation.</li>
+<li>Use <code>binom.test()</code> to conduct the hypothesis test and find a confidence interval.</li>
 </ol>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="NUMDATA.html#cb37-1"></a>mammals <span class="op">%&gt;%</span></span>
-<span id="cb37-2"><a href="NUMDATA.html#cb37-2"></a><span class="kw">gf_point</span>(life_span<span class="op">~</span>gestation)</span></code></pre></div>
-<p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="CI.html#cb493-1"></a><span class="kw">binom.test</span>(<span class="dt">x=</span><span class="dv">15</span>,<span class="dt">n=</span><span class="dv">125</span>,<span class="dt">p=</span>.<span class="dv">08</span>,<span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## 
+## 
+## data:  15 out of 125
+## number of successes = 15, number of trials = 125, p-value = 0.07483
+## alternative hypothesis: true probability of success is greater than 0.08
+## 95 percent confidence interval:
+##  0.07544411 1.00000000
+## sample estimates:
+## probability of success 
+##                   0.12</code></pre>
+<p>We fail to reject. Notice 0.08 is in the interval.</p>
 <ol start="2" style="list-style-type: lower-alpha">
-<li>What type of an association is apparent between life span and length of gestation?</li>
+<li>Use <code>prop.test()</code> with <code>correct=FALSE</code> to conduct the hypothesis test and find a confidence interval.</li>
 </ol>
-<p>It is a weak positive association.</p>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="CI.html#cb495-1"></a><span class="kw">prop.test</span>(<span class="dt">x=</span><span class="dv">15</span>,<span class="dt">n=</span><span class="dv">125</span>,<span class="dt">p=</span>.<span class="dv">08</span>,<span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>,<span class="dt">correct=</span><span class="ot">FALSE</span>)</span></code></pre></div>
+<pre><code>## 
+##  1-sample proportions test without continuity correction
+## 
+## data:  15 out of 125
+## X-squared = 2.7174, df = 1, p-value = 0.04963
+## alternative hypothesis: true p is greater than 0.08
+## 95 percent confidence interval:
+##  0.08007111 1.00000000
+## sample estimates:
+##    p 
+## 0.12</code></pre>
+<p>We reject, what is going on?</p>
 <ol start="3" style="list-style-type: lower-alpha">
-<li>What type of an association would you expect to see if the axes of the plot were reversed, i.e. if we plotted length of gestation versus life span?</li>
+<li>Use <code>prop.test()</code> with <code>correction=TRUE</code> to conduct the hypothesis test and find a confidence interval.</li>
 </ol>
-<p>The same as this is observational data there is no reason to beliee is a causal relationship just by looking at the data. Switching the axis will preserve the association.</p>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="CI.html#cb497-1"></a><span class="kw">prop.test</span>(<span class="dt">x=</span><span class="dv">15</span>,<span class="dt">n=</span><span class="dv">125</span>,<span class="dt">p=</span>.<span class="dv">08</span>,<span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>,<span class="dt">correct=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  1-sample proportions test with continuity correction
+## 
+## data:  15 out of 125
+## X-squared = 2.2011, df = 1, p-value = 0.06896
+## alternative hypothesis: true p is greater than 0.08
+## 95 percent confidence interval:
+##  0.07682087 1.00000000
+## sample estimates:
+##    p 
+## 0.12</code></pre>
+<p>We fail to reject.</p>
 <ol start="4" style="list-style-type: lower-alpha">
-<li>Create the new scatterplot suggested in c. </li>
+<li>Which test should you use?</li>
 </ol>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="NUMDATA.html#cb38-1"></a>mammals <span class="op">%&gt;%</span></span>
-<span id="cb38-2"><a href="NUMDATA.html#cb38-2"></a><span class="kw">gf_point</span>(gestation<span class="op">~</span>life_span)</span></code></pre></div>
-<p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
-<ol start="5" style="list-style-type: lower-alpha">
-<li>Are life span and length of gestation independent? Explain your reasoning.</li>
-</ol>
-<p>No there is an association and it appears to be linear. If the plot looked like a “shotgun” blast, we would consider the variables to be independent. However, remember there may be confounding variables that could impact the association between these variables.</p>
+<p>Go into the help for <code>binom.test()</code> in <code>R</code> and it explains these intervals. The way to compare these is to look at coverage. By this we mean for a 95% confidence interval, does the interval include the true parameter 95% of the time? This can be checked by simulation, but mathematics are really needed for a more definitive answer.</p>
+<p>The first test is an exact test and as stated in the help, it guarantees that the coverage rate is at least 95%. This means the interval tends to be too large. This is the largest interval and tends to be conservative.</p>
+<p>The second test is the <strong>Score</strong> test, also called the <strong>Wilson</strong>. It is found by inverting the p-value, beyond the scope of this class. This interval is a nice compromise in its coverage.</p>
+<p>The third is still a score but in the calculation of the p-value, a continuity correction is applied. This correction takes the limits on the binomial and extends it 0.5 in each direction. This is done to give the discrete binomial a better approximation to the continuous normal in the CLT. This interval is the default in <code>R</code> via <code>prop.test()</code>.</p>
+<p>None of these are our simple confidence interval based on the normal approximation. Here is the code for it:</p>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="CI.html#cb499-1"></a><span class="kw">binom.test</span>(<span class="dt">x=</span><span class="dv">15</span>,<span class="dt">n=</span><span class="dv">125</span>,<span class="dt">p=</span>.<span class="dv">08</span>,<span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>,<span class="dt">ci.method =</span> <span class="st">&quot;Wald&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  Exact binomial test (Wald CI)
+## 
+## data:  15 out of 125
+## number of successes = 15, number of trials = 125, p-value = 0.07483
+## alternative hypothesis: true probability of success is greater than 0.08
+## 95 percent confidence interval:
+##  0.0721916 1.0000000
+## sample estimates:
+## probability of success 
+##                   0.12</code></pre>
+<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="CI.html#cb501-1"></a><span class="dv">15</span><span class="op">/</span><span class="dv">125</span><span class="op">-</span><span class="kw">qnorm</span>(.<span class="dv">95</span>)<span class="op">*</span><span class="kw">sqrt</span>(.<span class="dv">12</span><span class="op">*</span>.<span class="dv">88</span><span class="op">/</span><span class="dv">125</span>)</span></code></pre></div>
+<pre><code>## [1] 0.0721916</code></pre>
+<p>This interval is not very good. The coverage is poor especially for small sample sizes. To learn more, read <em>Approximate is better then exact for interval estimation of binomial proportions.</em> A. Agresti and B. A. Coull, American Statistician 52, 1998, 119-126.</p>
 
 </div>
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="8">
+<li id="fn8"><p><a href="http://pewinternet.org/Reports/2013/The-Diagnosis-Difference.aspx" class="uri">http://pewinternet.org/Reports/2013/The-Diagnosis-Difference.aspx</a> The Diagnosis Difference. November 26, 2013. Pew Research.<a href="CI.html#fnref8" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="STUDY.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="CATDATA.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="CLT.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="BOOT.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
