@@ -457,7 +457,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb51-2"><a href="CS2.html#cb51-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">match=</span><span class="kw">if_else</span>(length<span class="op">==</span><span class="dv">22</span>,<span class="dv">1</span>,<span class="dv">0</span>)) <span class="op">%&gt;%</span></span>
 <span id="cb51-3"><a href="CS2.html#cb51-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">prob=</span><span class="kw">mean</span>(match))</span></code></pre></div>
 <pre><code>##     prob
-## 1 0.3632</code></pre>
+## 1 0.3626</code></pre>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="CS2.html#cb53-1"></a>(<span class="kw">do</span>(<span class="dv">1000</span>)<span class="op">*</span><span class="kw">length</span>(<span class="kw">unique</span>(<span class="kw">sample</span>(days,<span class="dt">size=</span><span class="dv">23</span>,<span class="dt">replace =</span> <span class="ot">TRUE</span>)))) <span class="op">%&gt;%</span></span>
 <span id="cb53-2"><a href="CS2.html#cb53-2"></a><span class="st">  </span><span class="kw">gf_bar</span>(<span class="op">~</span>length)</span></code></pre></div>
 <p><img src="07-Probability-Case-Study-Solution_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
@@ -557,7 +557,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["Solution Manual CPS.pdf", "Solution Manual CPS.epub"],
+"download": null,
 "toc": {
 "collapse": "section"
 },
