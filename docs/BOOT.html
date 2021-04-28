@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 23 Bootstrap | Solutions for Computational Probability and Statistics</title>
   <meta name="description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 23 Bootstrap | Solutions for Computational Probability and Statistics" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:image" content="figures/CoverSol2.png" />
+  <meta property="og:image" content="/figures/CoverSol2.png" />
   <meta property="og:description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
   
 
@@ -19,14 +19,14 @@
   <meta name="twitter:title" content="Chapter 23 Bootstrap | Solutions for Computational Probability and Statistics" />
   
   <meta name="twitter:description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
-  <meta name="twitter:image" content="figures/CoverSol2.png" />
+  <meta name="twitter:image" content="/figures/CoverSol2.png" />
 
 <meta name="author" content="Ken Horton" />
 <meta name="author" content="Kris Pruitt" />
 <meta name="author" content="Bradley Warner" />
 
 
-<meta name="date" content="2021-03-11" />
+<meta name="date" content="2021-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -35,6 +35,7 @@
   
 <link rel="prev" href="CI.html"/>
 <link rel="next" href="ADDTESTS.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -52,22 +53,23 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -87,7 +89,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -120,6 +122,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -136,37 +161,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Solutions Manual</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
 <li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#book-structure-and-how-to-use-it"><i class="fa fa-check"></i><b>0.1</b> Book Structure and How to Use It</a></li>
 <li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#packages"><i class="fa fa-check"></i><b>0.2</b> Packages</a></li>
 <li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#file-creation-information"><i class="fa fa-check"></i><b>0.3</b> File Creation Information</a></li>
 </ul></li>
 <li class="part"><span><b>I Descriptive Statistical Modeling</b></span></li>
-<li class="chapter" data-level="1" data-path="CS1.html"><a href="CS1.html"><i class="fa fa-check"></i><b>1</b> Case Study</a><ul>
+<li class="chapter" data-level="1" data-path="CS1.html"><a href="CS1.html"><i class="fa fa-check"></i><b>1</b> Case Study</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="CS1.html"><a href="CS1.html#objectives"><i class="fa fa-check"></i><b>1.1</b> Objectives</a></li>
-<li class="chapter" data-level="1.2" data-path="CS1.html"><a href="CS1.html#homework"><i class="fa fa-check"></i><b>1.2</b> Homework</a><ul>
+<li class="chapter" data-level="1.2" data-path="CS1.html"><a href="CS1.html#homework"><i class="fa fa-check"></i><b>1.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="1.2.1" data-path="CS1.html"><a href="CS1.html#problem-1"><i class="fa fa-check"></i><b>1.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="1.2.2" data-path="CS1.html"><a href="CS1.html#problem-2"><i class="fa fa-check"></i><b>1.2.2</b> Problem 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="DB.html"><a href="DB.html"><i class="fa fa-check"></i><b>2</b> Data Basics</a><ul>
+<li class="chapter" data-level="2" data-path="DB.html"><a href="DB.html"><i class="fa fa-check"></i><b>2</b> Data Basics</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="DB.html"><a href="DB.html#objectives-1"><i class="fa fa-check"></i><b>2.1</b> Objectives</a></li>
-<li class="chapter" data-level="2.2" data-path="DB.html"><a href="DB.html#homework-1"><i class="fa fa-check"></i><b>2.2</b> Homework</a><ul>
+<li class="chapter" data-level="2.2" data-path="DB.html"><a href="DB.html#homework-1"><i class="fa fa-check"></i><b>2.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="2.2.1" data-path="DB.html"><a href="DB.html#problem-1-1"><i class="fa fa-check"></i><b>2.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="2.2.2" data-path="DB.html"><a href="DB.html#problem-2-1"><i class="fa fa-check"></i><b>2.2.2</b> Problem 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="ODCP.html"><a href="ODCP.html"><i class="fa fa-check"></i><b>3</b> Overview of Data Collection Principles</a><ul>
+<li class="chapter" data-level="3" data-path="ODCP.html"><a href="ODCP.html"><i class="fa fa-check"></i><b>3</b> Overview of Data Collection Principles</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="ODCP.html"><a href="ODCP.html#objectives-2"><i class="fa fa-check"></i><b>3.1</b> Objectives</a></li>
-<li class="chapter" data-level="3.2" data-path="ODCP.html"><a href="ODCP.html#homework-2"><i class="fa fa-check"></i><b>3.2</b> Homework</a><ul>
+<li class="chapter" data-level="3.2" data-path="ODCP.html"><a href="ODCP.html#homework-2"><i class="fa fa-check"></i><b>3.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="ODCP.html"><a href="ODCP.html#problem-1-2"><i class="fa fa-check"></i><b>3.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="3.2.2" data-path="ODCP.html"><a href="ODCP.html#problem-2-2"><i class="fa fa-check"></i><b>3.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="3.2.3" data-path="ODCP.html"><a href="ODCP.html#problem-3"><i class="fa fa-check"></i><b>3.2.3</b> Problem 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="STUDY.html"><a href="STUDY.html"><i class="fa fa-check"></i><b>4</b> Studies</a><ul>
+<li class="chapter" data-level="4" data-path="STUDY.html"><a href="STUDY.html"><i class="fa fa-check"></i><b>4</b> Studies</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="STUDY.html"><a href="STUDY.html#objectives-3"><i class="fa fa-check"></i><b>4.1</b> Objectives</a></li>
-<li class="chapter" data-level="4.2" data-path="STUDY.html"><a href="STUDY.html#homework-3"><i class="fa fa-check"></i><b>4.2</b> Homework</a><ul>
+<li class="chapter" data-level="4.2" data-path="STUDY.html"><a href="STUDY.html#homework-3"><i class="fa fa-check"></i><b>4.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="4.2.1" data-path="STUDY.html"><a href="STUDY.html#problem-1-3"><i class="fa fa-check"></i><b>4.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="4.2.2" data-path="STUDY.html"><a href="STUDY.html#problem-2-3"><i class="fa fa-check"></i><b>4.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="4.2.3" data-path="STUDY.html"><a href="STUDY.html#problem-3-1"><i class="fa fa-check"></i><b>4.2.3</b> Problem 3</a></li>
@@ -174,33 +208,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.5" data-path="STUDY.html"><a href="STUDY.html#problem-5"><i class="fa fa-check"></i><b>4.2.5</b> Problem 5</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="NUMDATA.html"><a href="NUMDATA.html"><i class="fa fa-check"></i><b>5</b> Numerical Data</a><ul>
+<li class="chapter" data-level="5" data-path="NUMDATA.html"><a href="NUMDATA.html"><i class="fa fa-check"></i><b>5</b> Numerical Data</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="NUMDATA.html"><a href="NUMDATA.html#objectives-4"><i class="fa fa-check"></i><b>5.1</b> Objectives</a></li>
-<li class="chapter" data-level="5.2" data-path="NUMDATA.html"><a href="NUMDATA.html#homework-4"><i class="fa fa-check"></i><b>5.2</b> Homework</a><ul>
+<li class="chapter" data-level="5.2" data-path="NUMDATA.html"><a href="NUMDATA.html#homework-4"><i class="fa fa-check"></i><b>5.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="NUMDATA.html"><a href="NUMDATA.html#problem-1-4"><i class="fa fa-check"></i><b>5.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="5.2.2" data-path="NUMDATA.html"><a href="NUMDATA.html#problem-2-4"><i class="fa fa-check"></i><b>5.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="5.2.3" data-path="NUMDATA.html"><a href="NUMDATA.html#problem-3-2"><i class="fa fa-check"></i><b>5.2.3</b> Problem 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="CATDATA.html"><a href="CATDATA.html"><i class="fa fa-check"></i><b>6</b> Categorical Data</a><ul>
+<li class="chapter" data-level="6" data-path="CATDATA.html"><a href="CATDATA.html"><i class="fa fa-check"></i><b>6</b> Categorical Data</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="CATDATA.html"><a href="CATDATA.html#objectives-5"><i class="fa fa-check"></i><b>6.1</b> Objectives</a></li>
-<li class="chapter" data-level="6.2" data-path="CATDATA.html"><a href="CATDATA.html#homework-5"><i class="fa fa-check"></i><b>6.2</b> Homework</a><ul>
+<li class="chapter" data-level="6.2" data-path="CATDATA.html"><a href="CATDATA.html#homework-5"><i class="fa fa-check"></i><b>6.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="CATDATA.html"><a href="CATDATA.html#problem-1-5"><i class="fa fa-check"></i><b>6.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="6.2.2" data-path="CATDATA.html"><a href="CATDATA.html#problem-2-5"><i class="fa fa-check"></i><b>6.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="6.2.3" data-path="CATDATA.html"><a href="CATDATA.html#problem-3-3"><i class="fa fa-check"></i><b>6.2.3</b> Problem 3</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II Probability Modeling</b></span></li>
-<li class="chapter" data-level="7" data-path="CS2.html"><a href="CS2.html"><i class="fa fa-check"></i><b>7</b> Case Study</a><ul>
+<li class="chapter" data-level="7" data-path="CS2.html"><a href="CS2.html"><i class="fa fa-check"></i><b>7</b> Case Study</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="CS2.html"><a href="CS2.html#objectives-6"><i class="fa fa-check"></i><b>7.1</b> Objectives</a></li>
-<li class="chapter" data-level="7.2" data-path="CS2.html"><a href="CS2.html#homework-6"><i class="fa fa-check"></i><b>7.2</b> Homework</a><ul>
+<li class="chapter" data-level="7.2" data-path="CS2.html"><a href="CS2.html#homework-6"><i class="fa fa-check"></i><b>7.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="7.2.1" data-path="CS2.html"><a href="CS2.html#problem-1-6"><i class="fa fa-check"></i><b>7.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="7.2.2" data-path="CS2.html"><a href="CS2.html#problem-2-6"><i class="fa fa-check"></i><b>7.2.2</b> Problem 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="PROBRULES.html"><a href="PROBRULES.html"><i class="fa fa-check"></i><b>8</b> Probability Rules</a><ul>
+<li class="chapter" data-level="8" data-path="PROBRULES.html"><a href="PROBRULES.html"><i class="fa fa-check"></i><b>8</b> Probability Rules</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="PROBRULES.html"><a href="PROBRULES.html#objectives-7"><i class="fa fa-check"></i><b>8.1</b> Objectives</a></li>
-<li class="chapter" data-level="8.2" data-path="PROBRULES.html"><a href="PROBRULES.html#homework-7"><i class="fa fa-check"></i><b>8.2</b> Homework</a><ul>
+<li class="chapter" data-level="8.2" data-path="PROBRULES.html"><a href="PROBRULES.html#homework-7"><i class="fa fa-check"></i><b>8.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="8.2.1" data-path="PROBRULES.html"><a href="PROBRULES.html#problem-1-7"><i class="fa fa-check"></i><b>8.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="8.2.2" data-path="PROBRULES.html"><a href="PROBRULES.html#problem-2-7"><i class="fa fa-check"></i><b>8.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="8.2.3" data-path="PROBRULES.html"><a href="PROBRULES.html#problem-3-4"><i class="fa fa-check"></i><b>8.2.3</b> Problem 3</a></li>
@@ -211,18 +253,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2.8" data-path="PROBRULES.html"><a href="PROBRULES.html#problem-8"><i class="fa fa-check"></i><b>8.2.8</b> Problem 8</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="CONDPROB.html"><a href="CONDPROB.html"><i class="fa fa-check"></i><b>9</b> Conditional Probability</a><ul>
+<li class="chapter" data-level="9" data-path="CONDPROB.html"><a href="CONDPROB.html"><i class="fa fa-check"></i><b>9</b> Conditional Probability</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="CONDPROB.html"><a href="CONDPROB.html#objectives-8"><i class="fa fa-check"></i><b>9.1</b> Objectives</a></li>
-<li class="chapter" data-level="9.2" data-path="CONDPROB.html"><a href="CONDPROB.html#homework-8"><i class="fa fa-check"></i><b>9.2</b> Homework</a><ul>
+<li class="chapter" data-level="9.2" data-path="CONDPROB.html"><a href="CONDPROB.html#homework-8"><i class="fa fa-check"></i><b>9.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="9.2.1" data-path="CONDPROB.html"><a href="CONDPROB.html#problem-1-8"><i class="fa fa-check"></i><b>9.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="9.2.2" data-path="CONDPROB.html"><a href="CONDPROB.html#problem-2-8"><i class="fa fa-check"></i><b>9.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="9.2.3" data-path="CONDPROB.html"><a href="CONDPROB.html#problem-3-5"><i class="fa fa-check"></i><b>9.2.3</b> Problem 3</a></li>
 <li class="chapter" data-level="9.2.4" data-path="CONDPROB.html"><a href="CONDPROB.html#problem-4-2"><i class="fa fa-check"></i><b>9.2.4</b> Problem 4</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="RANDVAR.html"><a href="RANDVAR.html"><i class="fa fa-check"></i><b>10</b> Random Variables</a><ul>
+<li class="chapter" data-level="10" data-path="RANDVAR.html"><a href="RANDVAR.html"><i class="fa fa-check"></i><b>10</b> Random Variables</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="RANDVAR.html"><a href="RANDVAR.html#objectives-9"><i class="fa fa-check"></i><b>10.1</b> Objectives</a></li>
-<li class="chapter" data-level="10.2" data-path="RANDVAR.html"><a href="RANDVAR.html#homework-9"><i class="fa fa-check"></i><b>10.2</b> Homework</a><ul>
+<li class="chapter" data-level="10.2" data-path="RANDVAR.html"><a href="RANDVAR.html#homework-9"><i class="fa fa-check"></i><b>10.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="10.2.1" data-path="RANDVAR.html"><a href="RANDVAR.html#problem-1-9"><i class="fa fa-check"></i><b>10.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="10.2.2" data-path="RANDVAR.html"><a href="RANDVAR.html#problem-2-9"><i class="fa fa-check"></i><b>10.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="10.2.3" data-path="RANDVAR.html"><a href="RANDVAR.html#problem-3-6"><i class="fa fa-check"></i><b>10.2.3</b> Problem 3</a></li>
@@ -231,24 +277,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2.6" data-path="RANDVAR.html"><a href="RANDVAR.html#problem-6-1"><i class="fa fa-check"></i><b>10.2.6</b> Problem 6</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="CONRANDVAR.html"><a href="CONRANDVAR.html"><i class="fa fa-check"></i><b>11</b> Continuous Random Variables</a><ul>
+<li class="chapter" data-level="11" data-path="CONRANDVAR.html"><a href="CONRANDVAR.html"><i class="fa fa-check"></i><b>11</b> Continuous Random Variables</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="CONRANDVAR.html"><a href="CONRANDVAR.html#objectives-10"><i class="fa fa-check"></i><b>11.1</b> Objectives</a></li>
-<li class="chapter" data-level="11.2" data-path="CONRANDVAR.html"><a href="CONRANDVAR.html#homework-10"><i class="fa fa-check"></i><b>11.2</b> Homework</a><ul>
+<li class="chapter" data-level="11.2" data-path="CONRANDVAR.html"><a href="CONRANDVAR.html#homework-10"><i class="fa fa-check"></i><b>11.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="11.2.1" data-path="CONRANDVAR.html"><a href="CONRANDVAR.html#problem-1-10"><i class="fa fa-check"></i><b>11.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="11.2.2" data-path="CONRANDVAR.html"><a href="CONRANDVAR.html#problem-2-10"><i class="fa fa-check"></i><b>11.2.2</b> Problem 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="DISCRETENAMED.html"><a href="DISCRETENAMED.html"><i class="fa fa-check"></i><b>12</b> Named Discrete Distributions</a><ul>
+<li class="chapter" data-level="12" data-path="DISCRETENAMED.html"><a href="DISCRETENAMED.html"><i class="fa fa-check"></i><b>12</b> Named Discrete Distributions</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="DISCRETENAMED.html"><a href="DISCRETENAMED.html#objectives-11"><i class="fa fa-check"></i><b>12.1</b> Objectives</a></li>
-<li class="chapter" data-level="12.2" data-path="DISCRETENAMED.html"><a href="DISCRETENAMED.html#homework-11"><i class="fa fa-check"></i><b>12.2</b> Homework</a><ul>
+<li class="chapter" data-level="12.2" data-path="DISCRETENAMED.html"><a href="DISCRETENAMED.html#homework-11"><i class="fa fa-check"></i><b>12.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="12.2.1" data-path="DISCRETENAMED.html"><a href="DISCRETENAMED.html#problem-1-11"><i class="fa fa-check"></i><b>12.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="12.2.2" data-path="DISCRETENAMED.html"><a href="DISCRETENAMED.html#problem-2-11"><i class="fa fa-check"></i><b>12.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="12.2.3" data-path="DISCRETENAMED.html"><a href="DISCRETENAMED.html#problem-3-7"><i class="fa fa-check"></i><b>12.2.3</b> Problem 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="CONTNNAMED.html"><a href="CONTNNAMED.html"><i class="fa fa-check"></i><b>13</b> Named Continuous Distributions</a><ul>
+<li class="chapter" data-level="13" data-path="CONTNNAMED.html"><a href="CONTNNAMED.html"><i class="fa fa-check"></i><b>13</b> Named Continuous Distributions</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="CONTNNAMED.html"><a href="CONTNNAMED.html#objectives-12"><i class="fa fa-check"></i><b>13.1</b> Objectives</a></li>
-<li class="chapter" data-level="13.2" data-path="CONTNNAMED.html"><a href="CONTNNAMED.html#homework-12"><i class="fa fa-check"></i><b>13.2</b> Homework</a><ul>
+<li class="chapter" data-level="13.2" data-path="CONTNNAMED.html"><a href="CONTNNAMED.html#homework-12"><i class="fa fa-check"></i><b>13.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="13.2.1" data-path="CONTNNAMED.html"><a href="CONTNNAMED.html#problem-1-12"><i class="fa fa-check"></i><b>13.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="13.2.2" data-path="CONTNNAMED.html"><a href="CONTNNAMED.html#problem-2-12"><i class="fa fa-check"></i><b>13.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="13.2.3" data-path="CONTNNAMED.html"><a href="CONTNNAMED.html#problem-3-8"><i class="fa fa-check"></i><b>13.2.3</b> Problem 3</a></li>
@@ -258,18 +310,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.7" data-path="CONTNNAMED.html"><a href="CONTNNAMED.html#problem-7-1"><i class="fa fa-check"></i><b>13.2.7</b> Problem 7</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="MULTIDISTS.html"><a href="MULTIDISTS.html"><i class="fa fa-check"></i><b>14</b> Multivariate Distributions</a><ul>
+<li class="chapter" data-level="14" data-path="MULTIDISTS.html"><a href="MULTIDISTS.html"><i class="fa fa-check"></i><b>14</b> Multivariate Distributions</a>
+<ul>
 <li class="chapter" data-level="14.1" data-path="MULTIDISTS.html"><a href="MULTIDISTS.html#objectives-13"><i class="fa fa-check"></i><b>14.1</b> Objectives</a></li>
-<li class="chapter" data-level="14.2" data-path="MULTIDISTS.html"><a href="MULTIDISTS.html#homework-13"><i class="fa fa-check"></i><b>14.2</b> Homework</a><ul>
+<li class="chapter" data-level="14.2" data-path="MULTIDISTS.html"><a href="MULTIDISTS.html#homework-13"><i class="fa fa-check"></i><b>14.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="14.2.1" data-path="MULTIDISTS.html"><a href="MULTIDISTS.html#problem-1-13"><i class="fa fa-check"></i><b>14.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="14.2.2" data-path="MULTIDISTS.html"><a href="MULTIDISTS.html#problem-2-13"><i class="fa fa-check"></i><b>14.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="14.2.3" data-path="MULTIDISTS.html"><a href="MULTIDISTS.html#problem-3-9"><i class="fa fa-check"></i><b>14.2.3</b> Problem 3</a></li>
 <li class="chapter" data-level="14.2.4" data-path="MULTIDISTS.html"><a href="MULTIDISTS.html#problem-4-5"><i class="fa fa-check"></i><b>14.2.4</b> Problem 4</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="MULTIEXP.html"><a href="MULTIEXP.html"><i class="fa fa-check"></i><b>15</b> Multivariate Expectation</a><ul>
+<li class="chapter" data-level="15" data-path="MULTIEXP.html"><a href="MULTIEXP.html"><i class="fa fa-check"></i><b>15</b> Multivariate Expectation</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="MULTIEXP.html"><a href="MULTIEXP.html#objectives-14"><i class="fa fa-check"></i><b>15.1</b> Objectives</a></li>
-<li class="chapter" data-level="15.2" data-path="MULTIEXP.html"><a href="MULTIEXP.html#homework-14"><i class="fa fa-check"></i><b>15.2</b> Homework</a><ul>
+<li class="chapter" data-level="15.2" data-path="MULTIEXP.html"><a href="MULTIEXP.html#homework-14"><i class="fa fa-check"></i><b>15.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="15.2.1" data-path="MULTIEXP.html"><a href="MULTIEXP.html#problem-1-14"><i class="fa fa-check"></i><b>15.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="15.2.2" data-path="MULTIEXP.html"><a href="MULTIEXP.html#problem-2-14"><i class="fa fa-check"></i><b>15.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="15.2.3" data-path="MULTIEXP.html"><a href="MULTIEXP.html#problem-3-10"><i class="fa fa-check"></i><b>15.2.3</b> Problem 3</a></li>
@@ -278,9 +334,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.2.6" data-path="MULTIEXP.html"><a href="MULTIEXP.html#problem-6-3"><i class="fa fa-check"></i><b>15.2.6</b> Problem 6</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="TRANS.html"><a href="TRANS.html"><i class="fa fa-check"></i><b>16</b> Transformations</a><ul>
+<li class="chapter" data-level="16" data-path="TRANS.html"><a href="TRANS.html"><i class="fa fa-check"></i><b>16</b> Transformations</a>
+<ul>
 <li class="chapter" data-level="16.1" data-path="TRANS.html"><a href="TRANS.html#objectives-15"><i class="fa fa-check"></i><b>16.1</b> Objectives</a></li>
-<li class="chapter" data-level="16.2" data-path="TRANS.html"><a href="TRANS.html#homework-15"><i class="fa fa-check"></i><b>16.2</b> Homework</a><ul>
+<li class="chapter" data-level="16.2" data-path="TRANS.html"><a href="TRANS.html#homework-15"><i class="fa fa-check"></i><b>16.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="16.2.1" data-path="TRANS.html"><a href="TRANS.html#problem-1-15"><i class="fa fa-check"></i><b>16.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="16.2.2" data-path="TRANS.html"><a href="TRANS.html#problem-2-15"><i class="fa fa-check"></i><b>16.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="16.2.3" data-path="TRANS.html"><a href="TRANS.html#problem-3-11"><i class="fa fa-check"></i><b>16.2.3</b> Problem 3</a></li>
@@ -288,9 +346,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.2.5" data-path="TRANS.html"><a href="TRANS.html#problem-5-5"><i class="fa fa-check"></i><b>16.2.5</b> Problem 5</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="EST.html"><a href="EST.html"><i class="fa fa-check"></i><b>17</b> Estimation Methods</a><ul>
+<li class="chapter" data-level="17" data-path="EST.html"><a href="EST.html"><i class="fa fa-check"></i><b>17</b> Estimation Methods</a>
+<ul>
 <li class="chapter" data-level="17.1" data-path="EST.html"><a href="EST.html#objectives-16"><i class="fa fa-check"></i><b>17.1</b> Objectives</a></li>
-<li class="chapter" data-level="17.2" data-path="EST.html"><a href="EST.html#homework-16"><i class="fa fa-check"></i><b>17.2</b> Homework</a><ul>
+<li class="chapter" data-level="17.2" data-path="EST.html"><a href="EST.html#homework-16"><i class="fa fa-check"></i><b>17.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="17.2.1" data-path="EST.html"><a href="EST.html#problem-1-16"><i class="fa fa-check"></i><b>17.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="17.2.2" data-path="EST.html"><a href="EST.html#problem-2-16"><i class="fa fa-check"></i><b>17.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="17.2.3" data-path="EST.html"><a href="EST.html#problem-3-12"><i class="fa fa-check"></i><b>17.2.3</b> Problem 3</a></li>
@@ -299,31 +359,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III Statistical Modeling</b></span></li>
-<li class="chapter" data-level="18" data-path="CS3.html"><a href="CS3.html"><i class="fa fa-check"></i><b>18</b> Case Study</a><ul>
+<li class="chapter" data-level="18" data-path="CS3.html"><a href="CS3.html"><i class="fa fa-check"></i><b>18</b> Case Study</a>
+<ul>
 <li class="chapter" data-level="18.1" data-path="CS3.html"><a href="CS3.html#objectives-17"><i class="fa fa-check"></i><b>18.1</b> Objectives</a></li>
-<li class="chapter" data-level="18.2" data-path="CS3.html"><a href="CS3.html#homework-17"><i class="fa fa-check"></i><b>18.2</b> Homework</a><ul>
+<li class="chapter" data-level="18.2" data-path="CS3.html"><a href="CS3.html#homework-17"><i class="fa fa-check"></i><b>18.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="18.2.1" data-path="CS3.html"><a href="CS3.html#problem-1-17"><i class="fa fa-check"></i><b>18.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="18.2.2" data-path="CS3.html"><a href="CS3.html#problem-2-17"><i class="fa fa-check"></i><b>18.2.2</b> Problem 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="HYPOTEST.html"><a href="HYPOTEST.html"><i class="fa fa-check"></i><b>19</b> Hypothesis Testing</a><ul>
+<li class="chapter" data-level="19" data-path="HYPOTEST.html"><a href="HYPOTEST.html"><i class="fa fa-check"></i><b>19</b> Hypothesis Testing</a>
+<ul>
 <li class="chapter" data-level="19.1" data-path="HYPOTEST.html"><a href="HYPOTEST.html#objectives-18"><i class="fa fa-check"></i><b>19.1</b> Objectives</a></li>
-<li class="chapter" data-level="19.2" data-path="HYPOTEST.html"><a href="HYPOTEST.html#homework-18"><i class="fa fa-check"></i><b>19.2</b> Homework</a><ul>
+<li class="chapter" data-level="19.2" data-path="HYPOTEST.html"><a href="HYPOTEST.html#homework-18"><i class="fa fa-check"></i><b>19.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="19.2.1" data-path="HYPOTEST.html"><a href="HYPOTEST.html#problem-1-18"><i class="fa fa-check"></i><b>19.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="19.2.2" data-path="HYPOTEST.html"><a href="HYPOTEST.html#problem-2-18"><i class="fa fa-check"></i><b>19.2.2</b> Problem 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="PVALUES.html"><a href="PVALUES.html"><i class="fa fa-check"></i><b>20</b> Empirical p-values</a><ul>
+<li class="chapter" data-level="20" data-path="PVALUES.html"><a href="PVALUES.html"><i class="fa fa-check"></i><b>20</b> Empirical p-values</a>
+<ul>
 <li class="chapter" data-level="20.1" data-path="PVALUES.html"><a href="PVALUES.html#objective"><i class="fa fa-check"></i><b>20.1</b> Objective</a></li>
-<li class="chapter" data-level="20.2" data-path="PVALUES.html"><a href="PVALUES.html#homework-19"><i class="fa fa-check"></i><b>20.2</b> Homework</a><ul>
+<li class="chapter" data-level="20.2" data-path="PVALUES.html"><a href="PVALUES.html#homework-19"><i class="fa fa-check"></i><b>20.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="20.2.1" data-path="PVALUES.html"><a href="PVALUES.html#problem-1-19"><i class="fa fa-check"></i><b>20.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="20.2.2" data-path="PVALUES.html"><a href="PVALUES.html#problem-2-19"><i class="fa fa-check"></i><b>20.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="20.2.3" data-path="PVALUES.html"><a href="PVALUES.html#problem-3-13"><i class="fa fa-check"></i><b>20.2.3</b> Problem 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="CLT.html"><a href="CLT.html"><i class="fa fa-check"></i><b>21</b> Central Limit Theorem</a><ul>
+<li class="chapter" data-level="21" data-path="CLT.html"><a href="CLT.html"><i class="fa fa-check"></i><b>21</b> Central Limit Theorem</a>
+<ul>
 <li class="chapter" data-level="21.1" data-path="CLT.html"><a href="CLT.html#objectives-19"><i class="fa fa-check"></i><b>21.1</b> Objectives</a></li>
-<li class="chapter" data-level="21.2" data-path="CLT.html"><a href="CLT.html#homework-20"><i class="fa fa-check"></i><b>21.2</b> Homework</a><ul>
+<li class="chapter" data-level="21.2" data-path="CLT.html"><a href="CLT.html#homework-20"><i class="fa fa-check"></i><b>21.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="21.2.1" data-path="CLT.html"><a href="CLT.html#problem-1-20"><i class="fa fa-check"></i><b>21.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="21.2.2" data-path="CLT.html"><a href="CLT.html#problem-2-20"><i class="fa fa-check"></i><b>21.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="21.2.3" data-path="CLT.html"><a href="CLT.html#problem-3-14"><i class="fa fa-check"></i><b>21.2.3</b> Problem 3</a></li>
@@ -331,9 +399,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.2.5" data-path="CLT.html"><a href="CLT.html#problem-5-7"><i class="fa fa-check"></i><b>21.2.5</b> Problem 5</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="CI.html"><a href="CI.html"><i class="fa fa-check"></i><b>22</b> Confidence Intervals</a><ul>
+<li class="chapter" data-level="22" data-path="CI.html"><a href="CI.html"><i class="fa fa-check"></i><b>22</b> Confidence Intervals</a>
+<ul>
 <li class="chapter" data-level="22.1" data-path="CI.html"><a href="CI.html#objectives-20"><i class="fa fa-check"></i><b>22.1</b> Objectives</a></li>
-<li class="chapter" data-level="22.2" data-path="CI.html"><a href="CI.html#homework-21"><i class="fa fa-check"></i><b>22.2</b> Homework</a><ul>
+<li class="chapter" data-level="22.2" data-path="CI.html"><a href="CI.html#homework-21"><i class="fa fa-check"></i><b>22.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="22.2.1" data-path="CI.html"><a href="CI.html#problem-1-21"><i class="fa fa-check"></i><b>22.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="22.2.2" data-path="CI.html"><a href="CI.html#problem-2-21"><i class="fa fa-check"></i><b>22.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="22.2.3" data-path="CI.html"><a href="CI.html#problem-3-15"><i class="fa fa-check"></i><b>22.2.3</b> Problem 3</a></li>
@@ -343,68 +413,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="22.2.7" data-path="CI.html"><a href="CI.html#problem-7-2"><i class="fa fa-check"></i><b>22.2.7</b> Problem 7</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="BOOT.html"><a href="BOOT.html"><i class="fa fa-check"></i><b>23</b> Bootstrap</a><ul>
+<li class="chapter" data-level="23" data-path="BOOT.html"><a href="BOOT.html"><i class="fa fa-check"></i><b>23</b> Bootstrap</a>
+<ul>
 <li class="chapter" data-level="23.1" data-path="BOOT.html"><a href="BOOT.html#objectives-21"><i class="fa fa-check"></i><b>23.1</b> Objectives</a></li>
-<li class="chapter" data-level="23.2" data-path="BOOT.html"><a href="BOOT.html#homework-22"><i class="fa fa-check"></i><b>23.2</b> Homework</a><ul>
+<li class="chapter" data-level="23.2" data-path="BOOT.html"><a href="BOOT.html#homework-22"><i class="fa fa-check"></i><b>23.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="23.2.1" data-path="BOOT.html"><a href="BOOT.html#problem-1-22"><i class="fa fa-check"></i><b>23.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="23.2.2" data-path="BOOT.html"><a href="BOOT.html#problem-2-22"><i class="fa fa-check"></i><b>23.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="23.2.3" data-path="BOOT.html"><a href="BOOT.html#problem-3-16"><i class="fa fa-check"></i><b>23.2.3</b> Problem 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="ADDTESTS.html"><a href="ADDTESTS.html"><i class="fa fa-check"></i><b>24</b> Additional Hypothesis Tests</a><ul>
+<li class="chapter" data-level="24" data-path="ADDTESTS.html"><a href="ADDTESTS.html"><i class="fa fa-check"></i><b>24</b> Additional Hypothesis Tests</a>
+<ul>
 <li class="chapter" data-level="24.1" data-path="ADDTESTS.html"><a href="ADDTESTS.html#objectives-22"><i class="fa fa-check"></i><b>24.1</b> Objectives</a></li>
-<li class="chapter" data-level="24.2" data-path="ADDTESTS.html"><a href="ADDTESTS.html#homework-23"><i class="fa fa-check"></i><b>24.2</b> Homework</a><ul>
+<li class="chapter" data-level="24.2" data-path="ADDTESTS.html"><a href="ADDTESTS.html#homework-23"><i class="fa fa-check"></i><b>24.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="24.2.1" data-path="ADDTESTS.html"><a href="ADDTESTS.html#problem-1-23"><i class="fa fa-check"></i><b>24.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="24.2.2" data-path="ADDTESTS.html"><a href="ADDTESTS.html#problem-2-23"><i class="fa fa-check"></i><b>24.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="24.2.3" data-path="ADDTESTS.html"><a href="ADDTESTS.html#problem-3-17"><i class="fa fa-check"></i><b>24.2.3</b> Problem 3</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV Predictive Statistical Modeling</b></span></li>
-<li class="chapter" data-level="25" data-path="CS4.html"><a href="CS4.html"><i class="fa fa-check"></i><b>25</b> Case Study</a><ul>
+<li class="chapter" data-level="25" data-path="CS4.html"><a href="CS4.html"><i class="fa fa-check"></i><b>25</b> Case Study</a>
+<ul>
 <li class="chapter" data-level="25.1" data-path="CS4.html"><a href="CS4.html#objectives-23"><i class="fa fa-check"></i><b>25.1</b> Objectives</a></li>
-<li class="chapter" data-level="25.2" data-path="CS4.html"><a href="CS4.html#homework-24"><i class="fa fa-check"></i><b>25.2</b> Homework</a><ul>
+<li class="chapter" data-level="25.2" data-path="CS4.html"><a href="CS4.html#homework-24"><i class="fa fa-check"></i><b>25.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="25.2.1" data-path="CS4.html"><a href="CS4.html#problem-1-24"><i class="fa fa-check"></i><b>25.2.1</b> Problem 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="LRBASICS.html"><a href="LRBASICS.html"><i class="fa fa-check"></i><b>26</b> Linear Regression Basics</a><ul>
+<li class="chapter" data-level="26" data-path="LRBASICS.html"><a href="LRBASICS.html"><i class="fa fa-check"></i><b>26</b> Linear Regression Basics</a>
+<ul>
 <li class="chapter" data-level="26.1" data-path="LRBASICS.html"><a href="LRBASICS.html#objectives-24"><i class="fa fa-check"></i><b>26.1</b> Objectives</a></li>
-<li class="chapter" data-level="26.2" data-path="LRBASICS.html"><a href="LRBASICS.html#homework-25"><i class="fa fa-check"></i><b>26.2</b> Homework</a><ul>
+<li class="chapter" data-level="26.2" data-path="LRBASICS.html"><a href="LRBASICS.html#homework-25"><i class="fa fa-check"></i><b>26.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="26.2.1" data-path="LRBASICS.html"><a href="LRBASICS.html#problem-1-25"><i class="fa fa-check"></i><b>26.2.1</b> Problem 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="LRINF.html"><a href="LRINF.html"><i class="fa fa-check"></i><b>27</b> Linear Regression Inference</a><ul>
+<li class="chapter" data-level="27" data-path="LRINF.html"><a href="LRINF.html"><i class="fa fa-check"></i><b>27</b> Linear Regression Inference</a>
+<ul>
 <li class="chapter" data-level="27.1" data-path="LRINF.html"><a href="LRINF.html#objectives-25"><i class="fa fa-check"></i><b>27.1</b> Objectives</a></li>
-<li class="chapter" data-level="27.2" data-path="LRINF.html"><a href="LRINF.html#homework-26"><i class="fa fa-check"></i><b>27.2</b> Homework</a><ul>
+<li class="chapter" data-level="27.2" data-path="LRINF.html"><a href="LRINF.html#homework-26"><i class="fa fa-check"></i><b>27.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="27.2.1" data-path="LRINF.html"><a href="LRINF.html#problem-1-26"><i class="fa fa-check"></i><b>27.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="27.2.2" data-path="LRINF.html"><a href="LRINF.html#problem-2-24"><i class="fa fa-check"></i><b>27.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="27.2.3" data-path="LRINF.html"><a href="LRINF.html#problem-3-18"><i class="fa fa-check"></i><b>27.2.3</b> Problem 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="28" data-path="LRDIAG.html"><a href="LRDIAG.html"><i class="fa fa-check"></i><b>28</b> Regression Diagnostics</a><ul>
+<li class="chapter" data-level="28" data-path="LRDIAG.html"><a href="LRDIAG.html"><i class="fa fa-check"></i><b>28</b> Regression Diagnostics</a>
+<ul>
 <li class="chapter" data-level="28.1" data-path="LRDIAG.html"><a href="LRDIAG.html#objectives-26"><i class="fa fa-check"></i><b>28.1</b> Objectives</a></li>
-<li class="chapter" data-level="28.2" data-path="LRDIAG.html"><a href="LRDIAG.html#homework-27"><i class="fa fa-check"></i><b>28.2</b> Homework</a><ul>
+<li class="chapter" data-level="28.2" data-path="LRDIAG.html"><a href="LRDIAG.html#homework-27"><i class="fa fa-check"></i><b>28.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="28.2.1" data-path="LRDIAG.html"><a href="LRDIAG.html#problem-1-27"><i class="fa fa-check"></i><b>28.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="28.2.2" data-path="LRDIAG.html"><a href="LRDIAG.html#problem-2-25"><i class="fa fa-check"></i><b>28.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="28.2.3" data-path="LRDIAG.html"><a href="LRDIAG.html#problem-3-19"><i class="fa fa-check"></i><b>28.2.3</b> Problem 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="29" data-path="LRSIM.html"><a href="LRSIM.html"><i class="fa fa-check"></i><b>29</b> Simulation Based Linear Regression</a><ul>
+<li class="chapter" data-level="29" data-path="LRSIM.html"><a href="LRSIM.html"><i class="fa fa-check"></i><b>29</b> Simulation Based Linear Regression</a>
+<ul>
 <li class="chapter" data-level="29.1" data-path="LRSIM.html"><a href="LRSIM.html#objectives-27"><i class="fa fa-check"></i><b>29.1</b> Objectives</a></li>
-<li class="chapter" data-level="29.2" data-path="LRSIM.html"><a href="LRSIM.html#homework-28"><i class="fa fa-check"></i><b>29.2</b> Homework</a><ul>
+<li class="chapter" data-level="29.2" data-path="LRSIM.html"><a href="LRSIM.html#homework-28"><i class="fa fa-check"></i><b>29.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="29.2.1" data-path="LRSIM.html"><a href="LRSIM.html#problem-1-28"><i class="fa fa-check"></i><b>29.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="29.2.2" data-path="LRSIM.html"><a href="LRSIM.html#problem-2-26"><i class="fa fa-check"></i><b>29.2.2</b> Problem 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="30" data-path="LRMULTI.html"><a href="LRMULTI.html"><i class="fa fa-check"></i><b>30</b> Multiple Linear Regression</a><ul>
+<li class="chapter" data-level="30" data-path="LRMULTI.html"><a href="LRMULTI.html"><i class="fa fa-check"></i><b>30</b> Multiple Linear Regression</a>
+<ul>
 <li class="chapter" data-level="30.1" data-path="LRMULTI.html"><a href="LRMULTI.html#objectives-28"><i class="fa fa-check"></i><b>30.1</b> Objectives</a></li>
-<li class="chapter" data-level="30.2" data-path="LRMULTI.html"><a href="LRMULTI.html#homework-29"><i class="fa fa-check"></i><b>30.2</b> Homework</a><ul>
+<li class="chapter" data-level="30.2" data-path="LRMULTI.html"><a href="LRMULTI.html#homework-29"><i class="fa fa-check"></i><b>30.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="30.2.1" data-path="LRMULTI.html"><a href="LRMULTI.html#problem-1-29"><i class="fa fa-check"></i><b>30.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="30.2.2" data-path="LRMULTI.html"><a href="LRMULTI.html#problem-2-27"><i class="fa fa-check"></i><b>30.2.2</b> Problem 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="31" data-path="LOGREG.html"><a href="LOGREG.html"><i class="fa fa-check"></i><b>31</b> Logistic Regression</a><ul>
+<li class="chapter" data-level="31" data-path="LOGREG.html"><a href="LOGREG.html"><i class="fa fa-check"></i><b>31</b> Logistic Regression</a>
+<ul>
 <li class="chapter" data-level="31.1" data-path="LOGREG.html"><a href="LOGREG.html#objectives-29"><i class="fa fa-check"></i><b>31.1</b> Objectives</a></li>
-<li class="chapter" data-level="31.2" data-path="LOGREG.html"><a href="LOGREG.html#homework-problems"><i class="fa fa-check"></i><b>31.2</b> Homework Problems</a><ul>
+<li class="chapter" data-level="31.2" data-path="LOGREG.html"><a href="LOGREG.html#homework-problems"><i class="fa fa-check"></i><b>31.2</b> Homework Problems</a>
+<ul>
 <li class="chapter" data-level="31.2.1" data-path="LOGREG.html"><a href="LOGREG.html#problem-1-30"><i class="fa fa-check"></i><b>31.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="31.2.2" data-path="LOGREG.html"><a href="LOGREG.html#problem-2-28"><i class="fa fa-check"></i><b>31.2.2</b> Problem 2</a></li>
 </ul></li>
@@ -430,9 +518,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="BOOT" class="section level1">
+<div id="BOOT" class="section level1" number="23">
 <h1><span class="header-section-number">Chapter 23</span> Bootstrap</h1>
-<div id="objectives-21" class="section level2">
+<div id="objectives-21" class="section level2" number="23.1">
 <h2><span class="header-section-number">23.1</span> Objectives</h2>
 <ol style="list-style-type: decimal">
 <li>Use the bootstrap to estimate the standard error, the standard deviation, of the sample statistic.<br />
@@ -442,25 +530,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Describe the advantages, disadvantages, and assumptions behind using bootstrapping for confidence intervals.</li>
 </ol>
 </div>
-<div id="homework-22" class="section level2">
+<div id="homework-22" class="section level2" number="23.2">
 <h2><span class="header-section-number">23.2</span> Homework</h2>
-<div id="problem-1-22" class="section level3">
+<div id="problem-1-22" class="section level3" number="23.2.1">
 <h3><span class="header-section-number">23.2.1</span> Problem 1</h3>
-<p>1. Poker<br />
+<p>. Poker<br />
 An aspiring poker player recorded her winnings and losses over 50 evenings of play, the data is in the <code>openintro</code> package in the object <code>poker</code>. The poker player would like to better understand the volatility in her long term play.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Load the data and plot a histogram.</li>
 </ol>
-<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="BOOT.html#cb503-1"></a>poker&lt;-<span class="kw">read_csv</span>(<span class="st">&quot;data/poker.csv&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="BOOT.html#cb504-1"></a>poker <span class="op">%&gt;%</span></span>
-<span id="cb504-2"><a href="BOOT.html#cb504-2"></a><span class="st">  </span><span class="kw">gf_histogram</span>(<span class="op">~</span>winnings,<span class="dt">fill=</span><span class="st">&quot;cyan&quot;</span>,<span class="dt">color=</span><span class="st">&quot;black&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb504-3"><a href="BOOT.html#cb504-3"></a><span class="st">  </span><span class="kw">gf_theme</span>(<span class="kw">theme_classic</span>()) <span class="op">%&gt;%</span></span>
-<span id="cb504-4"><a href="BOOT.html#cb504-4"></a><span class="st">  </span><span class="kw">gf_labs</span>(<span class="dt">x=</span><span class="st">&quot;Winnings&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="BOOT.html#cb502-1" aria-hidden="true" tabindex="-1"></a>poker<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">&quot;data/poker.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="BOOT.html#cb503-1" aria-hidden="true" tabindex="-1"></a>poker <span class="sc">%&gt;%</span></span>
+<span id="cb503-2"><a href="BOOT.html#cb503-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_histogram</span>(<span class="sc">~</span>winnings,<span class="at">fill=</span><span class="st">&quot;cyan&quot;</span>,<span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb503-3"><a href="BOOT.html#cb503-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_classic</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb503-4"><a href="BOOT.html#cb503-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x=</span><span class="st">&quot;Winnings&quot;</span>)</span></code></pre></div>
 <p><img src="23-Bootstrap-Solutions_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Find the summary statistics.</li>
 </ol>
-<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="BOOT.html#cb505-1"></a><span class="kw">favstats</span>(<span class="op">~</span>winnings,<span class="dt">data=</span>poker)</span></code></pre></div>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="BOOT.html#cb504-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(<span class="sc">~</span>winnings,<span class="at">data=</span>poker)</span></code></pre></div>
 <pre><code>##    min   Q1 median  Q3  max  mean       sd  n missing
 ##  -1000 -187     11 289 3712 90.08 703.6835 50       0</code></pre>
 <ol start="3" style="list-style-type: lower-alpha">
@@ -468,30 +556,30 @@ An aspiring poker player recorded her winnings and losses over 50 evenings of pl
 <span class="math display">\[mad = \sum_{i=1}^{n}\frac{\left| x_{i} - \bar{x} \right|}{n}\]</span>
 Write a function and find the <em>MAD</em> of the data.</li>
 </ol>
-<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="BOOT.html#cb507-1"></a>mad&lt;-<span class="cf">function</span>(x){</span>
-<span id="cb507-2"><a href="BOOT.html#cb507-2"></a>  xbar&lt;-<span class="kw">mean</span>(x)</span>
-<span id="cb507-3"><a href="BOOT.html#cb507-3"></a>  <span class="kw">sum</span>(<span class="kw">abs</span>(x<span class="op">-</span>xbar))<span class="op">/</span><span class="kw">length</span>(x)</span>
-<span id="cb507-4"><a href="BOOT.html#cb507-4"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="BOOT.html#cb508-1"></a>obs&lt;-<span class="kw">mad</span>(poker<span class="op">$</span>winnings)</span>
-<span id="cb508-2"><a href="BOOT.html#cb508-2"></a>obs</span></code></pre></div>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="BOOT.html#cb506-1" aria-hidden="true" tabindex="-1"></a>mad<span class="ot">&lt;-</span><span class="cf">function</span>(x){</span>
+<span id="cb506-2"><a href="BOOT.html#cb506-2" aria-hidden="true" tabindex="-1"></a>  xbar<span class="ot">&lt;-</span><span class="fu">mean</span>(x)</span>
+<span id="cb506-3"><a href="BOOT.html#cb506-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="fu">abs</span>(x<span class="sc">-</span>xbar))<span class="sc">/</span><span class="fu">length</span>(x)</span>
+<span id="cb506-4"><a href="BOOT.html#cb506-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="BOOT.html#cb507-1" aria-hidden="true" tabindex="-1"></a>obs<span class="ot">&lt;-</span><span class="fu">mad</span>(poker<span class="sc">$</span>winnings)</span>
+<span id="cb507-2"><a href="BOOT.html#cb507-2" aria-hidden="true" tabindex="-1"></a>obs</span></code></pre></div>
 <pre><code>## [1] 394.1792</code></pre>
 <ol start="4" style="list-style-type: lower-alpha">
 <li>Find the bootstrap distribution of the <em>MAD</em> using 1000 replicates.</li>
 </ol>
-<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="BOOT.html#cb510-1"></a><span class="kw">set.seed</span>(<span class="dv">1122</span>)</span>
-<span id="cb510-2"><a href="BOOT.html#cb510-2"></a>results&lt;-<span class="kw">do</span>(<span class="dv">1000</span>)<span class="op">*</span><span class="kw">mad</span>(<span class="kw">resample</span>(poker<span class="op">$</span>winnings))</span></code></pre></div>
+<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="BOOT.html#cb509-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1122</span>)</span>
+<span id="cb509-2"><a href="BOOT.html#cb509-2" aria-hidden="true" tabindex="-1"></a>results<span class="ot">&lt;-</span><span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">mad</span>(<span class="fu">resample</span>(poker<span class="sc">$</span>winnings))</span></code></pre></div>
 <ol start="5" style="list-style-type: lower-alpha">
 <li>Plot a histogram of the bootstrap distribution.</li>
 </ol>
-<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="BOOT.html#cb511-1"></a>results <span class="op">%&gt;%</span></span>
-<span id="cb511-2"><a href="BOOT.html#cb511-2"></a><span class="st">  </span><span class="kw">gf_histogram</span>(<span class="op">~</span>mad,<span class="dt">fill=</span><span class="st">&quot;cyan&quot;</span>,<span class="dt">color=</span><span class="st">&quot;black&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb511-3"><a href="BOOT.html#cb511-3"></a><span class="st">  </span><span class="kw">gf_theme</span>(<span class="kw">theme_classic</span>()) <span class="op">%&gt;%</span></span>
-<span id="cb511-4"><a href="BOOT.html#cb511-4"></a><span class="st">  </span><span class="kw">gf_labs</span>(<span class="dt">x=</span><span class="st">&quot;Mean absolute deviation&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="BOOT.html#cb510-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
+<span id="cb510-2"><a href="BOOT.html#cb510-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_histogram</span>(<span class="sc">~</span>mad,<span class="at">fill=</span><span class="st">&quot;cyan&quot;</span>,<span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb510-3"><a href="BOOT.html#cb510-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_classic</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb510-4"><a href="BOOT.html#cb510-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x=</span><span class="st">&quot;Mean absolute deviation&quot;</span>)</span></code></pre></div>
 <p><img src="23-Bootstrap-Solutions_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <ol start="6" style="list-style-type: lower-alpha">
 <li>Report a 95% confidence interval on the MAD.</li>
 </ol>
-<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="BOOT.html#cb512-1"></a><span class="kw">cdata</span>(<span class="op">~</span>mad,<span class="dt">data=</span>results)</span></code></pre></div>
+<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="BOOT.html#cb511-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cdata</span>(<span class="sc">~</span>mad,<span class="at">data=</span>results)</span></code></pre></div>
 <pre><code>##         lower    upper central.p
 ## 2.5% 243.9448 636.0925      0.95</code></pre>
 <ol start="7" style="list-style-type: lower-alpha">
@@ -499,45 +587,45 @@ Write a function and find the <em>MAD</em> of the data.</li>
 </ol>
 <p>We don’t know without doing some math. We do know that the sample standard deviation is biased and part of that is because we have to use the sample mean in its calculation. We are doing the same thing here, so our estimate might also be biased for the same reason.</p>
 </div>
-<div id="problem-2-22" class="section level3">
+<div id="problem-2-22" class="section level3" number="23.2.2">
 <h3><span class="header-section-number">23.2.2</span> Problem 2</h3>
-<p>2. Bootstrap hypothesis testing</p>
+<p>. Bootstrap hypothesis testing</p>
 <p>Bootstrap hypothesis testing is relatively undeveloped, and is generally not as accurate as permutation testing. Therefore in general avoid it. But for our problem in the notes, it may work. We will sample in a way that is consistent with the null hypothesis, then calculate a P-value as a tail probability like we do in permutation tests. This example does not generalize well to other applications like relative risk, correlation, regression, or categorical data.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Using the <code>HELPrct</code> data set, store the observed value of the difference of means for male and female.</li>
 </ol>
 <p>I am going to just select the two columns I need.</p>
-<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="BOOT.html#cb514-1"></a>HELP_sub &lt;-<span class="st"> </span>HELPrct <span class="op">%&gt;%</span></span>
-<span id="cb514-2"><a href="BOOT.html#cb514-2"></a><span class="st">  </span><span class="kw">select</span>(age,sex)</span></code></pre></div>
-<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="BOOT.html#cb515-1"></a>obs &lt;-<span class="st"> </span><span class="kw">diffmean</span>(age<span class="op">~</span>sex,<span class="dt">data=</span>HELP_sub)</span>
-<span id="cb515-2"><a href="BOOT.html#cb515-2"></a>obs</span></code></pre></div>
+<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="BOOT.html#cb513-1" aria-hidden="true" tabindex="-1"></a>HELP_sub <span class="ot">&lt;-</span> HELPrct <span class="sc">%&gt;%</span></span>
+<span id="cb513-2"><a href="BOOT.html#cb513-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(age,sex)</span></code></pre></div>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="BOOT.html#cb514-1" aria-hidden="true" tabindex="-1"></a>obs <span class="ot">&lt;-</span> <span class="fu">diffmean</span>(age<span class="sc">~</span>sex,<span class="at">data=</span>HELP_sub)</span>
+<span id="cb514-2"><a href="BOOT.html#cb514-2" aria-hidden="true" tabindex="-1"></a>obs</span></code></pre></div>
 <pre><code>##   diffmean 
 ## -0.7841284</code></pre>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>The null hypothesis requires the means of each group to be equal. Pick one group to adjust, either <code>male</code> or <code>female</code>. First zero the mean of the selected group by subtracting the sample mean of this group from data points only in this group. Then add the sample mean of the other group to each data point in the selected group. Store in a new object called <code>HELP_null</code>.</li>
 </ol>
 <p>This is tricky, we are doing some data wrangling here.</p>
-<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="BOOT.html#cb517-1"></a>means&lt;-<span class="kw">mean</span>(age<span class="op">~</span>sex,<span class="dt">data=</span>HELP_sub)</span>
-<span id="cb517-2"><a href="BOOT.html#cb517-2"></a>means</span></code></pre></div>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="BOOT.html#cb516-1" aria-hidden="true" tabindex="-1"></a>means<span class="ot">&lt;-</span><span class="fu">mean</span>(age<span class="sc">~</span>sex,<span class="at">data=</span>HELP_sub)</span>
+<span id="cb516-2"><a href="BOOT.html#cb516-2" aria-hidden="true" tabindex="-1"></a>means</span></code></pre></div>
 <pre><code>##   female     male 
 ## 36.25234 35.46821</code></pre>
-<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="BOOT.html#cb519-1"></a>means[<span class="st">&#39;female&#39;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="BOOT.html#cb518-1" aria-hidden="true" tabindex="-1"></a>means[<span class="st">&#39;female&#39;</span>]</span></code></pre></div>
 <pre><code>##   female 
 ## 36.25234</code></pre>
 <p>Let’s get all the female observations and adjust the mean to equal that of the males.</p>
-<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="BOOT.html#cb521-1"></a>H_female &lt;-<span class="st"> </span>HELP_sub <span class="op">%&gt;%</span></span>
-<span id="cb521-2"><a href="BOOT.html#cb521-2"></a><span class="st">  </span><span class="kw">filter</span>(sex<span class="op">==</span><span class="st">&quot;female&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb521-3"><a href="BOOT.html#cb521-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">age=</span>age<span class="op">-</span>means[<span class="st">&#39;female&#39;</span>]<span class="op">+</span>means[<span class="st">&#39;male&#39;</span>])</span></code></pre></div>
-<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="BOOT.html#cb522-1"></a><span class="kw">mean</span>(<span class="op">~</span>age,<span class="dt">data=</span>H_female)</span></code></pre></div>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="BOOT.html#cb520-1" aria-hidden="true" tabindex="-1"></a>H_female <span class="ot">&lt;-</span> HELP_sub <span class="sc">%&gt;%</span></span>
+<span id="cb520-2"><a href="BOOT.html#cb520-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sex<span class="sc">==</span><span class="st">&quot;female&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb520-3"><a href="BOOT.html#cb520-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age=</span>age<span class="sc">-</span>means[<span class="st">&#39;female&#39;</span>]<span class="sc">+</span>means[<span class="st">&#39;male&#39;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="BOOT.html#cb521-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="sc">~</span>age,<span class="at">data=</span>H_female)</span></code></pre></div>
 <pre><code>## [1] 35.46821</code></pre>
 <p>Combine back into one data set.</p>
-<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="BOOT.html#cb524-1"></a>HELP_sub_new&lt;-HELP_sub <span class="op">%&gt;%</span></span>
-<span id="cb524-2"><a href="BOOT.html#cb524-2"></a><span class="st">  </span><span class="kw">filter</span>(sex<span class="op">==</span><span class="st">&quot;male&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb524-3"><a href="BOOT.html#cb524-3"></a><span class="st">  </span><span class="kw">rbind</span>(H_female)</span></code></pre></div>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="BOOT.html#cb523-1" aria-hidden="true" tabindex="-1"></a>HELP_sub_new<span class="ot">&lt;-</span>HELP_sub <span class="sc">%&gt;%</span></span>
+<span id="cb523-2"><a href="BOOT.html#cb523-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sex<span class="sc">==</span><span class="st">&quot;male&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb523-3"><a href="BOOT.html#cb523-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(H_female)</span></code></pre></div>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Run <code>favstats()</code> to check that the means are equal.</li>
 </ol>
-<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="BOOT.html#cb525-1"></a><span class="kw">favstats</span>(age<span class="op">~</span>sex,<span class="dt">data=</span>HELP_sub_new)</span></code></pre></div>
+<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="BOOT.html#cb524-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(age<span class="sc">~</span>sex,<span class="at">data=</span>HELP_sub_new)</span></code></pre></div>
 <pre><code>##      sex      min       Q1   median       Q3      max     mean       sd   n
 ## 1 female 20.21587 30.21587 34.21587 39.71587 57.21587 35.46821 7.584858 107
 ## 2   male 19.00000 30.00000 35.00000 40.00000 60.00000 35.46821 7.750110 346
@@ -547,22 +635,22 @@ Write a function and find the <em>MAD</em> of the data.</li>
 <ol start="4" style="list-style-type: lower-alpha">
 <li>On this new adjusted data set, generate a bootstrap distribution of the difference in sample means.</li>
 </ol>
-<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="BOOT.html#cb527-1"></a><span class="kw">set.seed</span>(<span class="dv">1159</span>)</span>
-<span id="cb527-2"><a href="BOOT.html#cb527-2"></a>results&lt;-<span class="kw">do</span>(<span class="dv">1000</span>)<span class="op">*</span><span class="kw">diffmean</span>(age<span class="op">~</span>sex,<span class="dt">data=</span><span class="kw">resample</span>(HELP_sub_new))</span></code></pre></div>
+<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="BOOT.html#cb526-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1159</span>)</span>
+<span id="cb526-2"><a href="BOOT.html#cb526-2" aria-hidden="true" tabindex="-1"></a>results<span class="ot">&lt;-</span><span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">diffmean</span>(age<span class="sc">~</span>sex,<span class="at">data=</span><span class="fu">resample</span>(HELP_sub_new))</span></code></pre></div>
 <ol start="5" style="list-style-type: lower-alpha">
 <li>Plot the bootstrap distribution and a line at the observed difference in sample means.</li>
 </ol>
-<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="BOOT.html#cb528-1"></a>results <span class="op">%&gt;%</span></span>
-<span id="cb528-2"><a href="BOOT.html#cb528-2"></a><span class="st">  </span><span class="kw">gf_histogram</span>(<span class="op">~</span>diffmean,<span class="dt">fill=</span><span class="st">&quot;cyan&quot;</span>,<span class="dt">color=</span><span class="st">&quot;black&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb528-3"><a href="BOOT.html#cb528-3"></a><span class="st">  </span><span class="kw">gf_vline</span>(<span class="dt">xintercept=</span>obs) <span class="op">%&gt;%</span></span>
-<span id="cb528-4"><a href="BOOT.html#cb528-4"></a><span class="st">  </span><span class="kw">gf_theme</span>(<span class="kw">theme_classic</span>()) <span class="op">%&gt;%</span></span>
-<span id="cb528-5"><a href="BOOT.html#cb528-5"></a><span class="st">  </span><span class="kw">gf_labs</span>(<span class="dt">x=</span><span class="st">&quot;Difference in means&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="BOOT.html#cb527-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
+<span id="cb527-2"><a href="BOOT.html#cb527-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_histogram</span>(<span class="sc">~</span>diffmean,<span class="at">fill=</span><span class="st">&quot;cyan&quot;</span>,<span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb527-3"><a href="BOOT.html#cb527-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_vline</span>(<span class="at">xintercept=</span>obs) <span class="sc">%&gt;%</span></span>
+<span id="cb527-4"><a href="BOOT.html#cb527-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_classic</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb527-5"><a href="BOOT.html#cb527-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x=</span><span class="st">&quot;Difference in means&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning: geom_vline(): Ignoring `mapping` because `xintercept` was provided.</code></pre>
 <p><img src="23-Bootstrap-Solutions_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <ol start="6" style="list-style-type: lower-alpha">
 <li>Find a p-value.</li>
 </ol>
-<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="BOOT.html#cb530-1"></a><span class="dv">2</span><span class="op">*</span><span class="kw">prop1</span>(<span class="op">~</span>(diffmean<span class="op">&lt;=</span>obs),<span class="dt">data=</span>results)</span></code></pre></div>
+<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="BOOT.html#cb529-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">prop1</span>(<span class="sc">~</span>(diffmean<span class="sc">&lt;=</span>obs),<span class="at">data=</span>results)</span></code></pre></div>
 <pre><code>## prop_TRUE 
 ## 0.3476523</code></pre>
 <ol start="7" style="list-style-type: lower-alpha">
@@ -570,13 +658,14 @@ Write a function and find the <em>MAD</em> of the data.</li>
 </ol>
 <p>This is a similar p-value.</p>
 </div>
-<div id="problem-3-16" class="section level3">
+<div id="problem-3-16" class="section level3" number="23.2.3">
 <h3><span class="header-section-number">23.2.3</span> Problem 3</h3>
-<p>3. Paired data</p>
+<p>. Paired data</p>
 <p>Are textbooks actually cheaper online? Here we compare the price of textbooks at the University of California, Los Angeles’ (UCLA’s) bookstore and prices at Amazon.com. Seventy-three UCLA courses were randomly sampled in Spring 2010, representing less than 10% of all UCLA courses. When a class had multiple books, only the most expensive text was considered.</p>
 <p>The data is in the file <code>textbooks.csv</code> under the data folder.</p>
-<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="BOOT.html#cb532-1"></a>textbooks&lt;-<span class="kw">read_csv</span>(<span class="st">&quot;data/textbooks.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Parsed with column specification:
+<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="BOOT.html#cb531-1" aria-hidden="true" tabindex="-1"></a>textbooks<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">&quot;data/textbooks.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   dept_abbr = col_character(),
 ##   course = col_character(),
@@ -586,7 +675,7 @@ Write a function and find the <em>MAD</em> of the data.</li>
 ##   more = col_character(),
 ##   diff = col_double()
 ## )</code></pre>
-<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="BOOT.html#cb534-1"></a><span class="kw">head</span>(textbooks)</span></code></pre></div>
+<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="BOOT.html#cb533-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(textbooks)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 7
 ##   dept_abbr course isbn           ucla_new amaz_new more   diff
 ##   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;             &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
@@ -605,21 +694,21 @@ Write a function and find the <em>MAD</em> of the data.</li>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Make a scatterplot of the UCLA price versus the Amazon price. Add a 45 degree line to the plot.</li>
 </ol>
-<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="BOOT.html#cb536-1"></a>textbooks <span class="op">%&gt;%</span></span>
-<span id="cb536-2"><a href="BOOT.html#cb536-2"></a><span class="st">  </span><span class="kw">gf_point</span>(ucla_new<span class="op">~</span>amaz_new) <span class="op">%&gt;%</span></span>
-<span id="cb536-3"><a href="BOOT.html#cb536-3"></a><span class="st">  </span><span class="kw">gf_abline</span>(<span class="dt">slope=</span><span class="dv">1</span>,<span class="dt">intercept =</span> <span class="dv">0</span>,<span class="dt">color=</span><span class="st">&quot;darkblue&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb536-4"><a href="BOOT.html#cb536-4"></a><span class="st">  </span><span class="kw">gf_theme</span>(<span class="kw">theme_classic</span>()) <span class="op">%&gt;%</span></span>
-<span id="cb536-5"><a href="BOOT.html#cb536-5"></a><span class="st">  </span><span class="kw">gf_labs</span>(<span class="dt">x=</span><span class="st">&quot;Amazon&quot;</span>,<span class="dt">y=</span><span class="st">&quot;UCLA&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="BOOT.html#cb535-1" aria-hidden="true" tabindex="-1"></a>textbooks <span class="sc">%&gt;%</span></span>
+<span id="cb535-2"><a href="BOOT.html#cb535-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_point</span>(ucla_new<span class="sc">~</span>amaz_new) <span class="sc">%&gt;%</span></span>
+<span id="cb535-3"><a href="BOOT.html#cb535-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_abline</span>(<span class="at">slope=</span><span class="dv">1</span>,<span class="at">intercept =</span> <span class="dv">0</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb535-4"><a href="BOOT.html#cb535-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_classic</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb535-5"><a href="BOOT.html#cb535-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x=</span><span class="st">&quot;Amazon&quot;</span>,<span class="at">y=</span><span class="st">&quot;UCLA&quot;</span>)</span></code></pre></div>
 <p><img src="23-Bootstrap-Solutions_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <p>It appears the books at the UCLA bookstore are more expensive. One way to test this is with a regression model; we will learn about in the next block.</p>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Make a histogram of the differences in price.</li>
 </ol>
-<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="BOOT.html#cb537-1"></a>textbooks <span class="op">%&gt;%</span></span>
-<span id="cb537-2"><a href="BOOT.html#cb537-2"></a><span class="st">  </span><span class="kw">gf_histogram</span>(<span class="op">~</span>diff,<span class="dt">fill=</span><span class="st">&quot;cyan&quot;</span>,<span class="dt">color=</span><span class="st">&quot;black&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb537-3"><a href="BOOT.html#cb537-3"></a><span class="st">  </span><span class="kw">gf_theme</span>(<span class="kw">theme_classic</span>()) <span class="op">%&gt;%</span></span>
-<span id="cb537-4"><a href="BOOT.html#cb537-4"></a><span class="st">  </span><span class="kw">gf_labs</span>(<span class="dt">title=</span><span class="st">&quot;Distribution of price differences&quot;</span>,</span>
-<span id="cb537-5"><a href="BOOT.html#cb537-5"></a>          <span class="dt">x=</span><span class="st">&quot;Price difference between UCLA and Amazon&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="BOOT.html#cb536-1" aria-hidden="true" tabindex="-1"></a>textbooks <span class="sc">%&gt;%</span></span>
+<span id="cb536-2"><a href="BOOT.html#cb536-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_histogram</span>(<span class="sc">~</span>diff,<span class="at">fill=</span><span class="st">&quot;cyan&quot;</span>,<span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb536-3"><a href="BOOT.html#cb536-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_classic</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb536-4"><a href="BOOT.html#cb536-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title=</span><span class="st">&quot;Distribution of price differences&quot;</span>,</span>
+<span id="cb536-5"><a href="BOOT.html#cb536-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">x=</span><span class="st">&quot;Price difference between UCLA and Amazon&quot;</span>)</span></code></pre></div>
 <p><img src="23-Bootstrap-Solutions_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <p>The distribution is skewed.</p>
 <p>The hypotheses are:<br />
@@ -628,13 +717,13 @@ Write a function and find the <em>MAD</em> of the data.</li>
 <ol start="4" style="list-style-type: lower-alpha">
 <li>To use a <span class="math inline">\(t\)</span> distribution, the variable <code>diff</code> has to be independent and normally distributed. Since the 73 books represent less than 10% of the population, the assumption that the random sample is independent is reasonable. Check normality using <code>qqnorsim()</code> from the <code>openintro</code> package. It generates 8 qq plots of simulated normal data that you can use to judge the <code>diff</code> variable.</li>
 </ol>
-<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="BOOT.html#cb538-1"></a><span class="kw">qqnormsim</span>(diff,textbooks)</span></code></pre></div>
+<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="BOOT.html#cb537-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnormsim</span>(diff,textbooks)</span></code></pre></div>
 <p><img src="23-Bootstrap-Solutions_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <p>The normality assumption is suspect but we have a large sample so it should be acceptable to use the <span class="math inline">\(t\)</span>.</p>
 <ol start="5" style="list-style-type: lower-alpha">
 <li>Run a <span class="math inline">\(t\)</span> test on the <code>diff</code> variable. Report the p-value and conclusion.</li>
 </ol>
-<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="BOOT.html#cb539-1"></a><span class="kw">t_test</span>(<span class="op">~</span>diff,textbooks)</span></code></pre></div>
+<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="BOOT.html#cb538-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t_test</span>(<span class="sc">~</span>diff,textbooks)</span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -647,7 +736,7 @@ Write a function and find the <em>MAD</em> of the data.</li>
 ## mean of x 
 ##  12.76164</code></pre>
 <p>We did not have to use the <code>paired</code> option since we already took the difference. Here is an example of using the <code>paired</code> option.</p>
-<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="BOOT.html#cb541-1"></a><span class="kw">t_test</span>(textbooks<span class="op">$</span>ucla_new,textbooks<span class="op">$</span>amaz_new,<span class="dt">paired=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="BOOT.html#cb540-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t_test</span>(textbooks<span class="sc">$</span>ucla_new,textbooks<span class="sc">$</span>amaz_new,<span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -663,38 +752,38 @@ Write a function and find the <em>MAD</em> of the data.</li>
 <ol start="6" style="list-style-type: lower-alpha">
 <li>Create a bootstrap distribution and generate a 95% confidence interval on the mean of the differences, the <code>diff</code> column.</li>
 </ol>
-<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="BOOT.html#cb543-1"></a>textbooks <span class="op">%&gt;%</span></span>
-<span id="cb543-2"><a href="BOOT.html#cb543-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">obs_diff=</span><span class="kw">mean</span>(diff))</span></code></pre></div>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="BOOT.html#cb542-1" aria-hidden="true" tabindex="-1"></a>textbooks <span class="sc">%&gt;%</span></span>
+<span id="cb542-2"><a href="BOOT.html#cb542-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">obs_diff=</span><span class="fu">mean</span>(diff))</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 1
 ##   obs_diff
 ##      &lt;dbl&gt;
 ## 1     12.8</code></pre>
 <p>We need to just pull the difference.</p>
-<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="BOOT.html#cb545-1"></a>obs_stat&lt;-<span class="st"> </span>textbooks <span class="op">%&gt;%</span></span>
-<span id="cb545-2"><a href="BOOT.html#cb545-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">obs_diff=</span><span class="kw">mean</span>(diff)) <span class="op">%&gt;%</span></span>
-<span id="cb545-3"><a href="BOOT.html#cb545-3"></a><span class="st">  </span><span class="kw">pull</span>(obs_diff)</span>
-<span id="cb545-4"><a href="BOOT.html#cb545-4"></a></span>
-<span id="cb545-5"><a href="BOOT.html#cb545-5"></a>obs_stat</span></code></pre></div>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="BOOT.html#cb544-1" aria-hidden="true" tabindex="-1"></a>obs_stat<span class="ot">&lt;-</span> textbooks <span class="sc">%&gt;%</span></span>
+<span id="cb544-2"><a href="BOOT.html#cb544-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">obs_diff=</span><span class="fu">mean</span>(diff)) <span class="sc">%&gt;%</span></span>
+<span id="cb544-3"><a href="BOOT.html#cb544-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(obs_diff)</span>
+<span id="cb544-4"><a href="BOOT.html#cb544-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb544-5"><a href="BOOT.html#cb544-5" aria-hidden="true" tabindex="-1"></a>obs_stat</span></code></pre></div>
 <pre><code>## [1] 12.76164</code></pre>
 <p>Next a bootstrap distribution.</p>
-<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="BOOT.html#cb547-1"></a><span class="kw">set.seed</span>(<span class="dv">843</span>)</span>
-<span id="cb547-2"><a href="BOOT.html#cb547-2"></a>results&lt;-<span class="kw">do</span>(<span class="dv">1000</span>)<span class="op">*</span><span class="kw">mean</span>(<span class="op">~</span>diff,<span class="dt">data=</span><span class="kw">resample</span>(textbooks))</span></code></pre></div>
-<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="BOOT.html#cb548-1"></a>results <span class="op">%&gt;%</span></span>
-<span id="cb548-2"><a href="BOOT.html#cb548-2"></a><span class="st">  </span><span class="kw">gf_dhistogram</span>(<span class="op">~</span>mean,<span class="dt">fill=</span><span class="st">&quot;cyan&quot;</span>,<span class="dt">color=</span><span class="st">&quot;black&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb548-3"><a href="BOOT.html#cb548-3"></a><span class="st">  </span><span class="kw">gf_dist</span>(<span class="st">&quot;norm&quot;</span>,<span class="dt">mean=</span><span class="fl">12.76</span>,<span class="dt">sd=</span><span class="dv">14</span><span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">72</span>),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb548-4"><a href="BOOT.html#cb548-4"></a><span class="st">  </span><span class="kw">gf_vline</span>(<span class="dt">xintercept =</span> obs_stat) <span class="op">%&gt;%</span></span>
-<span id="cb548-5"><a href="BOOT.html#cb548-5"></a><span class="st">  </span><span class="kw">gf_theme</span>(<span class="kw">theme_classic</span>()) <span class="op">%&gt;%</span></span>
-<span id="cb548-6"><a href="BOOT.html#cb548-6"></a><span class="st">  </span><span class="kw">gf_labs</span>(<span class="dt">title=</span><span class="st">&quot;Sampling distribution of the mean of differences in price&quot;</span>,</span>
-<span id="cb548-7"><a href="BOOT.html#cb548-7"></a>          <span class="dt">x=</span><span class="st">&quot;Mean of differences in price&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="BOOT.html#cb546-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">843</span>)</span>
+<span id="cb546-2"><a href="BOOT.html#cb546-2" aria-hidden="true" tabindex="-1"></a>results<span class="ot">&lt;-</span><span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">mean</span>(<span class="sc">~</span>diff,<span class="at">data=</span><span class="fu">resample</span>(textbooks))</span></code></pre></div>
+<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="BOOT.html#cb547-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
+<span id="cb547-2"><a href="BOOT.html#cb547-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_dhistogram</span>(<span class="sc">~</span>mean,<span class="at">fill=</span><span class="st">&quot;cyan&quot;</span>,<span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb547-3"><a href="BOOT.html#cb547-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_dist</span>(<span class="st">&quot;norm&quot;</span>,<span class="at">mean=</span><span class="fl">12.76</span>,<span class="at">sd=</span><span class="dv">14</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">72</span>),<span class="at">color=</span><span class="st">&quot;red&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb547-4"><a href="BOOT.html#cb547-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_vline</span>(<span class="at">xintercept =</span> obs_stat) <span class="sc">%&gt;%</span></span>
+<span id="cb547-5"><a href="BOOT.html#cb547-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_classic</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb547-6"><a href="BOOT.html#cb547-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title=</span><span class="st">&quot;Sampling distribution of the mean of differences in price&quot;</span>,</span>
+<span id="cb547-7"><a href="BOOT.html#cb547-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">x=</span><span class="st">&quot;Mean of differences in price&quot;</span>)</span></code></pre></div>
 <p><img src="23-Bootstrap-Solutions_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
-<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="BOOT.html#cb549-1"></a><span class="kw">cdata</span>(<span class="op">~</span>mean,<span class="dt">data=</span>results)</span></code></pre></div>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="BOOT.html#cb548-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cdata</span>(<span class="sc">~</span>mean,<span class="at">data=</span>results)</span></code></pre></div>
 <pre><code>##         lower    upper central.p
 ## 2.5% 9.583829 16.05705      0.95</code></pre>
 <p>Not a bad solution for this problem.</p>
 <ol start="7" style="list-style-type: lower-alpha">
 <li>If there is really no differences between book sources, the variable <code>more</code> is a binomial and under the null the probably of success is <span class="math inline">\(\pi = 0.5\)</span>. Run a hypothesis test using the variable <code>more</code>.</li>
 </ol>
-<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="BOOT.html#cb551-1"></a><span class="kw">inspect</span>(textbooks)</span></code></pre></div>
+<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="BOOT.html#cb550-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(textbooks)</span></code></pre></div>
 <pre><code>## 
 ## categorical variables:  
 ##        name     class levels  n missing
@@ -718,7 +807,7 @@ Write a function and find the <em>MAD</em> of the data.</li>
 ## ...2       0
 ## ...3       0</code></pre>
 <p>We have 45 books that were more expensive out of the total of 73.</p>
-<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="BOOT.html#cb553-1"></a><span class="kw">prop_test</span>(<span class="dv">45</span>,<span class="dv">73</span>,<span class="dt">p=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="BOOT.html#cb552-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop_test</span>(<span class="dv">45</span>,<span class="dv">73</span>,<span class="at">p=</span><span class="fl">0.5</span>)</span></code></pre></div>
 <pre><code>## 
 ##  1-sample proportions test with continuity correction
 ## 
@@ -735,19 +824,19 @@ Write a function and find the <em>MAD</em> of the data.</li>
 <li>Could you use a permutation test on this example? Explain.</li>
 </ol>
 <p>Yes, but you have to be careful because you want to keep the pairing so you can’t just shuffle the names. You have to shuffle the names within the paired values. This means to simply randomly switch the names within a row. This is easier to do by just multiplying the diff column by a random choice of -1 and 1.</p>
-<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="BOOT.html#cb555-1"></a><span class="kw">sample</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>),<span class="dt">size=</span><span class="dv">73</span>,<span class="dt">replace =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="BOOT.html#cb554-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>),<span class="at">size=</span><span class="dv">73</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>##  [1]  1 -1 -1  1 -1 -1 -1  1 -1 -1  1 -1 -1  1 -1  1  1  1 -1 -1 -1 -1  1 -1 -1
 ## [26] -1 -1  1  1  1  1  1 -1  1  1  1  1  1  1 -1 -1  1  1 -1  1  1  1  1 -1 -1
 ## [51] -1 -1 -1  1 -1  1 -1 -1  1  1 -1  1  1 -1 -1 -1  1  1 -1  1 -1  1  1</code></pre>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="BOOT.html#cb557-1"></a><span class="kw">set.seed</span>(<span class="dv">406</span>)</span>
-<span id="cb557-2"><a href="BOOT.html#cb557-2"></a>results &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">1000</span>)<span class="op">*</span><span class="kw">mean</span>((<span class="op">~</span>diff<span class="op">*</span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>),<span class="dt">size=</span><span class="dv">73</span>,<span class="dt">replace =</span> <span class="ot">TRUE</span>)),<span class="dt">data=</span>textbooks)</span></code></pre></div>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="BOOT.html#cb558-1"></a>results <span class="op">%&gt;%</span></span>
-<span id="cb558-2"><a href="BOOT.html#cb558-2"></a><span class="st">  </span><span class="kw">gf_histogram</span>(<span class="op">~</span>mean,<span class="dt">fill=</span><span class="st">&quot;cyan&quot;</span>,<span class="dt">color=</span><span class="st">&quot;black&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb558-3"><a href="BOOT.html#cb558-3"></a><span class="st">  </span><span class="kw">gf_theme</span>(<span class="kw">theme_classic</span>()) <span class="op">%&gt;%</span></span>
-<span id="cb558-4"><a href="BOOT.html#cb558-4"></a><span class="st">  </span><span class="kw">gf_labs</span>(<span class="dt">title=</span><span class="st">&quot;Randomization sampling distribution of mean of differences in price&quot;</span>,</span>
-<span id="cb558-5"><a href="BOOT.html#cb558-5"></a>          <span class="dt">x=</span><span class="st">&quot;Mean of price difference&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="BOOT.html#cb556-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">406</span>)</span>
+<span id="cb556-2"><a href="BOOT.html#cb556-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">mean</span>((<span class="sc">~</span>diff<span class="sc">*</span><span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>),<span class="at">size=</span><span class="dv">73</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)),<span class="at">data=</span>textbooks)</span></code></pre></div>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="BOOT.html#cb557-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
+<span id="cb557-2"><a href="BOOT.html#cb557-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_histogram</span>(<span class="sc">~</span>mean,<span class="at">fill=</span><span class="st">&quot;cyan&quot;</span>,<span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb557-3"><a href="BOOT.html#cb557-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_classic</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb557-4"><a href="BOOT.html#cb557-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title=</span><span class="st">&quot;Randomization sampling distribution of mean of differences in price&quot;</span>,</span>
+<span id="cb557-5"><a href="BOOT.html#cb557-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">x=</span><span class="st">&quot;Mean of price difference&quot;</span>)</span></code></pre></div>
 <p><img src="23-Bootstrap-Solutions_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="BOOT.html#cb559-1"></a><span class="kw">prop1</span>((<span class="op">~</span>mean<span class="op">&gt;=</span>obs_stat),<span class="dt">data=</span>results)</span></code></pre></div>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="BOOT.html#cb558-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop1</span>((<span class="sc">~</span>mean<span class="sc">&gt;=</span>obs_stat),<span class="at">data=</span>results)</span></code></pre></div>
 <pre><code>##   prop_TRUE 
 ## 0.000999001</code></pre>
 <p>None of the permuted values is at or greater that the observed value.</p>

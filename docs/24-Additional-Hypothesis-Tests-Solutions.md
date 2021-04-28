@@ -231,10 +231,6 @@ mlb_prob3 %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 2 x 2
 ##   position   stat
 ##   <fct>     <dbl>

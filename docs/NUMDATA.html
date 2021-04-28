@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Numerical Data | Solutions for Computational Probability and Statistics</title>
   <meta name="description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Numerical Data | Solutions for Computational Probability and Statistics" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:image" content="figures/CoverSol2.png" />
+  <meta property="og:image" content="/figures/CoverSol2.png" />
   <meta property="og:description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
   
 
@@ -19,14 +19,14 @@
   <meta name="twitter:title" content="Chapter 5 Numerical Data | Solutions for Computational Probability and Statistics" />
   
   <meta name="twitter:description" content="This is a set of solutions used for Math 377 starting in the fall of 2020." />
-  <meta name="twitter:image" content="figures/CoverSol2.png" />
+  <meta name="twitter:image" content="/figures/CoverSol2.png" />
 
 <meta name="author" content="Ken Horton" />
 <meta name="author" content="Kris Pruitt" />
 <meta name="author" content="Bradley Warner" />
 
 
-<meta name="date" content="2021-03-11" />
+<meta name="date" content="2021-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -35,6 +35,7 @@
   
 <link rel="prev" href="STUDY.html"/>
 <link rel="next" href="CATDATA.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -52,22 +53,23 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -87,7 +89,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -120,6 +122,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -136,37 +161,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Solutions Manual</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
 <li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#book-structure-and-how-to-use-it"><i class="fa fa-check"></i><b>0.1</b> Book Structure and How to Use It</a></li>
 <li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#packages"><i class="fa fa-check"></i><b>0.2</b> Packages</a></li>
 <li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#file-creation-information"><i class="fa fa-check"></i><b>0.3</b> File Creation Information</a></li>
 </ul></li>
 <li class="part"><span><b>I Descriptive Statistical Modeling</b></span></li>
-<li class="chapter" data-level="1" data-path="CS1.html"><a href="CS1.html"><i class="fa fa-check"></i><b>1</b> Case Study</a><ul>
+<li class="chapter" data-level="1" data-path="CS1.html"><a href="CS1.html"><i class="fa fa-check"></i><b>1</b> Case Study</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="CS1.html"><a href="CS1.html#objectives"><i class="fa fa-check"></i><b>1.1</b> Objectives</a></li>
-<li class="chapter" data-level="1.2" data-path="CS1.html"><a href="CS1.html#homework"><i class="fa fa-check"></i><b>1.2</b> Homework</a><ul>
+<li class="chapter" data-level="1.2" data-path="CS1.html"><a href="CS1.html#homework"><i class="fa fa-check"></i><b>1.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="1.2.1" data-path="CS1.html"><a href="CS1.html#problem-1"><i class="fa fa-check"></i><b>1.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="1.2.2" data-path="CS1.html"><a href="CS1.html#problem-2"><i class="fa fa-check"></i><b>1.2.2</b> Problem 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="DB.html"><a href="DB.html"><i class="fa fa-check"></i><b>2</b> Data Basics</a><ul>
+<li class="chapter" data-level="2" data-path="DB.html"><a href="DB.html"><i class="fa fa-check"></i><b>2</b> Data Basics</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="DB.html"><a href="DB.html#objectives-1"><i class="fa fa-check"></i><b>2.1</b> Objectives</a></li>
-<li class="chapter" data-level="2.2" data-path="DB.html"><a href="DB.html#homework-1"><i class="fa fa-check"></i><b>2.2</b> Homework</a><ul>
+<li class="chapter" data-level="2.2" data-path="DB.html"><a href="DB.html#homework-1"><i class="fa fa-check"></i><b>2.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="2.2.1" data-path="DB.html"><a href="DB.html#problem-1-1"><i class="fa fa-check"></i><b>2.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="2.2.2" data-path="DB.html"><a href="DB.html#problem-2-1"><i class="fa fa-check"></i><b>2.2.2</b> Problem 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="ODCP.html"><a href="ODCP.html"><i class="fa fa-check"></i><b>3</b> Overview of Data Collection Principles</a><ul>
+<li class="chapter" data-level="3" data-path="ODCP.html"><a href="ODCP.html"><i class="fa fa-check"></i><b>3</b> Overview of Data Collection Principles</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="ODCP.html"><a href="ODCP.html#objectives-2"><i class="fa fa-check"></i><b>3.1</b> Objectives</a></li>
-<li class="chapter" data-level="3.2" data-path="ODCP.html"><a href="ODCP.html#homework-2"><i class="fa fa-check"></i><b>3.2</b> Homework</a><ul>
+<li class="chapter" data-level="3.2" data-path="ODCP.html"><a href="ODCP.html#homework-2"><i class="fa fa-check"></i><b>3.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="ODCP.html"><a href="ODCP.html#problem-1-2"><i class="fa fa-check"></i><b>3.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="3.2.2" data-path="ODCP.html"><a href="ODCP.html#problem-2-2"><i class="fa fa-check"></i><b>3.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="3.2.3" data-path="ODCP.html"><a href="ODCP.html#problem-3"><i class="fa fa-check"></i><b>3.2.3</b> Problem 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="STUDY.html"><a href="STUDY.html"><i class="fa fa-check"></i><b>4</b> Studies</a><ul>
+<li class="chapter" data-level="4" data-path="STUDY.html"><a href="STUDY.html"><i class="fa fa-check"></i><b>4</b> Studies</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="STUDY.html"><a href="STUDY.html#objectives-3"><i class="fa fa-check"></i><b>4.1</b> Objectives</a></li>
-<li class="chapter" data-level="4.2" data-path="STUDY.html"><a href="STUDY.html#homework-3"><i class="fa fa-check"></i><b>4.2</b> Homework</a><ul>
+<li class="chapter" data-level="4.2" data-path="STUDY.html"><a href="STUDY.html#homework-3"><i class="fa fa-check"></i><b>4.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="4.2.1" data-path="STUDY.html"><a href="STUDY.html#problem-1-3"><i class="fa fa-check"></i><b>4.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="4.2.2" data-path="STUDY.html"><a href="STUDY.html#problem-2-3"><i class="fa fa-check"></i><b>4.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="4.2.3" data-path="STUDY.html"><a href="STUDY.html#problem-3-1"><i class="fa fa-check"></i><b>4.2.3</b> Problem 3</a></li>
@@ -174,33 +208,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.5" data-path="STUDY.html"><a href="STUDY.html#problem-5"><i class="fa fa-check"></i><b>4.2.5</b> Problem 5</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="NUMDATA.html"><a href="NUMDATA.html"><i class="fa fa-check"></i><b>5</b> Numerical Data</a><ul>
+<li class="chapter" data-level="5" data-path="NUMDATA.html"><a href="NUMDATA.html"><i class="fa fa-check"></i><b>5</b> Numerical Data</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="NUMDATA.html"><a href="NUMDATA.html#objectives-4"><i class="fa fa-check"></i><b>5.1</b> Objectives</a></li>
-<li class="chapter" data-level="5.2" data-path="NUMDATA.html"><a href="NUMDATA.html#homework-4"><i class="fa fa-check"></i><b>5.2</b> Homework</a><ul>
+<li class="chapter" data-level="5.2" data-path="NUMDATA.html"><a href="NUMDATA.html#homework-4"><i class="fa fa-check"></i><b>5.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="NUMDATA.html"><a href="NUMDATA.html#problem-1-4"><i class="fa fa-check"></i><b>5.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="5.2.2" data-path="NUMDATA.html"><a href="NUMDATA.html#problem-2-4"><i class="fa fa-check"></i><b>5.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="5.2.3" data-path="NUMDATA.html"><a href="NUMDATA.html#problem-3-2"><i class="fa fa-check"></i><b>5.2.3</b> Problem 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="CATDATA.html"><a href="CATDATA.html"><i class="fa fa-check"></i><b>6</b> Categorical Data</a><ul>
+<li class="chapter" data-level="6" data-path="CATDATA.html"><a href="CATDATA.html"><i class="fa fa-check"></i><b>6</b> Categorical Data</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="CATDATA.html"><a href="CATDATA.html#objectives-5"><i class="fa fa-check"></i><b>6.1</b> Objectives</a></li>
-<li class="chapter" data-level="6.2" data-path="CATDATA.html"><a href="CATDATA.html#homework-5"><i class="fa fa-check"></i><b>6.2</b> Homework</a><ul>
+<li class="chapter" data-level="6.2" data-path="CATDATA.html"><a href="CATDATA.html#homework-5"><i class="fa fa-check"></i><b>6.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="CATDATA.html"><a href="CATDATA.html#problem-1-5"><i class="fa fa-check"></i><b>6.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="6.2.2" data-path="CATDATA.html"><a href="CATDATA.html#problem-2-5"><i class="fa fa-check"></i><b>6.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="6.2.3" data-path="CATDATA.html"><a href="CATDATA.html#problem-3-3"><i class="fa fa-check"></i><b>6.2.3</b> Problem 3</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II Probability Modeling</b></span></li>
-<li class="chapter" data-level="7" data-path="CS2.html"><a href="CS2.html"><i class="fa fa-check"></i><b>7</b> Case Study</a><ul>
+<li class="chapter" data-level="7" data-path="CS2.html"><a href="CS2.html"><i class="fa fa-check"></i><b>7</b> Case Study</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="CS2.html"><a href="CS2.html#objectives-6"><i class="fa fa-check"></i><b>7.1</b> Objectives</a></li>
-<li class="chapter" data-level="7.2" data-path="CS2.html"><a href="CS2.html#homework-6"><i class="fa fa-check"></i><b>7.2</b> Homework</a><ul>
+<li class="chapter" data-level="7.2" data-path="CS2.html"><a href="CS2.html#homework-6"><i class="fa fa-check"></i><b>7.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="7.2.1" data-path="CS2.html"><a href="CS2.html#problem-1-6"><i class="fa fa-check"></i><b>7.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="7.2.2" data-path="CS2.html"><a href="CS2.html#problem-2-6"><i class="fa fa-check"></i><b>7.2.2</b> Problem 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="PROBRULES.html"><a href="PROBRULES.html"><i class="fa fa-check"></i><b>8</b> Probability Rules</a><ul>
+<li class="chapter" data-level="8" data-path="PROBRULES.html"><a href="PROBRULES.html"><i class="fa fa-check"></i><b>8</b> Probability Rules</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="PROBRULES.html"><a href="PROBRULES.html#objectives-7"><i class="fa fa-check"></i><b>8.1</b> Objectives</a></li>
-<li class="chapter" data-level="8.2" data-path="PROBRULES.html"><a href="PROBRULES.html#homework-7"><i class="fa fa-check"></i><b>8.2</b> Homework</a><ul>
+<li class="chapter" data-level="8.2" data-path="PROBRULES.html"><a href="PROBRULES.html#homework-7"><i class="fa fa-check"></i><b>8.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="8.2.1" data-path="PROBRULES.html"><a href="PROBRULES.html#problem-1-7"><i class="fa fa-check"></i><b>8.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="8.2.2" data-path="PROBRULES.html"><a href="PROBRULES.html#problem-2-7"><i class="fa fa-check"></i><b>8.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="8.2.3" data-path="PROBRULES.html"><a href="PROBRULES.html#problem-3-4"><i class="fa fa-check"></i><b>8.2.3</b> Problem 3</a></li>
@@ -211,18 +253,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2.8" data-path="PROBRULES.html"><a href="PROBRULES.html#problem-8"><i class="fa fa-check"></i><b>8.2.8</b> Problem 8</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="CONDPROB.html"><a href="CONDPROB.html"><i class="fa fa-check"></i><b>9</b> Conditional Probability</a><ul>
+<li class="chapter" data-level="9" data-path="CONDPROB.html"><a href="CONDPROB.html"><i class="fa fa-check"></i><b>9</b> Conditional Probability</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="CONDPROB.html"><a href="CONDPROB.html#objectives-8"><i class="fa fa-check"></i><b>9.1</b> Objectives</a></li>
-<li class="chapter" data-level="9.2" data-path="CONDPROB.html"><a href="CONDPROB.html#homework-8"><i class="fa fa-check"></i><b>9.2</b> Homework</a><ul>
+<li class="chapter" data-level="9.2" data-path="CONDPROB.html"><a href="CONDPROB.html#homework-8"><i class="fa fa-check"></i><b>9.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="9.2.1" data-path="CONDPROB.html"><a href="CONDPROB.html#problem-1-8"><i class="fa fa-check"></i><b>9.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="9.2.2" data-path="CONDPROB.html"><a href="CONDPROB.html#problem-2-8"><i class="fa fa-check"></i><b>9.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="9.2.3" data-path="CONDPROB.html"><a href="CONDPROB.html#problem-3-5"><i class="fa fa-check"></i><b>9.2.3</b> Problem 3</a></li>
 <li class="chapter" data-level="9.2.4" data-path="CONDPROB.html"><a href="CONDPROB.html#problem-4-2"><i class="fa fa-check"></i><b>9.2.4</b> Problem 4</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="RANDVAR.html"><a href="RANDVAR.html"><i class="fa fa-check"></i><b>10</b> Random Variables</a><ul>
+<li class="chapter" data-level="10" data-path="RANDVAR.html"><a href="RANDVAR.html"><i class="fa fa-check"></i><b>10</b> Random Variables</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="RANDVAR.html"><a href="RANDVAR.html#objectives-9"><i class="fa fa-check"></i><b>10.1</b> Objectives</a></li>
-<li class="chapter" data-level="10.2" data-path="RANDVAR.html"><a href="RANDVAR.html#homework-9"><i class="fa fa-check"></i><b>10.2</b> Homework</a><ul>
+<li class="chapter" data-level="10.2" data-path="RANDVAR.html"><a href="RANDVAR.html#homework-9"><i class="fa fa-check"></i><b>10.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="10.2.1" data-path="RANDVAR.html"><a href="RANDVAR.html#problem-1-9"><i class="fa fa-check"></i><b>10.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="10.2.2" data-path="RANDVAR.html"><a href="RANDVAR.html#problem-2-9"><i class="fa fa-check"></i><b>10.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="10.2.3" data-path="RANDVAR.html"><a href="RANDVAR.html#problem-3-6"><i class="fa fa-check"></i><b>10.2.3</b> Problem 3</a></li>
@@ -231,24 +277,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2.6" data-path="RANDVAR.html"><a href="RANDVAR.html#problem-6-1"><i class="fa fa-check"></i><b>10.2.6</b> Problem 6</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="CONRANDVAR.html"><a href="CONRANDVAR.html"><i class="fa fa-check"></i><b>11</b> Continuous Random Variables</a><ul>
+<li class="chapter" data-level="11" data-path="CONRANDVAR.html"><a href="CONRANDVAR.html"><i class="fa fa-check"></i><b>11</b> Continuous Random Variables</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="CONRANDVAR.html"><a href="CONRANDVAR.html#objectives-10"><i class="fa fa-check"></i><b>11.1</b> Objectives</a></li>
-<li class="chapter" data-level="11.2" data-path="CONRANDVAR.html"><a href="CONRANDVAR.html#homework-10"><i class="fa fa-check"></i><b>11.2</b> Homework</a><ul>
+<li class="chapter" data-level="11.2" data-path="CONRANDVAR.html"><a href="CONRANDVAR.html#homework-10"><i class="fa fa-check"></i><b>11.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="11.2.1" data-path="CONRANDVAR.html"><a href="CONRANDVAR.html#problem-1-10"><i class="fa fa-check"></i><b>11.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="11.2.2" data-path="CONRANDVAR.html"><a href="CONRANDVAR.html#problem-2-10"><i class="fa fa-check"></i><b>11.2.2</b> Problem 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="DISCRETENAMED.html"><a href="DISCRETENAMED.html"><i class="fa fa-check"></i><b>12</b> Named Discrete Distributions</a><ul>
+<li class="chapter" data-level="12" data-path="DISCRETENAMED.html"><a href="DISCRETENAMED.html"><i class="fa fa-check"></i><b>12</b> Named Discrete Distributions</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="DISCRETENAMED.html"><a href="DISCRETENAMED.html#objectives-11"><i class="fa fa-check"></i><b>12.1</b> Objectives</a></li>
-<li class="chapter" data-level="12.2" data-path="DISCRETENAMED.html"><a href="DISCRETENAMED.html#homework-11"><i class="fa fa-check"></i><b>12.2</b> Homework</a><ul>
+<li class="chapter" data-level="12.2" data-path="DISCRETENAMED.html"><a href="DISCRETENAMED.html#homework-11"><i class="fa fa-check"></i><b>12.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="12.2.1" data-path="DISCRETENAMED.html"><a href="DISCRETENAMED.html#problem-1-11"><i class="fa fa-check"></i><b>12.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="12.2.2" data-path="DISCRETENAMED.html"><a href="DISCRETENAMED.html#problem-2-11"><i class="fa fa-check"></i><b>12.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="12.2.3" data-path="DISCRETENAMED.html"><a href="DISCRETENAMED.html#problem-3-7"><i class="fa fa-check"></i><b>12.2.3</b> Problem 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="CONTNNAMED.html"><a href="CONTNNAMED.html"><i class="fa fa-check"></i><b>13</b> Named Continuous Distributions</a><ul>
+<li class="chapter" data-level="13" data-path="CONTNNAMED.html"><a href="CONTNNAMED.html"><i class="fa fa-check"></i><b>13</b> Named Continuous Distributions</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="CONTNNAMED.html"><a href="CONTNNAMED.html#objectives-12"><i class="fa fa-check"></i><b>13.1</b> Objectives</a></li>
-<li class="chapter" data-level="13.2" data-path="CONTNNAMED.html"><a href="CONTNNAMED.html#homework-12"><i class="fa fa-check"></i><b>13.2</b> Homework</a><ul>
+<li class="chapter" data-level="13.2" data-path="CONTNNAMED.html"><a href="CONTNNAMED.html#homework-12"><i class="fa fa-check"></i><b>13.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="13.2.1" data-path="CONTNNAMED.html"><a href="CONTNNAMED.html#problem-1-12"><i class="fa fa-check"></i><b>13.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="13.2.2" data-path="CONTNNAMED.html"><a href="CONTNNAMED.html#problem-2-12"><i class="fa fa-check"></i><b>13.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="13.2.3" data-path="CONTNNAMED.html"><a href="CONTNNAMED.html#problem-3-8"><i class="fa fa-check"></i><b>13.2.3</b> Problem 3</a></li>
@@ -258,18 +310,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.7" data-path="CONTNNAMED.html"><a href="CONTNNAMED.html#problem-7-1"><i class="fa fa-check"></i><b>13.2.7</b> Problem 7</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="MULTIDISTS.html"><a href="MULTIDISTS.html"><i class="fa fa-check"></i><b>14</b> Multivariate Distributions</a><ul>
+<li class="chapter" data-level="14" data-path="MULTIDISTS.html"><a href="MULTIDISTS.html"><i class="fa fa-check"></i><b>14</b> Multivariate Distributions</a>
+<ul>
 <li class="chapter" data-level="14.1" data-path="MULTIDISTS.html"><a href="MULTIDISTS.html#objectives-13"><i class="fa fa-check"></i><b>14.1</b> Objectives</a></li>
-<li class="chapter" data-level="14.2" data-path="MULTIDISTS.html"><a href="MULTIDISTS.html#homework-13"><i class="fa fa-check"></i><b>14.2</b> Homework</a><ul>
+<li class="chapter" data-level="14.2" data-path="MULTIDISTS.html"><a href="MULTIDISTS.html#homework-13"><i class="fa fa-check"></i><b>14.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="14.2.1" data-path="MULTIDISTS.html"><a href="MULTIDISTS.html#problem-1-13"><i class="fa fa-check"></i><b>14.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="14.2.2" data-path="MULTIDISTS.html"><a href="MULTIDISTS.html#problem-2-13"><i class="fa fa-check"></i><b>14.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="14.2.3" data-path="MULTIDISTS.html"><a href="MULTIDISTS.html#problem-3-9"><i class="fa fa-check"></i><b>14.2.3</b> Problem 3</a></li>
 <li class="chapter" data-level="14.2.4" data-path="MULTIDISTS.html"><a href="MULTIDISTS.html#problem-4-5"><i class="fa fa-check"></i><b>14.2.4</b> Problem 4</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="MULTIEXP.html"><a href="MULTIEXP.html"><i class="fa fa-check"></i><b>15</b> Multivariate Expectation</a><ul>
+<li class="chapter" data-level="15" data-path="MULTIEXP.html"><a href="MULTIEXP.html"><i class="fa fa-check"></i><b>15</b> Multivariate Expectation</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="MULTIEXP.html"><a href="MULTIEXP.html#objectives-14"><i class="fa fa-check"></i><b>15.1</b> Objectives</a></li>
-<li class="chapter" data-level="15.2" data-path="MULTIEXP.html"><a href="MULTIEXP.html#homework-14"><i class="fa fa-check"></i><b>15.2</b> Homework</a><ul>
+<li class="chapter" data-level="15.2" data-path="MULTIEXP.html"><a href="MULTIEXP.html#homework-14"><i class="fa fa-check"></i><b>15.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="15.2.1" data-path="MULTIEXP.html"><a href="MULTIEXP.html#problem-1-14"><i class="fa fa-check"></i><b>15.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="15.2.2" data-path="MULTIEXP.html"><a href="MULTIEXP.html#problem-2-14"><i class="fa fa-check"></i><b>15.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="15.2.3" data-path="MULTIEXP.html"><a href="MULTIEXP.html#problem-3-10"><i class="fa fa-check"></i><b>15.2.3</b> Problem 3</a></li>
@@ -278,9 +334,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.2.6" data-path="MULTIEXP.html"><a href="MULTIEXP.html#problem-6-3"><i class="fa fa-check"></i><b>15.2.6</b> Problem 6</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="TRANS.html"><a href="TRANS.html"><i class="fa fa-check"></i><b>16</b> Transformations</a><ul>
+<li class="chapter" data-level="16" data-path="TRANS.html"><a href="TRANS.html"><i class="fa fa-check"></i><b>16</b> Transformations</a>
+<ul>
 <li class="chapter" data-level="16.1" data-path="TRANS.html"><a href="TRANS.html#objectives-15"><i class="fa fa-check"></i><b>16.1</b> Objectives</a></li>
-<li class="chapter" data-level="16.2" data-path="TRANS.html"><a href="TRANS.html#homework-15"><i class="fa fa-check"></i><b>16.2</b> Homework</a><ul>
+<li class="chapter" data-level="16.2" data-path="TRANS.html"><a href="TRANS.html#homework-15"><i class="fa fa-check"></i><b>16.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="16.2.1" data-path="TRANS.html"><a href="TRANS.html#problem-1-15"><i class="fa fa-check"></i><b>16.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="16.2.2" data-path="TRANS.html"><a href="TRANS.html#problem-2-15"><i class="fa fa-check"></i><b>16.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="16.2.3" data-path="TRANS.html"><a href="TRANS.html#problem-3-11"><i class="fa fa-check"></i><b>16.2.3</b> Problem 3</a></li>
@@ -288,9 +346,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.2.5" data-path="TRANS.html"><a href="TRANS.html#problem-5-5"><i class="fa fa-check"></i><b>16.2.5</b> Problem 5</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="EST.html"><a href="EST.html"><i class="fa fa-check"></i><b>17</b> Estimation Methods</a><ul>
+<li class="chapter" data-level="17" data-path="EST.html"><a href="EST.html"><i class="fa fa-check"></i><b>17</b> Estimation Methods</a>
+<ul>
 <li class="chapter" data-level="17.1" data-path="EST.html"><a href="EST.html#objectives-16"><i class="fa fa-check"></i><b>17.1</b> Objectives</a></li>
-<li class="chapter" data-level="17.2" data-path="EST.html"><a href="EST.html#homework-16"><i class="fa fa-check"></i><b>17.2</b> Homework</a><ul>
+<li class="chapter" data-level="17.2" data-path="EST.html"><a href="EST.html#homework-16"><i class="fa fa-check"></i><b>17.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="17.2.1" data-path="EST.html"><a href="EST.html#problem-1-16"><i class="fa fa-check"></i><b>17.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="17.2.2" data-path="EST.html"><a href="EST.html#problem-2-16"><i class="fa fa-check"></i><b>17.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="17.2.3" data-path="EST.html"><a href="EST.html#problem-3-12"><i class="fa fa-check"></i><b>17.2.3</b> Problem 3</a></li>
@@ -299,31 +359,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III Statistical Modeling</b></span></li>
-<li class="chapter" data-level="18" data-path="CS3.html"><a href="CS3.html"><i class="fa fa-check"></i><b>18</b> Case Study</a><ul>
+<li class="chapter" data-level="18" data-path="CS3.html"><a href="CS3.html"><i class="fa fa-check"></i><b>18</b> Case Study</a>
+<ul>
 <li class="chapter" data-level="18.1" data-path="CS3.html"><a href="CS3.html#objectives-17"><i class="fa fa-check"></i><b>18.1</b> Objectives</a></li>
-<li class="chapter" data-level="18.2" data-path="CS3.html"><a href="CS3.html#homework-17"><i class="fa fa-check"></i><b>18.2</b> Homework</a><ul>
+<li class="chapter" data-level="18.2" data-path="CS3.html"><a href="CS3.html#homework-17"><i class="fa fa-check"></i><b>18.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="18.2.1" data-path="CS3.html"><a href="CS3.html#problem-1-17"><i class="fa fa-check"></i><b>18.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="18.2.2" data-path="CS3.html"><a href="CS3.html#problem-2-17"><i class="fa fa-check"></i><b>18.2.2</b> Problem 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="HYPOTEST.html"><a href="HYPOTEST.html"><i class="fa fa-check"></i><b>19</b> Hypothesis Testing</a><ul>
+<li class="chapter" data-level="19" data-path="HYPOTEST.html"><a href="HYPOTEST.html"><i class="fa fa-check"></i><b>19</b> Hypothesis Testing</a>
+<ul>
 <li class="chapter" data-level="19.1" data-path="HYPOTEST.html"><a href="HYPOTEST.html#objectives-18"><i class="fa fa-check"></i><b>19.1</b> Objectives</a></li>
-<li class="chapter" data-level="19.2" data-path="HYPOTEST.html"><a href="HYPOTEST.html#homework-18"><i class="fa fa-check"></i><b>19.2</b> Homework</a><ul>
+<li class="chapter" data-level="19.2" data-path="HYPOTEST.html"><a href="HYPOTEST.html#homework-18"><i class="fa fa-check"></i><b>19.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="19.2.1" data-path="HYPOTEST.html"><a href="HYPOTEST.html#problem-1-18"><i class="fa fa-check"></i><b>19.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="19.2.2" data-path="HYPOTEST.html"><a href="HYPOTEST.html#problem-2-18"><i class="fa fa-check"></i><b>19.2.2</b> Problem 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="PVALUES.html"><a href="PVALUES.html"><i class="fa fa-check"></i><b>20</b> Empirical p-values</a><ul>
+<li class="chapter" data-level="20" data-path="PVALUES.html"><a href="PVALUES.html"><i class="fa fa-check"></i><b>20</b> Empirical p-values</a>
+<ul>
 <li class="chapter" data-level="20.1" data-path="PVALUES.html"><a href="PVALUES.html#objective"><i class="fa fa-check"></i><b>20.1</b> Objective</a></li>
-<li class="chapter" data-level="20.2" data-path="PVALUES.html"><a href="PVALUES.html#homework-19"><i class="fa fa-check"></i><b>20.2</b> Homework</a><ul>
+<li class="chapter" data-level="20.2" data-path="PVALUES.html"><a href="PVALUES.html#homework-19"><i class="fa fa-check"></i><b>20.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="20.2.1" data-path="PVALUES.html"><a href="PVALUES.html#problem-1-19"><i class="fa fa-check"></i><b>20.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="20.2.2" data-path="PVALUES.html"><a href="PVALUES.html#problem-2-19"><i class="fa fa-check"></i><b>20.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="20.2.3" data-path="PVALUES.html"><a href="PVALUES.html#problem-3-13"><i class="fa fa-check"></i><b>20.2.3</b> Problem 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="CLT.html"><a href="CLT.html"><i class="fa fa-check"></i><b>21</b> Central Limit Theorem</a><ul>
+<li class="chapter" data-level="21" data-path="CLT.html"><a href="CLT.html"><i class="fa fa-check"></i><b>21</b> Central Limit Theorem</a>
+<ul>
 <li class="chapter" data-level="21.1" data-path="CLT.html"><a href="CLT.html#objectives-19"><i class="fa fa-check"></i><b>21.1</b> Objectives</a></li>
-<li class="chapter" data-level="21.2" data-path="CLT.html"><a href="CLT.html#homework-20"><i class="fa fa-check"></i><b>21.2</b> Homework</a><ul>
+<li class="chapter" data-level="21.2" data-path="CLT.html"><a href="CLT.html#homework-20"><i class="fa fa-check"></i><b>21.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="21.2.1" data-path="CLT.html"><a href="CLT.html#problem-1-20"><i class="fa fa-check"></i><b>21.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="21.2.2" data-path="CLT.html"><a href="CLT.html#problem-2-20"><i class="fa fa-check"></i><b>21.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="21.2.3" data-path="CLT.html"><a href="CLT.html#problem-3-14"><i class="fa fa-check"></i><b>21.2.3</b> Problem 3</a></li>
@@ -331,9 +399,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.2.5" data-path="CLT.html"><a href="CLT.html#problem-5-7"><i class="fa fa-check"></i><b>21.2.5</b> Problem 5</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="CI.html"><a href="CI.html"><i class="fa fa-check"></i><b>22</b> Confidence Intervals</a><ul>
+<li class="chapter" data-level="22" data-path="CI.html"><a href="CI.html"><i class="fa fa-check"></i><b>22</b> Confidence Intervals</a>
+<ul>
 <li class="chapter" data-level="22.1" data-path="CI.html"><a href="CI.html#objectives-20"><i class="fa fa-check"></i><b>22.1</b> Objectives</a></li>
-<li class="chapter" data-level="22.2" data-path="CI.html"><a href="CI.html#homework-21"><i class="fa fa-check"></i><b>22.2</b> Homework</a><ul>
+<li class="chapter" data-level="22.2" data-path="CI.html"><a href="CI.html#homework-21"><i class="fa fa-check"></i><b>22.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="22.2.1" data-path="CI.html"><a href="CI.html#problem-1-21"><i class="fa fa-check"></i><b>22.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="22.2.2" data-path="CI.html"><a href="CI.html#problem-2-21"><i class="fa fa-check"></i><b>22.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="22.2.3" data-path="CI.html"><a href="CI.html#problem-3-15"><i class="fa fa-check"></i><b>22.2.3</b> Problem 3</a></li>
@@ -343,68 +413,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="22.2.7" data-path="CI.html"><a href="CI.html#problem-7-2"><i class="fa fa-check"></i><b>22.2.7</b> Problem 7</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="BOOT.html"><a href="BOOT.html"><i class="fa fa-check"></i><b>23</b> Bootstrap</a><ul>
+<li class="chapter" data-level="23" data-path="BOOT.html"><a href="BOOT.html"><i class="fa fa-check"></i><b>23</b> Bootstrap</a>
+<ul>
 <li class="chapter" data-level="23.1" data-path="BOOT.html"><a href="BOOT.html#objectives-21"><i class="fa fa-check"></i><b>23.1</b> Objectives</a></li>
-<li class="chapter" data-level="23.2" data-path="BOOT.html"><a href="BOOT.html#homework-22"><i class="fa fa-check"></i><b>23.2</b> Homework</a><ul>
+<li class="chapter" data-level="23.2" data-path="BOOT.html"><a href="BOOT.html#homework-22"><i class="fa fa-check"></i><b>23.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="23.2.1" data-path="BOOT.html"><a href="BOOT.html#problem-1-22"><i class="fa fa-check"></i><b>23.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="23.2.2" data-path="BOOT.html"><a href="BOOT.html#problem-2-22"><i class="fa fa-check"></i><b>23.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="23.2.3" data-path="BOOT.html"><a href="BOOT.html#problem-3-16"><i class="fa fa-check"></i><b>23.2.3</b> Problem 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="ADDTESTS.html"><a href="ADDTESTS.html"><i class="fa fa-check"></i><b>24</b> Additional Hypothesis Tests</a><ul>
+<li class="chapter" data-level="24" data-path="ADDTESTS.html"><a href="ADDTESTS.html"><i class="fa fa-check"></i><b>24</b> Additional Hypothesis Tests</a>
+<ul>
 <li class="chapter" data-level="24.1" data-path="ADDTESTS.html"><a href="ADDTESTS.html#objectives-22"><i class="fa fa-check"></i><b>24.1</b> Objectives</a></li>
-<li class="chapter" data-level="24.2" data-path="ADDTESTS.html"><a href="ADDTESTS.html#homework-23"><i class="fa fa-check"></i><b>24.2</b> Homework</a><ul>
+<li class="chapter" data-level="24.2" data-path="ADDTESTS.html"><a href="ADDTESTS.html#homework-23"><i class="fa fa-check"></i><b>24.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="24.2.1" data-path="ADDTESTS.html"><a href="ADDTESTS.html#problem-1-23"><i class="fa fa-check"></i><b>24.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="24.2.2" data-path="ADDTESTS.html"><a href="ADDTESTS.html#problem-2-23"><i class="fa fa-check"></i><b>24.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="24.2.3" data-path="ADDTESTS.html"><a href="ADDTESTS.html#problem-3-17"><i class="fa fa-check"></i><b>24.2.3</b> Problem 3</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV Predictive Statistical Modeling</b></span></li>
-<li class="chapter" data-level="25" data-path="CS4.html"><a href="CS4.html"><i class="fa fa-check"></i><b>25</b> Case Study</a><ul>
+<li class="chapter" data-level="25" data-path="CS4.html"><a href="CS4.html"><i class="fa fa-check"></i><b>25</b> Case Study</a>
+<ul>
 <li class="chapter" data-level="25.1" data-path="CS4.html"><a href="CS4.html#objectives-23"><i class="fa fa-check"></i><b>25.1</b> Objectives</a></li>
-<li class="chapter" data-level="25.2" data-path="CS4.html"><a href="CS4.html#homework-24"><i class="fa fa-check"></i><b>25.2</b> Homework</a><ul>
+<li class="chapter" data-level="25.2" data-path="CS4.html"><a href="CS4.html#homework-24"><i class="fa fa-check"></i><b>25.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="25.2.1" data-path="CS4.html"><a href="CS4.html#problem-1-24"><i class="fa fa-check"></i><b>25.2.1</b> Problem 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="LRBASICS.html"><a href="LRBASICS.html"><i class="fa fa-check"></i><b>26</b> Linear Regression Basics</a><ul>
+<li class="chapter" data-level="26" data-path="LRBASICS.html"><a href="LRBASICS.html"><i class="fa fa-check"></i><b>26</b> Linear Regression Basics</a>
+<ul>
 <li class="chapter" data-level="26.1" data-path="LRBASICS.html"><a href="LRBASICS.html#objectives-24"><i class="fa fa-check"></i><b>26.1</b> Objectives</a></li>
-<li class="chapter" data-level="26.2" data-path="LRBASICS.html"><a href="LRBASICS.html#homework-25"><i class="fa fa-check"></i><b>26.2</b> Homework</a><ul>
+<li class="chapter" data-level="26.2" data-path="LRBASICS.html"><a href="LRBASICS.html#homework-25"><i class="fa fa-check"></i><b>26.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="26.2.1" data-path="LRBASICS.html"><a href="LRBASICS.html#problem-1-25"><i class="fa fa-check"></i><b>26.2.1</b> Problem 1</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="LRINF.html"><a href="LRINF.html"><i class="fa fa-check"></i><b>27</b> Linear Regression Inference</a><ul>
+<li class="chapter" data-level="27" data-path="LRINF.html"><a href="LRINF.html"><i class="fa fa-check"></i><b>27</b> Linear Regression Inference</a>
+<ul>
 <li class="chapter" data-level="27.1" data-path="LRINF.html"><a href="LRINF.html#objectives-25"><i class="fa fa-check"></i><b>27.1</b> Objectives</a></li>
-<li class="chapter" data-level="27.2" data-path="LRINF.html"><a href="LRINF.html#homework-26"><i class="fa fa-check"></i><b>27.2</b> Homework</a><ul>
+<li class="chapter" data-level="27.2" data-path="LRINF.html"><a href="LRINF.html#homework-26"><i class="fa fa-check"></i><b>27.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="27.2.1" data-path="LRINF.html"><a href="LRINF.html#problem-1-26"><i class="fa fa-check"></i><b>27.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="27.2.2" data-path="LRINF.html"><a href="LRINF.html#problem-2-24"><i class="fa fa-check"></i><b>27.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="27.2.3" data-path="LRINF.html"><a href="LRINF.html#problem-3-18"><i class="fa fa-check"></i><b>27.2.3</b> Problem 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="28" data-path="LRDIAG.html"><a href="LRDIAG.html"><i class="fa fa-check"></i><b>28</b> Regression Diagnostics</a><ul>
+<li class="chapter" data-level="28" data-path="LRDIAG.html"><a href="LRDIAG.html"><i class="fa fa-check"></i><b>28</b> Regression Diagnostics</a>
+<ul>
 <li class="chapter" data-level="28.1" data-path="LRDIAG.html"><a href="LRDIAG.html#objectives-26"><i class="fa fa-check"></i><b>28.1</b> Objectives</a></li>
-<li class="chapter" data-level="28.2" data-path="LRDIAG.html"><a href="LRDIAG.html#homework-27"><i class="fa fa-check"></i><b>28.2</b> Homework</a><ul>
+<li class="chapter" data-level="28.2" data-path="LRDIAG.html"><a href="LRDIAG.html#homework-27"><i class="fa fa-check"></i><b>28.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="28.2.1" data-path="LRDIAG.html"><a href="LRDIAG.html#problem-1-27"><i class="fa fa-check"></i><b>28.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="28.2.2" data-path="LRDIAG.html"><a href="LRDIAG.html#problem-2-25"><i class="fa fa-check"></i><b>28.2.2</b> Problem 2</a></li>
 <li class="chapter" data-level="28.2.3" data-path="LRDIAG.html"><a href="LRDIAG.html#problem-3-19"><i class="fa fa-check"></i><b>28.2.3</b> Problem 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="29" data-path="LRSIM.html"><a href="LRSIM.html"><i class="fa fa-check"></i><b>29</b> Simulation Based Linear Regression</a><ul>
+<li class="chapter" data-level="29" data-path="LRSIM.html"><a href="LRSIM.html"><i class="fa fa-check"></i><b>29</b> Simulation Based Linear Regression</a>
+<ul>
 <li class="chapter" data-level="29.1" data-path="LRSIM.html"><a href="LRSIM.html#objectives-27"><i class="fa fa-check"></i><b>29.1</b> Objectives</a></li>
-<li class="chapter" data-level="29.2" data-path="LRSIM.html"><a href="LRSIM.html#homework-28"><i class="fa fa-check"></i><b>29.2</b> Homework</a><ul>
+<li class="chapter" data-level="29.2" data-path="LRSIM.html"><a href="LRSIM.html#homework-28"><i class="fa fa-check"></i><b>29.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="29.2.1" data-path="LRSIM.html"><a href="LRSIM.html#problem-1-28"><i class="fa fa-check"></i><b>29.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="29.2.2" data-path="LRSIM.html"><a href="LRSIM.html#problem-2-26"><i class="fa fa-check"></i><b>29.2.2</b> Problem 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="30" data-path="LRMULTI.html"><a href="LRMULTI.html"><i class="fa fa-check"></i><b>30</b> Multiple Linear Regression</a><ul>
+<li class="chapter" data-level="30" data-path="LRMULTI.html"><a href="LRMULTI.html"><i class="fa fa-check"></i><b>30</b> Multiple Linear Regression</a>
+<ul>
 <li class="chapter" data-level="30.1" data-path="LRMULTI.html"><a href="LRMULTI.html#objectives-28"><i class="fa fa-check"></i><b>30.1</b> Objectives</a></li>
-<li class="chapter" data-level="30.2" data-path="LRMULTI.html"><a href="LRMULTI.html#homework-29"><i class="fa fa-check"></i><b>30.2</b> Homework</a><ul>
+<li class="chapter" data-level="30.2" data-path="LRMULTI.html"><a href="LRMULTI.html#homework-29"><i class="fa fa-check"></i><b>30.2</b> Homework</a>
+<ul>
 <li class="chapter" data-level="30.2.1" data-path="LRMULTI.html"><a href="LRMULTI.html#problem-1-29"><i class="fa fa-check"></i><b>30.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="30.2.2" data-path="LRMULTI.html"><a href="LRMULTI.html#problem-2-27"><i class="fa fa-check"></i><b>30.2.2</b> Problem 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="31" data-path="LOGREG.html"><a href="LOGREG.html"><i class="fa fa-check"></i><b>31</b> Logistic Regression</a><ul>
+<li class="chapter" data-level="31" data-path="LOGREG.html"><a href="LOGREG.html"><i class="fa fa-check"></i><b>31</b> Logistic Regression</a>
+<ul>
 <li class="chapter" data-level="31.1" data-path="LOGREG.html"><a href="LOGREG.html#objectives-29"><i class="fa fa-check"></i><b>31.1</b> Objectives</a></li>
-<li class="chapter" data-level="31.2" data-path="LOGREG.html"><a href="LOGREG.html#homework-problems"><i class="fa fa-check"></i><b>31.2</b> Homework Problems</a><ul>
+<li class="chapter" data-level="31.2" data-path="LOGREG.html"><a href="LOGREG.html#homework-problems"><i class="fa fa-check"></i><b>31.2</b> Homework Problems</a>
+<ul>
 <li class="chapter" data-level="31.2.1" data-path="LOGREG.html"><a href="LOGREG.html#problem-1-30"><i class="fa fa-check"></i><b>31.2.1</b> Problem 1</a></li>
 <li class="chapter" data-level="31.2.2" data-path="LOGREG.html"><a href="LOGREG.html#problem-2-28"><i class="fa fa-check"></i><b>31.2.2</b> Problem 2</a></li>
 </ul></li>
@@ -430,9 +518,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="NUMDATA" class="section level1">
+<div id="NUMDATA" class="section level1" number="5">
 <h1><span class="header-section-number">Chapter 5</span> Numerical Data</h1>
-<div id="objectives-4" class="section level2">
+<div id="objectives-4" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Objectives</h2>
 <ol style="list-style-type: decimal">
 <li>Define and use properly in context all new terminology.<br />
@@ -444,9 +532,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Be able to interpret and explain output both graphically and numerically.</li>
 </ol>
 </div>
-<div id="homework-4" class="section level2">
+<div id="homework-4" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Homework</h2>
-<div id="problem-1-4" class="section level3">
+<div id="problem-1-4" class="section level3" number="5.2.1">
 <h3><span class="header-section-number">5.2.1</span> Problem 1</h3>
 <ol style="list-style-type: decimal">
 <li><strong>Mammals exploratory</strong></li>
@@ -455,11 +543,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: lower-alpha">
 <li>Using help, report the units for the variable <code>BrainWt</code>.</li>
 </ol>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="NUMDATA.html#cb14-1"></a>?mammals</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="NUMDATA.html#cb13-1" aria-hidden="true" tabindex="-1"></a>?mammals</span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Using <code>inspect</code> how many variables are numeric?</li>
 </ol>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="NUMDATA.html#cb15-1"></a><span class="kw">inspect</span>(mammals)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="NUMDATA.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(mammals)</span></code></pre></div>
 <pre><code>## 
 ## categorical variables:  
 ##      name  class levels  n missing
@@ -497,27 +585,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="4" style="list-style-type: lower-alpha">
 <li>Create a histogram of <code>total_sleep</code> and describe the distribution.</li>
 </ol>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="NUMDATA.html#cb17-1"></a><span class="kw">gf_histogram</span>(<span class="op">~</span>total_sleep,<span class="dt">data=</span>mammals,<span class="dt">binwidth =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="NUMDATA.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_histogram</span>(<span class="sc">~</span>total_sleep,<span class="at">data=</span>mammals,<span class="at">binwidth =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="NUMDATA.html#cb18-1"></a><span class="kw">gf_dens</span>(<span class="op">~</span>total_sleep,<span class="dt">data=</span>mammals)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="NUMDATA.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_dens</span>(<span class="sc">~</span>total_sleep,<span class="at">data=</span>mammals)</span></code></pre></div>
 <p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>The distribution is unimodal and skewed to the right. It appears it is centered around the value of 11.</p>
 <ol start="5" style="list-style-type: lower-alpha">
 <li>Create a boxplot of <code>life_span</code> and describe the distribution.</li>
 </ol>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="NUMDATA.html#cb19-1"></a><span class="kw">gf_boxplot</span>(<span class="op">~</span>life_span,<span class="dt">data=</span>mammals)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="NUMDATA.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(<span class="sc">~</span>life_span,<span class="at">data=</span>mammals)</span></code></pre></div>
 <p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <ol start="6" style="list-style-type: lower-alpha">
 <li>Report the mean and median life span of a mammal.</li>
 </ol>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="NUMDATA.html#cb20-1"></a><span class="kw">mean</span>(<span class="op">~</span>life_span,<span class="dt">data=</span>mammals,<span class="dt">na.rm=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="NUMDATA.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="sc">~</span>life_span,<span class="at">data=</span>mammals,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 19.87759</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="NUMDATA.html#cb22-1"></a><span class="kw">median</span>(<span class="op">~</span>life_span,<span class="dt">data=</span>mammals,<span class="dt">na.rm=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="NUMDATA.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(<span class="sc">~</span>life_span,<span class="at">data=</span>mammals,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 15.1</code></pre>
 <ol start="7" style="list-style-type: lower-alpha">
 <li>Calculate the summary statistics for <code>LifeSpan</code> broken down by <code>Danger</code>.</li>
 </ol>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="NUMDATA.html#cb24-1"></a><span class="kw">favstats</span>(life_span<span class="op">~</span>danger,<span class="dt">data=</span>mammals)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="NUMDATA.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(life_span<span class="sc">~</span>danger,<span class="at">data=</span>mammals)</span></code></pre></div>
 <pre><code>##   danger  min     Q1 median     Q3   max     mean       sd  n missing
 ## 1      1  3.0  7.700  17.60 32.500 100.0 24.20556 23.53829 18       1
 ## 2      2  2.3  4.500  10.40 13.000  50.0 12.92308 13.15948 13       1
@@ -525,7 +613,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4      4  2.6  9.775  22.10 27.000  69.0 23.11000 18.75482 10       0
 ## 5      5 17.0 20.000  23.60 30.000  46.0 26.95556 10.18910  9       0</code></pre>
 </div>
-<div id="problem-2-4" class="section level3">
+<div id="problem-2-4" class="section level3" number="5.2.2">
 <h3><span class="header-section-number">5.2.2</span> Problem 2</h3>
 <ol start="2" style="list-style-type: decimal">
 <li><strong>Mammals life spans</strong></li>
@@ -534,13 +622,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: lower-alpha">
 <li>Create side-by-side boxplots for <code>life_span</code> broken down by <code>exposure</code>. Note: you will have to change <code>exposure</code> to a <code>factor()</code>. Report on any findings.</li>
 </ol>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="NUMDATA.html#cb26-1"></a>mammals <span class="op">%&gt;%</span></span>
-<span id="cb26-2"><a href="NUMDATA.html#cb26-2"></a><span class="kw">gf_boxplot</span>(life_span<span class="op">~</span><span class="kw">factor</span>(exposure))</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="NUMDATA.html#cb25-1" aria-hidden="true" tabindex="-1"></a>mammals <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="NUMDATA.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(life_span<span class="sc">~</span><span class="fu">factor</span>(exposure))</span></code></pre></div>
 <p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>What happened to the median and third quartile in exposure group 4?</li>
 </ol>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="NUMDATA.html#cb27-1"></a><span class="kw">favstats</span>(life_span<span class="op">~</span><span class="kw">factor</span>(exposure),<span class="dt">data=</span>mammals)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="NUMDATA.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(life_span<span class="sc">~</span><span class="fu">factor</span>(exposure),<span class="at">data=</span>mammals)</span></code></pre></div>
 <pre><code>##   factor(exposure)  min    Q1 median     Q3   max     mean       sd  n missing
 ## 1                1  2.0  4.35   7.25 14.550 100.0 14.55000 20.98594 24       3
 ## 2                2  2.3  6.00  11.20 17.275  50.0 15.39167 14.55819 12       1
@@ -550,23 +638,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Create faceted histograms. What are the shortcomings of this plot?</li>
 </ol>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="NUMDATA.html#cb29-1"></a><span class="kw">gf_histogram</span>(<span class="op">~</span>life_span,<span class="dt">color=</span><span class="op">~</span><span class="kw">factor</span>(exposure),<span class="dt">data=</span>mammals)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="NUMDATA.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_histogram</span>(<span class="sc">~</span>life_span,<span class="at">color=</span><span class="sc">~</span><span class="fu">factor</span>(exposure),<span class="at">data=</span>mammals)</span></code></pre></div>
 <p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>This is awful.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="NUMDATA.html#cb30-1"></a><span class="kw">gf_histogram</span>(<span class="op">~</span>life_span<span class="op">|</span><span class="kw">factor</span>(exposure),<span class="dt">data=</span>mammals)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="NUMDATA.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_histogram</span>(<span class="sc">~</span>life_span<span class="sc">|</span><span class="fu">factor</span>(exposure),<span class="at">data=</span>mammals)</span></code></pre></div>
 <p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>Not enough data for each histogram; some of the histograms provide little to no information. Let’s do denisty plots.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="NUMDATA.html#cb31-1"></a><span class="kw">gf_dens</span>(<span class="op">~</span>life_span,<span class="dt">color=</span><span class="op">~</span><span class="kw">factor</span>(exposure),<span class="dt">data=</span>mammals)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="NUMDATA.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_dens</span>(<span class="sc">~</span>life_span,<span class="at">color=</span><span class="sc">~</span><span class="fu">factor</span>(exposure),<span class="at">data=</span>mammals)</span></code></pre></div>
 <p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="NUMDATA.html#cb32-1"></a><span class="kw">gf_dens</span>(<span class="op">~</span>life_span<span class="op">|</span><span class="kw">factor</span>(exposure),<span class="dt">data=</span>mammals)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="NUMDATA.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_dens</span>(<span class="sc">~</span>life_span<span class="sc">|</span><span class="fu">factor</span>(exposure),<span class="at">data=</span>mammals)</span></code></pre></div>
 <p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>Which do you think is the best graph?</p>
 <ol start="4" style="list-style-type: lower-alpha">
 <li>Create a new variable <code>exposed</code> that is a factor with level <code>Low</code> if exposure is <code>1</code> or <code>2</code> and <code>High</code> otherwise.</li>
 </ol>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="NUMDATA.html#cb33-1"></a>mammals &lt;-<span class="st"> </span>mammals <span class="op">%&gt;%</span></span>
-<span id="cb33-2"><a href="NUMDATA.html#cb33-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">exposed=</span><span class="kw">factor</span>(<span class="kw">ifelse</span>((exposure<span class="op">==</span><span class="dv">1</span>)<span class="op">|</span>(exposure<span class="op">==</span><span class="dv">2</span>),<span class="st">&quot;Low&quot;</span>,<span class="st">&quot;High&quot;</span>)))</span></code></pre></div>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="NUMDATA.html#cb34-1"></a><span class="kw">inspect</span>(mammals)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="NUMDATA.html#cb32-1" aria-hidden="true" tabindex="-1"></a>mammals <span class="ot">&lt;-</span> mammals <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="NUMDATA.html#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">exposed=</span><span class="fu">factor</span>(<span class="fu">ifelse</span>((exposure<span class="sc">==</span><span class="dv">1</span>)<span class="sc">|</span>(exposure<span class="sc">==</span><span class="dv">2</span>),<span class="st">&quot;Low&quot;</span>,<span class="st">&quot;High&quot;</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="NUMDATA.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(mammals)</span></code></pre></div>
 <pre><code>## 
 ## categorical variables:  
 ##      name  class levels  n missing
@@ -602,10 +690,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="5" style="list-style-type: lower-alpha">
 <li>Repeat part c with the new variable.</li>
 </ol>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="NUMDATA.html#cb36-1"></a><span class="kw">gf_dens</span>(<span class="op">~</span>life_span,<span class="dt">color=</span><span class="op">~</span>exposed,<span class="dt">data=</span>mammals)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="NUMDATA.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_dens</span>(<span class="sc">~</span>life_span,<span class="at">color=</span><span class="sc">~</span>exposed,<span class="at">data=</span>mammals)</span></code></pre></div>
 <p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 </div>
-<div id="problem-3-2" class="section level3">
+<div id="problem-3-2" class="section level3" number="5.2.3">
 <h3><span class="header-section-number">5.2.3</span> Problem 3</h3>
 <ol start="3" style="list-style-type: decimal">
 <li><strong>Mammals life spans continued</strong></li>
@@ -613,8 +701,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: lower-alpha">
 <li>Create a scatterplot of life span versus length of gestation.</li>
 </ol>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="NUMDATA.html#cb37-1"></a>mammals <span class="op">%&gt;%</span></span>
-<span id="cb37-2"><a href="NUMDATA.html#cb37-2"></a><span class="kw">gf_point</span>(life_span<span class="op">~</span>gestation)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="NUMDATA.html#cb36-1" aria-hidden="true" tabindex="-1"></a>mammals <span class="sc">%&gt;%</span></span>
+<span id="cb36-2"><a href="NUMDATA.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_point</span>(life_span<span class="sc">~</span>gestation)</span></code></pre></div>
 <p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>What type of an association is apparent between life span and length of gestation?</li>
@@ -627,8 +715,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="4" style="list-style-type: lower-alpha">
 <li>Create the new scatterplot suggested in c. </li>
 </ol>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="NUMDATA.html#cb38-1"></a>mammals <span class="op">%&gt;%</span></span>
-<span id="cb38-2"><a href="NUMDATA.html#cb38-2"></a><span class="kw">gf_point</span>(gestation<span class="op">~</span>life_span)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="NUMDATA.html#cb37-1" aria-hidden="true" tabindex="-1"></a>mammals <span class="sc">%&gt;%</span></span>
+<span id="cb37-2"><a href="NUMDATA.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_point</span>(gestation<span class="sc">~</span>life_span)</span></code></pre></div>
 <p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <ol start="5" style="list-style-type: lower-alpha">
 <li>Are life span and length of gestation independent? Explain your reasoning.</li>

@@ -49,8 +49,8 @@ glimpse(yawn)
 ```
 ## Rows: 50
 ## Columns: 2
-## $ group   <chr> "treatment", "treatment", "control", "treatment", "treatmen...
-## $ outcome <chr> "no_yawn", "no_yawn", "no_yawn", "no_yawn", "no_yawn", "yaw...
+## $ group   <chr> "treatment", "treatment", "control", "treatment", "treatment",~
+## $ outcome <chr> "no_yawn", "no_yawn", "no_yawn", "no_yawn", "no_yawn", "yawn",~
 ```
 
 
@@ -297,9 +297,9 @@ glimpse(temperature)
 ```
 ## Rows: 130
 ## Columns: 3
-## $ temperature <dbl> 96.3, 96.7, 96.9, 97.0, 97.1, 97.1, 97.1, 97.2, 97.3, 9...
-## $ gender      <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1...
-## $ hr          <dbl> 70, 71, 74, 80, 73, 75, 82, 64, 69, 70, 68, 72, 78, 70,...
+## $ temperature <dbl> 96.3, 96.7, 96.9, 97.0, 97.1, 97.1, 97.1, 97.2, 97.3, 97.4~
+## $ gender      <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1~
+## $ hr          <dbl> 70, 71, 74, 80, 73, 75, 82, 64, 69, 70, 68, 72, 78, 70, 75~
 ```
 
 

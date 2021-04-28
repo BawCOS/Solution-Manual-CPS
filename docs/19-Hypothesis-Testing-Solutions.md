@@ -181,8 +181,8 @@ glimpse(yawn)
 ```
 ## Rows: 50
 ## Columns: 2
-## $ group   <chr> "treatment", "treatment", "control", "treatment", "treatmen...
-## $ outcome <chr> "no_yawn", "no_yawn", "no_yawn", "no_yawn", "no_yawn", "yaw...
+## $ group   <chr> "treatment", "treatment", "control", "treatment", "treatment",~
+## $ outcome <chr> "no_yawn", "no_yawn", "no_yawn", "no_yawn", "no_yawn", "yawn",~
 ```
 
 

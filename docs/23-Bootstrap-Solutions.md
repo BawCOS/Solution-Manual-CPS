@@ -264,7 +264,8 @@ textbooks<-read_csv("data/textbooks.csv")
 ```
 
 ```
-## Parsed with column specification:
+## 
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   dept_abbr = col_character(),
 ##   course = col_character(),
