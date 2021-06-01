@@ -20,7 +20,7 @@ We will demonstrate using 1a and 1b.
 
 ### Problem 1 
 
-\indent 1. The T-6 training aircraft is used during UPT. Suppose that on each training sortie, aircraft return with a maintenance-related failure at a rate of 1 per 100 sorties. 
+The T-6 training aircraft is used during UPT. Suppose that on each training sortie, aircraft return with a maintenance-related failure at a rate of 1 per 100 sorties. 
 
 a. Find the probability of no maintenance failures in 15 sorties. 
 
@@ -128,7 +128,7 @@ dnbinom(50,3,0.01)
 
 ### Problem 2  
 
-\indent 2. On a given Saturday, suppose vehicles arrive at the USAFA North Gate according to a Poisson process at a rate of 40 arrivals per hour. 
+On a given Saturday, suppose vehicles arrive at the USAFA North Gate according to a Poisson process at a rate of 40 arrivals per hour. 
 
 a. Find the probability no vehicles arrive in 10 minutes. 
 
@@ -172,7 +172,7 @@ dpois(0,40/12)
 
 ### Problem 3  
 
-\indent 3. Suppose there are 12 male and 7 female cadets in a classroom. I select 5 completely at random (without replacement). 
+Suppose there are 12 male and 7 female cadets in a classroom. I select 5 completely at random (without replacement). 
 
 a. Find the probability I select no female cadets. 
 

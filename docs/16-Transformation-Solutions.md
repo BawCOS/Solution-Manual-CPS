@@ -19,7 +19,7 @@
 
 ### Problem 1
 
-\indent 1. Let $X$ be a random variable and let $g$ be a function. By this point, it should be clear that $\E[g(X)]$ is not necessarily equal to $g(\E[X])$. 
+Let $X$ be a random variable and let $g$ be a function. By this point, it should be clear that $\E[g(X)]$ is not necessarily equal to $g(\E[X])$. 
 
 Let $X\sim \textsf{Expon}(\lambda=0.5)$ and $g(X)=X^2$. We know that $\E(X)=\frac{1}{0.5}=2$ so $g(\E(X))=\E(X)^2=4$. Use `R` to find $\E[g(X)]$. Make use of the fact that `R` has `rexp()` built into it, so you don't have to create your own random variable generator.  
 
@@ -31,14 +31,14 @@ mean(sims^2)
 ```
 
 ```
-## [1] 7.721367
+## [1] 7.750717
 ```
 
 So, $g(\E(X))=4$ and $\E(g(X))\approx 7.84$. 
 
 ### Problem 2
 
-\indent 2. Let $X\sim \textsf{Binom}(n,\pi)$. What is the pmf for $X+3$? Make sure you specify the domain of $Y$. [Note, we have used $p$ for the probability of success in a binomial distribution in past lessons but some references use $\pi$ instead.]
+Let $X\sim \textsf{Binom}(n,\pi)$. What is the pmf for $X+3$? Make sure you specify the domain of $Y$. [Note, we have used $p$ for the probability of success in a binomial distribution in past lessons but some references use $\pi$ instead.]
 
 Let $Y=X+3$: 
 $$
@@ -49,7 +49,7 @@ where $3\leq Y \leq n+3$.
 
 ### Problem 3
 
-\indent 3. Let $X\sim \textsf{Expon}(\lambda)$. Let $Y=X^2$. Find the pdf of $Y$. 
+Let $X\sim \textsf{Expon}(\lambda)$. Let $Y=X^2$. Find the pdf of $Y$. 
 
 CDF method: 
 $$
@@ -72,7 +72,7 @@ for $y>0$.
 
 ### Problem 4
 
-\indent 4. OPTIONAL: In exercise 3, you found the pdf of $Y=X^2$ when $X\sim \textsf{Expon}(\lambda)$. Rearrange the pdf to show that $Y\sim \textsf{Weibull}$ and find the parameters of that distribution. 
+OPTIONAL: In exercise 3, you found the pdf of $Y=X^2$ when $X\sim \textsf{Expon}(\lambda)$. Rearrange the pdf to show that $Y\sim \textsf{Weibull}$ and find the parameters of that distribution. 
 
 $$
 f_Y(y)=\frac{\lambda e^{-\lambda \sqrt y}}{2\sqrt y}=\frac{\lambda}{2\sqrt y}e^{-\lambda \sqrt y}=\frac{\lambda^2}{2} \frac{1}{\lambda\sqrt y} e^{-\sqrt{\lambda^2 y}}=\frac{1/2}{1/\lambda^2}\left(\frac{y}{1/\lambda^2}\right)^{\frac{1}{2}-1}e^{-\left(\frac{y}{1/\lambda^2}\right)^{\frac{1}{2}}}
@@ -82,7 +82,7 @@ So, $Y\sim \textsf{Weibull}\left(\alpha=\frac{1}{2},\beta=\frac{1}{\lambda^2}\ri
 
 ### Problem 5
 
-\indent 5. You are on a team of two. You are both tasked to complete an exercise. The time it takes you $T_1$, and likewise, your teammate $T_2$ to complete the exercise are independent random variables. Exercise completion time, in minutes, is distributed with the following pdf:
+You are on a team of two. You are both tasked to complete an exercise. The time it takes you $T_1$, and likewise, your teammate $T_2$ to complete the exercise are independent random variables. Exercise completion time, in minutes, is distributed with the following pdf:
 
 $$
 f_T(t)= \frac{-t}{200}+\frac{3}{20}; 10 \leq t \leq30
@@ -199,7 +199,7 @@ T(runif(3))
 ```
 
 ```
-## [1] 14.61111 10.79468 13.55769
+## [1] 12.71530 14.96525 15.48457
 ```
 
 

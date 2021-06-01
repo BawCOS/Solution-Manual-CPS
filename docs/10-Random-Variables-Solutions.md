@@ -18,7 +18,7 @@
 
 ### Problem 1
 
-\indent 1. Suppose we are flipping a fair coin, and the result of a single coin flip is either heads or tails. Let $X$ be a random variable representing the number of flips until the first heads.
+Suppose we are flipping a fair coin, and the result of a single coin flip is either heads or tails. Let $X$ be a random variable representing the number of flips until the first heads.
 
 a. Is $X$ discrete or continuous? What is the domain/support of $X$? 
 
@@ -104,7 +104,7 @@ This implies that $S = 1$.
 
 ### Problem 2  
 
-\indent 2. Repeat Problem 1, except part d, but with a different random variable, $Y$: the number of coin flips until the *fifth* heads.  
+Repeat Problem 1, except part d, but with a different random variable, $Y$: the number of coin flips until the *fifth* heads.  
 
 a. $Y$ is discrete for the same reasons as $X$. The domain of $Y$ is $S_Y=\{5,6,...\}$. 
 
@@ -160,7 +160,7 @@ d. The pmf is not that bad but you must know about the binomial distribution fir
 
 ### Problem 3
 
-\indent 3. Suppose you are a data analyst for a large international airport. Your boss, the head of the airport, is dismayed that this airport has received negative attention in the press for inefficiencies and sluggishness. In a staff meeting, your boss gives you a week to build a report addressing the "timeliness" at the airport. Your boss is in a big hurry and gives you no further information or guidance on this task. 
+Suppose you are a data analyst for a large international airport. Your boss, the head of the airport, is dismayed that this airport has received negative attention in the press for inefficiencies and sluggishness. In a staff meeting, your boss gives you a week to build a report addressing the "timeliness" at the airport. Your boss is in a big hurry and gives you no further information or guidance on this task. 
 
 Prior to building the report, you will need to conduct some analysis. To aid you in this, create a list of at least three random variables that will help you address timeliness at the airport. For each of your random variables, 
 
@@ -186,7 +186,7 @@ $Z$: Number of time-related complaints at customer service desk in a given day. 
 
 ### Problem 4
 
-\indent 4. Consider the experiment of rolling two fair six-sided dice. Let the random variable $Y$ be the absolute difference between the two numbers that appear upon rolling the dice. 
+Consider the experiment of rolling two fair six-sided dice. Let the random variable $Y$ be the absolute difference between the two numbers that appear upon rolling the dice. 
 
 a. What is the domain/support of $Y$? 
 
@@ -334,7 +334,7 @@ We got similar mean and variance to the theoretical values.
 
 ### Problem 5  
 
-\indent 5. Prove the Lemma from the Notes: Let $X$ be a discrete random variable, and let $a$ and $b$ be constants. Show $\E(aX + b)=a\E(X)+b$.   
+Prove the Lemma from the Notes: Let $X$ be a discrete random variable, and let $a$ and $b$ be constants. Show $\E(aX + b)=a\E(X)+b$.   
 $$
 \E(aX+b)=\sum_x (ax+b)f_X(x) = \sum_x axf_X(x)+\sum_x bf_X(x) + a\sum_x xf_X(x)+b\sum_x f_X(x)
 $$
@@ -350,7 +350,7 @@ $$
 
 ### Problem 6 
 
-\indent 6. In the Notes, we saw that $\Var(X)=\E[(X-\mu_X)^2]$. Show that $\Var(X)$ is also equal to $\E(X^2)-[\E(X)]^2$. 
+In the Notes, we saw that $\Var(X)=\E[(X-\mu_X)^2]$. Show that $\Var(X)$ is also equal to $\E(X^2)-[\E(X)]^2$. 
 $$
 \Var(X)=\E[(X-\mu_X)^2]=\E[X^2-2\mu_XX+\mu_X^2] = \E(X^2)-\E(2\mu_XX)+\E(\mu_X^2)
 $$

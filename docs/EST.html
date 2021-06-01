@@ -26,7 +26,7 @@
 <meta name="author" content="Bradley Warner" />
 
 
-<meta name="date" content="2021-04-27" />
+<meta name="date" content="2021-06-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -534,7 +534,7 @@ div.csl-indent {
 <h2><span class="header-section-number">17.2</span> Homework</h2>
 <div id="problem-1-16" class="section level3" number="17.2.1">
 <h3><span class="header-section-number">17.2.1</span> Problem 1</h3>
-<p>. In the chapter notes, we found that if we take a sample from the uniform distribution <span class="math inline">\(\textsf{Unif}(0,\theta)\)</span>, the method of moments estimate of <span class="math inline">\(\theta\)</span> is <span class="math inline">\(\hat{\theta}_{MoM}=2\bar{x}\)</span>. Suppose our sample consists of the following values:
+<p>In the chapter notes, we found that if we take a sample from the uniform distribution <span class="math inline">\(\textsf{Unif}(0,\theta)\)</span>, the method of moments estimate of <span class="math inline">\(\theta\)</span> is <span class="math inline">\(\hat{\theta}_{MoM}=2\bar{x}\)</span>. Suppose our sample consists of the following values:
 <span class="math display">\[
 0.2 \hspace{0.4cm} 0.9 \hspace{0.4cm} 1.9 \hspace{0.4cm} 2.2 \hspace{0.4cm} 4.7 \hspace{0.4cm} 5.1
 \]</span></p>
@@ -629,7 +629,7 @@ Notice that in performing this derivation, we treated <span class="math inline">
 </div>
 <div id="problem-2-16" class="section level3" number="17.2.2">
 <h3><span class="header-section-number">17.2.2</span> Problem 2</h3>
-<p>. Let <span class="math inline">\(x_1,x_2,...,x_n\)</span> be a simple random sample from an exponentially distributed population with parameter <span class="math inline">\(\lambda\)</span>. Find <span class="math inline">\(\hat{\lambda}_{MoM}\)</span>.</p>
+<p>Let <span class="math inline">\(x_1,x_2,...,x_n\)</span> be a simple random sample from an exponentially distributed population with parameter <span class="math inline">\(\lambda\)</span>. Find <span class="math inline">\(\hat{\lambda}_{MoM}\)</span>.</p>
 <p>Recall that <span class="math inline">\(\mbox{E}(X)={1\over \lambda}\)</span>. Setting this equal to the sample moment <span class="math inline">\(\bar{x}\)</span> and solving for <span class="math inline">\(\lambda\)</span> yields the method of moment estimator. Thus,
 <span class="math display">\[
 \hat{\lambda}_{MoM}={1\over \bar{x}}
@@ -637,7 +637,7 @@ Notice that in performing this derivation, we treated <span class="math inline">
 </div>
 <div id="problem-3-12" class="section level3" number="17.2.3">
 <h3><span class="header-section-number">17.2.3</span> Problem 3</h3>
-<p>. Let <span class="math inline">\(x_1,x_2,...,x_n\)</span> be an iid random sample from an exponentially distributed population with parameter <span class="math inline">\(\lambda\)</span>. Find <span class="math inline">\(\hat{\lambda}_{MLE}\)</span>.</p>
+<p>Let <span class="math inline">\(x_1,x_2,...,x_n\)</span> be an iid random sample from an exponentially distributed population with parameter <span class="math inline">\(\lambda\)</span>. Find <span class="math inline">\(\hat{\lambda}_{MLE}\)</span>.</p>
 <p>Recall that
 <span class="math display">\[
 f_X(x;\lambda)=\lambda e^{-\lambda x}
@@ -662,7 +662,7 @@ l(\lambda;\boldsymbol{x})=n\log \lambda - \lambda \sum x_i
 </div>
 <div id="problem-4-8" class="section level3" number="17.2.4">
 <h3><span class="header-section-number">17.2.4</span> Problem 4</h3>
-<p>. It is mathematically difficult to determine if the estimators found in questions 2 and 3 are unbiased. Since the sample mean is in the denominator; mathematically we may have to work with the joint pdf. So instead, use simulation to get an sense of whether the method of moments estimator for the exponential distribution is unbaised.</p>
+<p>It is mathematically difficult to determine if the estimators found in questions 2 and 3 are unbiased. Since the sample mean is in the denominator; mathematically we may have to work with the joint pdf. So instead, use simulation to get an sense of whether the method of moments estimator for the exponential distribution is unbaised.</p>
 <p>We need to sample data from an exponential and then compare the the reciprocal of the mean to the parameter.</p>
 <div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="EST.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">630</span>)</span>
 <span id="cb344-2"><a href="EST.html#cb344-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span><span class="fu">mean</span>(<span class="fu">rexp</span>(<span class="dv">1000</span>,<span class="at">rate=</span><span class="dv">10</span>))</span></code></pre></div>
@@ -675,7 +675,7 @@ l(\lambda;\boldsymbol{x})=n\log \lambda - \lambda \sum x_i
 </div>
 <div id="problem-5-6" class="section level3" number="17.2.5">
 <h3><span class="header-section-number">17.2.5</span> Problem 5</h3>
-<p>. Find a maximum likelihood estimator for <span class="math inline">\(\theta\)</span> when <span class="math inline">\(X\sim\textsf{Unif}(0,\theta)\)</span>. Compare this to the method of moments estimator we found. Hint: Do not take the derivative of the likelihood function.</p>
+<p>Find a maximum likelihood estimator for <span class="math inline">\(\theta\)</span> when <span class="math inline">\(X\sim\textsf{Unif}(0,\theta)\)</span>. Compare this to the method of moments estimator we found. Hint: Do not take the derivative of the likelihood function.</p>
 <p><span class="math display">\[
 L(\theta;\boldsymbol{x})=\frac{1}{\theta^n}, \hspace{0.5cm} \mbox{only if all }x_i\leq \theta
 \]</span></p>

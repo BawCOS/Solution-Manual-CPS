@@ -26,7 +26,7 @@
 <meta name="author" content="Bradley Warner" />
 
 
-<meta name="date" content="2021-04-27" />
+<meta name="date" content="2021-06-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -532,9 +532,8 @@ div.csl-indent {
 <h2><span class="header-section-number">7.2</span> Homework</h2>
 <div id="problem-1-6" class="section level3" number="7.2.1">
 <h3><span class="header-section-number">7.2.1</span> Problem 1</h3>
-<ol style="list-style-type: decimal">
-<li><strong>Exactly 2 people with the same birthday - Simulation</strong>. Complete a similar analysis for case where exactly 2 people in a room of 23 people have the same birthday. In this exercise you will use a computational simulation.</li>
-</ol>
+<p><strong>Exactly 2 people with the same birthday - Simulation</strong><br />
+Complete a similar analysis for case where exactly 2 people in a room of 23 people have the same birthday. In this exercise you will use a computational simulation.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Create a new R Markdown file and create a report. Yes, we know you could use this file but we want you to practice generating your own report.</p></li>
 <li><p>Simulate having 23 people in the class with each day of the year equally likely. Find the cases where exactly 2 people have the same birthday, you will have to alter the code from the Notes more than changing 18 to 23.</p></li>
@@ -545,16 +544,15 @@ div.csl-indent {
 <span id="cb50-2"><a href="CS2.html#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">match=</span><span class="fu">if_else</span>(length<span class="sc">==</span><span class="dv">22</span>,<span class="dv">1</span>,<span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb50-3"><a href="CS2.html#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">prob=</span><span class="fu">mean</span>(match))</span></code></pre></div>
 <pre><code>##     prob
-## 1 0.3645</code></pre>
+## 1 0.3686</code></pre>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="CS2.html#cb52-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">length</span>(<span class="fu">unique</span>(<span class="fu">sample</span>(days,<span class="at">size=</span><span class="dv">23</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)))) <span class="sc">%&gt;%</span></span>
 <span id="cb52-2"><a href="CS2.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_bar</span>(<span class="sc">~</span>length)</span></code></pre></div>
 <p><img src="07-Probability-Case-Study-Solution_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 <div id="problem-2-6" class="section level3" number="7.2.2">
 <h3><span class="header-section-number">7.2.2</span> Problem 2</h3>
-<ol start="2" style="list-style-type: decimal">
-<li><strong>Exactly 2 people with the same birthday - Mathematical</strong>. Repeat problem 1 but do it mathematically. As a big hint, you will need to use the <code>choose()</code> function. The idea is that with 23 people we need to choose 2 of them to match. We thus need to multiply, the multiplication rule again, by <code>choose(23,2)</code>. If you are having trouble, work with a total of 3 people in the room first.</li>
-</ol>
+<p><strong>Exactly 2 people with the same birthday - Mathematical</strong><br />
+Repeat problem 1 but do it mathematically. As a big hint, you will need to use the <code>choose()</code> function. The idea is that with 23 people we need to choose 2 of them to match. We thus need to multiply, the multiplication rule again, by <code>choose(23,2)</code>. If you are having trouble, work with a total of 3 people in the room first.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Find a formula to determine the exact probability of exactly 2 people in a room of 23 having the same birthday.</p></li>
 <li><p>Generalize your solution to any number <code>n</code> people in the room and create a function.</p></li>

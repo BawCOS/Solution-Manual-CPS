@@ -14,7 +14,7 @@
 
 ### Problem 1  
 
-1. **Mammals exploratory**  
+**Mammals exploratory**  
 
 Data were collected on 39 species of mammals distributed over 13 orders.  The data is in the `openintro` package as `mammals`
 
@@ -135,7 +135,7 @@ favstats(life_span~danger,data=mammals)
 
 ### Problem 2  
 
-2. **Mammals life spans**  
+**Mammals life spans**  
 
 Continue using the `mammals` data set.
 
@@ -264,7 +264,7 @@ gf_dens(~life_span,color=~exposed,data=mammals)
 
 ### Problem 3  
 
-3. **Mammals life spans continued**  
+**Mammals life spans continued**  
 
 a. Create a scatterplot of life span versus length of gestation.  
 

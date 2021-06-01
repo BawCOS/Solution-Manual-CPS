@@ -18,7 +18,7 @@
 
 ### Problem 1
 
-\indent 1. Let $A$, $B$ and $C$ be events such that $\Prob(A)=0.5$, $\Prob(B)=0.3$, and $\Prob(C)=0.4$. Also, we know that $\Prob(A \cap B)=0.2$, $\Prob(B \cap C)=0.12$, $\Prob(A \cap C)=0.1$, and $\Prob(A \cap B \cap C)=0.05$. Find the following: 
+Let $A$, $B$ and $C$ be events such that $\Prob(A)=0.5$, $\Prob(B)=0.3$, and $\Prob(C)=0.4$. Also, we know that $\Prob(A \cap B)=0.2$, $\Prob(B \cap C)=0.12$, $\Prob(A \cap C)=0.1$, and $\Prob(A \cap B \cap C)=0.05$. Find the following: 
 
   a. $\Prob(A\cup B)$
 $$
@@ -53,14 +53,14 @@ $$
 
 ### Problem 2  
 
-\indent 2. Consider the example of the family in the reading. What is the probability that the family has at least one boy?  
+Consider the example of the family in the reading. What is the probability that the family has at least one boy?  
 $$
 \Prob(\mbox{at least one boy})=1-\Prob(\mbox{no boys})=1-\Prob(\mbox{GGG})=1-\frac{1}{8} = 0.875
 $$
 
 ### Problem 3  
 
-\indent 3. The Birthday Problem Revisited. 
+The Birthday Problem Revisited. 
 
 a. Suppose there are $n=20$ students in a classroom. My birthday, the instructor, is April 3rd. What is the probability that at least one student shares my birthday? Assume only 365 days in a year and assume that all birthdays are equally likely.  
 
@@ -127,7 +127,7 @@ So 253 people.
 
 ### Problem 4
 
-4. Thinking of the cards again. Answer the following questions:
+Thinking of the cards again. Answer the following questions:
 
 a. Define two events that are mutually exclusive.  
 
@@ -146,7 +146,7 @@ The first card drawn is equal to or more than 5.
 
 ### Problem 5
 
-5. Consider the license plate example from the reading.
+Consider the license plate example from the reading.
 
 a. What is the probability that a license plate contains **exactly** one "B"?  
 
@@ -188,7 +188,7 @@ num0<-10*10*10*25*25*25
 
 ### Problem 6
 
-6. Consider the party example in the reading. 
+Consider the party example in the reading. 
 
 a. Suppose 8 people showed up to the party dressed as zombies. What is the probability that all three awards are won by people dressed as zombies? 
 $$
@@ -220,7 +220,7 @@ $$
 
 ### Problem 7
 
-7. Consider the cards example from the reading.   
+Consider the cards example from the reading.   
 
 a. How many ways can we obtain a "two pairs" (2 of one number, 2 of another, and the final different)? 
 
@@ -270,7 +270,7 @@ $$
 
 ### Problem 8
 
-8. Advanced Question: Consider rolling 5 dice. What is the **probability** of a pour resulting in a full house?
+Advanced Question: Consider rolling 5 dice. What is the **probability** of a pour resulting in a full house?
 
 First pick the value for the three of a kind, there are 6. Then pick the value from the remaining 5 for the two of a kind. This is actually a permutation. There are 30 distinct "flavors" of full house (three 1's & two 2's, three 1's & two 3's, etc.). In the reading we did this as 
 $$

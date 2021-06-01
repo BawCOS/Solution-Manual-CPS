@@ -21,7 +21,7 @@ Make sure your plots have a title and the axes are labeled.
 
 ### Problem 1 
 
-1. **Views on immigration**
+**Views on immigration**
 
 910 randomly sampled registered voters from Tampa, FL were asked if they thought workers who have illegally entered the US should be (i) allowed to keep their jobs and apply for US citizenship, (ii) allowed to keep their jobs as temporary guest workers but not allowed to apply for US citizenship, or (iii) lose their jobs and have to leave the country.
 

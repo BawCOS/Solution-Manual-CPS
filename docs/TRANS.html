@@ -26,7 +26,7 @@
 <meta name="author" content="Bradley Warner" />
 
 
-<meta name="date" content="2021-04-27" />
+<meta name="date" content="2021-06-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -534,17 +534,17 @@ div.csl-indent {
 <h2><span class="header-section-number">16.2</span> Homework</h2>
 <div id="problem-1-15" class="section level3" number="16.2.1">
 <h3><span class="header-section-number">16.2.1</span> Problem 1</h3>
-<p>. Let <span class="math inline">\(X\)</span> be a random variable and let <span class="math inline">\(g\)</span> be a function. By this point, it should be clear that <span class="math inline">\(\mbox{E}[g(X)]\)</span> is not necessarily equal to <span class="math inline">\(g(\mbox{E}[X])\)</span>.</p>
+<p>Let <span class="math inline">\(X\)</span> be a random variable and let <span class="math inline">\(g\)</span> be a function. By this point, it should be clear that <span class="math inline">\(\mbox{E}[g(X)]\)</span> is not necessarily equal to <span class="math inline">\(g(\mbox{E}[X])\)</span>.</p>
 <p>Let <span class="math inline">\(X\sim \textsf{Expon}(\lambda=0.5)\)</span> and <span class="math inline">\(g(X)=X^2\)</span>. We know that <span class="math inline">\(\mbox{E}(X)=\frac{1}{0.5}=2\)</span> so <span class="math inline">\(g(\mbox{E}(X))=\mbox{E}(X)^2=4\)</span>. Use <code>R</code> to find <span class="math inline">\(\mbox{E}[g(X)]\)</span>. Make use of the fact that <code>R</code> has <code>rexp()</code> built into it, so you don’t have to create your own random variable generator.</p>
 <p>Let <span class="math inline">\(Y=X^2\)</span>.</p>
 <div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="TRANS.html#cb302-1" aria-hidden="true" tabindex="-1"></a>sims<span class="ot">&lt;-</span><span class="fu">rexp</span>(<span class="dv">10000</span>,<span class="fl">0.5</span>)</span>
 <span id="cb302-2"><a href="TRANS.html#cb302-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sims<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] 7.721367</code></pre>
+<pre><code>## [1] 7.750717</code></pre>
 <p>So, <span class="math inline">\(g(\mbox{E}(X))=4\)</span> and <span class="math inline">\(\mbox{E}(g(X))\approx 7.84\)</span>.</p>
 </div>
 <div id="problem-2-15" class="section level3" number="16.2.2">
 <h3><span class="header-section-number">16.2.2</span> Problem 2</h3>
-<p>. Let <span class="math inline">\(X\sim \textsf{Binom}(n,\pi)\)</span>. What is the pmf for <span class="math inline">\(X+3\)</span>? Make sure you specify the domain of <span class="math inline">\(Y\)</span>. [Note, we have used <span class="math inline">\(p\)</span> for the probability of success in a binomial distribution in past lessons but some references use <span class="math inline">\(\pi\)</span> instead.]</p>
+<p>Let <span class="math inline">\(X\sim \textsf{Binom}(n,\pi)\)</span>. What is the pmf for <span class="math inline">\(X+3\)</span>? Make sure you specify the domain of <span class="math inline">\(Y\)</span>. [Note, we have used <span class="math inline">\(p\)</span> for the probability of success in a binomial distribution in past lessons but some references use <span class="math inline">\(\pi\)</span> instead.]</p>
 <p>Let <span class="math inline">\(Y=X+3\)</span>:
 <span class="math display">\[
 f_Y(y)=\mbox{P}(Y=y)=\mbox{P}(X+3=y)=\mbox{P}(X=y-3)=f_X(y-3)=\binom{n}{y-3}\pi^{y-3}(1-\pi)^{n-y+3}
@@ -553,7 +553,7 @@ f_Y(y)=\mbox{P}(Y=y)=\mbox{P}(X+3=y)=\mbox{P}(X=y-3)=f_X(y-3)=\binom{n}{y-3}\pi^
 </div>
 <div id="problem-3-11" class="section level3" number="16.2.3">
 <h3><span class="header-section-number">16.2.3</span> Problem 3</h3>
-<p>. Let <span class="math inline">\(X\sim \textsf{Expon}(\lambda)\)</span>. Let <span class="math inline">\(Y=X^2\)</span>. Find the pdf of <span class="math inline">\(Y\)</span>.</p>
+<p>Let <span class="math inline">\(X\sim \textsf{Expon}(\lambda)\)</span>. Let <span class="math inline">\(Y=X^2\)</span>. Find the pdf of <span class="math inline">\(Y\)</span>.</p>
 <p>CDF method:
 <span class="math display">\[
 F_Y(y)=\mbox{P}(Y\leq y)=\mbox{P}(X^2\leq y)=\mbox{P}(X\leq \sqrt y)=1-e^{-\lambda \sqrt y}
@@ -571,7 +571,7 @@ f_Y(y)=\lambda e^{-\lambda \sqrt{y}}\frac{1}{2\sqrt y}=\frac{\lambda e^{-\lambda
 </div>
 <div id="problem-4-7" class="section level3" number="16.2.4">
 <h3><span class="header-section-number">16.2.4</span> Problem 4</h3>
-<p>. OPTIONAL: In exercise 3, you found the pdf of <span class="math inline">\(Y=X^2\)</span> when <span class="math inline">\(X\sim \textsf{Expon}(\lambda)\)</span>. Rearrange the pdf to show that <span class="math inline">\(Y\sim \textsf{Weibull}\)</span> and find the parameters of that distribution.</p>
+<p>OPTIONAL: In exercise 3, you found the pdf of <span class="math inline">\(Y=X^2\)</span> when <span class="math inline">\(X\sim \textsf{Expon}(\lambda)\)</span>. Rearrange the pdf to show that <span class="math inline">\(Y\sim \textsf{Weibull}\)</span> and find the parameters of that distribution.</p>
 <p><span class="math display">\[
 f_Y(y)=\frac{\lambda e^{-\lambda \sqrt y}}{2\sqrt y}=\frac{\lambda}{2\sqrt y}e^{-\lambda \sqrt y}=\frac{\lambda^2}{2} \frac{1}{\lambda\sqrt y} e^{-\sqrt{\lambda^2 y}}=\frac{1/2}{1/\lambda^2}\left(\frac{y}{1/\lambda^2}\right)^{\frac{1}{2}-1}e^{-\left(\frac{y}{1/\lambda^2}\right)^{\frac{1}{2}}}
 \]</span></p>
@@ -579,7 +579,7 @@ f_Y(y)=\frac{\lambda e^{-\lambda \sqrt y}}{2\sqrt y}=\frac{\lambda}{2\sqrt y}e^{
 </div>
 <div id="problem-5-5" class="section level3" number="16.2.5">
 <h3><span class="header-section-number">16.2.5</span> Problem 5</h3>
-<p>. You are on a team of two. You are both tasked to complete an exercise. The time it takes you <span class="math inline">\(T_1\)</span>, and likewise, your teammate <span class="math inline">\(T_2\)</span> to complete the exercise are independent random variables. Exercise completion time, in minutes, is distributed with the following pdf:</p>
+<p>You are on a team of two. You are both tasked to complete an exercise. The time it takes you <span class="math inline">\(T_1\)</span>, and likewise, your teammate <span class="math inline">\(T_2\)</span> to complete the exercise are independent random variables. Exercise completion time, in minutes, is distributed with the following pdf:</p>
 <p><span class="math display">\[
 f_T(t)= \frac{-t}{200}+\frac{3}{20}; 10 \leq t \leq30
 \]</span></p>
@@ -636,7 +636,7 @@ Figure 16.1: pdf of <span class="math inline">\(T\)</span>
 <li>We are ready. Let’s create a data frame with 10000 simulation for our time and another 10000 for our teammates. Remember to set a seed. At this point it may be hard to remember what we have done. The function we created takes as input a vector of random number from a uniform distribution and then applies the inverse cdf to generate a random sample from our given pdf.</li>
 </ol>
 <div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="TRANS.html#cb319-1" aria-hidden="true" tabindex="-1"></a><span class="fu">T</span>(<span class="fu">runif</span>(<span class="dv">3</span>))</span></code></pre></div>
-<pre><code>## [1] 14.61111 10.79468 13.55769</code></pre>
+<pre><code>## [1] 12.71530 14.96525 15.48457</code></pre>
 <div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="TRANS.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1144</span>)</span>
 <span id="cb321-2"><a href="TRANS.html#cb321-2" aria-hidden="true" tabindex="-1"></a>sim_exercise <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">T1=</span><span class="fu">T</span>(<span class="fu">runif</span>(<span class="dv">10000</span>)),<span class="at">T2=</span><span class="fu">T</span>(<span class="fu">runif</span>(<span class="dv">10000</span>)))</span></code></pre></div>
 <ol start="7" style="list-style-type: lower-alpha">

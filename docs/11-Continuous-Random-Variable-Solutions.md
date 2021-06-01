@@ -17,7 +17,7 @@
 
 ### Problem 1  
 
-\indent 1. Let $X$ be a continuous random variable on the domain $-k \leq X \leq k$. Also, let $f(x)=\frac{x^2}{18}$. 
+Let $X$ be a continuous random variable on the domain $-k \leq X \leq k$. Also, let $f(x)=\frac{x^2}{18}$. 
 
 a. Assume that $f(x)$ is a valid pdf. Find the value of $k$. 
 
@@ -240,7 +240,7 @@ inspect(results)
 
 ### Problem 2
 
-\indent 2. Let $X$ be a continuous random variable. Prove that the cdf of $X$, $F_X(x)$ is a non-decreasing function. (Hint: show that for any $a < b$, $F_X(a) \leq F_X(b)$.)
+Let $X$ be a continuous random variable. Prove that the cdf of $X$, $F_X(x)$ is a non-decreasing function. (Hint: show that for any $a < b$, $F_X(a) \leq F_X(b)$.)
 
 Let $a<b$, where $a$ and $b$ are both in the domain of $X$. Note that $F_X(a)=\Prob(X\leq a)$ and $F_X(b)=\Prob(X\leq b)$. Since $a<b$, we can partition $\Prob(X\leq b)$ as $\Prob(X\leq a)+\Prob(a < X \leq b)$. One of the axioms of probability is that a probability must be non-negative, so I know that $\Prob(a < X \leq b)\geq 0$. Thus, 
 $$
