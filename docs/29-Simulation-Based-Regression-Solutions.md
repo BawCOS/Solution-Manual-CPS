@@ -15,7 +15,7 @@ We will use the loans data set again to create linear models. Remember this data
 
 ### Problem 1  
 
-\indent 1. Loans  
+**Loans**  
 
 In this exercise we will examine the relationship between interest rate and loan amount.  
 
@@ -261,7 +261,7 @@ There appears to be a lack of normality as the residuals are skewed to the right
 
 ### Problem 2
 
-\indent 2. Loans II
+**Loans II**
 
 Using the `loans` data set of 200 observations from the previous exercise, use the variable `term` to determine if there is a difference in interest rates for the two different loan lengths.
 

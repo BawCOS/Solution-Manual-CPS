@@ -11,7 +11,7 @@
 
 ### Problem 1  
 
-\indent 1. Golf balls 
+**Golf balls**   
 
 Repeat the analysis of the golf ball problem from earlier this semester.
 
@@ -88,7 +88,7 @@ chisq.test(tally(~number,data=golf_balls),p=c(.3,.3,.2,.2))
 
 ### Problem 2
 
-\indent 2. Bootstrap hypothesis testing  
+**Bootstrap hypothesis testing**  
 
 Repeat the analysis of the MLB data from the lesson but this time generate a bootstrap distribution of the $F$ statistic.
 
@@ -176,7 +176,7 @@ We are 95\% confident that the $F$ statistic is in the interval $(0.35,8.72)$ wh
 
 ### Problem 3  
 
-\indent 3. Test of variance
+**Test of variance**
 
 We have not performed a test of variance so we will create our own.
 

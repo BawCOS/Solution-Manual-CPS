@@ -26,7 +26,7 @@
 <meta name="author" content="Bradley Warner" />
 
 
-<meta name="date" content="2021-06-01" />
+<meta name="date" content="2021-06-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -621,6 +621,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="NUMDATA.html#cb25-1" aria-hidden="true" tabindex="-1"></a>mammals <span class="sc">%&gt;%</span></span>
 <span id="cb25-2"><a href="NUMDATA.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(life_span<span class="sc">~</span><span class="fu">factor</span>(exposure))</span></code></pre></div>
 <p><img src="05-Numerical-Data-Solutions_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>Mammals who are more exposed have a longer life span. There must be a confounding variable, maybe the size of the animal or the <code>danger</code> variable.</p>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>What happened to the median and third quartile in exposure group 4?</li>
 </ol>
@@ -631,6 +632,7 @@ div.csl-indent {
 ## 3                3  7.6 19.90  26.50 32.000  41.0 25.40000 13.84582  4       0
 ## 4                4  7.0 20.20  27.00 27.000  39.3 24.10000 11.78431  5       0
 ## 5                5 16.3 20.00  28.00 38.600  69.0 30.53077 14.98084 13       0</code></pre>
+<p>The median and third quartile are equal in exposure group 4. There are a large number of the observed mammals with the same life span in this group.</p>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Create faceted histograms. What are the shortcomings of this plot?</li>
 </ol>

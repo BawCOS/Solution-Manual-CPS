@@ -82,6 +82,7 @@ mammals %>%
 gf_boxplot(life_span~factor(exposure))
 ```
 
+Mammals who are more exposed have a longer life span. There must be a confounding variable, maybe the size of the animal or the `danger` variable.
 
 
 b. What happened to the median and third quartile in exposure group 4?
@@ -89,6 +90,8 @@ b. What happened to the median and third quartile in exposure group 4?
 ```{r}
 favstats(life_span~factor(exposure),data=mammals)
 ```
+
+The median and third quartile are equal in exposure group 4. There are a large number of the observed mammals with the same life span in this group.
 
 c. Create faceted histograms. What are the shortcomings of this plot?
 

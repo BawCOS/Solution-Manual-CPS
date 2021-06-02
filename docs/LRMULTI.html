@@ -26,7 +26,7 @@
 <meta name="author" content="Bradley Warner" />
 
 
-<meta name="date" content="2021-06-01" />
+<meta name="date" content="2021-06-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -538,7 +538,7 @@ div.csl-indent {
 <h2><span class="header-section-number">30.2</span> Homework</h2>
 <div id="problem-1-29" class="section level3" number="30.2.1">
 <h3><span class="header-section-number">30.2.1</span> Problem 1</h3>
-<p>. The <code>mtcars</code> dataset contains average mileage (mpg) and other information about specific makes and models of cars. (This dataset is built-in to <code>R</code>; for more information about this dataset, reference the documentation with <code>?mtcars</code>).</p>
+<p>The <code>mtcars</code> dataset contains average mileage (mpg) and other information about specific makes and models of cars. (This dataset is built-in to <code>R</code>; for more information about this dataset, reference the documentation with <code>?mtcars</code>).</p>
 <ol style="list-style-type: lower-alpha">
 <li>Build and interpret the coefficients of a model fitting <code>mpg</code> against displacement (<code>disp</code>), horsepower (<code>hp</code>), rear axle ratio (<code>drat</code>), and weight in 1000 lbs (<code>wt</code>).</li>
 </ol>
@@ -606,7 +606,7 @@ div.csl-indent {
 </div>
 <div id="problem-2-27" class="section level3" number="30.2.2">
 <h3><span class="header-section-number">30.2.2</span> Problem 2</h3>
-<p>. Is that the best model for predicting mpg? Try a variety of different models. You could explore higher order terms or even interactions. One place to start is by using the <code>pairs()</code> function on <code>mtcars</code> to plot a large pairwise scatterplot. How high could you get adjusted <span class="math inline">\(R\)</span>-squared? Keep in mind that is only one measure of fit.</p>
+<p>Is that the best model for predicting mpg? Try a variety of different models. You could explore higher order terms or even interactions. One place to start is by using the <code>pairs()</code> function on <code>mtcars</code> to plot a large pairwise scatterplot. How high could you get adjusted <span class="math inline">\(R\)</span>-squared? Keep in mind that is only one measure of fit.</p>
 <p>Answers will vary, but we tried this and got 0.8694.</p>
 <div class="sourceCode" id="cb704"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb704-1"><a href="LRMULTI.html#cb704-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(mpg<span class="sc">~</span>disp<span class="sc">+</span><span class="fu">I</span>(disp<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span>hp<span class="sc">+</span><span class="fu">I</span>(hp<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span>wt,<span class="at">data=</span>mtcars))</span></code></pre></div>
 <pre><code>## 

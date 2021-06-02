@@ -26,7 +26,7 @@
 <meta name="author" content="Bradley Warner" />
 
 
-<meta name="date" content="2021-06-01" />
+<meta name="date" content="2021-06-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -534,12 +534,12 @@ div.csl-indent {
 <h2><span class="header-section-number">27.2</span> Homework</h2>
 <div id="problem-1-26" class="section level3" number="27.2.1">
 <h3><span class="header-section-number">27.2.1</span> Problem 1</h3>
-<p>. We noticed that the 95% prediction interval was much wider than the 95% confidence interval. In words, explain why this is.</p>
+<p>We noticed that the 95% prediction interval was much wider than the 95% confidence interval. In words, explain why this is.</p>
 <p>The two intervals are describing different parameters. A 95% confidence interval is describing the <em>mean</em> value of the response at a particular value of the predictor. On the other hand, a 95% prediction interval is describing an <em>individual</em> value of the response at a particular value of the predictor. There will be more uncertainty around an individual value than the overall mean.</p>
 </div>
 <div id="problem-2-24" class="section level3" number="27.2.2">
 <h3><span class="header-section-number">27.2.2</span> Problem 2</h3>
-<p>. Beer and blood alcohol content</p>
+<p><strong>Beer and blood alcohol content</strong></p>
 <p>Many people believe that gender, weight, drinking habits, and many other factors are much more important in predicting blood alcohol content (BAC) than simply considering the number of drinks a person consumed. Here we examine data from sixteen student volunteers at Ohio State University who each drank a randomly assigned number of cans of beer. These students were evenly divided between men and women, and they differed in weight and drinking habits. Thirty minutes later, a police officer measured their blood alcohol content (BAC) in grams of alcohol per deciliter of blood. The data is in the <code>bac.csv</code> file under the <code>data</code> folder.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Create a scatterplot for cans of beer and blood alcohol level.</li>
@@ -629,7 +629,7 @@ Slope: For each additional can of beer consumed, the model predicts an additiona
 </div>
 <div id="problem-3-18" class="section level3" number="27.2.3">
 <h3><span class="header-section-number">27.2.3</span> Problem 3</h3>
-<p>. Suppose I build a regression fitting a response variable to one predictor variable. I build a 95% confidence interval on <span class="math inline">\(\beta_1\)</span> and find that it contains 0, meaning that a slope of 0 is feasible. Does this mean that the response and the predictor are independent?</p>
+<p>Suppose I build a regression fitting a response variable to one predictor variable. I build a 95% confidence interval on <span class="math inline">\(\beta_1\)</span> and find that it contains 0, meaning that a slope of 0 is feasible. Does this mean that the response and the predictor are independent?</p>
 <p>No. It merely means that my best guess is that the two variables are <em>linearly uncorrelated</em>. They could be related another way (quadratically, for example), but still result in an estimated slope close to 0.</p>
 
 </div>

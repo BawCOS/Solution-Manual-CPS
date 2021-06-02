@@ -11,7 +11,7 @@
 
 ### Problem 1  
 
-\indent 1. Repeat the analysis of the commercial length in the notes. This time use a different test statistic.  
+Repeat the analysis of the commercial length in the notes. This time use a different test statistic.  
 
 
 
@@ -150,7 +150,7 @@ Based on our data, if there were really no difference in the distribution of len
 
 ### Problem 2
 
-\indent 2. Is yawning contagious? 
+**Is yawning contagious?**
 
 An experiment conducted by the *MythBusters*, a science entertainment TV program on the Discovery Channel, tested if a person can be subconsciously influenced into yawning if another person near them yawns. 50 people were randomly assigned to two groups: 34 to a group where a person near them yawned (treatment) and 16 to a group where there wasn't a person yawning near them (control). The following table shows the results of this experiment. 
 

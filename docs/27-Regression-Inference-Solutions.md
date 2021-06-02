@@ -10,13 +10,13 @@
 
 ### Problem 1
 
-\indent 1. We noticed that the 95% prediction interval was much wider than the 95% confidence interval. In words, explain why this is. 
+We noticed that the 95% prediction interval was much wider than the 95% confidence interval. In words, explain why this is. 
 
 The two intervals are describing different parameters. A 95% confidence interval is describing the *mean* value of the response at a particular value of the predictor. On the other hand, a 95% prediction interval is describing an *individual* value of the response at a particular value of the predictor. There will be more uncertainty around an individual value than the overall mean. 
 
 ### Problem 2
 
-\indent 2. Beer and blood alcohol content 
+**Beer and blood alcohol content** 
 
 Many people believe that gender, weight, drinking habits, and many other factors are much more important in predicting blood alcohol content (BAC) than simply considering the number of drinks a person consumed. Here we examine data from sixteen student volunteers at Ohio State University who each drank a randomly assigned number of cans of beer. These students were evenly divided between men and women, and they differed in weight and drinking habits. Thirty minutes later, a police officer measured their blood alcohol content (BAC) in grams of alcohol per deciliter of blood. The data is in the `bac.csv` file under the `data` folder.
 
@@ -157,6 +157,6 @@ bac %>%
 
 ### Problem 3
 
-\indent 3. Suppose I build a regression fitting a response variable to one predictor variable. I build a 95% confidence interval on $\beta_1$ and find that it contains 0, meaning that a slope of 0 is feasible. Does this mean that the response and the predictor are independent? 
+Suppose I build a regression fitting a response variable to one predictor variable. I build a 95% confidence interval on $\beta_1$ and find that it contains 0, meaning that a slope of 0 is feasible. Does this mean that the response and the predictor are independent? 
 
 No. It merely means that my best guess is that the two variables are *linearly uncorrelated*. They could be related another way (quadratically, for example), but still result in an estimated slope close to 0. 

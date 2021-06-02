@@ -12,7 +12,7 @@
 
 ### Problem 1
 
-\indent 1. Nutrition at Starbucks  
+**Nutrition at Starbucks**  
 
 In the `data` folder is a file named `starbucks.csv`. Use it to answer the questions below.
 

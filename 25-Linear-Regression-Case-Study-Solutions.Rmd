@@ -11,7 +11,7 @@
 
 ### Problem 1
 
-\indent 1. HFI   
+**HFI**   
 
 Choose another freedom variable and a variable you think would strongly correlate with it. Note: even though some of the variables will appear to be quantitative, they don't take on enough different values and thus appear to be categorical. So choose with some caution. The `openintro` package contains the data set `hfi`. Type `?openintro::hfi` in the Console window in `RStudio` to learn more about the variables. 
     

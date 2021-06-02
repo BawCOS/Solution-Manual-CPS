@@ -10,7 +10,7 @@
 
 ### Problem 1
 
-\indent 1. Possum classification 
+**Possum classification** 
 
 Let's investigate the `possum` data set again. This time we want to model a binary outcome variable. As a reminder, the common brushtail possum of the Australia region is a bit cuter than its distant cousin, the American opossum. We consider 104 brushtail possums from two regions in Australia, where the possums may be considered a random sample from the population. The first region is Victoria, which is in the eastern half of Australia and traverses the southern coast. The second region consists of New South Wales and Queensland, which make up eastern and northeastern Australia.
 
@@ -174,7 +174,7 @@ So at most, the probability of the possum being from Victoria is 2\%.
 
 ### Problem 2
 
-\indent 2. Medical school admission
+**Medical school admission**
 
 The file `MedGPA.csv` in the `data` folder has information on medical school admission status and GPA and standardized test scores gathered on 55 medical school applicants from a liberal arts college in the Midwest.
 

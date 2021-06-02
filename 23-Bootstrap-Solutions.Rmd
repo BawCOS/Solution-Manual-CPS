@@ -10,7 +10,8 @@
 
 ### Problem 1
 
-\indent 1. Poker  
+**Poker**  
+
 An aspiring poker player recorded her winnings and losses over 50 evenings of play, the data is in the `openintro` package in the object `poker`. The poker player would like to better understand the volatility in her long term play.
 
 a. Load the data and plot a histogram.  
@@ -82,7 +83,7 @@ We don't know without doing some math. We do know that the sample standard devia
 
 ### Problem 2
 
-\indent 2. Bootstrap hypothesis testing  
+**Bootstrap hypothesis testing**  
 
 Bootstrap hypothesis testing is relatively undeveloped, and is generally not as accurate as permutation testing. Therefore in general avoid it. But for our problem in the notes, it may work. We will sample in a way that is consistent with the null hypothesis, then calculate a P-value as a tail probability like we do in permutation tests. This example does not generalize well to other applications like relative risk, correlation, regression, or categorical data.
 
@@ -176,7 +177,7 @@ This is a similar p-value.
 
 ### Problem 3
 
-\indent 3. Paired data  
+**Paired data**  
 
 Are textbooks actually cheaper online? Here we compare the price of textbooks at the University of California, Los Angeles' (UCLA's) bookstore and prices at Amazon.com. Seventy-three UCLA courses were randomly sampled in Spring 2010, representing less than 10\% of all UCLA courses. When a class had multiple books, only the most expensive text was considered.
 

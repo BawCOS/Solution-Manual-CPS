@@ -10,7 +10,7 @@
 
 ### Problem 1 
 
-\indent 1. Identify relationships 
+**Identify relationships** 
 
 For each of the six plots, identify the strength of the relationship (e.g. weak, moderate, or strong) in the data and whether fitting a linear model would be reasonable.  When we ask about the strength of the relationship, we mean:
 
@@ -36,7 +36,7 @@ include_graphics("figures/association6.png")
 
 ### Problem 2
 
-\indent 2. Beer and blood alcohol content 
+**Beer and blood alcohol content** 
 
 We will use the blood alcohol content data again. As a reminder this is the description of the data: *Many people believe that gender, weight, drinking habits, and many other factors are much more important in predicting blood alcohol content (BAC) than simply considering the number of drinks a person consumed. Here we examine data from sixteen student volunteers at Ohio State University who each drank a randomly assigned number of cans of beer. These students were evenly divided between men and women, and they differed in weight and drinking habits. Thirty minutes later, a police officer measured their blood alcohol content (BAC) in grams of alcohol per deciliter of blood.* 
 
@@ -100,7 +100,7 @@ To learn more about measures of influence, see https://cran.r-project.org/web/pa
 
 ### Problem 3
 
-\indent 3. Outliers 
+**Outliers** 
 
 Identify the outliers in the scatterplots shown below and determine what type of outliers they are. Explain your reasoning. The labels are off so treat the bottom row as (d), (e), and (f).
 

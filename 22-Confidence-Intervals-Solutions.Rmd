@@ -10,7 +10,7 @@
 
 ### Problem 1
 
-\indent 1. Chronic illness
+**Chronic illness**
 
 In 2013, the Pew Research Foundation reported that "45\% of U.S. adults report that they live with one or more chronic conditions".^[http://pewinternet.org/Reports/2013/The-Diagnosis-Difference.aspx The Diagnosis Difference. November 26, 2013. Pew Research.] However, this value was based on a sample, so it may not be a perfect estimate for the population parameter of interest on its own. The study reported a standard error of about 1.2\%, and a normal model may reasonably be used in this setting. 
 
@@ -68,7 +68,7 @@ Notice that 46.9 is smaller than 47.4.
 
 ### Problem 2  
 
-\indent 2. Vegetarian college students 
+**Vegetarian college students** 
 
 Suppose that 8\% of college students are vegetarians. Determine if the following statements are true or false, and explain your reasoning.
 
@@ -138,7 +138,7 @@ temp
 
 ### Problem 3
 
-\indent 3. Orange tabbies 
+**Orange tabbies** 
 
 Suppose that 90\% of orange tabby cats are male. Determine if the following statements are true or false, and explain your reasoning.  
 
@@ -168,7 +168,7 @@ therefore the distribution of $\hat{p}$ is nearly normal.
 
 ### Problem 4  
 
-\indent 4. Working backwards 
+**Working backwards** 
 
 A 90\% confidence interval for a population mean is (65,77). The population distribution is approximately normal and the population standard deviation is unknown. This confidence interval is based on a simple random sample of 25 observations. Calculate the sample mean, the margin of error, and the sample standard deviation.
 
@@ -192,7 +192,7 @@ $$s = 17.54$$
 
 ### Problem 5
 
-\indent 5. Find the p-value 
+**Find the p-value** 
 
 An independent random sample is selected from an approximately normal population with an unknown standard deviation. Find the p-value for the given set of hypotheses and $T$ test statistic. Also determine if the null hypothesis would be rejected at $\alpha = 0.05$.
 
@@ -230,7 +230,7 @@ The p-value is less than 0.05, reject the null hypothesis.
  
 ### Problem 6
  
-\indent 6. Sleep habits of New Yorkers  
+**Sleep habits of New Yorkers**   
 
 New York is known as "the city that never sleeps". A random sample of 25 New Yorkers were asked how much sleep they get per night. Statistical summaries of these data are shown below. Do these data provide strong evidence that New Yorkers sleep less than 8 hours a night on average?
 
@@ -315,7 +315,7 @@ The value of 8 is not included in the interval, but it is close. We need more da
 
 ### Problem 7  
 
-\indent 7. Vegetarian college students II
+**Vegetarian college students II**
 
 From problem 2 part c, suppose that it has been reported that 8\% of college students are vegetarians. We think USAFA is not typical because of their fitness and health awareness, we think there are more vegetarians. We collect a random sample of 125 cadets and find 12\% claimed they are vegetarians. Is there enough evidence to claim that USAFA cadets are different?
 
